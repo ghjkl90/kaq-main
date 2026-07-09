@@ -1,0 +1,37 @@
+{
+  "name": "kaq-main",
+  "version": "1.0.0",
+  "description": "This is a Next.js project bootstrapped with create-next-app.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghjkl90/kaq-main.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "gsap": "^3.15.0",
+    "next": "latest",
+    "postcss": "^8.5.16",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "^4.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/ghjkl90/kaq-main/issues"
+  },
+  "homepage": "https://github.com/ghjkl90/kaq-main#readme",
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "@types/react": "19.2.17",
+    "typescript": "6.0.3"
+  }
+}
