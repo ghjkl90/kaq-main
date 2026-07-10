@@ -7,6 +7,7 @@ import MainInteraction from "./components/MainInteraction";
 import ContactModal from "./components/ContactModal";
 import ProjectList from "./components/ProjectList";
 import MediaGallery from "./components/MediaGallery";
+import Footer from "./components/Footer";
 
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
       />
       <ProjectList />
       <MediaGallery />
+      <Footer />
     </main>
   );
 }

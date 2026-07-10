@@ -1,118 +1,240 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../page.module.css"; 
 
 export default function ProjectList() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isChanging, setIsChanging] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const sectionRef = useRef(null);
 
-  const projects = [
+  const duration = 5000; 
+
+  const data = [
     {
       id: "01",
-      badge: "기구축 완료",
-      title: "K-AI-STATION",
-      description: "공간의 환경 데이터와 사용자 편의를 스마트하게 연결하여 쾌적한 AI 기반 공간 경험을 선사하는 지능형 통합 스테이션 허브입니다.",
-      subDescription: "실시간 데이터 트래킹 및 멀티 디바이스 동기화 기술 적용",
-      image: "/Gallery1.png", // 이미지 경로 변경 예정
+      badgeText: "기구축 완료",
+      mainTitle: "K–AI–STATION",
+      subTitle: "실시간 데이터 트래킹 및 멀티 디바이스 동기화 기술 적용",
+      description: "공간의 환경 데이터와 사용자 편의를 스마트하게 연결하여 쾌적한 AI 기반 공간 경험을 선사하는 지능형 통합 스테이션 허브입니다. 독자적인 비전 분석 기술을 통해 다차원 공간 데이터를 실시간으로 연결합니다.",
+      image: "/Gallery1.png", // ⭕ public/Gallery1.png가 있다면 정상 표출
       btnText: "자세히 보기",
-      link: "https://k-ai-station.vercel.app/"
+      link: "https://k-ai-station.vercel.app/",
+      features: [
+        {
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg>,
+          title: "AI Prompt 기하학",
+          desc: "점구름(Point Cloud) 시뮬레이션으로 오프라인 데이터를 정교한 프롬프트 규격으로 구조화합니다."
+        },
+        {
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="4" r="2" /><circle cx="12" cy="20" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><line x1="12" y1="6" x2="12" y2="9" /><line x1="12" y1="15" x2="12" y2="18" /><line x1="6" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="18" y2="12" /></svg>,
+          title: "스마트 공간 연결",
+          desc: "도시의 도로 네트워크와 유틸리티 라인을 데이터화하여 비즈니스 효율을 극대화합니다."
+        },
+        {
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>,
+          title: "체험형 솔루션",
+          desc: "전용 웹 플랫폼을 통해 누구나 직관적으로 AI 비전 알고리즘을 직접 체험할 수 있습니다."
+        }
+      ]
     },
     {
       id: "02",
-      badge: "신규 도입 예정",
-      title: "DSQ PLATFORM",
-      description: "AI 센싱과 Digital Twin 기술로 구현한 실시간 공간 안전 점검 플랫폼으로 위험 요소를 사전에 시각화하고 차단합니다.",
-      subDescription: "몬드리안 스타일 대시보드 인터페이스 결합",
-      image: "/Gallery2.png", // 이미지 경로 변경 예정
+      badgeText: "신규 도입 예정",
+      mainTitle: "DSQ PLATFORM",
+      subTitle: "실시간 디지털 안전 품질 모니터링 시스템",
+      description: "성균관대학교 스마트품질 연구실(KAQ)의 연구 역량을 바탕으로 눈에 보이지 않던 공간의 위험을 실시간 데이터로 시각화하는 플랫폼입니다. AI 센싱과 Digital Twin 기술을 융합하여 안전 생태계를 구축합니다. " ,
+      /* 💡 디버깅 가이드: 2번 사진이 수동 전환 시 증발하던 에러를 방지하기 위해 테스트용 고해상도 디지털트윈 주소로 백업 매핑했습니다 */
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200", 
       btnText: "플랫폼 둘러보기",
-      link: "https://dsq-platform.vercel.app/" // 💡 필요시 DSQ 플랫폼 주소로 변경하여 사용하세요.
+      link: "http://openq.co.kr:8082/",
+      features: [
+        {
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" /></svg>,
+          title: "학술적 공신력",
+          desc: "국내외 표준 기반 연구자산을 토대로 4대 HOPE 위해요인 지표를 정립했습니다. " 
+        },
+        {
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="16" /><line x1="15" y1="22" x2="15" y2="16" /><path d="M9 16h6v6H9z" /><path d="M8 6h2v2H8zm0 4h2v2H8zm6-4h2v2h-2zm0 4h2v2h-2z" /></svg>,
+          title: "다각화된 현장 실증",
+          desc: "다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 다양한 거점에 커스텀 도입 중입니다. " 
+        },
+        {
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
+          title: "민관 융합 네트워크",
+          desc: "이해관계자 연결, 관리자에게는 고도화된 시스템을, 대중에게는 사전 안전 확인 권리를 제공합니다. " 
+        }
+      ]
     }
   ];
 
+  // 최초 1회 스크롤 진입 인터랙션 오픈 후 락킹 고정
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.kaqActive); 
+            observer.unobserve(entry.target); 
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // 5초 타이머 제어
+  useEffect(() => {
+    setProgress(0);
+    const intervalTime = 50; 
+    const steps = duration / intervalTime;
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      setProgress((currentStep / steps) * 100);
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        handleNext();
+      }
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
+  const handlePageSwitch = (index) => {
+    if (index === currentIndex || isChanging) return;
+    setIsChanging(true);
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setIsChanging(false);
+    }, 250); 
+  };
+
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    const prevIndex = currentIndex === 0 ? data.length - 1 : currentIndex - 1;
+    handlePageSwitch(prevIndex);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    const nextIndex = currentIndex === data.length - 1 ? 0 : currentIndex + 1;
+    handlePageSwitch(nextIndex);
   };
 
+  const current = data[currentIndex];
+
   return (
-    <section className={styles.projectSliderSection}>
-      <div className={styles.sliderWrapper}>
+    <section className={styles.kaqReportageSection} ref={sectionRef}>
+      <div className={`${styles.kaqReportageContainer} ${styles.kaqScrollReveal}`}>
         
-        <div className={styles.sliderLeftBox}>
-          <div className={styles.sliderLeftContent}>
-            <span className={styles.sliderCategoryTag}>PROJECTS</span>
-            <h2 className={styles.sliderMainTitle}>
-              KAQ <br />
-              Core Innovation
-            </h2>
-            <p className={styles.sliderMainSub}>
-              KAQ가 혁신하는 핵심 프로젝트 가치와 기술을 양 옆으로 넘겨보며 확인하세요.
-            </p>
-
-            <div className={styles.sliderController}>
-              <button className={styles.arrowBtn} onClick={handlePrev} aria-label="Previous Project">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-              </button>
-              
-              <div className={styles.fractionIndicator}>
-                <span className={styles.currentNum}>{String(currentIndex + 1).padStart(2, '0')}</span>
-                <span className={styles.divider}>/</span>
-                <span className={styles.totalNum}>{String(projects.length).padStart(2, '0')}</span>
-              </div>
-
-              <button className={styles.arrowBtn} onClick={handleNext} aria-label="Next Project">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
+        {/* [LEFT AREA] : 좌우 100% 무브먼트 슬라이드 액자 고정 프레임 */}
+        <div className={styles.kaqReportageLeftFrame}>
+          <div className={styles.kaqPolyImageContainer}>
+            {/* 💡 슬라이딩 트랙의 스타일 계산식을 정교화하여 징검다리 짤림 현상 완전 방지 */}
+            <div 
+              className={styles.kaqImageSliderTrack}
+              style={{ 
+                display: "flex",
+                width: `${data.length * 100}%`,
+                transform: `translateX(-${currentIndex * (100 / data.length)}%)`,
+                height: "100%"
+              }}
+            >
+              {data.map((item, idx) => (
+                <div 
+                  key={idx}
+                  className={styles.kaqPolyActualImage}
+                  style={{ 
+                    backgroundImage: `url(${item.image})`,
+                    width: `${100 / data.length}%`,
+                    height: "100%",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat"
+                  }}
+                ></div>
+              ))}
             </div>
+            <div className={styles.kaqPolyVisualShadow}></div>
           </div>
         </div>
 
-        {/* [우측 영역]: 가로로 슬라이딩 전환되는 카드 가변 뷰포트 */}
-        <div className={styles.sliderRightBox}>
-          <div 
-            className={styles.cardTrack} 
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {projects.map((project) => (
-              <div key={project.id} className={styles.sliderCard}>
-                <div className={styles.sliderCardHeader}>
-                  <span className={styles.sliderProjectBadge}>{project.badge}</span>
-                  <h3 className={styles.sliderProjectTitle}>{project.title}</h3>
-                  <p className={styles.sliderProjectDesc}>{project.description}</p>
-                  {project.subDescription && (
-                    <p className={styles.sliderProjectSubDesc}>{project.subDescription}</p>
-                  )}
+        {/* [RIGHT AREA] : 정보 패널 보드 */}
+        <div className={`${styles.kaqReportageRightPanel} ${isChanging ? styles.kaqTextChanging : ""}`}>
+          
+          <div className={styles.kaqReportageHeader}>
+            <div className={styles.kaqBadgeRow}>
+              <img src="/KAQlogo.png" alt="KAQ Logo" className={styles.kaqBadgeIconImg} style={{ height: "24px", width: "auto" }} />
+              <span className={styles.kaqBadgeSlashDivider}>•</span>
+              <h4 className={styles.kaqBadgeText}>{current.badgeText}</h4>
+            </div>
+            <h2 className={styles.kaqMainHeadingTitle}>{current.mainTitle}</h2>
+            <p className={styles.kaqSubHeadingHeading}>{current.subTitle}</p>
+          </div>
+
+          <div className={styles.kaqReportageBodyDesc}>
+            <p>{current.description}</p>
+          </div>
+
+          <div className={styles.kaqReportageMiniGrid}>
+            {current.features.map((feat, idx) => (
+              <div 
+                key={idx} 
+                className={styles.kaqMiniColumnItem}
+                style={{ transitionDelay: `${idx * 60}ms` }}
+              >
+                <div className={styles.kaqMiniIconCircle}>
+                  {feat.icon}
                 </div>
-                
-                <div className={styles.sliderCardVisual}>
-                  <div 
-                    className={styles.sliderProjectImg} 
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  ></div>
-                  
-                  {/* 💡 기존의 href="#" 주소를 각각의 project.link로 유연하게 연동합니다 */}
-                  <a 
-                    href={project.link || "#"} 
-                    target={project.link ? "_blank" : "_self"} 
-                    rel="noopener noreferrer"
-                    className={styles.sliderMoreBtn}
-                  >
-                    {project.btnText}
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </a>
-                </div>
+                <h5 className={styles.kaqMiniColumnTitle}>{feat.title}</h5>
+                <p className={styles.kaqMiniColumnDesc}>{feat.desc}</p>
               </div>
             ))}
           </div>
+
+          <div className={styles.kaqReportageControlBar}>
+            <div className={styles.kaqBtnArrowsGroup}>
+              <button className={styles.kaqCircledArrow} onClick={handlePrev} aria-label="이전">←</button>
+              <button className={styles.kaqCircledArrow} onClick={handleNext} aria-label="다음">→</button>
+            </div>
+
+            <div className={styles.kaqActionsFlexArea}>
+              <a href={current.link} target="_blank" rel="noopener noreferrer" className={styles.kaqReportageSubmitBtn}>
+                {current.btnText}
+              </a>
+
+              <div className={styles.kaqTimeDotsContainer}>
+                {data.map((_, idx) => (
+                  <div 
+                    key={idx} 
+                    className={`${styles.kaqDotWrapper} ${currentIndex === idx ? styles.activeDot : ""}`}
+                    onClick={() => handlePageSwitch(idx)}
+                  >
+                    {currentIndex === idx && (
+                      <svg className={styles.kaqCircularSvg} viewBox="0 0 32 32">
+                        <circle 
+                          className={styles.kaqCircularProgressBar} 
+                          cx="16" cy="16" r="14" 
+                          strokeDasharray="88"
+                          strokeDashoffset={88 - (88 * progress) / 100}
+                        />
+                      </svg>
+                    )}
+                    <span className={styles.kaqCoreCenterDot}></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
