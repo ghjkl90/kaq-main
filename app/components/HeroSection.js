@@ -12,19 +12,22 @@ export default function HeroSection({ onOpenContact }) {
 
   return (
     <section className={styles.heroVideoSection}>
-      <video className={styles.bgVideo} autoPlay loop muted playsInline>
+      <video className={styles.bgVideoCustomScale} autoPlay loop muted playsInline>
         <source src="/Title_Premium_Cinematic_Hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       
       <div className={styles.heroOverlay}>
         <div className={`${styles.heroContent} ${isLoaded ? styles.animateUp : ""}`}>
+          
           <h1 className={styles.mainCopy}>
-            Digital Innovation in Quality Management, <br />
-            <span>Designing World-Class Spaces for South Korea.</span>
+            DIGITAL INNOVATION <br />
+            <span>품질 경영의 혁신, 대한민국의 공간을 디자인합니다.</span>
           </h1>
+
           <p className={styles.subCopy}>
-            Delivering the pinnacle of safety and convenience powered by the authoritative technology of Sungkyunkwan University Smart Quality Lab (KAQ).
+            Delivering safety and convenience powered by the technology of <br />
+            <strong>(주)케이에이큐 KAQ</strong>
           </p>
         </div>
 

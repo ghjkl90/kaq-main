@@ -19,7 +19,6 @@ export default function Home() {
 
   return (
     <main>
-      <Header onOpenContact={openContactModal} />
       <HeroSection onOpenContact={openContactModal} />
       {/* <MainInteraction /> */}
       <ContactModal
@@ -28,7 +27,6 @@ export default function Home() {
       />
       <ProjectList />
       <MediaGallery />
-      <Footer />
     </main>
   );
 }

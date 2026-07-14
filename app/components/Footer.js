@@ -18,9 +18,9 @@ export default function Footer() {
           <div className={styles.infoRow}>
             <span>사업자명 : 주식회사 케이에이큐</span>
             <span className={styles.divider}>|</span>
-            <span>사무실 : 경기도 수원시 장안구 서부로 2066, 27동 27403호</span>
+            <span>사무실 : 서울 송파구 양산로8길 5-12</span>
             <span className={styles.divider}>|</span>
-            <span>대표 : 노혜영</span>
+            <span>대표 : 신완선</span>
             <span className={styles.divider}>|</span>
             <span>사업자번호 : 470-81-03049</span>
           </div>

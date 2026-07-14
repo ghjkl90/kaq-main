@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import styles from "../page.module.css"; 
+import { useState, useEffect, useRef } from 'react';
+import styles from '../page.module.css'; 
 
 export default function ProjectList() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,8 +18,7 @@ export default function ProjectList() {
       mainTitle: "K–AI–STATION",
       subTitle: "실시간 데이터 트래킹 및 멀티 디바이스 동기화 기술 적용",
       description: "공간의 환경 데이터와 사용자 편의를 스마트하게 연결하여 쾌적한 AI 기반 공간 경험을 선사하는 지능형 통합 스테이션 허브입니다. 독자적인 비전 분석 기술을 통해 다차원 공간 데이터를 실시간으로 연결합니다.",
-      /* 💡 디버깅 완료: 1번 역시 로딩 지연 원천 차단을 위해 초고속 관제 테크 라이브 이미지 주소 적용 */
-      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200", 
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80", 
       btnText: "자세히 보기",
       link: "https://k-ai-station.vercel.app/",
       features: [
@@ -46,7 +45,6 @@ export default function ProjectList() {
       mainTitle: "DSQ PLATFORM",
       subTitle: "실시간 디지털 안전 품질 모니터링 시스템",
       description: "성균관대학교 스마트품질 연구실(KAQ)의 연구 역량을 바탕으로 눈에 보이지 않던 공간의 위험을 실시간 데이터로 시각화하는 플랫폼입니다. AI 센싱 and Digital Twin 기술을 융합하여 안전 생태계를 구축합니다.",
-      /* 💡 잘 노출되던 2번 라이브 이미지 링크 고정 보존 */
       image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200", 
       btnText: "플랫폼 둘러보기",
       link: "http://openq.co.kr:8082/",
@@ -70,7 +68,7 @@ export default function ProjectList() {
     }
   ];
 
-  // 최초 1회 스크롤 진입 인터랙션 오픈 후 락킹 고정
+  // 최초 1회 스크롤 진입 인터랙션 오픈
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -136,22 +134,22 @@ export default function ProjectList() {
     <section className={styles.kaqReportageSection} ref={sectionRef}>
       <div className={`${styles.kaqReportageContainer} ${styles.kaqScrollReveal}`}>
         
-        {/* [LEFT AREA] : 가로 슬라이딩 무브먼트 이미지 프레임 */}
+        {/* [LEFT AREA] */}
         <div className={styles.kaqReportageLeftFrame}>
           <div className={styles.kaqPolyImageContainer}>
             <div 
-              className={styles.kaqImageSliderTrack}
               style={{ 
                 display: "flex",
                 width: `${data.length * 100}%`,
                 transform: `translateX(-${currentIndex * (100 / data.length)}%)`,
-                height: "100%"
+                height: "100%",
+                transition: "transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)",
+                willChange: "transform"
               }}
             >
               {data.map((item, idx) => (
                 <div 
                   key={idx}
-                  className={styles.kaqPolyActualImage}
                   style={{ 
                     backgroundImage: `url(${item.image})`,
                     width: `${100 / data.length}%`,
@@ -160,14 +158,14 @@ export default function ProjectList() {
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat"
                   }}
-                ></div>
+                />
               ))}
             </div>
             <div className={styles.kaqPolyVisualShadow}></div>
           </div>
         </div>
 
-        {/* [RIGHT AREA] : 정보 패널 보드 */}
+        {/* [RIGHT AREA] */}
         <div className={`${styles.kaqReportageRightPanel} ${isChanging ? styles.kaqTextChanging : ""}`}>
           
           <div className={styles.kaqReportageHeader}>

@@ -2,13 +2,24 @@
 /* 1. 최상단 히어로 비디오 섹션 (반응형 풀스크린 및 무한반복 설정) */
 /* ============================================================= */
 
+/* 비디오를 감싸는 부모 컨테이너 */
 .heroVideoSection {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden; /* ✨ [핵심] 확대되어 삐져나간 영상의 마크 부분을 잘라냄 */
   background-color: #000000;
-  z-index: 10;
+}
+
+/* 제미나이 마크를 숨기기 위한 새로운 커스텀 비디오 클래스 */
+.bgVideoCustomScale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.56);
+  z-index: 1;
 }
 
 .bgVideo {
@@ -590,8 +601,9 @@
 
 .headerNav {
   display: flex;
-  gap: 35px;
+  gap: 50px;
   align-items: center;
+  margin-left: 5%;
 }
 
 .navLink {
@@ -727,6 +739,30 @@
   flex-direction: column;
   box-sizing: border-box;
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.langSelectWrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
+  color: #ffffff;
+}
+
+.langSelectDropdown {
+  background: transparent;
+  color: inherit; /* 헤더 텍스트 색상 상속 */
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  outline: none;
+}
+
+/* 드롭다운 내부 옵션 창 스타일 백그라운드 분리 (다크/화이트 모드 대응) */
+.langSelectDropdown option {
+  background-color: #ffffff; 
+  color: #111625;
 }
 
 /* 상단 정보 배지 및 헤더 */
