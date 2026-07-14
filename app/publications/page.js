@@ -10,28 +10,28 @@ export default function PublicationsPage() {
 
   const papers = [
     {
-      year: '2026',
-      title: '스마트 환경에서의 딥러닝 기반 공간 최적화 연구',
-      originalTitle: 'Deep Learning-Based Spatial Optimization in Smart Environments',
-      authors: '임정은, 홍길동',
-      journal: 'IEEE Transactions on Smart Cities',
-      type: 'Journal', // 저널 구분용 배지
+      year: '2025',
+      title: '프롬프트 난이도 조절을 통한 맞춤형 AI 학습 제공 시스템 및 방법',
+      originalTitle: 'SYSTEM AND METHOD OF PROVIDING CUSTOMIZED ARTIFICIAL INTELLIGENCE LEARNING BY ADJUSTING PROMPT DIFFICULTY',
+      authors: '신완선, 신니나, 진보환, 이정진',
+      journal: '특허출원 (특허-2025-0196159)',
+      type: 'Patent',
     },
     {
       year: '2025',
-      title: '대규모 데이터를 위한 웹 기반 3D 인터랙티브 그래픽스 아키텍처',
-      originalTitle: 'Web-Based 3D Interactive Graphics Architecture for Large-Scale Data',
-      authors: '홍길동, 이영희',
-      journal: 'ACM Web3D Conference',
-      type: 'Conference',
+      title: '품질척도 통합 대시보드 시각화 시스템 및 방법',
+      originalTitle: 'SYSTEM AND METHOD FOR VISUALIZING INTEGRATED QUALITY MEASURES DASHBOARD',
+      authors: '신완선, 윤지영, 류혜린, 신지숙',
+      journal: '특허출원 (특허-2025-0153697)',
+      type: 'Patent',
     },
     {
-      year: '2024',
-      title: '디지털 트윈 프레임워크에서의 품질 관리 체계 구축 연구',
-      originalTitle: 'Quality Management Framework in Digital Twin Frameworks',
-      authors: '임정은, 이영희',
-      journal: 'International Journal of Production Research',
-      type: 'Journal',
+      year: '2025',
+      title: '공간품질 관리를 위한 디지털 트윈 기반 센서 배치 지원 장치 및 방법',
+      originalTitle: 'APPARATUS AND METHOD OF SUPPORTING SENSOR ARRANGEMENT BASED ON DIGITAL TWIN FOR SPATIAL QUALITY MANAGEMENT',
+      authors: '신완선, 송호준, 노혜영',
+      journal: '특허출원 (특허-2025-0157432)',
+      type: 'Patent',
     },
   ];
 
@@ -46,9 +46,9 @@ export default function PublicationsPage() {
           transform: isMounted ? 'translateY(0)' : 'translateY(-10px)',
           transition: 'all 0.6s ease'
         }}>
-          <span style={{ fontSize: '13px', color: '#888', fontWeight: 'bold', letterSpacing: '1px', display: 'block', marginBottom: '12px' }}>학술 연구 성과</span>
+          <span style={{ fontSize: '13px', color: '#888', fontWeight: 'bold', letterSpacing: '1px', display: 'block', marginBottom: '12px' }}>지식재산 및 연구 성과</span>
           <h1 style={{ fontSize: '42px', fontWeight: '800', letterSpacing: '-1.5px', margin: 0, color: '#111' }}>
-            Publications
+            Patents & Publications
           </h1>
           <div style={{ width: '40px', height: '4px', backgroundColor: '#0052ff', marginTop: '16px' }}></div>
         </div>
@@ -76,15 +76,14 @@ export default function PublicationsPage() {
               onMouseEnter={(e) => {
                 e.currentTarget.style.paddingLeft = '10px';
                 const titleEl = e.currentTarget.querySelector('.paper-title');
-                if (titleEl) titleEl.style.color = '#0052ff';
+                if (titleEl) titleEl.style.color = '#0052ff'; // as HTMLElement 제거 완료
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.paddingLeft = '0px';
                 const titleEl = e.currentTarget.querySelector('.paper-title');
-                if (titleEl) titleEl.style.color = '#111';
+                if (titleEl) titleEl.style.color = '#111'; // as HTMLElement 제거 완료
               }}
             >
-              {/* 왼쪽: 연도 표시 영역 */}
               <div style={{ width: '80px', flexShrink: 0 }}>
                 <span style={{ 
                   fontSize: '24px', 
@@ -97,13 +96,11 @@ export default function PublicationsPage() {
                 </span>
               </div>
 
-              {/* 오른쪽: 상세 논문 정보 카드 영역 */}
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  {/* 논문 형태 구분용 디자인 배지 */}
                   <span style={{ 
-                    backgroundColor: paper.type === 'Journal' ? '#eef2ff' : '#fef3c7', 
-                    color: paper.type === 'Journal' ? '#0052ff' : '#d97706', 
+                    backgroundColor: paper.type === 'Patent' ? '#eef2ff' : '#fef3c7', 
+                    color: paper.type === 'Patent' ? '#0052ff' : '#d97706', 
                     fontSize: '11px', 
                     fontWeight: 'bold', 
                     padding: '2px 8px', 
@@ -116,7 +113,7 @@ export default function PublicationsPage() {
                   </span>
                 </div>
 
-                {/* 국문 논문명 (마우스 호버 시 블루로 전환) */}
+                {/* 국문 특허명 */}
                 <h3 
                   className="paper-title"
                   style={{ 
@@ -131,14 +128,14 @@ export default function PublicationsPage() {
                   {paper.title}
                 </h3>
 
-                {/* 영문 원문명 (작은 글씨로 병기하여 디자인 밀도 조절) */}
+                {/* 영문 특허명 */}
                 <span style={{ fontSize: '13px', color: '#888', fontStyle: 'italic', display: 'block', lineHeight: '1.4' }}>
                   "{paper.originalTitle}"
                 </span>
 
-                {/* 저자 목록 */}
+
                 <div style={{ fontSize: '14px', color: '#555', marginTop: '4px' }}>
-                  저자: <strong style={{ color: '#333' }}>{paper.authors}</strong>
+                  발명자: <strong style={{ color: '#333' }}>{paper.authors}</strong>
                 </div>
               </div>
             </div>
