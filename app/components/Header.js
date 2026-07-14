@@ -12,7 +12,7 @@ const languages = {
   TH: { home: "หน้าแรก", about: "เกี่ยวกับเรา", research: "งานวิจัย", pub: "ผลงานตีพิมพ์", careers: "ร่วมงานกับเรา", inquiry: "ติดต่อสอบถาม" }
 };
 
-export default function Header({ onOpenContact }) {
+export default function Header({ onOpenContact = () => {} }) {
   // 기본 언어를 영어(EN)로 설정 (KR, JP, TH 등으로 변경 가능)
   const [currentLang, setCurrentLang] = useState("KR");
 
@@ -36,8 +36,6 @@ export default function Header({ onOpenContact }) {
           />
         </Link>
       </div>
-
-      {/* 사전에 정의된 언어 텍스트 packs(t)를 사용하여 동적 렌더링 */}
       <nav className={styles.headerNav}>
         <Link href="/" className={styles.navLink}>
           {t.home}
