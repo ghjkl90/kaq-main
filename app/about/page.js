@@ -33,7 +33,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div style={{ backgroundColor: '#fff', color: '#111', padding: '100px 20px 80px 20px', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'sans-serif' }}>
+    <div style={{ backgroundColor: '#fff', color: '#111', padding: '135px 20px 80px 20px', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'sans-serif' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ 
           display: 'grid', 
@@ -66,12 +66,12 @@ export default function AboutPage() {
           </div>
 
           {/* 우측 실사 이미지 및 Director Message 섹션 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            <div style={{ paddingLeft: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '5px'}}>
+            <div style={{ paddingLeft: '10px'}}>
               <p style={{ color: '#111', fontSize: '16px', fontWeight: 'bold', lineHeight: '1.6', marginBottom: '16px' }}>
                 KAQ 연구소는 다양한 도메인에서 쌓아온 폭넓은 데이터를 바탕으로 미래 인프라 시장에 진출했습니다.
               </p>
-              <p style={{ color: '#666', fontSize: '14px', lineHeight: '1.7', margin: 0 }}>
+              <p style={{ color: '#666', fontSize: '14px', lineHeight: '1.7', margin: 0, paddingTop: '8px'}}>
                 학문적 탁월함을 넘어, 실제 산업 현장과 사회를 변화시키는 기술을 연구합니다. 
                 국내외 최고 수준의 사원들과 함께 독창적인 미학, 최첨단 시뮬레이션 방식, 그리고 고품질 자재 표준을 통하여 국제 기준에 부합하는 프로젝트를 개발합니다.
               </p>
@@ -96,8 +96,6 @@ export default function AboutPage() {
 
         {/* 대형 와이드 구분선 */}
         <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '80px 0' }} />
-
-        {/* ================= 2. 하단: 곡선 컷팅 프로필 & 링크드인 레이아웃 (2번 이미지 완벽 재현) ================= */}
         <div style={{
           position: 'relative',
           opacity: isMounted ? 1 : 0,
