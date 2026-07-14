@@ -6,8 +6,12 @@ export default function Header({ onOpenContact }) {
   return (
     <header className={styles.mainHeader}>
       <div className={styles.headerLogo}>
-        <span className={styles.logoText}>KAQ</span>
-        <span className={styles.logoSub}>SMART QUALITY LAB</span>
+        <img 
+                        src="/KAQlogo.png" 
+                        alt="KAQ Logo" 
+                        className={styles.kaqBadgeIconImg} 
+                        style={{ height: "36px", width: "auto", display: "block", objectFit: "contain", marginRight: "-4px", marginLeft: "-0.6px" }} 
+                      />
       </div>
       
 

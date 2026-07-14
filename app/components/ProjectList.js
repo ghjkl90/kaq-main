@@ -18,7 +18,8 @@ export default function ProjectList() {
       mainTitle: "K–AI–STATION",
       subTitle: "실시간 데이터 트래킹 및 멀티 디바이스 동기화 기술 적용",
       description: "공간의 환경 데이터와 사용자 편의를 스마트하게 연결하여 쾌적한 AI 기반 공간 경험을 선사하는 지능형 통합 스테이션 허브입니다. 독자적인 비전 분석 기술을 통해 다차원 공간 데이터를 실시간으로 연결합니다.",
-      image: "/Gallery1.png", // ⭕ public/Gallery1.png가 있다면 정상 표출
+      /* 💡 디버깅 완료: 1번 역시 로딩 지연 원천 차단을 위해 초고속 관제 테크 라이브 이미지 주소 적용 */
+      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200", 
       btnText: "자세히 보기",
       link: "https://k-ai-station.vercel.app/",
       features: [
@@ -44,8 +45,8 @@ export default function ProjectList() {
       badgeText: "신규 도입 예정",
       mainTitle: "DSQ PLATFORM",
       subTitle: "실시간 디지털 안전 품질 모니터링 시스템",
-      description: "성균관대학교 스마트품질 연구실(KAQ)의 연구 역량을 바탕으로 눈에 보이지 않던 공간의 위험을 실시간 데이터로 시각화하는 플랫폼입니다. AI 센싱과 Digital Twin 기술을 융합하여 안전 생태계를 구축합니다. " ,
-      /* 💡 디버깅 가이드: 2번 사진이 수동 전환 시 증발하던 에러를 방지하기 위해 테스트용 고해상도 디지털트윈 주소로 백업 매핑했습니다 */
+      description: "성균관대학교 스마트품질 연구실(KAQ)의 연구 역량을 바탕으로 눈에 보이지 않던 공간의 위험을 실시간 데이터로 시각화하는 플랫폼입니다. AI 센싱 and Digital Twin 기술을 융합하여 안전 생태계를 구축합니다.",
+      /* 💡 잘 노출되던 2번 라이브 이미지 링크 고정 보존 */
       image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200", 
       btnText: "플랫폼 둘러보기",
       link: "http://openq.co.kr:8082/",
@@ -53,17 +54,17 @@ export default function ProjectList() {
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" /></svg>,
           title: "학술적 공신력",
-          desc: "국내외 표준 기반 연구자산을 토대로 4대 HOPE 위해요인 지표를 정립했습니다. " 
+          desc: "국내외 표준 기반 연구자산을 토대로 4대 HOPE 위해요인 지표를 정립했습니다."
         },
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="16" /><line x1="15" y1="22" x2="15" y2="16" /><path d="M9 16h6v6H9z" /><path d="M8 6h2v2H8zm0 4h2v2H8zm6-4h2v2h-2zm0 4h2v2h-2z" /></svg>,
           title: "다각화된 현장 실증",
-          desc: "다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 다양한 거점에 커스텀 도입 중입니다. " 
+          desc: "다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 다양한 거점에 커스텀 도입 중입니다."
         },
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
           title: "민관 융합 네트워크",
-          desc: "이해관계자 연결, 관리자에게는 고도화된 시스템을, 대중에게는 사전 안전 확인 권리를 제공합니다. " 
+          desc: "이해관계자 연결, 관리자에게는 고도화된 시스템을, 대중에게는 사전 안전 확인 권리를 제공합니다."
         }
       ]
     }
@@ -135,10 +136,9 @@ export default function ProjectList() {
     <section className={styles.kaqReportageSection} ref={sectionRef}>
       <div className={`${styles.kaqReportageContainer} ${styles.kaqScrollReveal}`}>
         
-        {/* [LEFT AREA] : 좌우 100% 무브먼트 슬라이드 액자 고정 프레임 */}
+        {/* [LEFT AREA] : 가로 슬라이딩 무브먼트 이미지 프레임 */}
         <div className={styles.kaqReportageLeftFrame}>
           <div className={styles.kaqPolyImageContainer}>
-            {/* 💡 슬라이딩 트랙의 스타일 계산식을 정교화하여 징검다리 짤림 현상 완전 방지 */}
             <div 
               className={styles.kaqImageSliderTrack}
               style={{ 
@@ -172,7 +172,12 @@ export default function ProjectList() {
           
           <div className={styles.kaqReportageHeader}>
             <div className={styles.kaqBadgeRow}>
-              <img src="/KAQlogo.png" alt="KAQ Logo" className={styles.kaqBadgeIconImg} style={{ height: "24px", width: "auto" }} />
+              <img 
+                src="/KAQlogo.png" 
+                alt="KAQ Logo" 
+                className={styles.kaqBadgeIconImg} 
+                style={{ height: "36px", width: "auto", display: "block", objectFit: "contain", marginRight: "-4px", marginLeft: "-0.6px" }} 
+              />
               <span className={styles.kaqBadgeSlashDivider}>•</span>
               <h4 className={styles.kaqBadgeText}>{current.badgeText}</h4>
             </div>

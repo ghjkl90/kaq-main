@@ -950,7 +950,7 @@
   }
 }
 /* ============================================================= */
-/* 7. 이미지 2번 시안 완벽 재현: 와이드 3D 아크 휠 갤러리 스타일   */
+/* 7. 이미지 2번 시안
 /* ============================================================= */
 
 .wideGallerySection {
@@ -1062,7 +1062,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #0052FF; /* 카드 내부 로고 블루 복원 */
+  background-color: #0052FF;
   color: #ffffff;
   font-size: 0.7rem;
   font-weight: 900;
@@ -1094,7 +1094,7 @@
 }
 
 .galleryLogoAsset {
-  height: clamp(55px, 8vw, 85px); /* 화면 크기에 맞게 유동 조절 */
+  height: clamp(65px, 8vw, 85px); /* 화면 크기에 맞게 유동 조절 */
   width: auto;
   object-fit: contain;
   margin-top: 0px; 
@@ -1238,13 +1238,12 @@
   margin: 0 auto;
   padding: 0 5%;
   display: grid;
-  grid-template-columns: 1fr; /* 모바일 대응 가로 풀베치 구조 */
+  grid-template-columns: 1fr;
   gap: 50px;
   align-items: center;
   box-sizing: border-box;
 }
 
-/* 💻 데스크톱 해상도 화면 피팅 가로 5:5 완벽 그리드 슬라이딩 */
 @media (min-width: 1024px) {
   .kaqPremiumSplitWrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1263,7 +1262,7 @@
 
 .kaqVisualImageBox {
   width: 100%;
-  aspect-ratio: 4 / 3.3; /* 1번 시안의 이상적인 가로세로 스케일 비율 */
+  aspect-ratio: 4 / 3.3;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 30px 60px -15px rgba(0, 82, 255, 0.08);
@@ -1533,12 +1532,13 @@
 .kaqReportageSection {
   width: 100%;
   background-color: #f8fafc;
-  padding: 120px 0;
+  padding: 160px 0;
   box-sizing: border-box;
 }
 
 .kaqReportageContainer {
-  max-width: 1440px;
+  max-width: 1920px;
+  max-height: 1080px; /* 1920 * 1080 사이즈 제작용 */
   margin: 0 auto;
   padding: 0 5%;
   display: grid;
@@ -1571,7 +1571,7 @@
   overflow: hidden; /* 슬라이딩 외부 영역 차단 */
 }
 
-/* 💡 사진들이 좌우로 스무스하게 매끄럽게 흐르도록 구현한 리얼 슬라이더 트랙 */
+
 .kaqImageSliderTrack {
   display: flex;
   width: 200%; /* 데이터 개수만큼 가로 영역 확장 */
@@ -1627,12 +1627,11 @@
 .kaqSubHeadingHeading {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #0052FF; /* 완벽 복원된 정식 KAQ 오리지널 블루 */
+  color: #0052FF;
   margin: 0;
   word-break: keep-all;
 }
 
-/* 💡 고정 줄간격 및 가변 리사이징 출렁임 철저 방지 스펙 고정 */
 .kaqReportageBodyDesc {
   margin: 30px 0;
   min-height: 85px; 
