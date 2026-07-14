@@ -73,7 +73,7 @@ export default function AboutPage() {
               </p>
               <p style={{ color: '#666', fontSize: '14px', lineHeight: '1.7', margin: 0 }}>
                 학문적 탁월함을 넘어, 실제 산업 현장과 사회를 변화시키는 기술을 연구합니다. 
-                국내외 최고 수준의 연구원들과 함께 독창적인 미학, 최첨단 시뮬레이션 방식, 그리고 고품질 자재 표준을 통하여 국제 기준에 부합하는 프로젝트를 개발합니다.
+                국내외 최고 수준의 사원들과 함께 독창적인 미학, 최첨단 시뮬레이션 방식, 그리고 고품질 자재 표준을 통하여 국제 기준에 부합하는 프로젝트를 개발합니다.
               </p>
             </div>
 
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
           <div style={{ position: 'relative', zIndex: 1 }}>
             <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px', letterSpacing: '-1px' }}>Key Members</h2>
-            <div style={{ fontSize: '14px', color: '#888', marginBottom: '50px' }}>미래를 설계하는 핵심 연구진을 소개합니다.</div>
+            <div style={{ fontSize: '14px', color: '#888', marginBottom: '50px' }}>미래 설계 주도를 꿈꾸는 사원들을 소개합니다.</div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
               {members.map((member) => (
