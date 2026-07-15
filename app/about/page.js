@@ -106,7 +106,7 @@ export default function AboutPage() {
       file_url: fileLink || '첨부된 링크 없음',
     };
 
-    emailjs.send('service_jz546gh', 'template_mn5mvrd', templateParams, 'YOUR_PUBLIC_KEY')
+    emailjs.send('service_jz546gh', 'template_mn5mvrd', templateParams, 'vyRLXyXzHI1yh7Z0m')
     .then(() => {
        alert('지원서가 성공적으로 제출되었습니다!');
        setIsApplyOpen(false);
