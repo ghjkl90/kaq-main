@@ -62,9 +62,10 @@ export default function MediaGallery() {
           className={styles.galleryLogoAsset} 
           style={{ height: "40px", width: "auto", marginBottom: "-4px", marginRight: "-6px", marginLeft: "-4px" }} 
         />
-        <h2 className={styles.galleryTitle}>Reportage Korea World</h2>
+        <h2 className={styles.galleryTitle}>As You See</h2>
         <p className={styles.gallerySubtitle}>
-          KAQ 스마트 퀄리티 랩의 정밀 비전 기술과 인프라 시뮬레이션을 가로 휠 인터랙션으로 생동감 있게 확인해 보세요.
+          AI는 당신이 상상하는 것을 눈으로 보게 만듭니다. 
+          <br/>상상하는 것으로 체험해 보세요.
         </p>
       </div>
 

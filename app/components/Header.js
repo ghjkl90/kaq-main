@@ -4,24 +4,47 @@ import { useState } from "react";
 import Link from "next/link"; 
 import styles from "../page.module.css";
 
-// 번역 사전 데이터 정의
+
 const languages = {
-  EN: { home: "Home", about: "About Us", research: "Research", pub: "Publications", careers: "Careers", inquiry: "Inquiry" },
-  KR: { home: "홈", about: "소개", research: "연구 분야", pub: "연구 성과", careers: "인재 채용", inquiry: "문의하기" },
-  JP: { home: "ホーム", about: "会社紹介", research: "研究分野", pub: "研究成果", careers: "採用情報", inquiry: "お問い合わせ" },
-  TH: { home: "หน้าแรก", about: "เกี่ยวกับเรา", research: "งานวิจัย", pub: "ผลงานตีพิมพ์", careers: "ร่วมงานกับเรา", inquiry: "ติดต่อสอบถาม" }
+  EN: { 
+    home: "Home", 
+    about: "About Us", 
+    products: "Products & Services", 
+    publications: "Publications", 
+    globalChallenge: "Global Challenge" 
+  },
+  KR: { 
+    home: "홈", 
+    about: "소개", 
+    products: "제품 및 서비스", 
+    publications: "연구 성과", 
+    globalChallenge: "글로벌 챌린지" 
+  },
+  JP: { 
+    home: "ホーム", 
+    about: "会社紹介", 
+    products: "製品 & サービス", 
+    publications: "研究成果", 
+    globalChallenge: "グローバルチャレンジ" 
+  },
+  TH: { 
+    home: "หน้าแรก", 
+    about: "เกี่ยวกับเรา", 
+    products: "ผลิตภัณฑ์และบริการ", 
+    publications: "ผลงานตีพิมพ์", 
+    globalChallenge: "ความท้าทายระดับโลก" 
+  }
 };
 
-export default function Header({ onOpenContact = () => {} }) {
-  // 기본 언어를 영어(EN)로 설정 (KR, JP, TH 등으로 변경 가능)
+export default function Header() {
+
   const [currentLang, setCurrentLang] = useState("KR");
 
-  // 드롭다운 메뉴 선택 시 언어를 변경하는 함수
   const handleLangChange = (e) => {
     setCurrentLang(e.target.value);
   };
 
-  // 현재 선택된 언어의 텍스트 팩을 가져옵니다.
+
   const t = languages[currentLang];
 
   return (
@@ -37,24 +60,25 @@ export default function Header({ onOpenContact = () => {} }) {
         </Link>
       </div>
       <nav className={styles.headerNav}>
+
         <Link href="/" className={styles.navLink}>
           {t.home}
         </Link>
-        
+
         <Link href="/about" className={styles.navLink}>
           {t.about}
         </Link>
-        
+ 
         <Link href="/research" className={styles.navLink}>
-          {t.research}
+          {t.products}
         </Link>
         
         <Link href="/publications" className={styles.navLink}>
-          {t.pub}
+          {t.publications}
         </Link>
         
         <Link href="/careers" className={styles.navLink}>
-          {t.careers}
+          {t.globalChallenge}
         </Link>
       </nav>
 
@@ -71,10 +95,6 @@ export default function Header({ onOpenContact = () => {} }) {
             <option value="TH">TH (ภาษาไทย)</option>
           </select>
         </div>
-
-        <button className={styles.headerContactBtn} onClick={onOpenContact}>
-          {t.inquiry}
-        </button>
       </div>
     </header>
   );

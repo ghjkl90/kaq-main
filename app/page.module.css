@@ -335,7 +335,7 @@
   z-index: 6;
   padding: 20px;
   will-change: transform, opacity;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .contentBox h1 {
@@ -388,7 +388,7 @@
   background-color: #ffffff;
   z-index: 5;
   border-right: 1px solid #f0f2f5;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .sliderLeftContent {
@@ -481,7 +481,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 60px 8% 60px 5%;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .sliderCardHeader {
@@ -667,7 +667,7 @@
   background-color: #ffffff;
   padding: 5rem 0;
   overflow: hidden;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaq-premium-split-wrapper {
@@ -678,7 +678,7 @@
   grid-template-columns: 1fr; /* 모바일은 가로 한 줄 세로 배열 */
   gap: 3.5rem;
   align-items: center;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 /* 💻 데스크톱 환경 반응형 브레이크포인트 규격 (좌우 5:5 완벽 분할) */
@@ -695,7 +695,7 @@
 .kaq-split-left-visual {
   width: 100%;
   position: relative;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaq-visual-image-box {
@@ -737,7 +737,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  box-shadow: border-box;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -806,7 +806,7 @@
 /* 중간 긴 설명문 */
 .kaq-panel-body-desc {
   margin: 2.5rem 0;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaq-panel-body-desc p {
@@ -825,7 +825,7 @@
   border-top: 1px solid #f1f5f9;
   padding-top: 2.5rem;
   margin-bottom: 3.5rem;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 @media (min-width: 640px) {
@@ -840,7 +840,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaq-mini-grid-item:first-child {
@@ -881,7 +881,7 @@
   align-items: center;
   border-top: 1px solid #f1f5f9;
   padding-top: 2rem;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaq-control-left-nav {
@@ -1266,7 +1266,7 @@
   background-color: #ffffff;
   padding: 120px 0;
   overflow: hidden;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqPremiumSplitWrapper {
@@ -1277,7 +1277,7 @@
   grid-template-columns: 1fr;
   gap: 50px;
   align-items: center;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 @media (min-width: 1024px) {
@@ -1293,7 +1293,7 @@
 .kaqSplitLeftVisual {
   width: 100%;
   position: relative;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqVisualImageBox {
@@ -1338,7 +1338,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqPanelHeader {
@@ -1381,7 +1381,7 @@
 
 .kaqPanelBodyDesc {
   margin: 30px 0;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqPanelBodyDesc p {
@@ -1400,7 +1400,7 @@
   border-top: 1px solid #f0f2f5;
   padding-top: 35px;
   margin-bottom: 40px;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 @media (min-width: 640px) {
@@ -1415,7 +1415,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqMiniGridItem:first-child {
@@ -1456,7 +1456,7 @@
   align-items: center;
   border-top: 1px solid #f0f2f5;
   padding-top: 30px;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqControlLeftNav {
@@ -1569,7 +1569,7 @@
   width: 100%;
   background-color: #f8fafc;
   padding: 160px 0;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqReportageContainer {
@@ -1581,7 +1581,7 @@
   grid-template-columns: 1fr;
   gap: 50px;
   align-items: center;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 @media (min-width: 1024px) {
@@ -1628,7 +1628,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  box-shadow: border-box;
 }
 
 .kaqBadgeRow {
@@ -1704,7 +1704,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-sizing: border-box;
+  box-shadow: border-box;
   opacity: 0;
   transform: translateY(15px);
   animation: kaqGridPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;

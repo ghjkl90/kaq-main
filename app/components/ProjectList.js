@@ -16,26 +16,26 @@ export default function ProjectList() {
       id: "01",
       badgeText: "기구축 완료",
       mainTitle: "K–AI–STATION",
-      subTitle: "실시간 데이터 트래킹 및 멀티 디바이스 동기화 기술 적용",
-      description: "공간의 환경 데이터와 사용자 편의를 스마트하게 연결하여 쾌적한 AI 기반 공간 경험을 선사하는 지능형 통합 스테이션 허브입니다. 독자적인 비전 분석 기술을 통해 다차원 공간 데이터를 실시간으로 연결합니다.",
+      subTitle: "다양한 AI 모델의 프롬프트를 체함하는 장소",
+      description: "모두 AI를 직접 체험할 수 있습니다. 시니어의 생활형 문제, 어린이 호기심 해결, 장애인의 소통 해결, 직업별 전문적 질문, 대학생의 실험실습을 체험하는 공간입니다.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80", 
       btnText: "자세히 보기",
       link: "https://k-ai-station.vercel.app/",
       features: [
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg>,
-          title: "AI Prompt 기하학",
-          desc: "점구름(Point Cloud) 시뮬레이션으로 오프라인 데이터를 정교한 프롬프트 규격으로 구조화합니다."
+          title: "프롬프트 난이도",
+          desc: "AI 모델 기반 7등급 난이도를 선택할 수 있습니다."
         },
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="4" r="2" /><circle cx="12" cy="20" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><line x1="12" y1="6" x2="12" y2="9" /><line x1="12" y1="15" x2="12" y2="18" /><line x1="6" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="18" y2="12" /></svg>,
-          title: "스마트 공간 연결",
-          desc: "도시의 도로 네트워크와 유틸리티 라인을 데이터화하여 비즈니스 효율을 극대화합니다."
+          title: "AI 체험 전문화",
+          desc: "10,000개의 프롬프트, 140개 직업군, 100개의 실습교재를 탑재했습니다."
         },
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>,
-          title: "체험형 솔루션",
-          desc: "전용 웹 플랫폼을 통해 누구나 직관적으로 AI 비전 알고리즘을 직접 체험할 수 있습니다."
+          title: "AI 프롬프트 등록",
+          desc: "자신이 만든 프롬프트를 등록하여 저작권을 인정받을 수 있습니다."
         }
       ]
     },
@@ -43,8 +43,8 @@ export default function ProjectList() {
       id: "02",
       badgeText: "신규 도입 예정",
       mainTitle: "DSQ PLATFORM",
-      subTitle: "실시간 디지털 안전 품질 모니터링 시스템",
-      description: "성균관대학교 스마트품질 연구실(KAQ)의 연구 역량을 바탕으로 눈에 보이지 않던 공간의 위험을 실시간 데이터로 시각화하는 플랫폼입니다. AI 센싱 and Digital Twin 기술을 융합하여 안전 생태계를 구축합니다.",
+      subTitle: "모바일 기반 디지털안전품질 표준 대시보드",
+      description: "성균관대학교 스마트품질연구실이 개발한 오픈퀄리티(Open Quality)의 기술 사업화 제품. AI 센싱과 디지털트윈으로 안전 생태계를 바꿉니다.",
       image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200", 
       btnText: "플랫폼 둘러보기",
       link: "http://openq.co.kr:8082/",

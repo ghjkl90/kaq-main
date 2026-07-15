@@ -21,13 +21,13 @@ export default function HeroSection({ onOpenContact }) {
         <div className={`${styles.heroContent} ${isLoaded ? styles.animateUp : ""}`}>
           
           <h1 className={styles.mainCopy}>
-            DIGITAL INNOVATION <br />
-            <span>품질 경영의 혁신, 대한민국의 공간을 디자인합니다.</span>
+            Peace and Quality with AI <br />
+            <span>AI 소외 그룹의 격차 해소, 월드클래스 AI 프롬프트를 만드는 곳</span>
           </h1>
 
           <p className={styles.subCopy}>
-            Delivering safety and convenience powered by the technology of <br />
-            <strong>(주)케이에이큐 KAQ</strong>
+            Research & Innovation initiated by <br />
+            <strong>㈜케이에이큐 KAQ</strong>
           </p>
         </div>
 

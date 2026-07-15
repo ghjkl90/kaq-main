@@ -3,7 +3,10 @@ import styles from "../page.module.css";
 
 export default function Footer() {
   return (
-    <footer className={styles.mainFooter}>
+    <footer 
+      className={styles.mainFooter}
+      style={{ position: "relative", zIndex: 10 }}
+    >
       <div className={styles.footerContainer}>
         <div className={styles.footerTop}>
           <div className={styles.footerLogo}>K-AI Station</div>
