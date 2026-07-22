@@ -67,11 +67,12 @@ As you lead the world
 
   const textWords = highlightSentence.split(/(\s+)/);
 
+
   const stats = [
-    { value: '120+', label: 'OVERALL BALANCE', unit: ' %p 향상', desc: '120개국 파트너 네트워크 구축' },
-    { value: '450K+', label: 'DETECTION POWER', unit: ' %p 향상', desc: '45만 건 이상의 글로벌 인증 검증' },
-    { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: ' %p 향상', desc: '사실 기반 AI 프롬프트 신뢰도' },
-    { value: 'TOP 1', label: 'DX INNOVATION', unit: ' 통합 향상', desc: '실험실 창업 DX 혁신 기업 도약' }
+    { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축' },
+    { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증' },
+    { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도' },
+    { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약' }
   ];
 
   useEffect(() => {
@@ -122,9 +123,9 @@ As you lead the world
       let width = (canvas.width = window.innerWidth);
       let height = (canvas.height = window.innerHeight);
 
-      const particleCount = width < 768 ? 1100 : 2300; // 모바일 저사양 대응
+      const particleCount = width < 768 ? 1100 : 2200; 
       const particles = [];
-      let globeRadius = Math.min(width, height) * (width < 768 ? 0.42 : 0.38);
+      let globeRadius = Math.min(width, height) * (width < 768 ? 0.40 : 0.40);
 
       for (let i = 0; i < particleCount; i++) {
         const theta = Math.random() * Math.PI * 2;
@@ -153,7 +154,7 @@ As you lead the world
       const handleResize = () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-        globeRadius = Math.min(width, height) * (width < 768 ? 0.42 : 0.38);
+        globeRadius = Math.min(width, height) * (width < 768 ? 0.40 : 0.40);
       };
 
       window.addEventListener('mousemove', handleMouseMove);
@@ -165,9 +166,8 @@ As you lead the world
         rotationY += 0.0015 + mouseX * 0.08;
         rotationX += (mouseY - rotationX) * 0.05;
 
-        // 모바일일 때 시각적 중앙 위치 재조정
-        const centerX = width < 768 ? width * 0.5 : width * 0.68;
-        const centerY = height < 768 ? height * 0.38 : height * 0.45;
+        const centerX = width < 768 ? width * 0.5 : width * 0.72;
+        const centerY = height < 768 ? height * 0.38 : height * 0.48;
 
         particles.forEach((p) => {
           let cosY = Math.cos(rotationY);
@@ -188,7 +188,7 @@ As you lead the world
           if (projX >= 0 && projX <= width && projY >= 0 && projY <= height) {
             const alpha = Math.max(0.08, (perspective - z2) / (perspective * 1.3));
             ctx.beginPath();
-            ctx.arc(projX, projY, Math.max(0.6, 1.8 * scale), 0, Math.PI * 2);
+            ctx.arc(projX, projY, Math.max(0.6, 1.6 * scale), 0, Math.PI * 2);
             ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.3})`;
             ctx.fill();
           }
@@ -227,7 +227,7 @@ As you lead the world
       boxSizing: 'border-box', 
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       position: 'relative',
-      padding: '120px 0 0 0', 
+      padding: '200px 0 0 0', 
       background: `
         radial-gradient(circle at 30% 30%, #110ca6 0%, transparent 45%),
         radial-gradient(circle at 80% 40%, #0692a8 0%, transparent 50%),
@@ -245,14 +245,13 @@ As you lead the world
           100% { background-position: 100% 0%; }
         }
 
-
         @media (max-width: 768px) {
           .hero-container {
             padding: 0 24px !important;
             margin-bottom: 60px !important;
           }
           .text-scroll-track {
-            height: 1600px !important; /* 모바일 전용 짧은 스크롤 거리 */
+            height: 1600px !important;
           }
           .sticky-text-wrapper {
             padding: 30px 20px !important;
@@ -274,7 +273,7 @@ As you lead the world
         }
       `}</style>
       
-
+      {/* 배경 3D 도트 지구 구체 */}
       <div 
         ref={globeContainerRef} 
         style={{
@@ -290,44 +289,44 @@ As you lead the world
         }}
       />
 
-      <div className="hero-container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1, boxSizing: 'border-box' }}>
+      <div className="hero-container" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1, boxSizing: 'border-box' }}>
         <div style={{
-          maxWidth: '880px', 
-          marginBottom: '120px',
+          maxWidth: '780px', 
+          marginBottom: '100px',
           opacity: isMounted ? 1 : 0,
           transform: isMounted ? 'translateY(0)' : 'translateY(25px)',
           transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px' }}>
-            <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: 'bold', letterSpacing: '2px', textTransform: 'uppercase' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+            <span style={{ fontSize: '12px', color: '#cbd5e1', fontWeight: 'bold', letterSpacing: '2px', textTransform: 'uppercase' }}>
               KAQ GLOBAL CHALLENGE
             </span>
             <span style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.25)', marginLeft: '10px' }}></span>
           </div>
           
           <h1 style={{ 
-            fontSize: 'clamp(2.3rem, 5.8vw, 6.5rem)', 
+            fontSize: 'clamp(2.1rem, 4.2vw, 4.5rem)', 
             fontWeight: '900', 
-            lineHeight: '1.15', 
+            lineHeight: '1.18', 
             letterSpacing: '-1.5px', 
             margin: 0, 
             color: '#ffffff', 
-            marginBottom: '28px',
+            marginBottom: '24px',
             wordBreak: 'keep-all'
           }}>
             Beyond Research, <br />세계 표준을 선도하는 <br /> Pro-Search
           </h1>
           
           <p style={{ 
-            fontSize: 'clamp(0.98rem, 1.5vw, 1.4rem)', 
+            fontSize: 'clamp(0.95rem, 1.2vw, 1.2rem)', 
             color: '#f0f4ff', 
-            opacity: 0.95, 
-            lineHeight: '1.7', 
+            opacity: 0.9, 
+            lineHeight: '1.65', 
             margin: 0, 
             fontWeight: '400',
             wordBreak: 'keep-all' 
           }}>
-            패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
+            패러다임을 설계합니다. 연구개발을 초월하여, <br/> 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
           </p>
         </div>
       </div>
@@ -342,17 +341,17 @@ As you lead the world
           alignItems: 'center', 
           justifyContent: 'center',
           padding: '80px 40px 40px 40px',
-          maxWidth: '1400px',
+          maxWidth: '1280px',
           margin: '0 auto',
           boxSizing: 'border-box',
           perspective: '1000px'
         }}>
-          <div style={{ maxWidth: '1280px', width: '100%' }}>
+          <div style={{ maxWidth: '1100px', width: '100%' }}>
 
             <div className="highlight-text-container" style={{ 
-              fontSize: 'clamp(1.35rem, 2.7vw, 2.8rem)', 
+              fontSize: 'clamp(1.2rem, 2.2vw, 2.3rem)', 
               fontWeight: '900', 
-              lineHeight: '1.35', 
+              lineHeight: '1.38', 
               letterSpacing: '-0.5px',
               wordBreak: 'keep-all',
               margin: 0,
@@ -410,46 +409,60 @@ As you lead the world
           transformOrigin: 'left top',
           transform: `translateY(${paperTranslateY}px) rotate(${paperRotation}deg)`,
           transition: 'transform 0.18s cubic-bezier(0.1, 0.7, 0.15, 1)', 
-          padding: '160px 40px 200px 40px',
+          padding: '140px 40px 180px 40px',
           boxSizing: 'border-box'
         }}>
-          <div style={{ maxWidth: '1400px', margin: '0 auto', boxSizing: 'border-box' }}>
-            <div className="paper-inner" style={{ position: 'relative', zIndex: 5, backgroundColor: '#ffffff', color: '#000', padding: '80px 20px' }}>
-              <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '1280px', margin: '0 auto', boxSizing: 'border-box' }}>
+            <div className="paper-inner" style={{ position: 'relative', zIndex: 5, backgroundColor: '#ffffff', color: '#000', padding: '60px 20px' }}>
+              <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
                 <h2 style={{ 
-                  fontSize: 'clamp(1.75rem, 4vw, 4rem)', 
+                  fontSize: 'clamp(1.6rem, 3.2vw, 3.2rem)', 
                   fontWeight: '900', 
-                  marginBottom: '60px',
+                  marginBottom: '50px',
                   letterSpacing: '-1.5px',
                   color: '#0f172a' 
                 }}>
                   숫자로 입증하는 KAQ 글로벌 신뢰도
                 </h2>
 
-                <div className="dashboard-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '40px' }}>
+                <div className="dashboard-grid" style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+                  gap: '36px' 
+                }}>
                   {stats.map((stat, i) => (
                     <div key={i} style={{ borderTop: '3px solid #0f172a', paddingTop: '20px' }}>
                       <div style={{ fontSize: '12px', color: '#64748b', fontWeight: '800', marginBottom: '16px', letterSpacing: '1px' }}>
                         // {stat.label}
                       </div>
                       
+
                       <div style={{ 
-                        fontSize: 'clamp(2.6rem, 5.8vw, 6.5rem)', 
+                        fontSize: 'clamp(2.4rem, 4.2vw, 4.5rem)', 
                         fontWeight: '900', 
                         color: '#0052ff', 
-                        marginBottom: '12px', 
                         fontFamily: 'monospace',
                         lineHeight: '1',
                         letterSpacing: '-1.5px'
                       }}>
                         <ScrambleText text={stat.value} trigger={paperScrollProgress > 0.4} />
-                        <span style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.6rem)', fontWeight: '700', fontFamily: 'sans-serif', marginLeft: '4px' }}>
-                          {stat.unit}
-                        </span>
+                      </div>
+
+                      <div style={{ 
+                        fontSize: 'clamp(1rem, 1.2vw, 1.3rem)', 
+                        fontWeight: '700', 
+                        color: '#0052ff',
+                        fontFamily: 'sans-serif',
+                        marginTop: '10px',
+                        marginBottom: '14px',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {stat.unit}
                       </div>
                       
-                      <p style={{ fontSize: '15px', color: '#334155', fontWeight: '600', lineHeight: '1.5', margin: 0 }}>
+                      {/* 3. 설명문 */}
+                      <p style={{ fontSize: '14px', color: '#334155', fontWeight: '600', lineHeight: '1.5', margin: 0 }}>
                         {stat.desc}
                       </p>
                     </div>
