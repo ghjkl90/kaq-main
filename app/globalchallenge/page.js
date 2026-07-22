@@ -67,7 +67,6 @@ As you lead the world
 
   const textWords = highlightSentence.split(/(\s+)/);
 
-
   const stats = [
     { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축' },
     { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증' },
@@ -125,7 +124,7 @@ As you lead the world
 
       const particleCount = width < 768 ? 1100 : 2200; 
       const particles = [];
-      let globeRadius = Math.min(width, height) * (width < 768 ? 0.40 : 0.40);
+      let globeRadius = Math.min(width, height) * (width < 768 ? 0.38 : 0.30);
 
       for (let i = 0; i < particleCount; i++) {
         const theta = Math.random() * Math.PI * 2;
@@ -154,7 +153,7 @@ As you lead the world
       const handleResize = () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-        globeRadius = Math.min(width, height) * (width < 768 ? 0.40 : 0.40);
+        globeRadius = Math.min(width, height) * (width < 768 ? 0.38 : 0.30);
       };
 
       window.addEventListener('mousemove', handleMouseMove);
@@ -227,7 +226,7 @@ As you lead the world
       boxSizing: 'border-box', 
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       position: 'relative',
-      padding: '200px 0 0 0', 
+      padding: '140px 0 0 0', 
       background: `
         radial-gradient(circle at 30% 30%, #110ca6 0%, transparent 45%),
         radial-gradient(circle at 80% 40%, #0692a8 0%, transparent 50%),
@@ -326,7 +325,7 @@ As you lead the world
             fontWeight: '400',
             wordBreak: 'keep-all' 
           }}>
-            패러다임을 설계합니다. 연구개발을 초월하여, <br/> 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
+            패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
           </p>
         </div>
       </div>
@@ -449,6 +448,7 @@ As you lead the world
                         <ScrambleText text={stat.value} trigger={paperScrollProgress > 0.4} />
                       </div>
 
+
                       <div style={{ 
                         fontSize: 'clamp(1rem, 1.2vw, 1.3rem)', 
                         fontWeight: '700', 
@@ -456,7 +456,7 @@ As you lead the world
                         fontFamily: 'sans-serif',
                         marginTop: '10px',
                         marginBottom: '14px',
-                        whiteSpace: 'nowrap'
+                        whiteSpace: 'nowrap' 
                       }}>
                         {stat.unit}
                       </div>
