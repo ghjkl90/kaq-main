@@ -17,7 +17,7 @@ const languages = {
     home: "홈", 
     about: "소개", 
     products: "제품 및 서비스", 
-    publications: "연구 성과", 
+    publications: "연구 프로젝트", 
     globalChallenge: "글로벌 챌린지" 
   },
   JP: { 
@@ -69,15 +69,15 @@ export default function Header() {
           {t.about}
         </Link>
  
-        <Link href="/research" className={styles.navLink}>
-          {t.products}
-        </Link>
+        <Link href="/products-and-services" className={styles.navLink}>
+  {t.products}
+</Link>
         
         <Link href="/publications" className={styles.navLink}>
           {t.publications}
         </Link>
         
-        <Link href="/careers" className={styles.navLink}>
+        <Link href="/globalchallenge" className={styles.navLink}>
           {t.globalChallenge}
         </Link>
       </nav>
