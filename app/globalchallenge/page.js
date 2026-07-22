@@ -124,7 +124,7 @@ As you lead the world
 
       const particleCount = width < 768 ? 1100 : 2200; 
       const particles = [];
-      let globeRadius = Math.min(width, height) * (width < 768 ? 0.38 : 0.30);
+      let globeRadius = Math.min(width, height) * (width < 768 ? 0.40 : 0.40);
 
       for (let i = 0; i < particleCount; i++) {
         const theta = Math.random() * Math.PI * 2;
@@ -153,7 +153,7 @@ As you lead the world
       const handleResize = () => {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-        globeRadius = Math.min(width, height) * (width < 768 ? 0.38 : 0.30);
+        globeRadius = Math.min(width, height) * (width < 768 ? 0.40 : 0.40);
       };
 
       window.addEventListener('mousemove', handleMouseMove);
@@ -226,7 +226,7 @@ As you lead the world
       boxSizing: 'border-box', 
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       position: 'relative',
-      padding: '140px 0 0 0', 
+      padding: '200px 0 0 0', 
       background: `
         radial-gradient(circle at 30% 30%, #110ca6 0%, transparent 45%),
         radial-gradient(circle at 80% 40%, #0692a8 0%, transparent 50%),
