@@ -9,7 +9,7 @@ export default function Footer() {
     >
       <div className={styles.footerContainer}>
         <div className={styles.footerTop}>
-          <div className={styles.footerLogo}>K-AI Station</div>
+          <div className={styles.footerLogo}>KAQ</div>
 
           <div className={styles.footerLinks}>
             <a href="#privacy">개인정보취급방침</a>
@@ -21,7 +21,7 @@ export default function Footer() {
           <div className={styles.infoRow}>
             <span>사업자명 : 주식회사 케이에이큐</span>
             <span className={styles.divider}>|</span>
-            <span>사무실 : 서울 송파구 양산로8길 5-12</span>
+            <span>주소 : 경기 수원시 장안구 서부로 2066, 27403호</span>
             <span className={styles.divider}>|</span>
             <span>대표 : 신완선</span>
             <span className={styles.divider}>|</span>
