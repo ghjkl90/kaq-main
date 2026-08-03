@@ -2,36 +2,44 @@
 /* 1. 최상단 히어로 비디오 섹션 (반응형 풀스크린 및 무한반복 설정) */
 /* ============================================================= */
 
-/* 비디오를 감싸는 부모 컨테이너 */
+/* 비디오를 감싸는 부모 컨테이너: 철저하게 검정색 바탕을 깔아 여백 착시 유도 */
 .heroVideoSection {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden; /* ✨ [핵심] 확대되어 삐져나간 영상의 마크 부분을 잘라냄 */
-  background-color: #000000;
+  overflow: hidden;
+  background-color: #000000; /* 여백이 생겨도 완벽한 블랙으로 처리 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 제미나이 마크를 숨기기 위한 새로운 커스텀 비디오 클래스 */
 .bgVideoCustomScale {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(1.56);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.56); /* 비율 유지를 위해 미세 확장 */
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
   z-index: 1;
 }
 
 .bgVideo {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
-/* 영상 위의 부드러운 투명 레이어 */
+/* 그라데이션 레이어 가장자리를 검정색으로 철저히 마감하여 여백과 영상 경계 소멸 */
 .heroOverlay {
   position: absolute;
   top: 0;
@@ -45,10 +53,10 @@
   padding-left: 12%;
   box-sizing: border-box;
   background: radial-gradient(
-    circle, 
-    rgba(0, 0, 0, 0) 20%,     /* 중앙 내부 20% 공간은 투명하게 영상이 다 보임 */
-    rgba(0, 0, 0, 0.4) 60%,   /* 중간 지점부터 서서히 어두워짐 */
-    rgba(0, 0, 0, 0.85) 100%  /* 상하좌우 가장자리 및 네 모서리는 85%의 진한 검은색 */
+    ellipse 100% 100% at 50% 50%, 
+    rgba(0, 0, 0, 0) 30%,     
+    rgba(0, 0, 0, 0.5) 70%,   
+    rgba(0, 0, 0, 0.95) 100%  /* 가장자리를 완전한 검정으로 덮어 착시 효과 극대화 */
   );
 }
 
@@ -79,7 +87,7 @@
 }
 
 .mainCopy span {
-  color: #0052FF; /* 블루로 복원 */
+  color: #ffffff; /* 블루로 복원 */
 }
 
 .subCopy {
@@ -362,33 +370,42 @@
 /* 3. 프로젝트 리스트 가로 슬라이더 레이아웃 (반응형 전면 고도화) */
 /* ============================================================= */
 
-.projectSliderSection {
+/* 프로젝트 좌우 분할 스크롤 레이아웃 부모 */
+.projectSection {
   position: relative;
+  display: flex;
   width: 100%;
-  min-height: 100vh;
-  background-color: #ffffff;
-  color: #111625;
-  font-family: sans-serif;
-  overflow: hidden;
+  min-height: 100vh; /* 화면 전체를 채우도록 보장 */
+  background-color: #111111;
+  color: #ffffff;
+  overflow: visible; /* 부모에 overflow: hidden이 있으면 sticky가 풀립니다 */
+}
+
+/* 좌측 고정 박스 */
+.projectLeftBox {
+  position: sticky; 
+  top: 0;           
+  width: 40%;
+  height: 100vh; /* 뷰포트 높이에 정확히 고정 */
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  padding: 0 5%;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+}
+
+/* 우측 스크롤 박스 */
+.projectRightBox {
+  width: 60%;
+  padding: 0 8%;
+  box-sizing: border-box;
 }
 
 .sliderWrapper {
   display: flex;
   width: 100%;
   min-height: 100vh;
-}
-
-.sliderLeftBox {
-  width: 35%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 60px 5%;
-  background-color: #ffffff;
-  z-index: 5;
-  border-right: 1px solid #f0f2f5;
-  box-shadow: border-box;
 }
 
 .sliderLeftContent {
@@ -1788,21 +1805,30 @@
 }
 
 .kaqReportageSubmitBtn {
-  background: transparent;
-  border: 2px solid #0052FF; /* 아웃라인 블루 연동 */
-  color: #0052FF;
-  padding: 9px 26px;
-  border-radius: 9999px;
-  font-size: 0.88rem;
-  font-weight: 800;
+  background-color: #111111; /* 평상시: 짙은 검정 바탕 */
+  color: #ffffff;            /* 평상시: 흰색 글씨 */
+  border: none;
+  padding: 12px 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  
+  /* 정상적으로 우측 하단만 사선으로 깎이는 다각형 좌표 설정 */
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 88% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 88% 100%, 0 100%);
+  
+  transition: all 0.25s ease;
 }
 
+/* 마우스를 올렸을 때 (Hover) */
 .kaqReportageSubmitBtn:hover {
-  background-color: #0052FF;
+  background-color: #0052FF; /* 포인트 블루 컬러로 변경 */
   color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .kaqTimeDotsContainer {
@@ -2000,6 +2026,64 @@
   font-size: 0.9rem;
   margin: 0;
   letter-spacing: -0.01em;
+}
+
+/* 스크롤 시 완전히 깔끔한 흰색 배경으로 전환되도록 강제 설정 */
+.mainHeader.headerScrolled {
+  background: #ffffff !important;
+  background-image: none !important; /* 기존 그라데이션 이미지 제거 */
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* 스크롤 시 텍스트 및 로고 색상 어둡게 변경 */
+.mainHeader.headerScrolled .navLink {
+  color: #111625 !important;
+  opacity: 0.8;
+}
+
+.mainHeader.headerScrolled .navLink:hover {
+  opacity: 1;
+  color: #0052FF !important;
+}
+
+.mainHeader.headerScrolled .langSelectWrapper,
+.mainHeader.headerScrolled .langSelectDropdown {
+  color: #111625 !important;
+}
+
+.mainHeader.headerScrolled .langSelectDropdown option {
+  color: #111625;
+  background-color: #ffffff;
+}
+
+/* PC 화면에서는 기본적으로 햄버거 버튼 숨김 */
+.mobileMenuToggleBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburgerBar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor; /* 현재 텍스트 색상 상속 */
+  transition: all 0.3s ease;
+}
+
+/* 태블릿 및 모바일 화면 (768px 이하)에서만 햄버거 버튼 노출 */
+@media (max-width: 768px) {
+  .mobileMenuToggleBtn {
+    display: flex; 
+  }
 }
 
 @media (max-width: 768px) {

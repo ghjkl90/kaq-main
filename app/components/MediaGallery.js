@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import styles from "../page.module.css";
 
 export default function MediaGallery() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(2);
   const [pointerXStart, setPointerXStart] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -19,17 +19,16 @@ export default function MediaGallery() {
   ];
 
   const total = galleryItems.length;
-  const cardWidth = 320; 
 
-  // 🌟 [추가된 부분] 카드 클릭 시 정중앙으로 활성화시키는 핸들러
   const handleCardClick = (idx) => {
-    if (isDragging && Math.abs(dragOffset) > 10) return; // 드래그 중일 때는 클릭 무시
+    if (Math.abs(dragOffset) > 10) return;
     setActiveIndex(idx);
   };
 
   const handlePointerDown = (e) => {
     setIsDragging(true);
     setPointerXStart(e.clientX || e.touches?.[0].clientX);
+    setDragOffset(0);
     if (stageRef.current) {
       stageRef.current.style.cursor = "grabbing";
     }
@@ -50,7 +49,7 @@ export default function MediaGallery() {
       stageRef.current.style.cursor = "pointer";
     }
 
-    const threshold = 80;
+    const threshold = 50; 
     if (dragOffset > threshold) {
       setActiveIndex((prev) => (prev - 1 + total) % total);
     } else if (dragOffset < -threshold) {
@@ -60,17 +59,37 @@ export default function MediaGallery() {
   };
 
   return (
-    <section className={styles.wideGallerySection} style={{ position: "relative", overflow: "hidden", backgroundColor: "#f8fafc", padding: "6px 0 60px 0" }}>
+    <section className={styles.wideGallerySection} style={{ position: "relative", overflow: "hidden", backgroundColor: "#FFFFFF", padding: "200px 0 100px 0" }}>
 
-      <div className={styles.galleryHeader} style={{ position: "relative", zIndex: 10, textAlign: "center", marginBottom: "20px" }}>
-        <img 
-          src="/KAQlogo.png" 
-          alt="Reportage Logo" 
-          className={styles.galleryLogoAsset} 
-          style={{ height: "40px", width: "auto", marginBottom: "8px" }} 
-        />
-        <h2 className={styles.galleryTitle} style={{ fontSize: "36px", fontWeight: "800", color: "#0f172a", margin: "0 0 12px 0" }}>As You See</h2>
-        <p className={styles.gallerySubtitle} style={{ color: "#475569", fontSize: "16px", lineHeight: "1.6" }}>
+      {/* 💡 이전 페이지와 동일한 글꼴 크기, 행간, 정렬 스펙 적용 */}
+      <div className={styles.galleryHeader} style={{ position: "relative", zIndex: 10, textAlign: "center", marginBottom: "80px" }}>
+        <span style={{ 
+          fontSize: "12px", 
+          color: "#0052ff", 
+          fontWeight: "bold", 
+          letterSpacing: "3px", 
+          display: "block", 
+          marginBottom: "16px", 
+          textTransform: "uppercase" 
+        }}>
+          GALLERY SHOWCASE
+        </span>
+        <h1 style={{ 
+          fontSize: "48px", 
+          fontWeight: "900", 
+          color: "#111111", 
+          margin: "0 0 20px 0", 
+          letterSpacing: "-1.5px",
+          lineHeight: "1.25"
+        }}>
+          As You See
+        </h1>
+        <p style={{ 
+          fontSize: "16px", 
+          color: "#666666", 
+          lineHeight: "1.6",
+          margin: 0 
+        }}>
           AI는 당신이 상상하는 것을 눈으로 보게 만듭니다. 
           <br/>상상하는 것으로 체험해 보세요.
         </p>
@@ -105,9 +124,7 @@ export default function MediaGallery() {
             if (offset < -total / 2) offset += total;
             if (offset > total / 2) offset -= total;
 
-            const dragNormalized = dragOffset / cardWidth;
-            const currentOffset = offset - dragNormalized;
-
+            const currentOffset = offset;
             const absOffset = Math.abs(currentOffset);
 
             const translateX = currentOffset * 340; 
@@ -139,14 +156,13 @@ export default function MediaGallery() {
                   transformOrigin: "center center",
                   zIndex: Math.round(100 - absOffset * 20),
                   opacity: Math.max(0, opacity),
-                  transition: isDragging ? "transform 0.05s linear, opacity 0.05s linear" : "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease",
+                  transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease",
                   boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)"
                 }}
                 onClick={() => handleCardClick(idx)}
               >
                 {/* 상단 레이아웃 */}
                 <div className={styles.cardOverlayTop} style={{ position: "absolute", top: 0, left: 0, right: 0, padding: "24px", zIndex: 2, display: "flex", alignItems: "center", gap: "10px", background: "linear-gradient(to bottom, rgba(0,0,0,0.4), transparent)" }}>
-                  <div className={styles.cardLogoCircle} style={{ width: "32px", height: "32px", borderRadius: "50%", backgroundColor: "#ffffff", color: "#0052ff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "16px" }}>R</div>
                   <span className={styles.cardUserHandle} style={{ color: "#ffffff", fontSize: "14px", fontWeight: "600" }}>{item.handle}</span>
                 </div>
 
@@ -173,7 +189,7 @@ export default function MediaGallery() {
       </div>
 
       {/* 하단 도트 인디케이터 */}
-      <div className={styles.galleryDotIndicator} style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "20px" }}>
+      <div className={styles.galleryDotIndicator} style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "40px" }}>
         {galleryItems.map((_, idx) => (
           <div
             key={idx}

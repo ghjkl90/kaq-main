@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function AboutPage() {
-  // 스크롤 감지 및 애니메이션 상태 제어
+
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
   const [careersVisible, setCareersVisible] = useState(false);
@@ -134,7 +134,7 @@ export default function AboutPage() {
             transform: leftVisible || rightVisible ? 'translateY(0)' : 'translateY(20px)',
             transition: 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
           }}>
-            <span style={{ fontSize: '13px', color: '#888', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '18px', textTransform: 'uppercase' }}>회사 소개</span>
+            <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '18px', textTransform: 'uppercase' }}>Company Introduction</span>
             <h1 style={{ fontSize: '44px', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-2.5px', color: '#111', margin: 0, maxWidth: '1000px' }}>
               KAQ (Korea Academy for Quality), <br />
               한국의 탁월한 AI 적용과 안전품질 기술을 <br />
@@ -166,7 +166,6 @@ export default function AboutPage() {
               <div style={{ padding: '0 4px' }}>
                 <h2 style={{ fontSize: '22px', fontWeight: 'bold', color: '#0052ff', margin: '0 0 20px 0', letterSpacing: '-0.5px', display: 'inline-block', position: 'relative' }}>
                   Our Vision
-                  <span style={{ position: 'absolute', bottom: '-6px', left: 0, width: '32px', height: '3px', backgroundColor: '#0052ff' }}></span>
                 </h2>
                 <p style={{ color: '#333', fontSize: '16px', fontWeight: '500', lineHeight: '1.85', margin: 0, paddingTop: '8px' }}>
                   AI 프롬프트 저작권과 공간안전품질 대시보드를 통해서 새로운 가치를 공유합니다.
@@ -186,7 +185,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* [우측] 실사 이미지 섹션 (스크롤 시 오른쪽에서 왼쪽으로 등장) */}
             <div 
               ref={rightRef}
               style={{ 
@@ -195,9 +193,8 @@ export default function AboutPage() {
                 height: '520px', 
                 margin: 0,
                 overflow: 'hidden',
-                clipPath: 'polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%)',
-                borderRadius: '16px 16px 0 16px',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.06)',
+                clipPath: 'polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%)',
+                WebkitClipPath: 'polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%)',
                 opacity: rightVisible ? 1 : 0,
                 transform: rightVisible ? 'translateX(0)' : 'translateX(50px)',
                 transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
@@ -270,121 +267,119 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-        */}
+        */}{/* ==========================================
+    Careers 인재 채용 섹션 (아래에서 부드럽게 솟아오르는 애니메이션)
+========================================== */}
+<div 
+  ref={careersRef}
+  style={{
+    position: 'relative',
+    opacity: careersVisible ? 1 : 0,
+    transform: careersVisible ? 'translateY(0)' : 'translateY(50px)',
+    transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+  }}
+>
+  <div style={{ position: 'relative', zIndex: 1 }}>
+    <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px', letterSpacing: '-1px', display: 'flex', alignItems: 'center' }}>
+        Careers
+    </h2>
+    <p style={{ fontSize: '15px', color: '#555', lineHeight: '1.7', marginBottom: '50px', maxWidth: '800px' }}>
+      KAQ와 함께 디지털 혁신을 이끌어갈 인재를 모십니다. 오픈된 포지션 중 본인에게 적합한 역할이 없다면, 
+      "상시 인재 풀"을 통해 이력서를 제출해 주시기 바랍니다. 적합한 포지션이 열릴 시 우선적으로 검토됩니다.
+    </p>
 
-        {/* ==========================================
-           Careers 인재 채용 섹션 (아래에서 부드럽게 솟아오르는 애니메이션)
-        ========================================== */}
-        <div 
-          ref={careersRef}
-          style={{
-            position: 'relative',
-            opacity: careersVisible ? 1 : 0,
-            transform: careersVisible ? 'translateY(0)' : 'translateY(50px)',
-            transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
-          }}
-        >
-          {/* 장식용 배경 이펙트 */}
-          <div style={{ position: 'absolute', top: '60px', left: '-40px', width: '120px', height: '200px', backgroundColor: '#5887f6', opacity: 0.1, borderRadius: '0 100px 100px 0', zIndex: 0, pointerEvents: 'none' }}></div>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '24px' }}>
+      {jobOpenings.map((job) => {
+        const isHovered = hoveredCardId === job.id;
 
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px', letterSpacing: '-1px', display: 'flex', alignItems: 'center' }}>
-              <span style={{ marginRight: '10px', color: '#0052ff' }}>—</span> Careers
-            </h2>
-            <p style={{ fontSize: '15px', color: '#555', lineHeight: '1.7', marginBottom: '50px', maxWidth: '800px' }}>
-              KAQ와 함께 디지털 혁신을 이끌어갈 인재를 모십니다. 오픈된 포지션 중 본인에게 적합한 역할이 없다면, 
-              "상시 인재 풀"을 통해 이력서를 제출해 주시기 바랍니다. 적합한 포지션이 열릴 시 우선적으로 검토됩니다.
-            </p>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '24px' }}>
-              {jobOpenings.map((job) => {
-                const isHovered = hoveredCardId === job.id;
-
-                return (
-                  <div 
-                    key={job.id} 
-                    onMouseEnter={() => setHoveredCardId(job.id)}
-                    onMouseLeave={() => setHoveredCardId(null)}
-                    style={{ 
-                      border: '1px solid #e5e5e5', 
-                      borderRadius: '4px', 
-                      padding: '34px 24px', 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      justifyContent: 'space-between',
-                      height: '210px',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      boxShadow: isHovered ? '0 15px 30px rgba(0,82,255,0.06)' : '0 2px 4px rgba(0,0,0,0.02)',
-                      borderColor: isHovered ? '#111' : '#e5e5e5',
-                      transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
-                      backgroundColor: '#fff'
-                    }}
-                  >
-                    <div style={{
-                      position: 'absolute', top: '24px', right: '24px', opacity: isHovered ? 1 : 0,
-                      transform: isHovered ? 'translateY(0)' : 'translateY(-10px)', transition: 'all 0.3s ease',
-                      pointerEvents: 'none', display: 'flex', alignItems: 'center', fontWeight: '900', fontSize: '28px', color: '#111', letterSpacing: '-1px'
-                    }}>
-                      K<span style={{ color: '#0052ff', marginLeft: '2px' }}>.</span>
-                    </div>
-
-                    <div>
-                      <span style={{ fontSize: '14px', color: '#888', display: 'block', marginBottom: '8px' }}>
-                        {job.location} · {job.type}
-                      </span>
-                      <h3 style={{ fontSize: '19px', fontWeight: 'bold', margin: '0', color: '#111', lineHeight: '1.4', maxWidth: '80%' }}>
-                        {job.title}
-                      </h3>
-                    </div>
-                    
-                    <button 
-                      onClick={() => handleOpenApply(job.title)}
-                      style={{ 
-                        backgroundColor: isHovered ? '#111' : '#0052ff', color: '#fff', border: 'none', padding: '12px 32px', fontSize: '14px', fontWeight: 'bold', cursor: 'pointer', width: 'fit-content', transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)', alignSelf: 'flex-start',
-                        clipPath: isHovered ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' : 'polygon(15% 0%, 100% 0%, 100% 75%, 85% 100%, 0% 100%, 0% 25%)'
-                      }}
-                    >
-                      지원하기 (Apply)
-                    </button>
-                  </div>
-                );
-              })}
+        return (
+          <div 
+            key={job.id} 
+            onMouseEnter={() => setHoveredCardId(job.id)}
+            onMouseLeave={() => setHoveredCardId(null)}
+            style={{ 
+              border: '1px solid #e5e5e5', 
+              borderRadius: '4px', 
+              padding: '34px 24px', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              justifyContent: 'space-between',
+              height: '210px',
+              position: 'relative',
+              overflow: 'hidden',
+              boxShadow: isHovered ? '0 15px 30px rgba(0,82,255,0.06)' : '0 2px 4px rgba(0,0,0,0.02)',
+              // 💡 마우스 호버 시 파란색 테두리(#0052ff)로 변경
+              borderColor: isHovered ? '#0052ff' : '#e5e5e5',
+              transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)',
+              backgroundColor: '#fff'
+            }}
+          >
+            <div>
+              <span style={{ fontSize: '14px', color: '#888', display: 'block', marginBottom: '8px' }}>
+                {job.location} · {job.type}
+              </span>
+              <h3 style={{ fontSize: '19px', fontWeight: 'bold', margin: '0', color: '#111', lineHeight: '1.4', maxWidth: '80%' }}>
+                {job.title}
+              </h3>
             </div>
+            
+            <button 
+              onClick={() => handleOpenApply(job.title)}
+              style={{ 
+                backgroundColor: isHovered ? '#0052ff' : '#111', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '12px 32px', 
+                fontSize: '14px', 
+                fontWeight: 'bold', 
+                cursor: 'pointer', 
+                width: 'fit-content', 
+                transition: 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)', 
+                alignSelf: 'flex-start',
+                clipPath: 'polygon(0 0, 100% 0, 100% 70%, 88% 100%, 0 100%)',
+                WebkitClipPath: 'polygon(0 0, 100% 0, 100% 70%, 88% 100%, 0 100%)'
+              }}
+            >
+              지원하기 (Apply)
+            </button>
           </div>
-        </div>
-
-      </div>
-
-      {/* ================= 지원하기 모달 팝업 ================= */}
-      {isApplyOpen && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.4)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
-          <div style={{ backgroundColor: '#fff', padding: '40px', borderRadius: '8px', width: '100%', maxWidth: '500px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', position: 'relative', color: '#111' }}>
-            <button onClick={() => setIsApplyOpen(false)} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', backgroundColor: 'transparent', fontSize: '24px', cursor: 'pointer', color: '#888' }}>&times;</button>
-            <h2 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '8px', color: '#0052ff' }}>Application</h2>
-            <p style={{ fontSize: '14px', color: '#666', marginBottom: '24px' }}>지원 직군: <strong>{selectedJob}</strong></p>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '14px', fontWeight: 'bold' }}>성명 *</label>
-                <input type="text" required placeholder="홍길동" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '15px' }} />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '14px', fontWeight: 'bold' }}>생년월일 *</label>
-                <input type="date" required value={birthDate} onChange={(e) => setBirthDate(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '15px', fontFamily: 'sans-serif' }} />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '14px', fontWeight: 'bold' }}>국적 *</label>
-                <input type="text" required placeholder="대한민국" value={nationality} onChange={(e) => setNationality(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '15px' }} />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '14px', fontWeight: 'bold' }}>이력서 / 포트폴리오 링크 주소</label>
-                <input type="url" placeholder="구글 드라이브, 노션 등 공유 링크 주소를 넣어주세요." value={fileLink} onChange={(e) => setFileLink(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '14px' }} />
-              </div>
-              <button type="submit" style={{ backgroundColor: '#0052ff', color: '#fff', border: 'none', borderRadius: '4px', padding: '14px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', marginTop: '10px', transition: 'background-color 0.2s' }}>지원서 제출하기</button>
-            </form>
-          </div>
-        </div>
-      )}
+        );
+      })}
     </div>
-  );
-}
+  </div>
+</div>
+
+</div>
+
+{/* ================= 지원하기 모달 팝업 ================= */}
+{isApplyOpen && (
+<div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.4)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+  <div style={{ backgroundColor: '#fff', padding: '40px', borderRadius: '8px', width: '100%', maxWidth: '500px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', position: 'relative', color: '#111' }}>
+    <button onClick={() => setIsApplyOpen(false)} style={{ position: 'absolute', top: '20px', right: '20px', border: 'none', backgroundColor: 'transparent', fontSize: '24px', cursor: 'pointer', color: '#888' }}>&times;</button>
+    <h2 style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '8px', color: '#0052ff' }}>Application</h2>
+    <p style={{ fontSize: '14px', color: '#666', marginBottom: '24px' }}>지원 직군: <strong>{selectedJob}</strong></p>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <label style={{ fontSize: '14px', fontWeight: 'bold' }}>성명 *</label>
+        <input type="text" required placeholder="홍길동" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '15px' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <label style={{ fontSize: '14px', fontWeight: 'bold' }}>생년월일 *</label>
+        <input type="date" required value={birthDate} onChange={(e) => setBirthDate(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '15px', fontFamily: 'sans-serif' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <label style={{ fontSize: '14px', fontWeight: 'bold' }}>국적 *</label>
+        <input type="text" required placeholder="대한민국" value={nationality} onChange={(e) => setNationality(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '15px' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <label style={{ fontSize: '14px', fontWeight: 'bold' }}>이력서 / 포트폴리오 링크 주소</label>
+        <input type="url" placeholder="구글 드라이브, 노션 등 공유 링크 주소를 넣어주세요." value={fileLink} onChange={(e) => setFileLink(e.target.value)} style={{ padding: '10px', border: '1px solid #ccc', borderRadius: '4px', fontSize: '14px' }} />
+      </div>
+      <button type="submit" style={{ backgroundColor: '#0052ff', color: '#fff', border: 'none', borderRadius: '4px', padding: '14px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', marginTop: '10px', transition: 'background-color 0.2s' }}>지원서 제출하기</button>
+    </form>
+  </div>
+</div>
+)}
+</div>
+  )
+};

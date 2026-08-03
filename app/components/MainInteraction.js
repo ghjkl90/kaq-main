@@ -44,12 +44,17 @@ export default function MainInteraction() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top top", // 컨테이너가 브라우저 최상단에 닿을 때 고정 시작
+          start: "top top",
           end: "bottom bottom",
           scrub: 1.2,
           pin: animationWrapperRef.current,
           pinSpacing: true,
-          invalidateOnRefresh: true, // 브라우저 크기 변경 시 트리거 재계산
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            window.dispatchEvent(new CustomEvent("kaqHeaderChange", {
+              detail: { isScrolled: window.scrollY > containerRef.current.offsetHeight - 100 }
+            }));
+          }
         },
       });
 
@@ -60,6 +65,17 @@ export default function MainInteraction() {
       tl.to(contentRef.current, { opacity: 1, y: 0, duration: 1.3, ease: "power2.out" }, "-=0.3");
     }, animationWrapperRef);
 
+    const handleGeneralScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const isPassed = rect.bottom <= 85; 
+      window.dispatchEvent(new CustomEvent("kaqHeaderChange", {
+        detail: { isScrolled: isPassed }
+      }));
+    };
+
+    window.addEventListener("scroll", handleGeneralScroll, { passive: true });
+
     setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
@@ -67,16 +83,18 @@ export default function MainInteraction() {
     return () => {
       window.removeEventListener("mouseenter", handleTrigger);
       window.removeEventListener("scroll", handleTrigger);
+      window.removeEventListener("scroll", handleGeneralScroll);
       if (ctx) ctx.revert();
     };
   }, [updateTransformOrigin]);
 
   return (
-    <div ref={containerRef} className={styles.scrollContainer}>
-      <div ref={animationWrapperRef} className={styles.stickyScene}>
+    /* 💡 컨테이너 전체 배경을 명확한 검정색(#000000)으로 설정 */
+    <div ref={containerRef} className={styles.scrollContainer} style={{ backgroundColor: "#000000" }}>
+      <div ref={animationWrapperRef} className={styles.stickyScene} style={{ backgroundColor: "#000000" }}>
         <div ref={flowerRef} className={styles.flowerLayer}></div>
         <div ref={facesRef} className={styles.facesLayer}></div>
-        <div ref={whiteOverlayRef} className={styles.whiteOverlay}></div>
+        <div ref-whiteOverlayRef={whiteOverlayRef} ref={whiteOverlayRef} className={styles.whiteOverlay}></div>
         <div ref={contentRef} className={styles.contentBox}>
           <h1>
             월드 클래스 대한민국의 거리 풍경, <br />

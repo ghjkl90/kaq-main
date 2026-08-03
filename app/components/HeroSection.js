@@ -22,7 +22,7 @@ export default function HeroSection({ onOpenContact }) {
           
           <h1 className={styles.mainCopy}>
             Peace and Quality with AI <br />
-            <span>AI 소외 그룹의 격차 해소, 월드클래스 AI 프롬프트를 만드는 곳</span>
+            <span>AI 소외 그룹의 격차 해소, <br/> 월드클래스 AI 프롬프트를 만드는 곳</span>
           </h1>
 
           <p className={styles.subCopy}>

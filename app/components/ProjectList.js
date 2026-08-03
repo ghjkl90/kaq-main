@@ -23,17 +23,17 @@ export default function ProjectList() {
       link: "https://k-ai-station.vercel.app/",
       features: [
         {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg>,
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg>,
           title: "프롬프트 난이도",
           desc: "AI 모델 기반 7등급 난이도를 선택할 수 있습니다."
         },
         {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="4" r="2" /><circle cx="12" cy="20" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><line x1="12" y1="6" x2="12" y2="9" /><line x1="12" y1="15" x2="12" y2="18" /><line x1="6" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="18" y2="12" /></svg>,
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="4" r="2" /><circle cx="12" cy="20" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><line x1="12" y1="6" x2="12" y2="9" /><line x1="12" y1="15" x2="12" y2="18" /><line x1="6" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="18" y2="12" /></svg>,
           title: "AI 체험 전문화",
           desc: "10,000개의 프롬프트, 140개 직업군, 100개의 실습교재를 탑재했습니다."
         },
         {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>,
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>,
           title: "AI 프롬프트 등록",
           desc: "자신이 만든 프롬프트를 등록하여 저작권을 인정받을 수 있습니다."
         }
@@ -50,17 +50,17 @@ export default function ProjectList() {
       link: "http://openq.co.kr:8082/",
       features: [
         {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" /></svg>,
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" /></svg>,
           title: "학술적 공신력",
           desc: "국내외 표준 기반 연구자산을 토대로 4대 HOPE 위해요인 지표를 정립했습니다."
         },
         {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="16" /><line x1="15" y1="22" x2="15" y2="16" /><path d="M9 16h6v6H9z" /><path d="M8 6h2v2H8zm0 4h2v2H8zm6-4h2v2h-2zm0 4h2v2h-2z" /></svg>,
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="16" /><line x1="15" y1="22" x2="15" y2="16" /><path d="M9 16h6v6H9z" /><path d="M8 6h2v2H8zm0 4h2v2H8zm6-4h2v2h-2zm0 4h2v2h-2z" /></svg>,
           title: "다각화된 현장 실증",
           desc: "다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 다양한 거점에 커스텀 도입 중입니다."
         },
         {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#0052FF" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
+          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
           title: "민관 융합 네트워크",
           desc: "이해관계자 연결, 관리자에게는 고도화된 시스템을, 대중에게는 사전 안전 확인 권리를 제공합니다."
         }
@@ -131,7 +131,7 @@ export default function ProjectList() {
   const current = data[currentIndex];
 
   return (
-    <section className={styles.kaqReportageSection} ref={sectionRef}>
+    <section className={styles.kaqReportageSection} ref={sectionRef} style={{ padding: "200px 0" }}>
       <div className={`${styles.kaqReportageContainer} ${styles.kaqScrollReveal}`}>
         
         {/* [LEFT AREA] */}
@@ -170,13 +170,6 @@ export default function ProjectList() {
           
           <div className={styles.kaqReportageHeader}>
             <div className={styles.kaqBadgeRow}>
-              <img 
-                src="/KAQlogo.png" 
-                alt="KAQ Logo" 
-                className={styles.kaqBadgeIconImg} 
-                style={{ height: "36px", width: "auto", display: "block", objectFit: "contain", marginRight: "-4px", marginLeft: "-0.6px" }} 
-              />
-              <span className={styles.kaqBadgeSlashDivider}>•</span>
               <h4 className={styles.kaqBadgeText}>{current.badgeText}</h4>
             </div>
             <h2 className={styles.kaqMainHeadingTitle}>{current.mainTitle}</h2>
@@ -197,7 +190,9 @@ export default function ProjectList() {
                 <div className={styles.kaqMiniIconCircle}>
                   {feat.icon}
                 </div>
-                <h5 className={styles.kaqMiniColumnTitle}>{feat.title}</h5>
+                <h5 className={styles.kaqMiniColumnTitle} style={{ fontSize: "1.125rem", fontWeight: "850", color: "#0f172a", marginBottom: "8px", letterSpacing: "-0.01em" }}>
+                  {feat.title}
+                </h5>
                 <p className={styles.kaqMiniColumnDesc}>{feat.desc}</p>
               </div>
             ))}

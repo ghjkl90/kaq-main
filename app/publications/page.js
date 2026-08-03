@@ -174,88 +174,6 @@ export default function PublicationsPage() {
     };
   }, []);
 
-  const getParticleColor = (id, type) => {
-    if (id === 1) return type === 1 ? '#0052ff' : '#00a3ff'; 
-    if (id === 2) return type === 1 ? '#7e9ee1' : '#a1ccff'; 
-    return type === 1 ? '#2f38bc' : '#3b9cf6'; 
-  };
-
-  // 블랙홀 애니메이션 Canvas
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId;
-    const particleCount = 650;
-
-    const resize = () => {
-      if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    if (particlesRef.current.length === 0) {
-      for (let i = 0; i < particleCount; i++) {
-        const radius = Math.random() * (window.innerWidth * 0.35) + 60;
-        particlesRef.current.push({
-          angle: Math.random() * Math.PI * 2,
-          radius,
-          speed: (Math.random() * 0.01 + 0.005) * (160 / radius),
-          size: Math.random() * 2.2 + 0.6,
-          baseColorType: Math.random() > 0.75 ? 1 : 0,
-        });
-      }
-    }
-
-    const draw = () => {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      const centerX = canvas.width * 0.75;
-      const centerY = canvas.height * 0.5;
-
-      particlesRef.current.forEach((p) => {
-        const x = centerX + Math.cos(p.angle) * p.radius;
-        const y = centerY + Math.sin(p.angle) * p.radius;
-
-        ctx.fillStyle = getParticleColor(activeId || 1, p.baseColorType);
-        ctx.beginPath();
-        ctx.arc(x, y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.angle += p.speed;
-        p.radius -= 0.35;
-
-        if (p.radius < 15) {
-          p.radius = Math.random() * (canvas.width * 0.35) + 100;
-          p.angle = Math.random() * Math.PI * 2;
-        }
-      });
-
-      ctx.fillStyle = '#fafcff';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, 35, 0, Math.PI * 2);
-      ctx.fill();
-      
-      ctx.strokeStyle = 'rgba(0, 82, 255, 0.25)';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    window.addEventListener('resize', resize);
-    resize();
-    draw();
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [activeId]); 
-
   return (
     <div style={{
       backgroundColor: '#ffffff',
@@ -374,7 +292,6 @@ export default function PublicationsPage() {
           {researches.map((item) => {
             const isActive = activeId === item.id;
             const hasBeenVisited = visitedIds.has(item.id);
-            const primaryColor = getParticleColor(item.id, 1);
 
             return (
               <div
@@ -412,7 +329,6 @@ export default function PublicationsPage() {
                     fontFamily: 'monospace', 
                     fontWeight: '800', 
                     letterSpacing: '4px', 
-                    color: primaryColor,
                     display: 'block',
                     marginBottom: '10px'
                   }}>
