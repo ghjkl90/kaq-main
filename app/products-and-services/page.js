@@ -1,16 +1,131 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 
-export default function ResearchPage() {
-  const [isMounted, setIsMounted] = useState(false);
-  const [activeId, setActiveId] = useState(1);
-  const [hoveredCardId, setHoveredCardId] = useState(null);
+// ==========================================
+// 통일된 화살표 버튼 스타일 설정
+// ==========================================
+const BUTTON_BASE_STYLE = {
+  width: '48px',
+  height: '48px',
+  borderRadius: '50%',
+  border: '1px solid #E5E7EB',
+  backgroundColor: '#FFFFFF', 
+  color: '#111827',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+  boxShadow: 'none',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  outline: 'none'
+};
 
-  const sectionRefs = {
-    1: useRef(null),
-    2: useRef(null),
-    3: useRef(null),
+const BUTTON_HOVER_STYLE = {
+  backgroundColor: '#0052FF',
+  color: '#FFFFFF',
+  borderColor: '#0052FF',
+  transform: 'translateY(-2px)'
+};
+
+const ICON_STYLE = {
+  width: '20px',
+  height: '20px',
+  strokeWidth: '2'
+};
+
+export default function ProductsPage() {
+  const [isMounted, setIsMounted] = useState(false);
+  const [activeTab, setActiveTab] = useState('제품 및 서비스');
+  
+  const scrollRef = useRef(null);
+  const [hoveredButton, setHoveredButton] = useState(null);
+
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const topRef = useRef(null);
+  const stationRef = useRef(null);
+  const dsqRef = useRef(null);
+
+  const stationContentRef = useRef(null);
+  const dsqContentRef = useRef(null);
+
+  const [stationVisible, setStationVisible] = useState(false);
+  const [dsqVisible, setDsqVisible] = useState(false);
+
+  const tabs = [
+    { name: '제품 및 서비스', ref: topRef },
+    { name: 'K-AI-STATION', ref: stationRef },
+    { name: 'DSQ', ref: dsqRef },
+  ];
+
+  const handleTabClick = (tabName, refObj) => {
+    setActiveTab(tabName);
+    if (refObj && refObj.current) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = refObj.current.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
+
+  useEffect(() => {
+    const handleScrollActiveTab = () => {
+      const scrollPosition = window.scrollY + 200; 
+
+      const topEl = topRef.current;
+      const stationEl = stationRef.current;
+      const dsqEl = dsqRef.current;
+
+      if (dsqEl && scrollPosition >= dsqEl.offsetTop) {
+        setActiveTab('DSQ');
+      } else if (stationEl && scrollPosition >= stationEl.offsetTop) {
+        setActiveTab('K-AI-STATION');
+      } else if (topEl) {
+        setActiveTab('제품 및 서비스');
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollActiveTab, { passive: true });
+    handleScrollActiveTab(); 
+    return () => window.removeEventListener('scroll', handleScrollActiveTab);
+  }, []);
+
+  useEffect(() => {
+    setIsMounted(true);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries, setVisibleState) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleState(true);
+        }
+      });
+    };
+
+    const stationObserver = new IntersectionObserver((entries) => observerCallback(entries, setStationVisible), observerOptions);
+    const dsqObserver = new IntersectionObserver((entries) => observerCallback(entries, setDsqVisible), observerOptions);
+
+    if (stationContentRef.current) stationObserver.observe(stationContentRef.current);
+    if (dsqContentRef.current) dsqObserver.observe(dsqContentRef.current);
+
+    return () => {
+      if (stationContentRef.current) stationObserver.unobserve(stationContentRef.current);
+      if (dsqContentRef.current) dsqObserver.unobserve(dsqContentRef.current);
+    };
+  }, []);
 
   const aiModes = [
     {
@@ -50,213 +165,352 @@ export default function ResearchPage() {
     }
   ];
 
-  const researches = [
-    {
-      id: 1,
-      title: '고객맞춤형 AI 프롬프트',
-      desc: '고객이 필요한 AI 프롬프트를 제공합니다. 대중모델, 자체모델, 개별모델을 만들어 AI 기술의 사유화를 연구합니다.',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-      details: [
-        '세심하게 설계된 프롬프트 주권: 대형 언어 모델(LLM)의 단순 활용을 넘어, 기업 및 개인 고유의 비즈니스 도메인 지식을 프롬프트 엔지니어링 기술로 자산화하여 독보적인 가치 모델을 창출합니다.',
-        '기술의 사유화 및 보안 극대화: 자체 프롬프트 저작권 보호 솔루션을 도입하여, 민감한 비즈니스 노하우가 외부 공유 모델에 노출되지 않도록 최적의 온프레미스/사설 인프라 환경 기술을 연구합니다.'
-      ]
-    },
-    {
-      id: 2,
-      title: '공간안전품질 대시보드',
-      desc: '인간은 시간이 필요할 때 시계를 만들었습니다. 그럼에도 불구하고, 공간 안전이 중요한 현재 시점에 공간의 안전시계 (대시보드)가 없습니다. 공간안전품질의 대시보드 표준화를 연구합니다.',
-      image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80',
-      details: [
-        '공간의 안전시계 표준 수립: 시간의 흐름을 초침으로 나타내듯, 복잡한 공간 품질과 위협 요소를 직관적인 실시간 수치로 계량화하여 누구나 쉽게 인지 가능한 안전 표준 인터페이스를 개발합니다.',
-        '예방 중심의 직관적 시각화: 스마트 환경에 부합하는 정밀 대시보드 관제를 설계하여 잠재적 사고 요인을 사전에 모니터링하고 가시화함으로써 일상의 안전 문화를 정립해 갑니다.'
-      ]
-    },
-    {
-      id: 3,
-      title: '디지털트윈 개발 및 구축',
-      desc: 'AI는 센서를 기반으로 데이터 축적이 가능할 때 가장 효과적입니다. 각종 센싱에 필요한 측정(M), 추적(T), 연결(C), 통합(I)을 연구합니다. 즉, MTCI를 통해서만 미래의 신뢰를 확보할 수 있습니다.',
-      image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80',
-      details: [
-        '신뢰를 보장하는 MTCI 아키텍처: 사물과 공간의 디지털 가상화의 핵심은 정확한 물리 센서 데이터의 축적입니다. 측정(M), 추적(T), 연결(C), 통합(I)으로 이어지는 전 주기의 신뢰성 보장 모델을 설계합니다.',
-        '예측 가능한 미래 가치 보장: 정밀하게 연동된 하드웨어 및 데이터 모니터링 파이프라인을 통하여 고차원적 시뮬레이션을 가능하게 하며 가상 환경과 현실 환경 간의 이질감을 최소화합니다.'
-      ]
-    },
-  ];
+  const handleMouseDown = (e) => {
+    isDragging.current = true;
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
+    scrollRef.current.style.cursor = 'grabbing';
+  };
 
-  useEffect(() => {
-    setIsMounted(true);
-    const observerOptions = {
-      root: null,
-      rootMargin: '-35% 0px -45% 0px', 
-      threshold: 0.1,
-    };
-    const observers = [];
-    researches.forEach((item) => {
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          setActiveId(item.id);
-        }
-      }, observerOptions);
-      const target = sectionRefs[item.id].current;
-      if (target) {
-        observer.observe(target);
-        observers.push({ observer, target });
-      }
-    });
-    return () => {
-      observers.forEach(({ observer, target }) => {
-        if (target) observer.unobserve(target);
+  const handleMouseLeave = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = 'grab';
+  };
+
+  const handleMouseUp = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = 'grab';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX.current) * 2; 
+    scrollRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const handleScrollClick = (direction) => {
+    if (scrollRef.current) {
+      const cardWidthWithGap = 280 + 24; 
+      const scrollAmount = cardWidthWithGap * 1; 
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
       });
-    };
-  }, []);
+    }
+  };
+
+  const CarouselButton = ({ direction, onClick }) => (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHoveredButton(direction)}
+      onMouseLeave={() => setHoveredButton(null)}
+      style={{
+        ...BUTTON_BASE_STYLE,
+        ...(hoveredButton === direction ? BUTTON_HOVER_STYLE : {})
+      }}
+      aria-label={direction === 'left' ? '이전 카드' : '다음 카드'}
+    >
+      {direction === 'left' ? (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style={ICON_STYLE}>
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" style={ICON_STYLE}>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      )}
+    </button>
+  );
 
   return (
-    <div style={{ 
-      color: '#111111', 
-      padding: '160px 40px 100px 40px', 
-      minHeight: '100vh', 
-      fontFamily: 'sans-serif',
-      position: 'relative',
-      background: '#FFFFFF',
-      backgroundSize: '400% 400%',
-      animation: 'auroraMove 18s ease infinite',
-    }}>
-      <style>{`
-        @keyframes auroraMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
-
-      {/* ================= 상단 헤더 및 타이틀 섹션 ================= */}
-        <div style={{ 
-          marginBottom: '80px',
-          textAlign: 'center', // 제목 중앙 정렬
+    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'sans-serif' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        
+        {/* ================= 상단 공통 UI 뼈대 ================= */}
+        <div style={{ marginBottom: '0px' }}>
           
-          transition: 'all 0.8s'
-        }}>
-          <span style={{ 
-            fontSize: '12px', 
-            color: '#0052ff', 
-            fontWeight: 'bold', 
-            letterSpacing: '3px', 
-            display: 'block', 
-            marginBottom: '16px', 
-            textTransform: 'uppercase' 
+          <div style={{ marginBottom: '40px' }}>
+            <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '16px', textTransform: 'uppercase' }}>
+              Products & Services
+            </span>
+            <h1 style={{ fontSize: '42px', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-2px', color: '#111', margin: 0 }}>
+              KAQ (Korea Academy for Quality), <br />
+              월드클래스 AI 프롬프트와 안전품질 솔루션을 <br />
+              제공합니다.
+            </h1>
+          </div>
+
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '40px', flexWrap: 'wrap' }}>
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.name;
+              return (
+                <button
+                  key={tab.name}
+                  onClick={() => handleTabClick(tab.name, tab.ref)}
+                  style={{
+                    backgroundColor: isActive ? '#0052ff' : '#f5f7fa',
+                    color: isActive ? '#fff' : '#333',
+                    border: 'none',
+                    padding: '10px 22px',
+                    borderRadius: '24px',
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    boxShadow: isActive ? '0 4px 12px rgba(0,82,255,0.2)' : 'none'
+                  }}
+                >
+                  {tab.name}
+                </button>
+              );
+            })}
+          </div>
+
+          <div style={{
+            width: '100%',
+            height: '400px',
+            backgroundColor: '#050b14',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
           }}>
-            K-AI-STATION SERVICE
-          </span>
-          <h1 style={{ 
-            fontSize: '48px', 
-            fontWeight: '900', 
-            color: '#111111', 
-            margin: '0 0 20px 0', 
-            letterSpacing: '-1.5px' 
-          }}>
-            나만의 AI를 체험해보세요
-          </h1>
-          <p style={{ 
-            fontSize: '16px', 
-            color: '#666', 
-            margin: 0 
-          }}>
-            당신의 라이프스타일에 최적화된 특별한 대화와 가이드를 경험할 수 있습니다.
-          </p>
+            <img 
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" 
+              alt="Products Visual" 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: 0.5,
+                mixBlendMode: 'luminosity'
+              }}
+            />
+          </div>
         </div>
 
-      <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative' }}>
-        
-        {/* ================= 5대 서비스 카드: 3개/2개 그리드 + 호버 시 카드 플립 효과 ================= */}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '30px',
-          justifyContent: 'center', // 가운데 정렬
-          marginBottom: '140px',
-          opacity: isMounted ? 1 : 0,
-          transition: 'all 0.8s'
-        }}>
-          {aiModes.map((mode, index) => (
-            <div 
-              key={mode.id}
-              style={{ 
-                position: 'relative',
-                width: '360px',
-                height: '450px',
-                borderRadius: '10px',
-                clipPath: 'polygon(0% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%)',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                flex: '0 0 360px' 
-              }}
-              onMouseEnter={() => setHoveredCardId(mode.id)}
-              onMouseLeave={() => setHoveredCardId(null)}
-            >
-              {/* 앞면: 이미지와 정보 */}
-              <div style={{ 
-                width: '100%', height: '100%',
-                backgroundImage: `url(${mode.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                transition: 'transform 0.4s ease',
-                transform: hoveredCardId === mode.id ? 'scale(1.05)' : 'scale(1)'
-              }} />
+        {/* ================= K-AI-STATION 슬라이드 섹션 ================= */}
+        <div ref={stationRef} style={{ scrollMarginTop: '120px' }}>
+          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
+          
+          <div 
+            ref={stationContentRef}
+            style={{ 
+              opacity: stationVisible ? 1 : 0,
+              transform: stationVisible ? 'translateY(0)' : 'translateY(50px)',
+              transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+            }}
+          >
+            <div style={{ marginBottom: '40px' }}>
+              <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '12px', letterSpacing: '-1px', color: '#0052ff' }}>
+                K-AI-STATION SERVICE
+              </h2>
+              <p style={{ fontSize: '16px', color: '#666666', lineHeight: '1.6', margin: 0 }}>
+                당신의 라이프스타일에 최적화된 대화형 모드와 가이드를 경험할 수 있습니다.
+              </p>
+            </div>
 
-              {/* 뒷면: 호버 시 나타나는 링크 박스 */}
-<div style={{
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  backgroundColor: 'rgba(0, 82, 255, 0.9)',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  textAlign: 'center',
-  opacity: hoveredCardId === mode.id ? 1 : 0,
-  transition: 'opacity 0.4s ease',
-  color: '#ffffff',
-  padding: '40px',
-  boxSizing: 'border-box'
-}}>
-  <h3 style={{ fontSize: '24px', fontWeight: '800', margin: '0 0 20px 0' }}>
-    {mode.title}
-  </h3>
-  <p style={{ fontSize: '14px', marginBottom: '30px', lineHeight: '1.6', margin: '0 0 30px 0' }}>
-    {mode.desc}
-  </p>
-  <a 
-    href={mode.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{
-      padding: '12px 24px',
-      border: '1px solid #fff',
-      borderRadius: '20px',
-      color: '#fff',
-      textDecoration: 'none',
-      fontWeight: 'bold',
-      fontSize: '14px'
-    }}
-  >
-    바로가기
-  </a>
-</div>
-              
-              {/* 카드 하단 명칭 (평상시) */}
-              <div style={{ 
-                position: 'absolute', bottom: '20px', left: '20px', right: '20px',
-                backgroundColor: 'rgba(255,255,255,0.9)', padding: '20px', borderRadius: '12px',
-                opacity: hoveredCardId === mode.id ? 0 : 1, transition: 'opacity 0.4s'
-              }}>
-                <h4 style={{ margin: 0, color: '#111' }}>{mode.title}</h4>
+            <div style={{ position: 'relative' }}>
+              <div 
+                ref={scrollRef}
+                style={{
+                  display: 'flex',
+                  gap: '24px',
+                  overflowX: 'auto',
+                  scrollSnapType: 'x mandatory',
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  paddingBottom: '20px',
+                  scrollBehavior: 'smooth',
+                  cursor: 'grab',
+                  userSelect: 'none'
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+              >
+                <style>{`
+                  div::-webkit-scrollbar {
+                    display: none;
+                  }
+                `}</style>
+
+                {aiModes.map((mode) => (
+                  <div 
+                    key={mode.id}
+                    style={{ 
+                      flex: '0 0 280px',
+                      height: '500px',
+                      borderRadius: '20px',
+                      overflow: 'hidden',
+                      position: 'relative',
+                      scrollSnapAlign: 'start',
+                      boxShadow: '0 12px 35px rgba(0,0,0,0.1)',
+                      backgroundColor: '#f1f5f9',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end'
+                    }}
+                  >
+                    <div style={{ 
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%', 
+                      height: '100%',
+                      backgroundColor: '#050b14',
+                      backgroundImage: `url(${mode.image})`,
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      zIndex: 1
+                    }} />
+
+                    <div style={{
+                      position: 'relative',
+                      zIndex: 2,
+                      padding: '30px 24px',
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '8px'
+                    }}>
+                      <h3 style={{ margin: 0, color: '#ffffff', fontSize: '22px', fontWeight: '700', letterSpacing: '-0.5px' }}>
+                        {mode.title}
+                      </h3>
+                      <p style={{ margin: 0, color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.5', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {mode.desc}
+                      </p>
+                      <div style={{ marginTop: '12px' }}>
+                        <a 
+                          href={mode.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'inline-block',
+                            padding: '8px 16px',
+                            backgroundColor: 'rgba(255,255,255,0.2)',
+                            backdropFilter: 'blur(4px)',
+                            borderRadius: '6px',
+                            color: '#fff',
+                            textDecoration: 'none',
+                            fontWeight: '600',
+                            fontSize: '12px',
+                            border: '1px solid rgba(255,255,255,0.4)',
+                            transition: 'background-color 0.2s ease'
+                          }}
+                        >
+                          체험하기 &rarr;
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px', marginTop: '30px' }}>
+                <CarouselButton direction="left" onClick={() => handleScrollClick('left')} />
+                <CarouselButton direction="right" onClick={() => handleScrollClick('right')} />
               </div>
             </div>
-          ))}
+          </div>
         </div>
+
+        {/* ================= [DSQ 플랫폼 상세 섹션] : 주황색 달러 기호 완전 제거 ================= */}
+        <div ref={dsqRef} style={{ scrollMarginTop: '120px' }}>
+          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
+          
+          <div 
+            ref={dsqContentRef}
+            style={{ 
+              opacity: dsqVisible ? 1 : 0,
+              transform: dsqVisible ? 'translateY(0)' : 'translateY(50px)',
+              transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+            }}
+          >
+            {/* 섹션 타이틀 */}
+            <div style={{ marginBottom: '40px' }}>
+              <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '12px', letterSpacing: '-1px', color: '#0052ff' }}>
+                DSQ PLATFORM
+              </h2>
+              <p style={{ fontSize: '16px', color: '#666666', lineHeight: '1.6', margin: 0 }}>
+                모바일 기반 디지털안전품질 표준 대시보드 및 AI 센싱 안전 생태계 솔루션을 제공합니다.
+              </p>
+            </div>
+
+            {/* 박스 테두리 없는 모던한 2단 그리드 레이아웃 (주황색 달러 기호 제거됨) */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))',
+              gap: '60px',
+              alignItems: 'center',
+              padding: '20px 0'
+            }}>
+              {/* 좌측 콘텐츠 (볼드 타이틀 + 설명 + 버튼) */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <h3 style={{ fontSize: '32px', fontWeight: '800', color: '#111111', margin: 0, letterSpacing: '-1px' }}>
+                  오픈퀄리티(Open Quality) 기술 사업화 제품
+                </h3>
+                
+                <p style={{ fontSize: '15px', color: '#555555', lineHeight: '1.75', margin: 0, maxWidth: '520px' }}>
+                  성균관대학교 스마트품질연구실이 개발한 자산을 토대로 다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 거점에 커스텀 도입 중인 모바일 표준 대시보드입니다.
+                </p>
+                
+                <div style={{ marginTop: '10px' }}>
+                  <a 
+                    href="http://openq.co.kr:8082/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-block',
+                      padding: '12px 28px',
+                      backgroundColor: '#0052ff',
+                      color: '#fff',
+                      borderRadius: '7px',
+                      textDecoration: 'none',
+                      fontWeight: 'bold',
+                      fontSize: '14px',
+                      boxShadow: '0 4px 12px rgba(0,82,255,0.2)',
+                      transition: 'background-color 0.2s ease'
+                    }}
+                  >
+                    플랫폼 둘러보기 &rarr;
+                  </a>
+                </div>
+              </div>
+
+              {/* 우측 와이드 이미지 영역 (사용자 제공 대시보드 캡처 화면 반영) */}
+              <div style={{
+                width: '100%',
+                height: '340px',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 15px 35px rgba(0,0,0,0.08)'
+              }}>
+                <img 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" 
+                  alt="DSQ Platform Preview" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   );

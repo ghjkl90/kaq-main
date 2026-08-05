@@ -134,9 +134,12 @@ export default function ProjectList() {
     <section className={styles.kaqReportageSection} ref={sectionRef} style={{ padding: "200px 0" }}>
       <div className={`${styles.kaqReportageContainer} ${styles.kaqScrollReveal}`}>
         
-        {/* [LEFT AREA] */}
-        <div className={styles.kaqReportageLeftFrame}>
-          <div className={styles.kaqPolyImageContainer}>
+        {/* [LEFT AREA] - 이미지 부드러운 둥근 모서리(borderRadius) 적용 */}
+        <div 
+          className={styles.kaqReportageLeftFrame}
+          style={{ borderRadius: '12px', overflow: 'hidden' }}
+        >
+          <div className={styles.kaqPolyImageContainer} style={{ borderRadius: '12px', overflow: 'hidden' }}>
             <div 
               style={{ 
                 display: "flex",
@@ -199,13 +202,92 @@ export default function ProjectList() {
           </div>
 
           <div className={styles.kaqReportageControlBar}>
-            <div className={styles.kaqBtnArrowsGroup}>
-              <button className={styles.kaqCircledArrow} onClick={handlePrev} aria-label="이전">←</button>
-              <button className={styles.kaqCircledArrow} onClick={handleNext} aria-label="다음">→</button>
+            {/* 통일된 SVG 원형 화살표 버튼 적용 (그림자 없음, 호버 시 파란색 배경 전환) */}
+            <div className={styles.kaqBtnArrowsGroup} style={{ display: 'flex', gap: '12px' }}>
+              <button 
+                onClick={handlePrev} 
+                aria-label="이전"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  border: '1px solid #E5E7EB',
+                  backgroundColor: '#FFFFFF',
+                  color: '#111827',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: 'none',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0052FF';
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderColor = '#0052FF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#FFFFFF';
+                  e.currentTarget.style.color = '#111827';
+                  e.currentTarget.style.borderColor = '#E5E7EB';
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+
+              <button 
+                onClick={handleNext} 
+                aria-label="다음"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  border: '1px solid #E5E7EB',
+                  backgroundColor: '#FFFFFF',
+                  color: '#111827',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: 'none',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  outline: 'none'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0052FF';
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderColor = '#0052FF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#FFFFFF';
+                  e.currentTarget.style.color = '#111827';
+                  e.currentTarget.style.borderColor = '#E5E7EB';
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
             </div>
 
             <div className={styles.kaqActionsFlexArea}>
-              <a href={current.link} target="_blank" rel="noopener noreferrer" className={styles.kaqReportageSubmitBtn}>
+              {/* 버튼 디자인 유지 */}
+              <a 
+                href={current.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.kaqReportageSubmitBtn}
+                style={{ 
+                  borderRadius: '7px', 
+                  clipPath: 'none', 
+                  WebkitClipPath: 'none' 
+                }}
+              >
                 {current.btnText}
               </a>
 

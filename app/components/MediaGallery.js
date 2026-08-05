@@ -149,7 +149,7 @@ export default function MediaGallery() {
                   top: "20px",
                   width: "320px",
                   height: "530px",
-                  borderRadius: "28px",
+                  borderRadius: "12px",
                   overflow: "hidden",
                   backgroundColor: "#fff",
                   transform: `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,

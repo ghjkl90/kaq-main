@@ -2,6 +2,14 @@
 /* 1. 최상단 히어로 비디오 섹션 (반응형 풀스크린 및 무한반복 설정) */
 /* ============================================================= */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #000000; /* 전체 배경을 검정색으로 고정 */
+  overflow-x: hidden;
+}
+
 /* 비디오를 감싸는 부모 컨테이너: 철저하게 검정색 바탕을 깔아 여백 착시 유도 */
 .heroVideoSection {
   position: relative;
@@ -96,6 +104,85 @@
   color: #e2e8f0;
   font-weight: 400;
   word-break: keep-all;
+}
+
+/* 채용 공고 스타일과 통일된 원형 화살표 인디케이터 */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  animation: bounceCircleArrow 2s infinite ease-in-out;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.circleArrowIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 위아래로 부드럽게 움직이는 바운스 애니메이션 */
+@keyframes bounceCircleArrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* 스크롤 시 숨김 처리 */
+.stopAnimation {
+  animation: none !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 화살표 크기를 키우고 선을 두껍게 수정 */
+.arrowDown {
+  width: 16px;
+  height: 16px;
+  border-right: 3px solid #ffffff; /* 선 두께 3px로 강화 */
+  border-bottom: 3px solid #ffffff;
+  transform: rotate(45deg);
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8)); /* 배경에 묻히지 않도록 그림자 추가 */
+}
+
+/* 위아래로 움직이는 바운스 애니메이션 */
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(5px);
+  }
+}
+
+/* 스크롤 시 숨김 처리 */
+.stopAnimation {
+  animation: none !important;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* ============================================================= */
@@ -269,67 +356,32 @@
 /* 2. 메인 스크롤 그래픽 비전 인터랙션 영역                     */
 /* ============================================================= */
 
+/* 스크롤 컨테이너 전체를 검정 배경으로 꽉 채우기 */
 .scrollContainer {
-  height: 600vh; /* 조금 과했던 영역 높이를 쾌적하게 한 단계 압축 */
   position: relative;
-  background-color: #000000;
   width: 100%;
-}
-
-.stickyScene {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  height: 300vh; /* 스크롤 인터랙션을 위한 충분한 높이 */
+  background-color: #000000 !important;
   overflow: hidden;
 }
 
-.flowerLayer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+/* 고정되는 씬 영역을 화면 전체(100vw, 100vh)에 밀착 */
+.stickyScene {
+  position: relative;
+  width: 100vw;
   height: 100vh;
-  background-image: url("/core_poppy.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 4;
-  transform-origin: center center;
-  will-change: transform, opacity;
+  background-color: #000000 !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.facesLayer {
-  position: absolute;
-  top: 0;
-  left: 0;
+.stickyScene video {
   width: 100%;
-  height: 100vh;
-  background-image: url("/face_mosaic.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 3;
-  opacity: 0;
-  transform-origin: center center;
-  will-change: transform, opacity;
-  filter: grayscale(100%) contrast(120%) brightness(80%);
-  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 85%);
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 85%);
-}
-
-.whiteOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.97) 0%, rgba(245, 247, 250, 1) 100%);
-  z-index: 5;
-  opacity: 0;
-  will-change: opacity;
+  height: 100%;
+  object-fit: cover; /* 여백 없이 화면을 꽉 채우고 빈 곳은 잘라냄 */
+  background-color: #000000;
 }
 
 .contentBox {
@@ -1618,12 +1670,10 @@
   aspect-ratio: 4 / 3.4;
   background-color: #e2e8f0;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 78%, 78% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 78%, 78% 100%, 0 100%);
+  border-radius: 12px; /* 원하시면 둥근 모서리를 위해 추가 (선택사항) */
   box-shadow: 0 30px 65px -20px rgba(15, 23, 42, 0.12);
   overflow: hidden; /* 슬라이딩 외부 영역 차단 */
 }
-
 
 .kaqImageSliderTrack {
   display: flex;
