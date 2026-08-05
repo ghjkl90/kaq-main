@@ -352,18 +352,19 @@ export default function AboutPage() {
                     
                     {/* 우측 원형 화살표 버튼 */}
                     <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '50%',
-                      border: '1px solid #ddd',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: isHovered ? '#111' : '#fff',
-                      color: isHovered ? '#fff' : '#111',
-                      transition: 'all 0.3s ease',
-                      flexShrink: 0
-                    }}>
+  width: '44px',
+  height: '44px',
+  borderRadius: '50%',
+  border: '1px solid',
+  borderColor: isHovered ? '#0052ff' : '#ddd',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: isHovered ? '#0052ff' : '#fff',
+  color: isHovered ? '#fff' : '#111',
+  transition: 'all 0.3s ease',
+  flexShrink: 0
+}}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
