@@ -76,9 +76,39 @@ function useInView(threshold = 0.2) {
 
   return [ref, inView];
 }
+
+/* ------------------------------------------------------------------ */
+/*  참고 UI("AI / TECH") 구조:                                         */
+/*  1) 사진 위에 옅은 색 라벨(item.eng)을 얹고, 하단 스크림으로 대비 확보 */
+/*  2) 사진 옆에 진한 색 큰 헤드라인(item.kor)을 음수 마진으로 살짝 겹침 */
+/*  -> mix-blend-mode 없이 순수 레이어링이라 사진 내용과 무관하게 항상   */
+/*     안정적으로 보임                                                  */
+/* ------------------------------------------------------------------ */
 function GalleryRow({ item, index, isLast }) {
   const [ref, inView] = useInView(0.3);
   const reversed = index % 2 === 1;
+
+  // 문장을 행 전체 폭 기준으로 정중앙 정렬. 사진과 겹치는 부분만 다른 색으로
+  // 보이게 하기 위해, 사진이 있는 자리(왼쪽 0~42% 또는 오른쪽 58~100%, 고정값)
+  // 모양으로 잘라내는 클리핑 마스크를 사진톤 레이어에 씌움.
+  const imageClipPath = reversed ? 'inset(0% 0% 0% 58%)' : 'inset(0% 58% 0% 0%)';
+
+  const headingBaseStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    margin: 0,
+    fontSize: 'clamp(2.4rem, 5.6vw, 4.6rem)',
+    fontWeight: '800',
+    lineHeight: '1.1',
+    letterSpacing: '-2px',
+    wordBreak: 'keep-all',
+    whiteSpace: 'nowrap',
+    pointerEvents: 'none',
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translate(-50%, -50%)' : 'translate(-50%, calc(-50% + 24px))',
+    transition: 'opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
+  };
 
   return (
     <div
@@ -87,68 +117,138 @@ function GalleryRow({ item, index, isLast }) {
       style={{
         position: 'relative',
         width: '100%',
-        height: '600px', // 세로 높이를 확실하게 지정
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: reversed ? 'flex-start' : 'flex-end',
-        marginBottom: isLast ? 0 : '200px',
+        marginBottom: isLast ? 0 : '160px',
       }}
     >
-      {/* 이미지 영역 */}
       <div
+        className="kaq-gallery-row-flex"
         style={{
-          width: '60%',
-          height: '100%',
-          borderRadius: '24px',
-          overflow: 'hidden',
-          opacity: inView ? 1 : 0,
-          transform: inView ? 'scale(1)' : 'scale(0.9)',
-          transition: 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
+          display: 'flex',
+          flexDirection: reversed ? 'row-reverse' : 'row',
+          alignItems: 'center',
+          width: '100%',
         }}
       >
-        <img
-          src={`https://picsum.photos/seed/${item.img}/1200/800`}
-          alt={item.kor}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+        {/* 이미지 + 오버레이 라벨 */}
+        <div
+          className="kaq-gallery-row-img"
+          style={{
+            position: 'relative',
+            width: '42%',
+            flexShrink: 0,
+            aspectRatio: '3 / 4',
+            borderRadius: '6px',
+            overflow: 'hidden',
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'scale(1)' : 'scale(0.94)',
+            transition: 'opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <img
+            src={`https://picsum.photos/seed/${item.img}/900/1200`}
+            alt={item.kor}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+
+          {/* 전체 어둡게 깔아주는 톤: 어떤 사진이 들어와도 흰 글자가 항상 잘 읽히도록 */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundColor: 'rgba(0,0,0,0.22)',
+            pointerEvents: 'none',
+          }} />
+
+          {/* 하단 스크림: 영문 라벨 대비를 한 번 더 강화 */}
+          <div style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: '55%',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%)',
+            pointerEvents: 'none',
+          }} />
+
+          {/* 사진 위에 얹히는 영문 라벨 */}
+          <span style={{
+            position: 'absolute',
+            left: '8%',
+            right: '8%',
+            bottom: '7%',
+            fontSize: 'clamp(1.2rem, 2.4vw, 1.9rem)',
+            fontWeight: '800',
+            letterSpacing: '0.5px',
+            lineHeight: '1.2',
+            color: '#f4f2ea',
+            wordBreak: 'keep-all',
+          }}>
+            {item.eng}
+          </span>
+        </div>
+
+        {/* 헤딩이 차지할 여백 확보용 (실제 텍스트는 아래 절대 위치 h2가 담당) */}
+        <div style={{ flex: 1 }} />
       </div>
 
-      {/* 텍스트 영역: mix-blend-mode로 신비한 색상 반전 효과 */}
-      <div
+      {/* 국문 헤드라인 (흰 글자, 기본 레이어) - 행 전체 기준 정중앙 정렬 */}
+      <h2
+        className="kaq-gallery-row-text"
         style={{
-          position: 'absolute',
-          [reversed ? 'right' : 'left']: '10%', // 이미지와 겹치게 배치
-          width: '50%',
-          zIndex: 2,
-          // 핵심: 배경과 대비되는 색상 반전
-          mixBlendMode: 'difference', 
-          opacity: inView ? 1 : 0,
-          transform: inView ? 'translateX(0)' : 'translateX(50px)',
-          transition: 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s',
+          ...headingBaseStyle,
+          zIndex: 3,
+          color: '#eef1f8',
         }}
       >
-        <span style={{
-          display: 'block',
-          fontSize: '14px',
-          fontWeight: '900',
-          letterSpacing: '4px',
-          color: '#ffffff', // 반전 모드에서는 흰색이 보색으로 작용
-          marginBottom: '20px',
-          textTransform: 'uppercase'
-        }}>
-          {item.eng}
-        </span>
-        <h2 style={{
-          fontSize: 'clamp(3rem, 6vw, 5rem)',
-          fontWeight: '900',
-          lineHeight: '1.1',
-          letterSpacing: '-3px',
-          color: '#ffffff',
-          margin: 0,
-        }}>
+        {item.kor}
+      </h2>
+
+      {/* 동일한 헤딩을 똑같이 정중앙 정렬한 뒤, 사진이 있는 자리 모양으로만
+          잘라내서(clip-path) 그 부분만 사진 톤에 가까운 색으로 보이게 함 */}
+      <div
+        className="kaq-gallery-row-tone"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 4,
+          pointerEvents: 'none',
+          clipPath: imageClipPath,
+          WebkitClipPath: imageClipPath,
+        }}
+      >
+        <h2
+          style={{
+            ...headingBaseStyle,
+            color: 'rgba(226, 223, 212, 0.92)',
+          }}
+        >
           {item.kor}
         </h2>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .kaq-gallery-row-flex {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .kaq-gallery-row-img {
+            width: 100% !important;
+            aspect-ratio: 4 / 3 !important;
+          }
+          .kaq-gallery-row-text {
+            position: static !important;
+            left: auto !important;
+            right: auto !important;
+            top: auto !important;
+            transform: none !important;
+            white-space: normal !important;
+            margin-top: 20px !important;
+          }
+          .kaq-gallery-row-tone {
+            display: none !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -168,10 +268,10 @@ export default function GlobalChallengePage() {
   ];
 
   const narratives = [
-    { img: 'kaq-narrative-1', eng: 'As you understand', kor: '국가직무표준(NCS) 접근 방식, 업의 방식을 정의한다!' },
-    { img: 'kaq-narrative-2', eng: 'As you see', kor: '공간안전품질(DSQ) 대시보드, 공간의 안전 품질 수준을 보여준다!' },
-    { img: 'kaq-narrative-3', eng: 'As you feel', kor: 'K-AI Station 체험 부스, 한국형 AI 프롬프트를 체험한다!' },
-    { img: 'kaq-narrative-4', eng: 'As you lead the world', kor: '한국형 AI로 세계로 나아간다!' },
+    { img: 'kaq-narrative-1', eng: 'As you understand', kor: 'NCS 접근방식, 업을 표준으로' },
+    { img: 'kaq-narrative-2', eng: 'As you see', kor: 'DSQ Dashboard, 공간안전을 데이터로' },
+    { img: 'kaq-narrative-3', eng: 'As you feel', kor: 'K-AI Station, 한국형 AI 프롬프트의 시작' },
+    { img: 'kaq-narrative-4', eng: 'As you lead the world', kor: 'Global Challenge, 한국형 AI, 세계를 향해' },
   ];
 
   useEffect(() => {
@@ -285,7 +385,7 @@ export default function GlobalChallengePage() {
       fontFamily: 'sans-serif',
       position: 'relative',
       minHeight: '100vh',
-      overflowX: 'hidden',
+      overflow: 'hidden',
       width: '100%',
       background: `
         radial-gradient(circle at 30% 30%, #110ca6 0%, transparent 45%),
