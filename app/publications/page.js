@@ -25,21 +25,21 @@ export default function PublicationsPage() {
       title: '고객맞춤형 AI 프롬프트',
       titleEn: 'PROMPT',
       desc: '고객이 필요한 AI 프롬프트를 제공합니다. 대중모델, 자체모델, 개별모델을 만들어 AI 기술의 사유화를 연구합니다.',
-      image: '/Gallery1.png'
+      image: '/1.jpg'
     },
     {
       id: 2,
       title: '공간안전품질 대시보드',
       titleEn: 'SAFETY CLOCK',
       desc: '인간은 시간이 필요할 때 시계를 만들었습니다. 그럼에도 불구, 공간 안전이 중요한 현재 시점에 공간의 안전시계가 없습니다. 공간안전품질의 대시보드 표준화를 연구합니다.',
-      image: '/Gallery2.png'
+      image: '/2.jpg'
     },
     {
       id: 3,
       title: '디지털트윈 개발 및 구축',
       titleEn: 'DIGITAL TWIN',
       desc: 'AI는 센서를 기반으로 데이터 축적이 가능할 때 가장 효과적입니다. 측정(M), 추적(T), 연결(C), 통합(I)을 연구합니다. MTCI를 통해서만 미래의 신뢰를 확보할 수 있습니다.',
-      image: '/Gallery3.png'
+      image: '/3.jpg'
     },
   ];
 
