@@ -7,6 +7,7 @@ export default function AboutPage() {
   const [leftVisible, setLeftVisible] = useState(false);
   const [rightVisible, setRightVisible] = useState(false);
   const [careersVisible, setCareersVisible] = useState(false);
+  
 
   // 각 섹션 이동을 위한 Ref 생성
   const topRef = useRef(null);
