@@ -457,7 +457,7 @@ export default function ProductsPage() {
               {/* 좌측 콘텐츠 (볼드 타이틀 + 설명 + 버튼) */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <h3 style={{ fontSize: '32px', fontWeight: '800', color: '#111111', margin: 0, letterSpacing: '-1px' }}>
-                  오픈퀄리티(Open Quality) 기술 사업화 제품
+                  오픈퀄리티(Open Quality) <br/>기술 사업화 제품
                 </h3>
                 
                 <p style={{ fontSize: '15px', color: '#555555', lineHeight: '1.75', margin: 0, maxWidth: '520px' }}>
@@ -496,7 +496,7 @@ export default function ProductsPage() {
                 boxShadow: '0 15px 35px rgba(0,0,0,0.08)'
               }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" 
+                  src="/dsq.jpg" 
                   alt="DSQ Platform Preview" 
                   style={{
                     width: '100%',
