@@ -133,21 +133,21 @@ export default function ProductsPage() {
       title: '시니어 모드',
       desc: '어렵지 않아요. 정겨운 AI가 당신의 이야기를 기다립니다.',
       link: 'https://kai-station.com/senior?from=%2Fhome',
-      image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=600&q=80'
+      image: '/시니어.png'
     },
     {
       id: 'kids',
       title: '어린이 모드',
       desc: '호기심 가득! AI 친구와 함께 상상력을 키워보세요.',
       link: 'https://kai-station.com/kids?from=%2Fhome',
-      image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80'
+      image: '/주니어.png'
     },
     {
       id: 'doran',
       title: '도란도란 모드',
       desc: '도란도란 이야기를 나눠보세요. 따뜻하게 들어주는 AI 친구가 기다립니다.',
       link: 'https://doran-two.vercel.app/',
-      image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80'
+      image: '/도란도란.png'
     },
     {
       id: 'ncs',
@@ -347,7 +347,7 @@ export default function ProductsPage() {
                   <div 
                     key={mode.id}
                     style={{ 
-                      flex: '0 0 280px',
+                      flex: '0 0 290px',
                       height: '500px',
                       borderRadius: '20px',
                       overflow: 'hidden',
