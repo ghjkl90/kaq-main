@@ -1,7 +1,8 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-function CountUpText({ text, trigger, duration = 1400 }) {
+function CountUpText({ text, trigger, duration = 1400, from }) {
   const [display, setDisplay] = useState(text);
   const hasAnimated = useRef(false);
 
@@ -22,6 +23,7 @@ function CountUpText({ text, trigger, duration = 1400 }) {
 
     const numStr = match[0];
     const target = parseFloat(numStr);
+    const startValue = from !== undefined ? from : 0;
     const decimals = numStr.includes('.') ? numStr.split('.')[1].length : 0;
     const prefix = text.slice(0, match.index);
     const suffix = text.slice(match.index + numStr.length);
@@ -34,9 +36,10 @@ function CountUpText({ text, trigger, duration = 1400 }) {
       const elapsed = timestamp - startTime;
       const progress = Math.min(1, elapsed / duration);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = target * eased;
+      const current = startValue + (target - startValue) * eased;
 
-      setDisplay(`${prefix}${current.toFixed(decimals)}${suffix}`);
+      const formatted = decimals > 0 ? current.toFixed(decimals) : Math.round(current).toString();
+      setDisplay(`${prefix}${formatted}${suffix}`);
 
       if (progress < 1) {
         frameId = requestAnimationFrame(animate);
@@ -47,7 +50,7 @@ function CountUpText({ text, trigger, duration = 1400 }) {
 
     frameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameId);
-  }, [trigger, text, duration]);
+  }, [trigger, text, duration, from]);
 
   return <span>{display}</span>;
 }
@@ -77,179 +80,174 @@ function useInView(threshold = 0.2) {
   return [ref, inView];
 }
 
-/* ------------------------------------------------------------------ */
-/*  참고 UI("AI / TECH") 구조:                                         */
-/*  1) 사진 위에 옅은 색 라벨(item.eng)을 얹고, 하단 스크림으로 대비 확보 */
-/*  2) 사진 옆에 진한 색 큰 헤드라인(item.kor)을 음수 마진으로 살짝 겹침 */
-/*  -> mix-blend-mode 없이 순수 레이어링이라 사진 내용과 무관하게 항상   */
-/*     안정적으로 보임                                                  */
-/* ------------------------------------------------------------------ */
-function GalleryRow({ item, index, isLast }) {
-  const [ref, inView] = useInView(0.3);
+function splitHeading(kor) {
+  const idx = kor.indexOf(',');
+  if (idx === -1) return [kor];
+  const first = kor.slice(0, idx + 1).trim();
+  const second = kor.slice(idx + 1).trim();
+  return [first, second];
+}
+
+function NarrativeScene({ item, index, total }) {
+  const headingLines = splitHeading(item.kor);
   const reversed = index % 2 === 1;
+  const sceneRef = useRef(null);
 
-  // 문장을 행 전체 폭 기준으로 정중앙 정렬. 사진과 겹치는 부분만 다른 색으로
-  // 보이게 하기 위해, 사진이 있는 자리(왼쪽 0~42% 또는 오른쪽 58~100%, 고정값)
-  // 모양으로 잘라내는 클리핑 마스크를 사진톤 레이어에 씌움.
-  const imageClipPath = reversed ? 'inset(0% 0% 0% 58%)' : 'inset(0% 58% 0% 0%)';
-
-  const headingBaseStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    margin: 0,
-    fontSize: 'clamp(2.4rem, 5.6vw, 4.6rem)',
-    fontWeight: '800',
-    lineHeight: '1.1',
-    letterSpacing: '-2px',
-    wordBreak: 'keep-all',
-    whiteSpace: 'nowrap',
-    pointerEvents: 'none',
-    opacity: inView ? 1 : 0,
-    transform: inView ? 'translate(-50%, -50%)' : 'translate(-50%, calc(-50% + 24px))',
-    transition: 'opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s',
-  };
+  const { scrollYProgress } = useScroll({
+    target: sceneRef,
+    offset: ['start end', 'end start'],
+  });
+  const imgParallaxY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%']);
 
   return (
-    <div
-      ref={ref}
-      className="kaq-gallery-row"
+    <section
+      ref={sceneRef}
+      className="kaq-narrative-scene"
       style={{
         position: 'relative',
+        height: '100vh',
+        minHeight: '100dvh',
         width: '100%',
-        marginBottom: isLast ? 0 : '160px',
+        scrollSnapAlign: 'start',
+        scrollSnapStop: 'always',
+        overflow: 'hidden',
+        backgroundColor: 'transparent',
+        display: 'flex',
+        alignItems: 'center',
       }}
     >
       <div
-        className="kaq-gallery-row-flex"
+        className="kaq-narrative-flex"
         style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 20px',
+          boxSizing: 'border-box',
           display: 'flex',
           flexDirection: reversed ? 'row-reverse' : 'row',
           alignItems: 'center',
-          width: '100%',
+          justifyContent: 'space-between',
+          gap: '40px',
         }}
       >
-        {/* 이미지 + 오버레이 라벨 */}
-        <div
-          className="kaq-gallery-row-img"
-          style={{
-            position: 'relative',
-            width: '42%',
-            flexShrink: 0,
-            aspectRatio: '3 / 4',
-            borderRadius: '6px',
-            overflow: 'hidden',
-            opacity: inView ? 1 : 0,
-            transform: inView ? 'scale(1)' : 'scale(0.94)',
-            transition: 'opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1)',
-          }}
-        >
-          <img
-            src={`https://picsum.photos/seed/${item.img}/900/1200`}
-            alt={item.kor}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
+        {/* 텍스트 그룹: 캡션 -> 헤드라인 순으로 stagger */}
+        <div style={{ position: 'relative', zIndex: 2, flex: '0 1 480px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.4, margin: '0px 0px -18% 0px', once: false }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              marginBottom: '20px',
+            }}
+          >
+            <span style={{
+              fontSize: '13px',
+              fontWeight: '700',
+              letterSpacing: '2px',
+              color: '#8fb4ff',
+            }}>
+              {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </span>
+            <span style={{ width: '1px', height: '12px', backgroundColor: 'rgba(255,255,255,0.3)' }} />
+            <span style={{
+              fontSize: '13px',
+              fontWeight: '700',
+              letterSpacing: '1px',
+              color: 'rgba(255,255,255,0.65)',
+            }}>
+              {item.eng}
+            </span>
+          </motion.div>
 
-          {/* 전체 어둡게 깔아주는 톤: 어떤 사진이 들어와도 흰 글자가 항상 잘 읽히도록 */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundColor: 'rgba(0,0,0,0.22)',
-            pointerEvents: 'none',
-          }} />
-
-          {/* 하단 스크림: 영문 라벨 대비를 한 번 더 강화 */}
-          <div style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: '55%',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%)',
-            pointerEvents: 'none',
-          }} />
-
-          {/* 사진 위에 얹히는 영문 라벨 */}
-          <span style={{
-            position: 'absolute',
-            left: '8%',
-            right: '8%',
-            bottom: '7%',
-            fontSize: 'clamp(1.2rem, 2.4vw, 1.9rem)',
-            fontWeight: '800',
-            letterSpacing: '0.5px',
-            lineHeight: '1.2',
-            color: '#f4f2ea',
-            wordBreak: 'keep-all',
-          }}>
-            {item.eng}
-          </span>
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.4, margin: '0px 0px -18% 0px', once: false }}
+            transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              fontSize: 'clamp(2rem, 3.4vw, 2.9rem)',
+              fontWeight: '800',
+              lineHeight: '1.4',
+              letterSpacing: '-1.5px',
+              color: '#ffffff',
+              margin: 0,
+              wordBreak: 'keep-all',
+            }}
+          >
+            {headingLines.map((line, li) => (
+              <div key={li}>{line}</div>
+            ))}
+          </motion.h2>
         </div>
 
-        {/* 헤딩이 차지할 여백 확보용 (실제 텍스트는 아래 절대 위치 h2가 담당) */}
-        <div style={{ flex: 1 }} />
-      </div>
+        {/* 사진: 가장 늦게 등장 + 스크롤 내내 미세 패럴랙스 */}
+        <div style={{
+          position: 'relative',
+          flex: '0 1 520px',
+          width: '100%',
+          maxWidth: '520px',
+        }}>
+          <span aria-hidden="true" style={{
+            position: 'absolute',
+            top: '-8%',
+            [reversed ? 'left' : 'right']: '-6%',
+            fontSize: 'clamp(6rem, 14vw, 11rem)',
+            fontWeight: '800',
+            color: 'rgba(255,255,255,0.06)',
+            lineHeight: 1,
+            zIndex: 0,
+            pointerEvents: 'none',
+            userSelect: 'none',
+          }}>
+            {String(index + 1).padStart(2, '0')}
+          </span>
 
-      {/* 국문 헤드라인 (흰 글자, 기본 레이어) - 행 전체 기준 정중앙 정렬 */}
-      <h2
-        className="kaq-gallery-row-text"
-        style={{
-          ...headingBaseStyle,
-          zIndex: 3,
-          color: '#eef1f8',
-        }}
-      >
-        {item.kor}
-      </h2>
-
-      {/* 동일한 헤딩을 똑같이 정중앙 정렬한 뒤, 사진이 있는 자리 모양으로만
-          잘라내서(clip-path) 그 부분만 사진 톤에 가까운 색으로 보이게 함 */}
-      <div
-        className="kaq-gallery-row-tone"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 4,
-          pointerEvents: 'none',
-          clipPath: imageClipPath,
-          WebkitClipPath: imageClipPath,
-        }}
-      >
-        <h2
-          style={{
-            ...headingBaseStyle,
-            color: 'rgba(226, 223, 212, 0.92)',
-          }}
-        >
-          {item.kor}
-        </h2>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 60 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ amount: 0.4, margin: '0px 0px -18% 0px', once: false }}
+            transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'relative',
+              aspectRatio: '4 / 5',
+              borderRadius: '10px',
+              overflow: 'hidden',
+              zIndex: 1,
+              boxShadow: '0 30px 70px -25px rgba(0,0,0,0.5)',
+              border: '1px solid rgba(255,255,255,0.08)',
+            }}
+          >
+            <motion.img
+              src={`https://picsum.photos/seed/${item.img}/900/1200`}
+              alt={item.kor}
+              style={{
+                width: '100%',
+                height: '116%',
+                objectFit: 'cover',
+                display: 'block',
+                y: imgParallaxY,
+              }}
+            />
+          </motion.div>
+        </div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .kaq-gallery-row-flex {
+          .kaq-narrative-flex {
             flex-direction: column !important;
-            align-items: stretch !important;
-          }
-          .kaq-gallery-row-img {
-            width: 100% !important;
-            aspect-ratio: 4 / 3 !important;
-          }
-          .kaq-gallery-row-text {
-            position: static !important;
-            left: auto !important;
-            right: auto !important;
-            top: auto !important;
-            transform: none !important;
-            white-space: normal !important;
-            margin-top: 20px !important;
-          }
-          .kaq-gallery-row-tone {
-            display: none !important;
+            justify-content: center !important;
+            gap: 32px !important;
           }
         }
       `}</style>
-    </div>
+    </section>
   );
 }
 
@@ -257,14 +255,13 @@ export default function GlobalChallengePage() {
   const [isMounted, setIsMounted] = useState(false);
   const globeContainerRef = useRef(null);
 
-  const [galleryRef, galleryInView] = useInView(0.15);
   const [statsRef, statsInView] = useInView(0.2);
 
   const stats = [
-    { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축' },
-    { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증' },
-    { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도' },
-    { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약' }
+    { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축', animate: true },
+    { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증', animate: true },
+    { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도', animate: true },
+    { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약', animate: true, countFrom: 9 }
   ];
 
   const narratives = [
@@ -403,6 +400,14 @@ export default function GlobalChallengePage() {
           50% { background-position: 50% 100%; }
           100% { background-position: 100% 0%; }
         }
+        html {
+          scroll-snap-type: y mandatory;
+        }
+        @media (max-width: 768px) {
+          html {
+            scroll-snap-type: none;
+          }
+        }
       `}</style>
 
       {/* 배경 3D 도트 지구 구체 */}
@@ -422,72 +427,71 @@ export default function GlobalChallengePage() {
       />
 
       <div style={{ 
-  maxWidth: '1200px', 
-  margin: '0 auto', 
-  padding: '360px 20px 360px 20px', // 위 360px, 아래 360px 적용
-  position: 'relative', 
-  zIndex: 1, 
-  boxSizing: 'border-box' 
-}}>
-  <div style={{
-    maxWidth: '800px',
-    opacity: isMounted ? 1 : 0,
-    transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
-    transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
-  }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-      <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase' }}>
-        KAQ GLOBAL CHALLENGE
-      </span>
-      <span style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.25)' }}></span>
-    </div>
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        padding: '360px 20px 360px 20px',
+        position: 'relative', 
+        zIndex: 1, 
+        boxSizing: 'border-box' 
+      }}>
+        <div style={{
+          maxWidth: '800px',
+          opacity: isMounted ? 1 : 0,
+          transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+            <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase' }}>
+              KAQ GLOBAL CHALLENGE
+            </span>
+            <span style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.25)' }}></span>
+          </div>
 
-    <h1 style={{
-      fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-      fontWeight: 800,
-      lineHeight: 1.35,
-      margin: '0 0 24px 0',
-      wordBreak: 'keep-all',
-      letterSpacing: '-2px',
-      color: '#ffffff'
-    }}>
-      Beyond Research, <br />세계 표준을 선도하는 <br /> Pro-Search
-    </h1>
+          <h1 style={{
+            fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+            fontWeight: 800,
+            lineHeight: 1.35,
+            margin: '0 0 24px 0',
+            wordBreak: 'keep-all',
+            letterSpacing: '-2px',
+            color: '#ffffff'
+          }}>
+            Beyond Research, <br />세계 표준을 선도하는 <br /> Pro-Search
+          </h1>
 
-    <p style={{
-      fontSize: '16px',
-      color: '#f0f4ff',
-      opacity: 0.9,
-      lineHeight: '1.8',
-      fontWeight: '400',
-      wordBreak: 'keep-all',
-      margin: 0 // 여백 조정을 위해 마진 0 처리
-    }}>
-      패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
-    </p>
-  </div>
-</div>
+          <p style={{
+            fontSize: '16px',
+            color: '#f0f4ff',
+            opacity: 0.9,
+            lineHeight: '1.8',
+            fontWeight: '400',
+            wordBreak: 'keep-all',
+            margin: 0
+          }}>
+            패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
+          </p>
+        </div>
+      </div>
 
-      {/* 갤러리 섹션 */}
+      {/* 섹션 인트로 라벨 */}
       <div
-        ref={galleryRef}
         style={{
           position: 'relative',
           zIndex: 2,
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px 120px 20px',
+          padding: '0 20px 80px 20px',
           boxSizing: 'border-box',
         }}
       >
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 60px 0' }} />
 
-        <div style={{
-          marginBottom: '60px',
-          opacity: galleryInView ? 1 : 0,
-          transform: galleryInView ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'opacity 1s ease, transform 1s ease',
-        }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.3, margin: '0px 0px -5% 0px', once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span style={{
             display: 'inline-block',
             fontSize: '13px',
@@ -510,13 +514,14 @@ export default function GlobalChallengePage() {
           }}>
             연구를 넘어, 세계가 참고하는 기준을 만드는 것이 <br />KAQ가 가장 잘하는 일입니다.
           </h3>
-        </div>
+        </motion.div>
+      </div>
 
-        <div>
-          {narratives.map((item, i) => (
-            <GalleryRow key={i} item={item} index={i} isLast={i === narratives.length - 1} />
-          ))}
-        </div>
+      {/* 풀스크린 scroll-snap 내러티브 씬 */}
+      <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+        {narratives.map((item, i) => (
+          <NarrativeScene key={i} item={item} index={i} total={narratives.length} />
+        ))}
       </div>
 
       {/* 하단 대시보드 및 지표 카운터 영역 */}
@@ -561,15 +566,13 @@ export default function GlobalChallengePage() {
                     boxSizing: 'border-box',
                   }}>
                     <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      marginBottom: '20px'
+                      fontSize: '15px',
+                      fontWeight: '800',
+                      color: '#0052ff',
+                      letterSpacing: '1.5px',
+                      marginBottom: '20px',
                     }}>
-                      
-                      <span style={{ fontSize: '13px', color: '#64748b', fontWeight: '700', letterSpacing: '2px' }}>
-                        {stat.label}
-                      </span>
+                      {stat.label}
                     </div>
 
                     <div style={{
@@ -581,7 +584,11 @@ export default function GlobalChallengePage() {
                       letterSpacing: '-1px',
                       marginBottom: '10px',
                     }}>
-                      <CountUpText text={stat.value} trigger={statsInView} />
+                      {stat.animate ? (
+                        <CountUpText text={stat.value} trigger={statsInView} from={stat.countFrom} />
+                      ) : (
+                        stat.value
+                      )}
                     </div>
 
                     <div style={{
@@ -593,7 +600,7 @@ export default function GlobalChallengePage() {
                       {stat.unit}
                     </div>
 
-                    <p style={{ fontSize: '15px', color: '#334155', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
+                    <p style={{ fontSize: '15px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
                       {stat.desc}
                     </p>
                   </div>
