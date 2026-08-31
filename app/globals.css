@@ -1,6 +1,40 @@
 /* ------------------------------------------------------------- */
 /* 프로젝트 좌우 분할 스크롤 레이아웃 */
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+
+html, body {
+
+  margin: 0;
+
+  padding: 0;
+
+  width: 100%;
+
+  background-color: #000000; /* 전체 배경을 검정색으로 고정 */
+
+  overflow-x: hidden;
+
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif !important;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+
+} 
+
+
+
 .projectSection {
   position: relative;
   display: flex;

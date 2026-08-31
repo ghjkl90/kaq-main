@@ -212,33 +212,6 @@ function NarrativeScene({ item, index, total }) {
           </motion.div>
         </div>
       </div>
-
-      <style>{`
-        .challenge-narrative-title {
-          font-size: 32px;
-          font-weight: 800;
-          line-height: 1.35;
-          letter-spacing: -1px;
-          color: #ffffff;
-          margin: 0;
-          word-break: keep-all;
-        }
-        @media (max-width: 768px) {
-          .kaq-narrative-scene {
-            height: auto !important;
-            min-height: auto !important;
-            padding: 60px 0 !important;
-          }
-          .kaq-narrative-flex {
-            flex-direction: column !important;
-            justify-content: center !important;
-            gap: 32px !important;
-          }
-          .challenge-narrative-title {
-            font-size: 20px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
@@ -384,19 +357,82 @@ export default function GlobalChallengePage() {
           50% { background-position: 50% 100%; }
           100% { background-position: 100% 0%; }
         }
+
+        /* 💻 PC 웹: 원본 42px / 32px 그대로 유지 */
         .challenge-main-title {
           font-size: 42px;
           font-weight: 800;
           line-height: 1.35;
-          letter-spacing: -2px;
+          letter-spacing: -1.5px;
           color: #ffffff;
           margin: 0 0 24px 0;
           word-break: keep-all;
         }
+        .challenge-intro-h3 {
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 1.35;
+          letter-spacing: -1px;
+          margin: 0;
+          color: #ffffff;
+          word-break: keep-all;
+        }
+        .challenge-narrative-title {
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 1.35;
+          letter-spacing: -1px;
+          color: #ffffff;
+          margin: 0;
+          word-break: keep-all;
+        }
+        .challenge-stats-h2 {
+          font-size: 32px;
+          font-weight: 800;
+          margin-bottom: 50px;
+          letter-spacing: -1px;
+          color: #0f172a;
+        }
+        .challenge-stat-number {
+          font-size: 42px;
+          font-weight: 800;
+          color: #0052ff;
+          line-height: 1;
+          letter-spacing: -1px;
+          margin-bottom: 10px;
+        }
+
+        /* 📱 모바일(768px 이하): 다른 페이지와 정확히 동일한 크기로 축소 */
         @media (max-width: 768px) {
           .challenge-main-title {
             font-size: 24px !important;
             letter-spacing: -1.5px !important;
+            margin-bottom: 16px !important;
+          }
+          .challenge-intro-h3 {
+            font-size: 20px !important;
+            line-height: 1.4 !important;
+          }
+          .challenge-narrative-title {
+            font-size: 20px !important;
+            line-height: 1.4 !important;
+          }
+          .challenge-stats-h2 {
+            font-size: 20px !important;
+            margin-bottom: 30px !important;
+          }
+          .challenge-stat-number {
+            font-size: 32px !important;
+          }
+          .kaq-narrative-scene {
+            height: auto !important;
+            min-height: auto !important;
+            padding: 60px 0 !important;
+          }
+          .kaq-narrative-flex {
+            flex-direction: column !important;
+            justify-content: center !important;
+            gap: 32px !important;
           }
         }
       `}</style>
@@ -422,7 +458,7 @@ export default function GlobalChallengePage() {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '240px 20px 160px 20px',
+          padding: '140px 20px 80px 20px',
           position: 'relative',
           zIndex: 1,
           boxSizing: 'border-box',
@@ -430,7 +466,7 @@ export default function GlobalChallengePage() {
       >
         <div
           style={{
-            maxWidth: '800px',
+            maxWidth: '850px',
             opacity: isMounted ? 1 : 0,
             transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)',
@@ -449,10 +485,10 @@ export default function GlobalChallengePage() {
 
           <p
             style={{
-              fontSize: '16px',
+              fontSize: '15px',
               color: '#f0f4ff',
               opacity: 0.9,
-              lineHeight: '1.8',
+              lineHeight: '1.75',
               fontWeight: '400',
               wordBreak: 'keep-all',
               margin: 0,
@@ -470,11 +506,11 @@ export default function GlobalChallengePage() {
           zIndex: 2,
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px 80px 20px',
+          padding: '0 20px 60px 20px',
           boxSizing: 'border-box',
         }}
       >
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 60px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 50px 0' }} />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -489,23 +525,13 @@ export default function GlobalChallengePage() {
               fontWeight: '800',
               letterSpacing: '2px',
               color: '#8fb4ff',
-              marginBottom: '16px',
+              marginBottom: '14px',
               textTransform: 'uppercase',
             }}
           >
             GLOBAL
           </span>
-          <h3
-            style={{
-              fontSize: '32px',
-              fontWeight: '800',
-              lineHeight: '1.35',
-              letterSpacing: '-1px',
-              margin: 0,
-              color: '#ffffff',
-              wordBreak: 'keep-all',
-            }}
-          >
+          <h3 className="challenge-intro-h3">
             연구를 넘어, 세계가 참고하는 기준을 만드는 것이 <br />KAQ가 가장 잘하는 일입니다.
           </h3>
         </motion.div>
@@ -525,7 +551,7 @@ export default function GlobalChallengePage() {
             width: '100%',
             backgroundColor: '#ffffff',
             boxShadow: '0 -40px 80px rgba(0, 0, 0, 0.08)',
-            padding: '130px 20px 150px 20px',
+            padding: '100px 20px 120px 20px',
             boxSizing: 'border-box',
           }}
         >
@@ -538,23 +564,15 @@ export default function GlobalChallengePage() {
                 transition: 'opacity 1s ease, transform 1s ease',
               }}
             >
-              <h2
-                style={{
-                  fontSize: '32px',
-                  fontWeight: '800',
-                  marginBottom: '50px',
-                  letterSpacing: '-1px',
-                  color: '#0f172a',
-                }}
-              >
+              <h2 className="challenge-stats-h2">
                 숫자로 입증하는 KAQ 글로벌 신뢰도
               </h2>
 
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                  gap: '30px',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                  gap: '24px',
                 }}
               >
                 {stats.map((stat, i) => (
@@ -564,32 +582,23 @@ export default function GlobalChallengePage() {
                       backgroundColor: '#f8fafc',
                       border: '1px solid #e2e8f0',
                       borderRadius: '12px',
-                      padding: '35px 30px',
+                      padding: '30px 24px',
                       boxSizing: 'border-box',
                     }}
                   >
                     <div
                       style={{
-                        fontSize: '15px',
+                        fontSize: '13px',
                         fontWeight: '800',
                         color: '#0052ff',
-                        letterSpacing: '1.5px',
-                        marginBottom: '20px',
+                        letterSpacing: '1.2px',
+                        marginBottom: '14px',
                       }}
                     >
                       {stat.label}
                     </div>
 
-                    <div
-                      style={{
-                        fontSize: '42px',
-                        fontWeight: '800',
-                        color: '#0052ff',
-                        lineHeight: '1',
-                        letterSpacing: '-1px',
-                        marginBottom: '10px',
-                      }}
-                    >
+                    <div className="challenge-stat-number">
                       {stat.animate ? (
                         <CountUpText text={stat.value} trigger={statsInView} from={stat.countFrom} />
                       ) : (
@@ -602,13 +611,13 @@ export default function GlobalChallengePage() {
                         fontSize: '13px',
                         fontWeight: '600',
                         color: '#0052ff',
-                        marginBottom: '15px',
+                        marginBottom: '12px',
                       }}
                     >
                       {stat.unit}
                     </div>
 
-                    <p style={{ fontSize: '15px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
+                    <p style={{ fontSize: '14px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
                       {stat.desc}
                     </p>
                   </div>

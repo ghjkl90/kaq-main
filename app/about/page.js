@@ -314,18 +314,19 @@ export default function AboutPage() {
                     onMouseEnter={() => setHoveredCardId(job.id)}
                     onMouseLeave={() => setHoveredCardId(null)}
                     onClick={() => handleOpenApply(job.title)}
-                    style={{ 
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '28px 0',
-                      borderBottom: '1px solid #eee',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      backgroundColor: isHovered ? '#fafafa' : 'transparent',
-                      paddingLeft: isHovered ? '12px' : '0px',
-                      paddingRight: isHovered ? '12px' : '0px',
-                    }}
+                    style={{
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  paddingTop: '32px',
+  paddingBottom: '32px',
+  paddingLeft: isHovered ? '12px' : '0px',
+  paddingRight: isHovered ? '12px' : '0px',
+  borderBottom: '1px solid #eee',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  backgroundColor: isHovered ? '#fafafa' : 'transparent',
+}}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       <span style={{ fontSize: '13px', color: '#888', fontWeight: '500' }}>
