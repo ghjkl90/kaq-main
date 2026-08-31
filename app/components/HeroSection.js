@@ -30,6 +30,30 @@ export default function HeroSection({ onOpenContact }) {
 
   return (
     <section className={styles.heroVideoSection}>
+      <style>{`
+        @media (max-width: 768px) {
+          .${styles.mainCopy} {
+            font-size: 28px !important;
+            line-height: 1.3 !important;
+            letter-spacing: -1px !important;
+          }
+
+          .${styles.mainCopy} span {
+            font-size: 20px !important;
+            line-height: 1.35 !important;
+            letter-spacing: -0.8px !important;
+            margin-top: 12px !important;
+            display: block;
+          }
+
+          .${styles.subCopy} {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            margin-top: 18px !important;
+          }
+        }
+      `}</style>
+
       <video className={styles.bgVideoCustomScale} autoPlay loop muted playsInline>
         <source src="/Title_Premium_Cinematic_Hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
