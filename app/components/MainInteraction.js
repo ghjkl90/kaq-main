@@ -89,12 +89,11 @@ export default function MainInteraction() {
   }, [updateTransformOrigin]);
 
   return (
-    /* 💡 컨테이너 전체 배경을 명확한 검정색(#000000)으로 설정 */
     <div ref={containerRef} className={styles.scrollContainer} style={{ backgroundColor: "#000000" }}>
       <div ref={animationWrapperRef} className={styles.stickyScene} style={{ backgroundColor: "#000000" }}>
         <div ref={flowerRef} className={styles.flowerLayer}></div>
         <div ref={facesRef} className={styles.facesLayer}></div>
-        <div ref-whiteOverlayRef={whiteOverlayRef} ref={whiteOverlayRef} className={styles.whiteOverlay}></div>
+        <div ref={whiteOverlayRef} className={styles.whiteOverlay}></div>
         <div ref={contentRef} className={styles.contentBox}>
           <h1>
             월드 클래스 대한민국의 거리 풍경, <br />

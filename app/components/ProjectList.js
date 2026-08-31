@@ -47,7 +47,8 @@ export default function ProjectList() {
       description: "성균관대학교 스마트품질연구실이 개발한 오픈퀄리티(Open Quality)의 기술 사업화 제품. AI 센싱과 디지털트윈으로 안전 생태계를 바꿉니다.",
       image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200", 
       btnText: "플랫폼 둘러보기",
-      link: "http://openq.co.kr:8082/",
+      //link: "http://openq.co.kr:8082/",
+      link: "/DSQ",
       features: [
         {
           icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" /></svg>,
