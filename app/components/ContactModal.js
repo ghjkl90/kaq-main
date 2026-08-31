@@ -1,6 +1,5 @@
 "use client";
 
-// 💡 동일하게 한 단계 위 폴더의 스타일시트를 바라보도록 맞춥니다.
 import styles from "../page.module.css"; 
 
 export default function ContactModal({ isOpen, onClose }) {

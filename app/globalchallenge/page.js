@@ -105,8 +105,7 @@ function NarrativeScene({ item, index, total }) {
       className="kaq-narrative-scene"
       style={{
         position: 'relative',
-        height: '100vh',
-        minHeight: '100dvh',
+        minHeight: '100vh',
         width: '100%',
         scrollSnapAlign: 'start',
         scrollSnapStop: 'always',
@@ -114,6 +113,7 @@ function NarrativeScene({ item, index, total }) {
         backgroundColor: 'transparent',
         display: 'flex',
         alignItems: 'center',
+        padding: '60px 0',
       }}
     >
       <div
@@ -123,21 +123,21 @@ function NarrativeScene({ item, index, total }) {
           width: '100%',
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px',
+          padding: '0 24px',
           boxSizing: 'border-box',
           display: 'flex',
           flexDirection: reversed ? 'row-reverse' : 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '40px',
+          gap: '48px',
         }}
       >
-        {/* 텍스트 그룹: 캡션 -> 헤드라인 순으로 stagger */}
-        <div style={{ position: 'relative', zIndex: 2, flex: '0 1 480px' }}>
+        {/* 텍스트 그룹 */}
+        <div style={{ position: 'relative', zIndex: 2, flex: '1 1 480px', width: '100%' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ amount: 0.4, margin: '0px 0px -18% 0px', once: false }}
+            viewport={{ amount: 0.3, once: false }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             style={{
               display: 'flex',
@@ -146,21 +146,25 @@ function NarrativeScene({ item, index, total }) {
               marginBottom: '20px',
             }}
           >
-            <span style={{
-              fontSize: '13px',
-              fontWeight: '700',
-              letterSpacing: '2px',
-              color: '#8fb4ff',
-            }}>
+            <span
+              style={{
+                fontSize: '13px',
+                fontWeight: '700',
+                letterSpacing: '2px',
+                color: '#8fb4ff',
+              }}
+            >
               {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
             <span style={{ width: '1px', height: '12px', backgroundColor: 'rgba(255,255,255,0.3)' }} />
-            <span style={{
-              fontSize: '13px',
-              fontWeight: '700',
-              letterSpacing: '1px',
-              color: 'rgba(255,255,255,0.65)',
-            }}>
+            <span
+              style={{
+                fontSize: '13px',
+                fontWeight: '700',
+                letterSpacing: '1px',
+                color: 'rgba(255,255,255,0.75)',
+              }}
+            >
               {item.eng}
             </span>
           </motion.div>
@@ -168,10 +172,10 @@ function NarrativeScene({ item, index, total }) {
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ amount: 0.4, margin: '0px 0px -18% 0px', once: false }}
+            viewport={{ amount: 0.3, once: false }}
             transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              fontSize: 'clamp(2rem, 3.4vw, 2.9rem)',
+              fontSize: 'clamp(1.8rem, 3.2vw, 2.8rem)',
               fontWeight: '800',
               lineHeight: '1.4',
               letterSpacing: '-1.5px',
@@ -186,46 +190,53 @@ function NarrativeScene({ item, index, total }) {
           </motion.h2>
         </div>
 
-        {/* 사진: 가장 늦게 등장 + 스크롤 내내 미세 패럴랙스 */}
-        <div style={{
-          position: 'relative',
-          flex: '0 1 520px',
-          width: '100%',
-          maxWidth: '520px',
-        }}>
-          <span aria-hidden="true" style={{
-            position: 'absolute',
-            top: '-8%',
-            [reversed ? 'left' : 'right']: '-6%',
-            fontSize: 'clamp(6rem, 14vw, 11rem)',
-            fontWeight: '800',
-            color: 'rgba(255,255,255,0.06)',
-            lineHeight: 1,
-            zIndex: 0,
-            pointerEvents: 'none',
-            userSelect: 'none',
-          }}>
+        {/* 고화질 사진 패널 */}
+        <div
+          style={{
+            position: 'relative',
+            flex: '1 1 500px',
+            width: '100%',
+            maxWidth: '520px',
+          }}
+        >
+          <span
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '-8%',
+              [reversed ? 'left' : 'right']: '-6%',
+              fontSize: 'clamp(5rem, 12vw, 10rem)',
+              fontWeight: '800',
+              color: 'rgba(255,255,255,0.06)',
+              lineHeight: 1,
+              zIndex: 0,
+              pointerEvents: 'none',
+              userSelect: 'none',
+            }}
+          >
             {String(index + 1).padStart(2, '0')}
           </span>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 60 }}
+            initial={{ opacity: 0, scale: 0.9, y: 50 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ amount: 0.4, margin: '0px 0px -18% 0px', once: false }}
-            transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ amount: 0.3, once: false }}
+            transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'relative',
               aspectRatio: '4 / 5',
-              borderRadius: '10px',
+              borderRadius: '16px',
               overflow: 'hidden',
               zIndex: 1,
-              boxShadow: '0 30px 70px -25px rgba(0,0,0,0.5)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0 30px 70px -20px rgba(0,0,0,0.4)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              backgroundColor: '#1b3b8b',
             }}
           >
             <motion.img
-              src={`https://picsum.photos/seed/${item.img}/900/1200`}
+              src={item.img}
               alt={item.kor}
+              loading="lazy"
               style={{
                 width: '100%',
                 height: '116%',
@@ -240,10 +251,15 @@ function NarrativeScene({ item, index, total }) {
 
       <style>{`
         @media (max-width: 768px) {
+          .kaq-narrative-scene {
+            height: auto !important;
+            min-height: auto !important;
+            padding: 80px 0 !important;
+          }
           .kaq-narrative-flex {
             flex-direction: column !important;
             justify-content: center !important;
-            gap: 32px !important;
+            gap: 36px !important;
           }
         }
       `}</style>
@@ -261,14 +277,31 @@ export default function GlobalChallengePage() {
     { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축', animate: true },
     { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증', animate: true },
     { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도', animate: true },
-    { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약', animate: true, countFrom: 9 }
+    { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약', animate: true, countFrom: 9 },
   ];
 
+
   const narratives = [
-    { img: 'kaq-narrative-1', eng: 'As you understand', kor: 'NCS 접근방식, 업을 표준으로' },
-    { img: 'kaq-narrative-2', eng: 'As you see', kor: 'DSQ Dashboard, 공간안전을 데이터로' },
-    { img: 'kaq-narrative-3', eng: 'As you feel', kor: 'K-AI Station, 한국형 AI 프롬프트의 시작' },
-    { img: 'kaq-narrative-4', eng: 'As you lead the world', kor: 'Global Challenge, 한국형 AI, 세계를 향해' },
+    {
+      img: '/7.png',
+      eng: 'As you understand',
+      kor: 'NCS 접근방식, 업을 표준으로',
+    },
+    {
+      img: '/4.png',
+      eng: 'As you see',
+      kor: 'DSQ Dashboard, 공간안전을 데이터로',
+    },
+    {
+      img: '/5.png',
+      eng: 'As you feel',
+      kor: 'K-AI Station, 한국형 AI 프롬프트의 시작',
+    },
+    {
+      img: '/6.png',
+      eng: 'As you lead the world',
+      kor: 'Global Challenge, 한국형 AI, 세계를 향해',
+    },
   ];
 
   useEffect(() => {
@@ -290,7 +323,7 @@ export default function GlobalChallengePage() {
       let width = (canvas.width = window.innerWidth);
       let height = (canvas.height = window.innerHeight);
 
-      const particleCount = width < 768 ? 1100 : 2200;
+      const particleCount = width < 768 ? 900 : 1800;
       const particles = [];
       let globeRadius = Math.min(width, height) * 0.40;
 
@@ -300,7 +333,7 @@ export default function GlobalChallengePage() {
         particles.push({
           baseX: globeRadius * Math.sin(phi) * Math.cos(theta),
           baseY: globeRadius * Math.sin(phi) * Math.sin(theta),
-          baseZ: globeRadius * Math.cos(phi)
+          baseZ: globeRadius * Math.cos(phi),
         });
       }
 
@@ -376,37 +409,29 @@ export default function GlobalChallengePage() {
   }, []);
 
   return (
-    <div style={{
-      backgroundColor: '#2861fd',
-      color: '#ffffff',
-      fontFamily: 'sans-serif',
-      position: 'relative',
-      minHeight: '100vh',
-      overflow: 'hidden',
-      width: '100%',
-      background: `
-        radial-gradient(circle at 30% 30%, #110ca6 0%, transparent 45%),
-        radial-gradient(circle at 80% 40%, #0692a8 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, #1ea9d9 0%, transparent 55%),
-        #2861fd
-      `,
-      backgroundSize: '150% 150%',
-      animation: 'auroraChallengeBg 20s ease-in-out infinite alternate',
-    }}>
-
+    <div
+      style={{
+        backgroundColor: '#2861fd',
+        color: '#ffffff',
+        position: 'relative',
+        minHeight: '100vh',
+        overflow: 'hidden',
+        width: '100%',
+        background: `
+          radial-gradient(circle at 30% 30%, #110ca6 0%, transparent 45%),
+          radial-gradient(circle at 80% 40%, #0692a8 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, #1ea9d9 0%, transparent 55%),
+          #2861fd
+        `,
+        backgroundSize: '150% 150%',
+        animation: 'auroraChallengeBg 20s ease-in-out infinite alternate',
+      }}
+    >
       <style>{`
         @keyframes auroraChallengeBg {
           0% { background-position: 0% 0%; }
           50% { background-position: 50% 100%; }
           100% { background-position: 100% 0%; }
-        }
-        html {
-          scroll-snap-type: y mandatory;
-        }
-        @media (max-width: 768px) {
-          html {
-            scroll-snap-type: none;
-          }
         }
       `}</style>
 
@@ -426,48 +451,65 @@ export default function GlobalChallengePage() {
         }}
       />
 
-      <div style={{ 
-        maxWidth: '1200px', 
-        margin: '0 auto', 
-        padding: '360px 20px 360px 20px',
-        position: 'relative', 
-        zIndex: 1, 
-        boxSizing: 'border-box' 
-      }}>
-        <div style={{
-          maxWidth: '800px',
-          opacity: isMounted ? 1 : 0,
-          transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
-          transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
-        }}>
+      {/* 헤더 인트로 */}
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '240px 24px 160px 24px',
+          position: 'relative',
+          zIndex: 1,
+          boxSizing: 'border-box',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '800px',
+            opacity: isMounted ? 1 : 0,
+            transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)',
+          }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-            <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '700', letterSpacing: '2px', textTransform: 'uppercase' }}>
+            <span
+              style={{
+                fontSize: '13px',
+                color: '#cbd5e1',
+                fontWeight: '700',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+              }}
+            >
               KAQ GLOBAL CHALLENGE
             </span>
             <span style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.25)' }}></span>
           </div>
 
-          <h1 style={{
-            fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-            fontWeight: 800,
-            lineHeight: 1.35,
-            margin: '0 0 24px 0',
-            wordBreak: 'keep-all',
-            letterSpacing: '-2px',
-            color: '#ffffff'
-          }}>
+          <h1
+            style={{
+              fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+              fontWeight: 800,
+              lineHeight: 1.3,
+              margin: '0 0 24px 0',
+              wordBreak: 'keep-all',
+              letterSpacing: '-2px',
+              color: '#ffffff',
+            }}
+          >
             Beyond Research, <br />세계 표준을 선도하는 <br /> Pro-Search
           </h1>
 
-          <p style={{
-            fontSize: '16px',
-            color: '#f0f4ff',
-            opacity: 0.9,
-            lineHeight: '1.8',
-            fontWeight: '400',
-            wordBreak: 'keep-all',
-            margin: 0
-          }}>
+          <p
+            style={{
+              fontSize: '16px',
+              color: '#f0f4ff',
+              opacity: 0.9,
+              lineHeight: '1.8',
+              fontWeight: '400',
+              wordBreak: 'keep-all',
+              margin: 0,
+            }}
+          >
             패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
           </p>
         </div>
@@ -480,38 +522,42 @@ export default function GlobalChallengePage() {
           zIndex: 2,
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px 80px 20px',
+          padding: '0 24px 60px 24px',
           boxSizing: 'border-box',
         }}
       >
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 60px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 50px 0' }} />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ amount: 0.3, margin: '0px 0px -5% 0px', once: true }}
+          viewport={{ amount: 0.3, once: true }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span style={{
-            display: 'inline-block',
-            fontSize: '13px',
-            fontWeight: '700',
-            letterSpacing: '2px',
-            color: '#8fb4ff',
-            marginBottom: '16px',
-            textTransform: 'uppercase'
-          }}>
+          <span
+            style={{
+              display: 'inline-block',
+              fontSize: '13px',
+              fontWeight: '700',
+              letterSpacing: '2px',
+              color: '#8fb4ff',
+              marginBottom: '16px',
+              textTransform: 'uppercase',
+            }}
+          >
             GLOBAL
           </span>
-          <h3 style={{
-            fontSize: '32px',
-            fontWeight: '800',
-            lineHeight: '1.35',
-            letterSpacing: '-1px',
-            margin: 0,
-            color: '#ffffff',
-            wordBreak: 'keep-all'
-          }}>
+          <h3
+            style={{
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              fontWeight: '800',
+              lineHeight: '1.4',
+              letterSpacing: '-1px',
+              margin: 0,
+              color: '#ffffff',
+              wordBreak: 'keep-all',
+            }}
+          >
             연구를 넘어, 세계가 참고하는 기준을 만드는 것이 <br />KAQ가 가장 잘하는 일입니다.
           </h3>
         </motion.div>
@@ -526,13 +572,15 @@ export default function GlobalChallengePage() {
 
       {/* 하단 대시보드 및 지표 카운터 영역 */}
       <div style={{ position: 'relative', width: '100%', boxSizing: 'border-box', zIndex: 5 }}>
-        <div style={{
-          width: '100%',
-          backgroundColor: '#ffffff',
-          boxShadow: '0 -40px 80px rgba(0, 0, 0, 0.08)',
-          padding: '130px 20px 150px 20px',
-          boxSizing: 'border-box'
-        }}>
+        <div
+          style={{
+            width: '100%',
+            backgroundColor: '#ffffff',
+            boxShadow: '0 -40px 80px rgba(0, 0, 0, 0.08)',
+            padding: '120px 24px 140px 24px',
+            boxSizing: 'border-box',
+          }}
+        >
           <div style={{ maxWidth: '1200px', margin: '0 auto', boxSizing: 'border-box' }}>
             <div
               ref={statsRef}
@@ -542,48 +590,58 @@ export default function GlobalChallengePage() {
                 transition: 'opacity 1s ease, transform 1s ease',
               }}
             >
-              <h2 style={{
-                fontSize: '32px',
-                fontWeight: '800',
-                marginBottom: '50px',
-                letterSpacing: '-1px',
-                color: '#0f172a'
-              }}>
+              <h2
+                style={{
+                  fontSize: 'clamp(1.6rem, 3vw, 2rem)',
+                  fontWeight: '800',
+                  marginBottom: '40px',
+                  letterSpacing: '-1px',
+                  color: '#0f172a',
+                }}
+              >
                 숫자로 입증하는 KAQ 글로벌 신뢰도
               </h2>
 
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: '30px'
-              }}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                  gap: '24px',
+                }}
+              >
                 {stats.map((stat, i) => (
-                  <div key={i} style={{
-                    backgroundColor: '#f8fafc',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '12px',
-                    padding: '35px 30px',
-                    boxSizing: 'border-box',
-                  }}>
-                    <div style={{
-                      fontSize: '15px',
-                      fontWeight: '800',
-                      color: '#0052ff',
-                      letterSpacing: '1.5px',
-                      marginBottom: '20px',
-                    }}>
+                  <div
+                    key={i}
+                    style={{
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '16px',
+                      padding: '32px 28px',
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: '800',
+                        color: '#0052ff',
+                        letterSpacing: '1.2px',
+                        marginBottom: '16px',
+                      }}
+                    >
                       {stat.label}
                     </div>
 
-                    <div style={{
-                      fontSize: '42px',
-                      fontWeight: '800',
-                      color: '#0052ff',
-                      fontFamily: 'sans-serif',
-                      lineHeight: '1',
-                      letterSpacing: '-1px',
-                      marginBottom: '10px',
-                    }}>
+                    <div
+                      style={{
+                        fontSize: '38px',
+                        fontWeight: '800',
+                        color: '#0052ff',
+                        lineHeight: '1',
+                        letterSpacing: '-1px',
+                        marginBottom: '10px',
+                      }}
+                    >
                       {stat.animate ? (
                         <CountUpText text={stat.value} trigger={statsInView} from={stat.countFrom} />
                       ) : (
@@ -591,12 +649,14 @@ export default function GlobalChallengePage() {
                       )}
                     </div>
 
-                    <div style={{
-                      fontSize: '13px',
-                      fontWeight: '600',
-                      color: '#0052ff',
-                      marginBottom: '15px',
-                    }}>
+                    <div
+                      style={{
+                        fontSize: '13px',
+                        fontWeight: '600',
+                        color: '#0052ff',
+                        marginBottom: '14px',
+                      }}
+                    >
                       {stat.unit}
                     </div>
 
@@ -610,7 +670,6 @@ export default function GlobalChallengePage() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

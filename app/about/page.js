@@ -149,6 +149,34 @@ export default function AboutPage() {
 
   return (
     <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'sans-serif' }}>
+      
+      {/* 💡 Our Vision 섹션 전용 모바일 반응형 스타일 */}
+      <style>{`
+        .vision-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 70px;
+          align-items: start;
+        }
+        .vision-img-container {
+          position: relative;
+          width: 100%;
+          height: 520px;
+          margin: 0;
+          overflow: hidden;
+          border-radius: 12px;
+        }
+        @media (max-width: 900px) {
+          .vision-wrapper {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+          .vision-img-container {
+            height: 320px !important;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
         {/* ================= [기업소개 섹션] 상단 구조 ================= */}
@@ -220,16 +248,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* ================= [핵심가치 섹션] ================= */}
+        {/* ================= [핵심가치 (Our Vision) 섹션] ================= */}
         <div ref={visionRef} style={{ scrollMarginTop: '120px' }}>
           <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
           
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', 
-            gap: '70px',
-            alignItems: 'start'
-          }}>
+          <div className="vision-wrapper">
             
             <div 
               ref={leftRef}
@@ -246,7 +269,7 @@ export default function AboutPage() {
                 <h3 style={{ fontSize: '32px', fontWeight: '800', color: '#0052ff', margin: '0 0 24px 0', letterSpacing: '-1px' }}>
                   Our Vision
                 </h3>
-                <p style={{ color: '#333', fontSize: '16px', fontWeight: '500', lineHeight: '1.85', margin: 0 }}>
+                <p style={{ color: '#333', fontSize: '16px', fontWeight: '500', lineHeight: '1.85', margin: 0, wordBreak: 'keep-all' }}>
                   AI 프롬프트 저작권과 공간안전품질 대시보드를 통해서 새로운 가치를 공유합니다.
                   <br />
                   <span style={{ color: '#666', fontWeight: '400' }}>AI로 세계의 평화와 고품질 문화를 지향합니다.</span>
@@ -254,10 +277,10 @@ export default function AboutPage() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', paddingLeft: '4px', borderTop: '1px solid #f0f0f0', paddingTop: '30px' }}>
-                <p style={{ color: '#111', fontSize: '18px', fontWeight: '700', lineHeight: '1.65', margin: 0 }}>
+                <p style={{ color: '#111', fontSize: '18px', fontWeight: '700', lineHeight: '1.65', margin: 0, wordBreak: 'keep-all' }}>
                   KAQ는 고객과 함께 새로운 가치를 만드는 데 도전합니다. 고객의 AI 저작권과 안전품질 대시보드 가치를 보호합니다.
                 </p>
-                <p style={{ color: '#666', fontSize: '15px', lineHeight: '1.8', margin: 0 }}>
+                <p style={{ color: '#666', fontSize: '15px', lineHeight: '1.8', margin: 0, wordBreak: 'keep-all' }}>
                   모두의 AI 시대입니다. AI를 사용하는 것은 큰 가치가 없습니다. 적재적소에 얼마나 가치 있는 프롬프트를 제시할 수 있는가가 본질입니다. AI로 무엇을 어떻게 대화하면 언제 어떤 결과를 얻을 수 있는지를 체험하고 그 권리를 인정해야 합니다. 당신의 AI 가치를 인정받으시기 바랍니다.
                 </p>
               </div>
@@ -265,13 +288,8 @@ export default function AboutPage() {
 
             <div 
               ref={rightRef}
+              className="vision-img-container"
               style={{ 
-                position: 'relative', 
-                width: '100%', 
-                height: '520px', 
-                margin: 0,
-                overflow: 'hidden',
-                borderRadius: '12px',
                 opacity: rightVisible ? 1 : 0,
                 transform: rightVisible ? 'translateX(0)' : 'translateX(50px)',
                 transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
@@ -306,7 +324,7 @@ export default function AboutPage() {
             </h2>
             <p style={{ fontSize: '15px', color: '#555', lineHeight: '1.7', marginBottom: '30px', maxWidth: '800px' }}>
               KAQ와 함께 디지털 혁신을 이끌어갈 인재를 모십니다. 오픈된 포지션 중 본인에게 적합한 역할이 없다면, 
-              "상시 인재 풀"을 통해 이력서를 제출해 주시기 바랍니다. 적합한 포지션이 열릴 시 우선적으로 검토됩니다.
+              &quot;상시 인재 풀&quot;을 통해 이력서를 제출해 주시기 바랍니다. 적합한 포지션이 열릴 시 우선적으로 검토됩니다.
             </p>
 
             {/* 레퍼런스 스타일의 상단 카운트 바 */}
@@ -353,19 +371,19 @@ export default function AboutPage() {
                     
                     {/* 우측 원형 화살표 버튼 */}
                     <div style={{
-  width: '44px',
-  height: '44px',
-  borderRadius: '50%',
-  border: '1px solid',
-  borderColor: isHovered ? '#0052ff' : '#ddd',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: isHovered ? '#0052ff' : '#fff',
-  color: isHovered ? '#fff' : '#111',
-  transition: 'all 0.3s ease',
-  flexShrink: 0
-}}>
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '50%',
+                      border: '1px solid',
+                      borderColor: isHovered ? '#0052ff' : '#ddd',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: isHovered ? '#0052ff' : '#fff',
+                      color: isHovered ? '#fff' : '#111',
+                      transition: 'all 0.3s ease',
+                      flexShrink: 0
+                    }}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
@@ -411,4 +429,4 @@ export default function AboutPage() {
       )}
     </div>
   );
-};
+}

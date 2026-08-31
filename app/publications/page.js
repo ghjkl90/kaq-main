@@ -126,10 +126,57 @@ export default function PublicationsPage() {
   }, []);
 
   return (
-    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'sans-serif' }}>
+    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden' }}>
+      
+      {/* 💡 연구 프로젝트 및 성과 섹션 모바일 반응형 스타일 */}
+      <style>{`
+        .research-item-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 70px;
+          align-items: center;
+        }
+        .research-img-wrapper {
+          position: relative;
+          width: 100%;
+          height: 380px;
+          overflow: hidden;
+          border-radius: 12px;
+          background-color: #f5f7fa;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .paper-row-grid {
+          display: grid;
+          grid-template-columns: 80px 1fr;
+          gap: 30px;
+          padding: 32px 0;
+          border-bottom: 1px solid #eee;
+          align-items: baseline;
+        }
+
+        @media (max-width: 900px) {
+          .research-item-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .research-text-area {
+            order: 1 !important;
+          }
+          .research-img-wrapper {
+            order: 2 !important;
+            height: 260px !important;
+          }
+          .paper-row-grid {
+            grid-template-columns: 40px 1fr !important;
+            gap: 16px !important;
+            padding: 24px 0 !important;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        {/* ================= 소개 페이지 상단 UI 그대로 적용한 헤더 영역 ================= */}
+        {/* ================= 소개 페이지 상단 UI 적용 헤더 영역 ================= */}
         <div style={{ marginBottom: '0px' }}>
           
           {/* 1. 상단 대표 타이틀 영역 */}
@@ -137,7 +184,7 @@ export default function PublicationsPage() {
             <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '16px', textTransform: 'uppercase' }}>
               Research & Innovation
             </span>
-            <h1 style={{ fontSize: '42px', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-2px', color: '#111', margin: 0 }}>
+            <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-1.5px', color: '#111', margin: 0, wordBreak: 'keep-all' }}>
               KAQ는 인공지능과 DX에 기반하여 <br />
               가치 있는 연구혁신에 도전합니다.
             </h1>
@@ -173,7 +220,7 @@ export default function PublicationsPage() {
           {/* 3. 와이드 비주얼 배너 */}
           <div style={{
             width: '100%',
-            height: '400px',
+            height: 'clamp(240px, 40vh, 400px)',
             backgroundColor: '#050b14',
             borderRadius: '12px',
             overflow: 'hidden',
@@ -197,11 +244,11 @@ export default function PublicationsPage() {
           </div>
         </div>
 
-        {/* ================= [연구 프로젝트 섹션 (애니메이션 적용)] ================= */}
+        {/* ================= [연구 프로젝트 섹션] ================= */}
         <div ref={researchRef} style={{ scrollMarginTop: '120px' }}>
-          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '100px 0 60px 0' }} />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             {researches.map((item, index) => {
               const isVisible = researchVisible[index];
 
@@ -209,42 +256,43 @@ export default function PublicationsPage() {
                 <div 
                   key={item.id}
                   ref={researchItemRefs[index]}
+                  className="research-item-grid"
                   style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', 
-                    gap: '70px',
-                    alignItems: 'center',
                     opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-                    transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+                    transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+                    transition: 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
                   }}
                 >
                   {/* 텍스트 영역 */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', order: index % 2 === 1 ? 2 : 1 }}>
+                  <div 
+                    className="research-text-area"
+                    style={{ 
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      gap: '16px', 
+                      order: index % 2 === 1 ? 2 : 1 
+                    }}
+                  >
                     <div>
-                      <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '12px' }}>
+                      <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '10px' }}>
                         [{item.titleEn}]
                       </span>
-                      <h3 style={{ fontSize: '32px', fontWeight: '800', color: '#111', margin: '0 0 16px 0', letterSpacing: '-1px', whiteSpace: 'pre-line', lineHeight: '1.3' }}>
+                      <h3 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', color: '#111', margin: '0 0 14px 0', letterSpacing: '-1px', lineHeight: '1.3', wordBreak: 'keep-all' }}>
                         {item.title}
                       </h3>
-                      <p style={{ color: '#555', fontSize: '16px', lineHeight: '1.8', margin: 0, wordBreak: 'keep-all' }}>
+                      <p style={{ color: '#555', fontSize: '15px', lineHeight: '1.8', margin: 0, wordBreak: 'keep-all' }}>
                         {item.desc}
                       </p>
                     </div>
                   </div>
 
                   {/* 이미지 영역 */}
-                  <div style={{ 
-                    position: 'relative', 
-                    width: '100%', 
-                    height: '380px', 
-                    overflow: 'hidden',
-                    borderRadius: '12px',
-                    backgroundColor: '#f5f7fa',
-                    order: index % 2 === 1 ? 1 : 2,
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
-                  }}>
+                  <div 
+                    className="research-img-wrapper"
+                    style={{ 
+                      order: index % 2 === 1 ? 1 : 2 
+                    }}
+                  >
                     <img 
                       src={item.image} 
                       alt={item.title} 
@@ -262,34 +310,27 @@ export default function PublicationsPage() {
 
         {/* ================= [지식재산 및 연구 성과 섹션] ================= */}
         <div ref={papersRef} style={{ scrollMarginTop: '120px' }}>
-          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '100px 0 60px 0' }} />
 
-          <div style={{ marginBottom: '40px' }}>
+          <div style={{ marginBottom: '30px' }}>
             <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '12px', textTransform: 'uppercase' }}>
               Patents & Publications
             </span>
-            <h2 style={{ fontSize: '32px', fontWeight: '800', letterSpacing: '-1px', margin: 0, color: '#111' }}>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: '800', letterSpacing: '-1px', margin: 0, color: '#111' }}>
               지식재산 및 연구 성과
             </h2>
           </div>
 
-          <hr style={{ border: 'none', borderTop: '3px solid #eee', margin: '30px 0 0 0' }} />
+          <hr style={{ border: 'none', borderTop: '2px solid #111', margin: '20px 0 0 0' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {papers.map((paper, index) => (
               <div 
                 key={paper.id}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '80px 1fr',
-                  gap: '30px',
-                  padding: '32px 0',
-                  borderBottom: '1px solid #eee',
-                  alignItems: 'baseline',
-                }}
+                className="paper-row-grid"
               >
                 <span style={{ 
-                  fontSize: '20px', 
+                  fontSize: 'clamp(16px, 2.5vw, 20px)', 
                   fontWeight: '800', 
                   color: '#0052ff', 
                   fontFamily: 'monospace' 
@@ -299,13 +340,13 @@ export default function PublicationsPage() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <h3 style={{ 
-                    fontSize: '20px', 
+                    fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', 
                     fontWeight: '700', 
                     color: '#111', 
                     margin: 0, 
-                    lineHeight: '1.4',
-                    letterSpacing: '-0.5px',
-                    wordBreak: 'keep-all'
+                    lineHeight: '1.4', 
+                    letterSpacing: '-0.5px', 
+                    wordBreak: 'keep-all' 
                   }}>
                     {paper.title}
                   </h3>
@@ -314,9 +355,9 @@ export default function PublicationsPage() {
                     fontSize: '14px', 
                     color: '#666', 
                     margin: 0, 
-                    lineHeight: '1.6',
-                    wordBreak: 'keep-all',
-                    fontWeight: '400'
+                    lineHeight: '1.6', 
+                    wordBreak: 'keep-all', 
+                    fontWeight: '400' 
                   }}>
                     {paper.desc}
                   </p>
