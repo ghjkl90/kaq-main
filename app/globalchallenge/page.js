@@ -108,7 +108,7 @@ function NarrativeScene({ item, index, total }) {
         backgroundColor: 'transparent',
         display: 'flex',
         alignItems: 'center',
-        padding: '60px 0',
+        padding: '80px 0',
       }}
     >
       <div
@@ -124,10 +124,10 @@ function NarrativeScene({ item, index, total }) {
           flexDirection: reversed ? 'row-reverse' : 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '48px',
+          gap: '64px',
         }}
       >
-        <div style={{ position: 'relative', zIndex: 2, flex: '1 1 480px', width: '100%' }}>
+        <div style={{ position: 'relative', zIndex: 2, flex: '1 1 500px', width: '100%' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -136,15 +136,15 @@ function NarrativeScene({ item, index, total }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
-              marginBottom: '16px',
+              gap: '12px',
+              marginBottom: '20px',
             }}
           >
-            <span style={{ fontSize: '13px', fontWeight: '800', letterSpacing: '2px', color: '#8fb4ff' }}>
+            <span style={{ fontSize: '14px', fontWeight: '800', letterSpacing: '2px', color: '#a5c4ff' }}>
               {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
-            <span style={{ width: '1px', height: '12px', backgroundColor: 'rgba(255,255,255,0.3)' }} />
-            <span style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px', color: 'rgba(255,255,255,0.75)' }}>
+            <span style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.35)' }} />
+            <span style={{ fontSize: '14px', fontWeight: '700', letterSpacing: '0.8px', color: 'rgba(255,255,255,0.85)' }}>
               {item.eng}
             </span>
           </motion.div>
@@ -157,7 +157,9 @@ function NarrativeScene({ item, index, total }) {
             className="challenge-narrative-title"
           >
             {headingLines.map((line, li) => (
-              <div key={li}>{line}</div>
+              <div key={li} style={{ marginBottom: li === 0 && headingLines.length > 1 ? '6px' : '0' }}>
+                {line}
+              </div>
             ))}
           </motion.h2>
         </div>
@@ -167,11 +169,11 @@ function NarrativeScene({ item, index, total }) {
             aria-hidden="true"
             style={{
               position: 'absolute',
-              top: '-8%',
+              top: '-10%',
               [reversed ? 'left' : 'right']: '-6%',
-              fontSize: 'clamp(5rem, 12vw, 10rem)',
-              fontWeight: '800',
-              color: 'rgba(255,255,255,0.06)',
+              fontSize: 'clamp(6rem, 14vw, 11rem)',
+              fontWeight: '900',
+              color: 'rgba(255,255,255,0.07)',
               lineHeight: 1,
               zIndex: 0,
               pointerEvents: 'none',
@@ -182,18 +184,18 @@ function NarrativeScene({ item, index, total }) {
           </span>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 50 }}
+            initial={{ opacity: 0, scale: 0.92, y: 50 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ amount: 0.3, once: false }}
             transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'relative',
               aspectRatio: '4 / 5',
-              borderRadius: '16px',
+              borderRadius: '20px',
               overflow: 'hidden',
               zIndex: 1,
-              boxShadow: '0 30px 70px -20px rgba(0,0,0,0.4)',
-              border: '1px solid rgba(255,255,255,0.12)',
+              boxShadow: '0 30px 70px -20px rgba(0,0,0,0.45)',
+              border: '1px solid rgba(255,255,255,0.15)',
               backgroundColor: '#1b3b8b',
             }}
           >
@@ -358,43 +360,43 @@ export default function GlobalChallengePage() {
           100% { background-position: 100% 0%; }
         }
 
-        /* 💻 PC 웹: 원본 42px / 32px 그대로 유지 */
+        /* 💻 PC 웹: 시원하고 선명한 대형 타이틀 타이포그래피 */
         .challenge-main-title {
-          font-size: 42px;
+          font-size: 52px;
           font-weight: 800;
-          line-height: 1.35;
+          line-height: 1.2;
           letter-spacing: -1.5px;
           color: #ffffff;
           margin: 0 0 24px 0;
           word-break: keep-all;
         }
         .challenge-intro-h3 {
-          font-size: 32px;
+          font-size: 38px;
           font-weight: 800;
-          line-height: 1.35;
-          letter-spacing: -1px;
+          line-height: 1.25;
+          letter-spacing: -1.2px;
           margin: 0;
           color: #ffffff;
           word-break: keep-all;
         }
         .challenge-narrative-title {
-          font-size: 32px;
+          font-size: 46px;
           font-weight: 800;
-          line-height: 1.35;
-          letter-spacing: -1px;
+          line-height: 1.2;
+          letter-spacing: -1.5px;
           color: #ffffff;
           margin: 0;
           word-break: keep-all;
         }
         .challenge-stats-h2 {
-          font-size: 32px;
+          font-size: 38px;
           font-weight: 800;
           margin-bottom: 50px;
-          letter-spacing: -1px;
+          letter-spacing: -1.2px;
           color: #0f172a;
         }
         .challenge-stat-number {
-          font-size: 42px;
+          font-size: 48px;
           font-weight: 800;
           color: #0052ff;
           line-height: 1;
@@ -402,27 +404,30 @@ export default function GlobalChallengePage() {
           margin-bottom: 10px;
         }
 
-        /* 📱 모바일(768px 이하): 다른 페이지와 정확히 동일한 크기로 축소 */
+        /* 📱 모바일(768px 이하): 가독성 높인 최적 스케일링 */
         @media (max-width: 768px) {
           .challenge-main-title {
-            font-size: 24px !important;
-            letter-spacing: -1.5px !important;
+            font-size: 28px !important;
+            letter-spacing: -1px !important;
+            line-height: 1.3 !important;
             margin-bottom: 16px !important;
           }
           .challenge-intro-h3 {
-            font-size: 20px !important;
-            line-height: 1.4 !important;
+            font-size: 24px !important;
+            line-height: 1.35 !important;
+            letter-spacing: -0.8px !important;
           }
           .challenge-narrative-title {
-            font-size: 20px !important;
-            line-height: 1.4 !important;
+            font-size: 26px !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.8px !important;
           }
           .challenge-stats-h2 {
-            font-size: 20px !important;
+            font-size: 24px !important;
             margin-bottom: 30px !important;
           }
           .challenge-stat-number {
-            font-size: 32px !important;
+            font-size: 36px !important;
           }
           .kaq-narrative-scene {
             height: auto !important;
@@ -432,7 +437,7 @@ export default function GlobalChallengePage() {
           .kaq-narrative-flex {
             flex-direction: column !important;
             justify-content: center !important;
-            gap: 32px !important;
+            gap: 36px !important;
           }
         }
       `}</style>
@@ -472,7 +477,7 @@ export default function GlobalChallengePage() {
             transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
             <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '800', letterSpacing: '2px', textTransform: 'uppercase' }}>
               KAQ GLOBAL CHALLENGE
             </span>
@@ -485,7 +490,7 @@ export default function GlobalChallengePage() {
 
           <p
             style={{
-              fontSize: '15px',
+              fontSize: '16px',
               color: '#f0f4ff',
               opacity: 0.9,
               lineHeight: '1.75',
