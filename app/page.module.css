@@ -85,32 +85,48 @@ html, body {
   transform: translateY(0);
 }
 
-/* 메인 카피 타이포그래피 통일 */
+/* PC 웹: 원래 크기 그대로 유지 */
 .mainCopy {
-  font-size: clamp(1.8rem, 4vw, 3.2rem); /* 모바일 최적화 반응형 크기 */
-  font-weight: 800;
+  font-family: inherit !important;
+  font-size: 3.5rem;
+  font-weight: 700;
   line-height: 1.35;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   word-break: keep-all;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
+  color: #ffffff;
 }
 
 .mainCopy span {
-  display: block;
-  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-  font-weight: 600;
   color: #ffffff;
-  margin-top: 10px;
-  opacity: 0.95;
-  letter-spacing: -0.5px;
 }
 
 .subCopy {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #cbd5e1;
+  font-family: inherit !important;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #e2e8f0;
   font-weight: 400;
   word-break: keep-all;
+}
+
+/* 📱 모바일(768px 이하)에서만 크기 축소 및 폰트 통일 */
+@media (max-width: 768px) {
+  .mainCopy {
+    font-size: 24px !important;
+    letter-spacing: -1.5px !important;
+    line-height: 1.35 !important;
+  }
+  .mainCopy span {
+    font-size: 18px !important;
+    display: block;
+    margin-top: 8px;
+    letter-spacing: -0.8px !important;
+  }
+  .subCopy {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
 }
 
 /* 갤러리 섹션 기본 시스템 산세리프 제거 */

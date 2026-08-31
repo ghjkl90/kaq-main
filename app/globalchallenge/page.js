@@ -8,13 +8,11 @@ function CountUpText({ text, trigger, duration = 1400, from }) {
 
   useEffect(() => {
     const match = text.match(/[\d.]+/);
-
     if (!trigger || !match) {
       if (!trigger) hasAnimated.current = false;
       setDisplay(text);
       return;
     }
-
     if (hasAnimated.current) {
       setDisplay(text);
       return;
@@ -37,7 +35,6 @@ function CountUpText({ text, trigger, duration = 1400, from }) {
       const progress = Math.min(1, elapsed / duration);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = startValue + (target - startValue) * eased;
-
       const formatted = decimals > 0 ? current.toFixed(decimals) : Math.round(current).toString();
       setDisplay(`${prefix}${formatted}${suffix}`);
 
@@ -62,7 +59,6 @@ function useInView(threshold = 0.2) {
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -72,7 +68,6 @@ function useInView(threshold = 0.2) {
       },
       { threshold }
     );
-
     observer.observe(node);
     return () => observer.disconnect();
   }, [threshold]);
@@ -132,7 +127,6 @@ function NarrativeScene({ item, index, total }) {
           gap: '48px',
         }}
       >
-        {/* 텍스트 그룹 */}
         <div style={{ position: 'relative', zIndex: 2, flex: '1 1 480px', width: '100%' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -146,25 +140,11 @@ function NarrativeScene({ item, index, total }) {
               marginBottom: '16px',
             }}
           >
-            <span
-              style={{
-                fontSize: '13px',
-                fontWeight: '700',
-                letterSpacing: '2px',
-                color: '#8fb4ff',
-              }}
-            >
+            <span style={{ fontSize: '13px', fontWeight: '800', letterSpacing: '2px', color: '#8fb4ff' }}>
               {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             </span>
             <span style={{ width: '1px', height: '12px', backgroundColor: 'rgba(255,255,255,0.3)' }} />
-            <span
-              style={{
-                fontSize: '13px',
-                fontWeight: '700',
-                letterSpacing: '1px',
-                color: 'rgba(255,255,255,0.75)',
-              }}
-            >
+            <span style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '1px', color: 'rgba(255,255,255,0.75)' }}>
               {item.eng}
             </span>
           </motion.div>
@@ -174,15 +154,7 @@ function NarrativeScene({ item, index, total }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.3, once: false }}
             transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              fontSize: 'clamp(1.5rem, 3.2vw, 2.2rem)',
-              fontWeight: '800',
-              lineHeight: '1.35',
-              letterSpacing: '-1px',
-              color: '#ffffff',
-              margin: 0,
-              wordBreak: 'keep-all',
-            }}
+            className="challenge-narrative-title"
           >
             {headingLines.map((line, li) => (
               <div key={li}>{line}</div>
@@ -190,15 +162,7 @@ function NarrativeScene({ item, index, total }) {
           </motion.h2>
         </div>
 
-        {/* 고화질 사진 패널 */}
-        <div
-          style={{
-            position: 'relative',
-            flex: '1 1 500px',
-            width: '100%',
-            maxWidth: '520px',
-          }}
-        >
+        <div style={{ position: 'relative', flex: '1 1 500px', width: '100%', maxWidth: '520px' }}>
           <span
             aria-hidden="true"
             style={{
@@ -250,16 +214,28 @@ function NarrativeScene({ item, index, total }) {
       </div>
 
       <style>{`
+        .challenge-narrative-title {
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 1.35;
+          letter-spacing: -1px;
+          color: #ffffff;
+          margin: 0;
+          word-break: keep-all;
+        }
         @media (max-width: 768px) {
           .kaq-narrative-scene {
             height: auto !important;
             min-height: auto !important;
-            padding: 80px 0 !important;
+            padding: 60px 0 !important;
           }
           .kaq-narrative-flex {
             flex-direction: column !important;
             justify-content: center !important;
-            gap: 36px !important;
+            gap: 32px !important;
+          }
+          .challenge-narrative-title {
+            font-size: 20px !important;
           }
         }
       `}</style>
@@ -270,7 +246,6 @@ function NarrativeScene({ item, index, total }) {
 export default function GlobalChallengePage() {
   const [isMounted, setIsMounted] = useState(false);
   const globeContainerRef = useRef(null);
-
   const [statsRef, statsInView] = useInView(0.2);
 
   const stats = [
@@ -281,31 +256,14 @@ export default function GlobalChallengePage() {
   ];
 
   const narratives = [
-    {
-      img: '/7.png',
-      eng: 'As you understand',
-      kor: 'NCS 접근방식, 업을 표준으로',
-    },
-    {
-      img: '/4.png',
-      eng: 'As you see',
-      kor: 'DSQ Dashboard, 공간안전을 데이터로',
-    },
-    {
-      img: '/5.png',
-      eng: 'As you feel',
-      kor: 'K-AI Station, 한국형 AI 프롬프트의 시작',
-    },
-    {
-      img: '/6.png',
-      eng: 'As you lead the world',
-      kor: 'Global Challenge, 한국형 AI, 세계를 향해',
-    },
+    { img: '/7.png', eng: 'As you understand', kor: 'NCS 접근방식, 업을 표준으로' },
+    { img: '/4.png', eng: 'As you see', kor: 'DSQ Dashboard, 공간안전을 데이터로' },
+    { img: '/5.png', eng: 'As you feel', kor: 'K-AI Station, 한국형 AI 프롬프트의 시작' },
+    { img: '/6.png', eng: 'As you lead the world', kor: 'Global Challenge, 한국형 AI, 세계를 향해' },
   ];
 
   useEffect(() => {
     setIsMounted(true);
-
     let animationFrameId;
     let canvas;
 
@@ -313,7 +271,6 @@ export default function GlobalChallengePage() {
       const container = globeContainerRef.current;
       if (!container) return;
       container.innerHTML = '';
-
       canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
@@ -394,16 +351,11 @@ export default function GlobalChallengePage() {
       render();
     };
 
-    const timer = requestAnimationFrame(() => {
-      initGlobe();
-    });
-
+    const timer = requestAnimationFrame(() => { initGlobe(); });
     return () => {
       cancelAnimationFrame(timer);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      if (globeContainerRef.current) {
-        globeContainerRef.current.innerHTML = '';
-      }
+      if (globeContainerRef.current) globeContainerRef.current.innerHTML = '';
     };
   }, []);
 
@@ -432,9 +384,24 @@ export default function GlobalChallengePage() {
           50% { background-position: 50% 100%; }
           100% { background-position: 100% 0%; }
         }
+        .challenge-main-title {
+          font-size: 42px;
+          font-weight: 800;
+          line-height: 1.35;
+          letter-spacing: -2px;
+          color: #ffffff;
+          margin: 0 0 24px 0;
+          word-break: keep-all;
+        }
+        @media (max-width: 768px) {
+          .challenge-main-title {
+            font-size: 24px !important;
+            letter-spacing: -1.5px !important;
+          }
+        }
       `}</style>
 
-      {/* 배경 3D 도트 지구 구체 */}
+      {/* 3D 도트 지구 구체 */}
       <div
         ref={globeContainerRef}
         style={{
@@ -455,7 +422,7 @@ export default function GlobalChallengePage() {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '140px 20px 80px 20px',
+          padding: '240px 20px 160px 20px',
           position: 'relative',
           zIndex: 1,
           boxSizing: 'border-box',
@@ -463,47 +430,29 @@ export default function GlobalChallengePage() {
       >
         <div
           style={{
-            maxWidth: '850px',
+            maxWidth: '800px',
             opacity: isMounted ? 1 : 0,
             transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-            <span
-              style={{
-                fontSize: '13px',
-                color: '#cbd5e1',
-                fontWeight: '700',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-              }}
-            >
+            <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '800', letterSpacing: '2px', textTransform: 'uppercase' }}>
               KAQ GLOBAL CHALLENGE
             </span>
             <span style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.25)' }}></span>
           </div>
 
-          <h1
-            style={{
-              fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-              fontWeight: 800,
-              lineHeight: 1.35,
-              margin: '0 0 20px 0',
-              wordBreak: 'keep-all',
-              letterSpacing: '-1.5px',
-              color: '#ffffff',
-            }}
-          >
+          <h1 className="challenge-main-title">
             Beyond Research, <br />세계 표준을 선도하는 <br /> Pro-Search
           </h1>
 
           <p
             style={{
-              fontSize: '15px',
+              fontSize: '16px',
               color: '#f0f4ff',
               opacity: 0.9,
-              lineHeight: '1.75',
+              lineHeight: '1.8',
               fontWeight: '400',
               wordBreak: 'keep-all',
               margin: 0,
@@ -521,11 +470,11 @@ export default function GlobalChallengePage() {
           zIndex: 2,
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px 50px 20px',
+          padding: '0 20px 80px 20px',
           boxSizing: 'border-box',
         }}
       >
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 40px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 60px 0' }} />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -537,10 +486,10 @@ export default function GlobalChallengePage() {
             style={{
               display: 'inline-block',
               fontSize: '13px',
-              fontWeight: '700',
+              fontWeight: '800',
               letterSpacing: '2px',
               color: '#8fb4ff',
-              marginBottom: '12px',
+              marginBottom: '16px',
               textTransform: 'uppercase',
             }}
           >
@@ -548,7 +497,7 @@ export default function GlobalChallengePage() {
           </span>
           <h3
             style={{
-              fontSize: 'clamp(1.4rem, 2.8vw, 1.9rem)',
+              fontSize: '32px',
               fontWeight: '800',
               lineHeight: '1.35',
               letterSpacing: '-1px',
@@ -562,21 +511,21 @@ export default function GlobalChallengePage() {
         </motion.div>
       </div>
 
-      {/* 풀스크린 scroll-snap 내러티브 씬 */}
+      {/* 내러티브 씬 */}
       <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
         {narratives.map((item, i) => (
           <NarrativeScene key={i} item={item} index={i} total={narratives.length} />
         ))}
       </div>
 
-      {/* 하단 대시보드 및 지표 카운터 영역 */}
+      {/* 하단 지표 */}
       <div style={{ position: 'relative', width: '100%', boxSizing: 'border-box', zIndex: 5 }}>
         <div
           style={{
             width: '100%',
             backgroundColor: '#ffffff',
             boxShadow: '0 -40px 80px rgba(0, 0, 0, 0.08)',
-            padding: '100px 20px 120px 20px',
+            padding: '130px 20px 150px 20px',
             boxSizing: 'border-box',
           }}
         >
@@ -591,9 +540,9 @@ export default function GlobalChallengePage() {
             >
               <h2
                 style={{
-                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  fontSize: '32px',
                   fontWeight: '800',
-                  marginBottom: '36px',
+                  marginBottom: '50px',
                   letterSpacing: '-1px',
                   color: '#0f172a',
                 }}
@@ -604,8 +553,8 @@ export default function GlobalChallengePage() {
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                  gap: '24px',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                  gap: '30px',
                 }}
               >
                 {stats.map((stat, i) => (
@@ -614,18 +563,18 @@ export default function GlobalChallengePage() {
                     style={{
                       backgroundColor: '#f8fafc',
                       border: '1px solid #e2e8f0',
-                      borderRadius: '16px',
-                      padding: '30px 24px',
+                      borderRadius: '12px',
+                      padding: '35px 30px',
                       boxSizing: 'border-box',
                     }}
                   >
                     <div
                       style={{
-                        fontSize: '13px',
+                        fontSize: '15px',
                         fontWeight: '800',
                         color: '#0052ff',
-                        letterSpacing: '1.2px',
-                        marginBottom: '14px',
+                        letterSpacing: '1.5px',
+                        marginBottom: '20px',
                       }}
                     >
                       {stat.label}
@@ -633,12 +582,12 @@ export default function GlobalChallengePage() {
 
                     <div
                       style={{
-                        fontSize: '34px',
+                        fontSize: '42px',
                         fontWeight: '800',
                         color: '#0052ff',
                         lineHeight: '1',
                         letterSpacing: '-1px',
-                        marginBottom: '8px',
+                        marginBottom: '10px',
                       }}
                     >
                       {stat.animate ? (
@@ -653,13 +602,13 @@ export default function GlobalChallengePage() {
                         fontSize: '13px',
                         fontWeight: '600',
                         color: '#0052ff',
-                        marginBottom: '12px',
+                        marginBottom: '15px',
                       }}
                     >
                       {stat.unit}
                     </div>
 
-                    <p style={{ fontSize: '14px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
+                    <p style={{ fontSize: '15px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
                       {stat.desc}
                     </p>
                   </div>
