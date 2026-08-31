@@ -100,7 +100,6 @@ function NarrativeScene({ item, index, total }) {
   const imgParallaxY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%']);
 
   return (
-    
     <section
       ref={sceneRef}
       className="kaq-narrative-scene"
@@ -117,7 +116,6 @@ function NarrativeScene({ item, index, total }) {
         padding: '60px 0',
       }}
     >
-      <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px' }}></div>
       <div
         className="kaq-narrative-flex"
         style={{
@@ -145,7 +143,7 @@ function NarrativeScene({ item, index, total }) {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              marginBottom: '20px',
+              marginBottom: '16px',
             }}
           >
             <span
@@ -177,10 +175,10 @@ function NarrativeScene({ item, index, total }) {
             viewport={{ amount: 0.3, once: false }}
             transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              fontSize: 'clamp(1.8rem, 3.2vw, 2.8rem)',
+              fontSize: 'clamp(1.5rem, 3.2vw, 2.2rem)',
               fontWeight: '800',
-              lineHeight: '1.4',
-              letterSpacing: '-1.5px',
+              lineHeight: '1.35',
+              letterSpacing: '-1px',
               color: '#ffffff',
               margin: 0,
               wordBreak: 'keep-all',
@@ -281,7 +279,6 @@ export default function GlobalChallengePage() {
     { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도', animate: true },
     { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약', animate: true, countFrom: 9 },
   ];
-
 
   const narratives = [
     {
@@ -458,7 +455,7 @@ export default function GlobalChallengePage() {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '240px 24px 160px 24px',
+          padding: '140px 20px 80px 20px',
           position: 'relative',
           zIndex: 1,
           boxSizing: 'border-box',
@@ -466,7 +463,7 @@ export default function GlobalChallengePage() {
       >
         <div
           style={{
-            maxWidth: '800px',
+            maxWidth: '850px',
             opacity: isMounted ? 1 : 0,
             transform: isMounted ? 'translateY(0)' : 'translateY(30px)',
             transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)',
@@ -489,12 +486,12 @@ export default function GlobalChallengePage() {
 
           <h1
             style={{
-              fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+              fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
               fontWeight: 800,
-              lineHeight: 1.3,
-              margin: '0 0 24px 0',
+              lineHeight: 1.35,
+              margin: '0 0 20px 0',
               wordBreak: 'keep-all',
-              letterSpacing: '-2px',
+              letterSpacing: '-1.5px',
               color: '#ffffff',
             }}
           >
@@ -503,10 +500,10 @@ export default function GlobalChallengePage() {
 
           <p
             style={{
-              fontSize: '16px',
+              fontSize: '15px',
               color: '#f0f4ff',
               opacity: 0.9,
-              lineHeight: '1.8',
+              lineHeight: '1.75',
               fontWeight: '400',
               wordBreak: 'keep-all',
               margin: 0,
@@ -524,11 +521,11 @@ export default function GlobalChallengePage() {
           zIndex: 2,
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 24px 60px 24px',
+          padding: '0 20px 50px 20px',
           boxSizing: 'border-box',
         }}
       >
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 50px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid rgba(255, 255, 255, 0.2)', margin: '0 0 40px 0' }} />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -543,7 +540,7 @@ export default function GlobalChallengePage() {
               fontWeight: '700',
               letterSpacing: '2px',
               color: '#8fb4ff',
-              marginBottom: '16px',
+              marginBottom: '12px',
               textTransform: 'uppercase',
             }}
           >
@@ -551,9 +548,9 @@ export default function GlobalChallengePage() {
           </span>
           <h3
             style={{
-              fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+              fontSize: 'clamp(1.4rem, 2.8vw, 1.9rem)',
               fontWeight: '800',
-              lineHeight: '1.4',
+              lineHeight: '1.35',
               letterSpacing: '-1px',
               margin: 0,
               color: '#ffffff',
@@ -579,7 +576,7 @@ export default function GlobalChallengePage() {
             width: '100%',
             backgroundColor: '#ffffff',
             boxShadow: '0 -40px 80px rgba(0, 0, 0, 0.08)',
-            padding: '120px 24px 140px 24px',
+            padding: '100px 20px 120px 20px',
             boxSizing: 'border-box',
           }}
         >
@@ -594,9 +591,9 @@ export default function GlobalChallengePage() {
             >
               <h2
                 style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)',
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                   fontWeight: '800',
-                  marginBottom: '40px',
+                  marginBottom: '36px',
                   letterSpacing: '-1px',
                   color: '#0f172a',
                 }}
@@ -618,17 +615,17 @@ export default function GlobalChallengePage() {
                       backgroundColor: '#f8fafc',
                       border: '1px solid #e2e8f0',
                       borderRadius: '16px',
-                      padding: '32px 28px',
+                      padding: '30px 24px',
                       boxSizing: 'border-box',
                     }}
                   >
                     <div
                       style={{
-                        fontSize: '14px',
+                        fontSize: '13px',
                         fontWeight: '800',
                         color: '#0052ff',
                         letterSpacing: '1.2px',
-                        marginBottom: '16px',
+                        marginBottom: '14px',
                       }}
                     >
                       {stat.label}
@@ -636,12 +633,12 @@ export default function GlobalChallengePage() {
 
                     <div
                       style={{
-                        fontSize: '38px',
+                        fontSize: '34px',
                         fontWeight: '800',
                         color: '#0052ff',
                         lineHeight: '1',
                         letterSpacing: '-1px',
-                        marginBottom: '10px',
+                        marginBottom: '8px',
                       }}
                     >
                       {stat.animate ? (
@@ -656,13 +653,13 @@ export default function GlobalChallengePage() {
                         fontSize: '13px',
                         fontWeight: '600',
                         color: '#0052ff',
-                        marginBottom: '14px',
+                        marginBottom: '12px',
                       }}
                     >
                       {stat.unit}
                     </div>
 
-                    <p style={{ fontSize: '15px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
+                    <p style={{ fontSize: '14px', color: '#64748b', fontWeight: '400', lineHeight: '1.6', margin: 0 }}>
                       {stat.desc}
                     </p>
                   </div>

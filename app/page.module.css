@@ -85,25 +85,45 @@ html, body {
   transform: translateY(0);
 }
 
+/* 메인 카피 타이포그래피 통일 */
 .mainCopy {
-  font-size: clamp(2rem, 4.5vw, 3.5rem); /* 모바일 대응 가변 폰트 스케일 적용 */
-  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 3.2rem); /* 모바일 최적화 반응형 크기 */
+  font-weight: 800;
   line-height: 1.35;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   word-break: keep-all;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
 .mainCopy span {
-  color: #ffffff; /* 블루로 복원 */
+  display: block;
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 10px;
+  opacity: 0.95;
+  letter-spacing: -0.5px;
 }
 
 .subCopy {
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-  line-height: 1.6;
-  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #cbd5e1;
   font-weight: 400;
   word-break: keep-all;
+}
+
+/* 갤러리 섹션 기본 시스템 산세리프 제거 */
+.wideGallerySection {
+  position: relative;
+  width: 100%;
+  padding: 120px 0;
+  background-color: #f6f8fa; 
+  color: #111625;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 }
 
 /* 채용 공고 스타일과 통일된 원형 화살표 인디케이터 */
@@ -1057,18 +1077,6 @@ html, body {
 /* ============================================================= */
 /* 7. 이미지 2번 시안
 /* ============================================================= */
-
-.wideGallerySection {
-  position: relative;
-  width: 100%;
-  padding: 120px 0;
-  background-color: #f6f8fa; 
-  color: #111625;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
 
 .wideWheelStageContainer {
   width: 100%;

@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 
-// ==========================================
-// 통일된 화살표 버튼 스타일 설정
-// ==========================================
 const BUTTON_BASE_STYLE = {
   width: '48px',
   height: '48px',
@@ -227,17 +224,16 @@ export default function ProductsPage() {
   );
 
   return (
-    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px' }}>
+    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        {/* ================= 상단 공통 UI 뼈대 ================= */}
+        {/* ================= 상단 공통 UI ================= */}
         <div style={{ marginBottom: '0px' }}>
-          
           <div style={{ marginBottom: '40px' }}>
             <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '16px', textTransform: 'uppercase' }}>
               Products & Services
             </span>
-            <h1 style={{ fontSize: '42px', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-2px', color: '#111', margin: 0 }}>
+            <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-1.5px', color: '#111', margin: 0, wordBreak: 'keep-all' }}>
               KAQ (Korea Academy for Quality), <br />
               월드클래스 AI 프롬프트와 안전품질 솔루션을 <br />
               제공합니다.
@@ -272,7 +268,7 @@ export default function ProductsPage() {
 
           <div style={{
             width: '100%',
-            height: '400px',
+            height: 'clamp(240px, 40vh, 400px)',
             backgroundColor: '#050b14',
             borderRadius: '12px',
             overflow: 'hidden',
@@ -298,21 +294,21 @@ export default function ProductsPage() {
 
         {/* ================= K-AI-STATION 슬라이드 섹션 ================= */}
         <div ref={stationRef} style={{ scrollMarginTop: '120px' }}>
-          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '100px 0 60px 0' }} />
           
           <div 
             ref={stationContentRef}
             style={{ 
               opacity: stationVisible ? 1 : 0,
-              transform: stationVisible ? 'translateY(0)' : 'translateY(50px)',
-              transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+              transform: stationVisible ? 'translateY(0)' : 'translateY(40px)',
+              transition: 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
             }}
           >
-            <div style={{ marginBottom: '40px' }}>
-              <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '12px', letterSpacing: '-1px', color: '#0052ff' }}>
+            <div style={{ marginBottom: '32px' }}>
+              <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', marginBottom: '12px', letterSpacing: '-1px', color: '#0052ff' }}>
                 K-AI-STATION SERVICE
               </h2>
-              <p style={{ fontSize: '16px', color: '#666666', lineHeight: '1.6', margin: 0 }}>
+              <p style={{ fontSize: '15px', color: '#666666', lineHeight: '1.7', margin: 0, wordBreak: 'keep-all' }}>
                 당신의 라이프스타일에 최적화된 대화형 모드와 가이드를 경험할 수 있습니다.
               </p>
             </div>
@@ -347,9 +343,9 @@ export default function ProductsPage() {
                   <div 
                     key={mode.id}
                     style={{ 
-                      flex: '0 0 290px',
-                      height: '500px',
-                      borderRadius: '20px',
+                      flex: '0 0 280px',
+                      height: '460px',
+                      borderRadius: '16px',
                       overflow: 'hidden',
                       position: 'relative',
                       scrollSnapAlign: 'start',
@@ -377,19 +373,19 @@ export default function ProductsPage() {
                     <div style={{
                       position: 'relative',
                       zIndex: 2,
-                      padding: '30px 24px',
+                      padding: '24px 20px',
                       background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0) 100%)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '8px'
                     }}>
-                      <h3 style={{ margin: 0, color: '#ffffff', fontSize: '22px', fontWeight: '700', letterSpacing: '-0.5px' }}>
+                      <h3 style={{ margin: 0, color: '#ffffff', fontSize: '20px', fontWeight: '700', letterSpacing: '-0.5px' }}>
                         {mode.title}
                       </h3>
                       <p style={{ margin: 0, color: 'rgba(255,255,255,0.85)', fontSize: '13px', lineHeight: '1.5', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                         {mode.desc}
                       </p>
-                      <div style={{ marginTop: '12px' }}>
+                      <div style={{ marginTop: '10px' }}>
                         <a 
                           href={mode.link}
                           target="_blank"
@@ -416,7 +412,7 @@ export default function ProductsPage() {
                 ))}
               </div>
 
-              <div style={{ display: 'flex', gap: '12px', marginTop: '30px' }}>
+              <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
                 <CarouselButton direction="left" onClick={() => handleScrollClick('left')} />
                 <CarouselButton direction="right" onClick={() => handleScrollClick('right')} />
               </div>
@@ -424,54 +420,51 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* ================= [DSQ 플랫폼 상세 섹션] : 주황색 달러 기호 완전 제거 ================= */}
+        {/* ================= DSQ 플랫폼 상세 섹션 ================= */}
         <div ref={dsqRef} style={{ scrollMarginTop: '120px' }}>
-          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '120px 0 60px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '100px 0 60px 0' }} />
           
           <div 
             ref={dsqContentRef}
             style={{ 
               opacity: dsqVisible ? 1 : 0,
-              transform: dsqVisible ? 'translateY(0)' : 'translateY(50px)',
-              transition: 'all 1s cubic-bezier(0.25, 1, 0.5, 1)'
+              transform: dsqVisible ? 'translateY(0)' : 'translateY(40px)',
+              transition: 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
             }}
           >
-            {/* 섹션 타이틀 */}
-            <div style={{ marginBottom: '40px' }}>
-              <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '12px', letterSpacing: '-1px', color: '#0052ff' }}>
+            <div style={{ marginBottom: '32px' }}>
+              <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', marginBottom: '12px', letterSpacing: '-1px', color: '#0052ff' }}>
                 DSQ PLATFORM
               </h2>
-              <p style={{ fontSize: '16px', color: '#666666', lineHeight: '1.6', margin: 0 }}>
+              <p style={{ fontSize: '15px', color: '#666666', lineHeight: '1.7', margin: 0, wordBreak: 'keep-all' }}>
                 모바일 기반 디지털안전품질 표준 대시보드 및 AI 센싱 안전 생태계 솔루션을 제공합니다.
               </p>
             </div>
 
-            {/* 박스 테두리 없는 모던한 2단 그리드 레이아웃 (주황색 달러 기호 제거됨) */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))',
-              gap: '60px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '40px',
               alignItems: 'center',
-              padding: '20px 0'
+              padding: '10px 0'
             }}>
-              {/* 좌측 콘텐츠 (볼드 타이틀 + 설명 + 버튼) */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <h3 style={{ fontSize: '32px', fontWeight: '800', color: '#111111', margin: 0, letterSpacing: '-1px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: '800', color: '#111111', margin: 0, letterSpacing: '-1px', lineHeight: '1.35', wordBreak: 'keep-all' }}>
                   오픈퀄리티(Open Quality) <br/>기술 사업화 제품
                 </h3>
                 
-                <p style={{ fontSize: '15px', color: '#555555', lineHeight: '1.75', margin: 0, maxWidth: '520px' }}>
+                <p style={{ fontSize: '15px', color: '#555555', lineHeight: '1.75', margin: 0, maxWidth: '520px', wordBreak: 'keep-all' }}>
                   성균관대학교 스마트품질연구실이 개발한 자산을 토대로 다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 거점에 커스텀 도입 중인 모바일 표준 대시보드입니다.
                 </p>
                 
-                <div style={{ marginTop: '10px' }}>
+                <div style={{ marginTop: '8px' }}>
                   <a 
                     href="http://openq.co.kr:8082/"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
                       display: 'inline-block',
-                      padding: '12px 28px',
+                      padding: '12px 24px',
                       backgroundColor: '#0052ff',
                       color: '#fff',
                       borderRadius: '7px',
@@ -487,10 +480,9 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              {/* 우측 와이드 이미지 영역 (사용자 제공 대시보드 캡처 화면 반영) */}
               <div style={{
                 width: '100%',
-                height: '340px',
+                height: 'clamp(220px, 35vh, 340px)',
                 borderRadius: '12px',
                 overflow: 'hidden',
                 boxShadow: '0 15px 35px rgba(0,0,0,0.08)'
