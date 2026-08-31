@@ -100,6 +100,7 @@ function NarrativeScene({ item, index, total }) {
   const imgParallaxY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%']);
 
   return (
+    
     <section
       ref={sceneRef}
       className="kaq-narrative-scene"
@@ -116,6 +117,7 @@ function NarrativeScene({ item, index, total }) {
         padding: '60px 0',
       }}
     >
+      <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px' }}></div>
       <div
         className="kaq-narrative-flex"
         style={{

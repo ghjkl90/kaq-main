@@ -227,7 +227,7 @@ export default function ProductsPage() {
   );
 
   return (
-    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden', fontFamily: 'sans-serif' }}>
+    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
         {/* ================= 상단 공통 UI 뼈대 ================= */}

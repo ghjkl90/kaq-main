@@ -126,9 +126,8 @@ export default function PublicationsPage() {
   }, []);
 
   return (
-    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px', minHeight: '100vh', overflowX: 'hidden' }}>
+    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px' }}>
       
-      {/* 💡 연구 프로젝트 및 성과 섹션 모바일 반응형 스타일 */}
       <style>{`
         .research-item-grid {
           display: grid;
