@@ -1,6 +1,93 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+
+// ==========================================
+// 4개 언어별 텍스트 데이터 사전 (KR / EN / JP / TH)
+// ==========================================
+const CONTENT = {
+  KR: {
+    heroBadge: 'KAQ GLOBAL CHALLENGE',
+    heroTitle: ['Beyond Research,', '세계 표준을 선도하는', 'Pro-Search'],
+    heroDesc: '패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.',
+    sectionBadge: 'GLOBAL',
+    sectionTitle: ['연구를 넘어, 세계가 참고하는 기준을 만드는 것이', 'KAQ가 가장 잘하는 일입니다.'],
+    narratives: [
+      { img: '/7.png', eng: 'As you understand', kor: 'NCS 접근방식, 업을 표준으로' },
+      { img: '/4.png', eng: 'As you see', kor: 'DSQ Dashboard, 공간안전을 데이터로' },
+      { img: '/5.png', eng: 'As you feel', kor: 'K-AI Station, 한국형 AI 프롬프트의 시작' },
+      { img: '/6.png', eng: 'As you lead the world', kor: 'Global Challenge, 한국형 AI, 세계를 향해' },
+    ],
+    statsTitle: '숫자로 입증하는 KAQ 글로벌 신뢰도',
+    stats: [
+      { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축', animate: true },
+      { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증', animate: true },
+      { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도', animate: true },
+      { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약', animate: true, countFrom: 9 },
+    ],
+  },
+  EN: {
+    heroBadge: 'KAQ GLOBAL CHALLENGE',
+    heroTitle: ['Beyond Research,', 'Leading Global Standards with', 'Pro-Search'],
+    heroDesc: 'Designing paradigms. Transcending conventional R&D, we take on high-quality Pro-Search to establish new global benchmarks.',
+    sectionBadge: 'GLOBAL',
+    sectionTitle: ['Setting benchmarks referenced by the world', 'is what KAQ does best.'],
+    narratives: [
+      { img: '/7.png', eng: 'As you understand', kor: 'NCS Approach, Standardizing Industry' },
+      { img: '/4.png', eng: 'As you see', kor: 'DSQ Dashboard, Spatial Safety to Data' },
+      { img: '/5.png', eng: 'As you feel', kor: 'K-AI Station, Genesis of Korean AI Prompts' },
+      { img: '/6.png', eng: 'As you lead the world', kor: 'Global Challenge, Korean AI to the World' },
+    ],
+    statsTitle: 'KAQ Global Reliability Proven by Numbers',
+    stats: [
+      { value: '120+', label: 'OVERALL BALANCE', unit: '%p Increase', desc: 'Global partner network built across 120 countries', animate: true },
+      { value: '450K+', label: 'DETECTION POWER', unit: '%p Increase', desc: 'Over 450,000 global certifications verified', animate: true },
+      { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p Increase', desc: 'Fact-based AI prompt reliability', animate: true },
+      { value: 'TOP 1', label: 'DX INNOVATION', unit: 'Total Uplift', desc: 'Leaping as a laboratory startup DX innovation leader', animate: true, countFrom: 9 },
+    ],
+  },
+  JP: {
+    heroBadge: 'KAQ GLOBAL CHALLENGE',
+    heroTitle: ['Beyond Research,', '世界標準をリードする', 'Pro-Search'],
+    heroDesc: 'パラダイムを設計します。研究開発を超越し、新たなグローバルスタンダードを目指して高品質なPro-Searchに挑戦します。',
+    sectionBadge: 'GLOBAL',
+    sectionTitle: ['研究を超えて、世界が参考にする基準を創ることが', 'KAQの最も得意とすることです。'],
+    narratives: [
+      { img: '/7.png', eng: 'As you understand', kor: 'NCSアプローチ、産業の標準化へ' },
+      { img: '/4.png', eng: 'As you see', kor: 'DSQ Dashboard、空間安全をデータに' },
+      { img: '/5.png', eng: 'As you feel', kor: 'K-AI Station、韓国型AIプロンプトの始まり' },
+      { img: '/6.png', eng: 'As you lead the world', kor: 'Global Challenge、世界へと羽ばたく韓国型AI' },
+    ],
+    statsTitle: '数字で実証するKAQグローバル信頼度',
+    stats: [
+      { value: '120+', label: 'OVERALL BALANCE', unit: '%p 向上', desc: '120カ国のパートナーネットワーク構築', animate: true },
+      { value: '450K+', label: 'DETECTION POWER', unit: '%p 向上', desc: '45万件以上のグローバル認証・検証実績', animate: true },
+      { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 向上', desc: 'ファクトベースのAIプロンプト信頼度', animate: true },
+      { value: 'TOP 1', label: 'DX INNOVATION', unit: '総合向上', desc: 'ラボ発DXイノベーション企業へ飛躍', animate: true, countFrom: 9 },
+    ],
+  },
+  TH: {
+    heroBadge: 'KAQ GLOBAL CHALLENGE',
+    heroTitle: ['Beyond Research,', 'ผู้นำมาตรฐานระดับโลกด้วย', 'Pro-Search'],
+    heroDesc: 'เราออกแบบกระบวนทัศน์ใหม่ ก้าวข้ามขีดจำกัดของการวิจัยและพัฒนา มุ่งสู่มาตรฐานระดับโลกด้วย Pro-Search คุณภาพสูง',
+    sectionBadge: 'GLOBAL',
+    sectionTitle: ['การสร้างมาตรฐานอ้างอิงระดับโลก', 'คือสิ่งที่ KAQ เชี่ยวชาญที่สุด'],
+    narratives: [
+      { img: '/7.png', eng: 'As you understand', kor: 'แนวทาง NCS, สร้างมาตรฐานแห่งอุตสาหกรรม' },
+      { img: '/4.png', eng: 'As you see', kor: 'DSQ Dashboard, ความปลอดภัยเชิงพื้นที่สู่ข้อมูล' },
+      { img: '/5.png', eng: 'As you feel', kor: 'K-AI Station, จุดเริ่มต้นของ Korean AI Prompt' },
+      { img: '/6.png', eng: 'As you lead the world', kor: 'Global Challenge, AI สัญชาติเกาหลีสู่เวทีโลก' },
+    ],
+    statsTitle: 'ความน่าเชื่อถือระดับโลกของ KAQ พิสูจน์ได้ด้วยตัวเลข',
+    stats: [
+      { value: '120+', label: 'OVERALL BALANCE', unit: '%p เพิ่มขึ้น', desc: 'สร้างเครือข่ายพันธมิตรใน 120 ประเทศทั่วโลก', animate: true },
+      { value: '450K+', label: 'DETECTION POWER', unit: '%p เพิ่มขึ้น', desc: 'ตรวจสอบและรับรองระดับสากลกว่า 450,000 รายการ', animate: true },
+      { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p เพิ่มขึ้น', desc: 'ความน่าเชื่อถือของพรอมต์ AI ตามข้อเท็จจริง', animate: true },
+      { value: 'TOP 1', label: 'DX INNOVATION', unit: 'การพัฒนาแบบบูรณาการ', desc: 'ก้าวสู่การเป็นผู้นำนวัตกรรม DX จากสตาร์ทอัพห้องปฏิบัติการ', animate: true, countFrom: 9 },
+    ],
+  },
+};
 
 function CountUpText({ text, trigger, duration = 1400, from }) {
   const [display, setDisplay] = useState(text);
@@ -219,23 +306,13 @@ function NarrativeScene({ item, index, total }) {
 }
 
 export default function GlobalChallengePage() {
+  const { currentLang } = useLanguage();
   const [isMounted, setIsMounted] = useState(false);
   const globeContainerRef = useRef(null);
   const [statsRef, statsInView] = useInView(0.2);
 
-  const stats = [
-    { value: '120+', label: 'OVERALL BALANCE', unit: '%p 향상', desc: '120개국 파트너 네트워크 구축', animate: true },
-    { value: '450K+', label: 'DETECTION POWER', unit: '%p 향상', desc: '45만 건 이상의 글로벌 인증 검증', animate: true },
-    { value: '99.8%', label: 'ANALYSIS RELIABILITY', unit: '%p 향상', desc: '사실 기반 AI 프롬프트 신뢰도', animate: true },
-    { value: 'TOP 1', label: 'DX INNOVATION', unit: '통합 향상', desc: '실험실 창업 DX 혁신 기업 도약', animate: true, countFrom: 9 },
-  ];
-
-  const narratives = [
-    { img: '/7.png', eng: 'As you understand', kor: 'NCS 접근방식, 업을 표준으로' },
-    { img: '/4.png', eng: 'As you see', kor: 'DSQ Dashboard, 공간안전을 데이터로' },
-    { img: '/5.png', eng: 'As you feel', kor: 'K-AI Station, 한국형 AI 프롬프트의 시작' },
-    { img: '/6.png', eng: 'As you lead the world', kor: 'Global Challenge, 한국형 AI, 세계를 향해' },
-  ];
+  // 헤더에서 선택된 언어(KR, EN, JP, TH)와 자동 동기화 (기본값: KR)
+  const t = CONTENT[currentLang] || CONTENT.KR;
 
   useEffect(() => {
     setIsMounted(true);
@@ -360,7 +437,6 @@ export default function GlobalChallengePage() {
           100% { background-position: 100% 0%; }
         }
 
-        /* 💻 PC 웹: 시원하고 선명한 대형 타이틀 타이포그래피 */
         .challenge-main-title {
           font-size: 52px;
           font-weight: 800;
@@ -404,7 +480,6 @@ export default function GlobalChallengePage() {
           margin-bottom: 10px;
         }
 
-        /* 📱 모바일(768px 이하): 가독성 높인 최적 스케일링 */
         @media (max-width: 768px) {
           .challenge-main-title {
             font-size: 28px !important;
@@ -479,13 +554,18 @@ export default function GlobalChallengePage() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
             <span style={{ fontSize: '13px', color: '#cbd5e1', fontWeight: '800', letterSpacing: '2px', textTransform: 'uppercase' }}>
-              KAQ GLOBAL CHALLENGE
+              {t.heroBadge}
             </span>
             <span style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.25)' }}></span>
           </div>
 
           <h1 className="challenge-main-title">
-            Beyond Research, <br />세계 표준을 선도하는 <br /> Pro-Search
+            {t.heroTitle.map((line, idx) => (
+              <React.Fragment key={idx}>
+                {line}
+                {idx < t.heroTitle.length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </h1>
 
           <p
@@ -499,7 +579,7 @@ export default function GlobalChallengePage() {
               margin: 0,
             }}
           >
-            패러다임을 설계합니다. 연구개발을 초월하여, 새로운 글로벌 표준을 지향하는 목표를 갖고 고품질 Pro-Search에 도전합니다.
+            {t.heroDesc}
           </p>
         </div>
       </div>
@@ -534,18 +614,23 @@ export default function GlobalChallengePage() {
               textTransform: 'uppercase',
             }}
           >
-            GLOBAL
+            {t.sectionBadge}
           </span>
           <h3 className="challenge-intro-h3">
-            연구를 넘어, 세계가 참고하는 기준을 만드는 것이 <br />KAQ가 가장 잘하는 일입니다.
+            {t.sectionTitle.map((line, idx) => (
+              <React.Fragment key={idx}>
+                {line}
+                {idx < t.sectionTitle.length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </h3>
         </motion.div>
       </div>
 
       {/* 내러티브 씬 */}
       <div style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-        {narratives.map((item, i) => (
-          <NarrativeScene key={i} item={item} index={i} total={narratives.length} />
+        {t.narratives.map((item, i) => (
+          <NarrativeScene key={i} item={item} index={i} total={t.narratives.length} />
         ))}
       </div>
 
@@ -570,7 +655,7 @@ export default function GlobalChallengePage() {
               }}
             >
               <h2 className="challenge-stats-h2">
-                숫자로 입증하는 KAQ 글로벌 신뢰도
+                {t.statsTitle}
               </h2>
 
               <div
@@ -580,7 +665,7 @@ export default function GlobalChallengePage() {
                   gap: '24px',
                 }}
               >
-                {stats.map((stat, i) => (
+                {t.stats.map((stat, i) => (
                   <div
                     key={i}
                     style={{

@@ -26,7 +26,7 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.56); /* 비율 유지를 위해 미세 확장 */
+  transform: translate(-50%, -50%);
   min-width: 100%;
   min-height: 100%;
   width: auto;
@@ -64,7 +64,7 @@ html, body {
     ellipse 100% 100% at 50% 50%, 
     rgba(0, 0, 0, 0) 30%,     
     rgba(0, 0, 0, 0.5) 70%,   
-    rgba(0, 0, 0, 0.95) 100%  /* 가장자리를 완전한 검정으로 덮어 착시 효과 극대화 */
+    rgba(0, 0, 0, 0.95) 100%
   );
 }
 
@@ -674,7 +674,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 0 6%;
-  z-index: 1000;
+  z-index: 9000;
   box-sizing: border-box;
   background: linear-gradient(
     to bottom,
@@ -2027,11 +2027,14 @@ html, body {
 
 .mainFooter {
   width: 100%;
+  min-height: 300px;      /* 추가 */
   background-color: #000000;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  flex-direction: column;   /* 추가: footerContainer를 세로로 배치 */
+  justify-content: center;  /* flex-start → center로 바꾸면 내용이 세로 중앙에 옴 */
+  align-items: center;
 }
 
 .footerContainer {

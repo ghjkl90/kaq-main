@@ -1,351 +1,368 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import styles from '../page.module.css'; 
+import { useEffect, useRef } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-export default function ProjectList() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isChanging, setIsChanging] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const sectionRef = useRef(null);
+const TEXT = {
+  KR: {
+    badge: "Featured Solution",
+    heading: "KAQ가 만드는 두 가지 변화",
+  },
+  EN: {
+    badge: "Featured Solution",
+    heading: "Two Ways KAQ Is Driving Change",
+  },
+  JP: {
+    badge: "Featured Solution",
+    heading: "KAQが生み出す2つの変化",
+  },
+  TH: {
+    badge: "Featured Solution",
+    heading: "สองการเปลี่ยนแปลงที่ KAQ สร้างขึ้น",
+  },
+};
 
-  const duration = 5000; 
-
-  const data = [
+const CONTENT = {
+  KR: [
     {
       id: "01",
-      badgeText: "기구축 완료",
-      mainTitle: "K–AI–STATION",
-      subTitle: "다양한 AI 모델의 프롬프트를 체함하는 장소",
-      description: "모두 AI를 직접 체험할 수 있습니다. 시니어의 생활형 문제, 어린이 호기심 해결, 장애인의 소통 해결, 직업별 전문적 질문, 대학생의 실험실습을 체험하는 공간입니다.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80", 
-      btnText: "자세히 보기",
+      mainTitle: "K–AI Station",
+      description:
+        "누구나 쉽게 AI를 경험하도록, 시니어, 어린이, 직무 학습자 등 이용자의 상황과 목적에 맞는 AI 대화 경험을 제공합니다.",
+      image: "/8.png",
+      btnText: "바로가기",
       link: "https://k-ai-station.vercel.app/",
-      features: [
-        {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></svg>,
-          title: "프롬프트 난이도",
-          desc: "AI 모델 기반 7등급 난이도를 선택할 수 있습니다."
-        },
-        {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><circle cx="12" cy="12" r="3" /><circle cx="12" cy="4" r="2" /><circle cx="12" cy="20" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><line x1="12" y1="6" x2="12" y2="9" /><line x1="12" y1="15" x2="12" y2="18" /><line x1="6" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="18" y2="12" /></svg>,
-          title: "AI 체험 전문화",
-          desc: "10,000개의 프롬프트, 140개 직업군, 100개의 실습교재를 탑재했습니다."
-        },
-        {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>,
-          title: "AI 프롬프트 등록",
-          desc: "자신이 만든 프롬프트를 등록하여 저작권을 인정받을 수 있습니다."
-        }
-      ]
     },
     {
       id: "02",
-      badgeText: "신규 도입 예정",
       mainTitle: "DSQ PLATFORM",
-      subTitle: "모바일 기반 디지털안전품질 표준 대시보드",
-      description: "성균관대학교 스마트품질연구실이 개발한 오픈퀄리티(Open Quality)의 기술 사업화 제품. AI 센싱과 디지털트윈으로 안전 생태계를 바꿉니다.",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200", 
-      btnText: "플랫폼 둘러보기",
-      //link: "http://openq.co.kr:8082/",
+      description:
+        "공간의 안전과 품질을 데이터로 센싱, 측정, 추적, 시각화를 통해 공간의 안전품질 상태를 직관적으로 확인합니다.",
+      image: "/9.png",
+      btnText: "바로가기",
       link: "/DSQ",
-      features: [
-        {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5" /></svg>,
-          title: "학술적 공신력",
-          desc: "국내외 표준 기반 연구자산을 토대로 4대 HOPE 위해요인 지표를 정립했습니다."
-        },
-        {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="16" /><line x1="15" y1="22" x2="15" y2="16" /><path d="M9 16h6v6H9z" /><path d="M8 6h2v2H8zm0 4h2v2H8zm6-4h2v2h-2zm0 4h2v2h-2z" /></svg>,
-          title: "다각화된 현장 실증",
-          desc: "다중이용시설, 전통시장, 스쿨존 등 실제 안전 품질 관리가 시급한 다양한 거점에 커스텀 도입 중입니다."
-        },
-        {
-          icon: <svg viewBox="0 0 24 24" fill="none" stroke="#5993ef" strokeWidth="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
-          title: "민관 융합 네트워크",
-          desc: "이해관계자 연결, 관리자에게는 고도화된 시스템을, 대중에게는 사전 안전 확인 권리를 제공합니다."
-        }
-      ]
-    }
-  ];
+    },
+  ],
+  EN: [
+    {
+      id: "01",
+      mainTitle: "K–AI Station",
+      description:
+        "Everyone can experience AI with ease — tailored AI conversations for seniors, children, working learners, and every situation and purpose in between.",
+      image:
+        "/8.png",
+      btnText: "View More",
+      link: "https://k-ai-station.vercel.app/",
+    },
+    {
+      id: "02",
+      mainTitle: "DSQ PLATFORM",
+      description:
+        "Sense, measure, track, and visualize a space's safety and quality with data — so its safety status is instantly clear.",
+      image:
+        "/9.png",
+      btnText: "View More",
+      link: "/DSQ",
+    },
+  ],
+  JP: [
+    {
+      id: "01",
+      mainTitle: "K–AI Station",
+      description:
+        "誰もが気軽にAIを体験できるよう、シニア、子ども、職務学習者など、利用者の状況と目的に合わせたAI対話体験を提供します。",
+      image:
+        "/8.png",
+      btnText: "詳細を見る",
+      link: "https://k-ai-station.vercel.app/",
+    },
+    {
+      id: "02",
+      mainTitle: "DSQ PLATFORM",
+      description:
+        "空間の安全と品質をデータでセンシング・測定・追跡・可視化し、安全品質の状態を直感的に確認できます。",
+      image:
+        "/9.png",
+      btnText: "詳細を見る",
+      link: "/DSQ",
+    },
+  ],
+  TH: [
+    {
+      id: "01",
+      mainTitle: "K–AI Station",
+      description:
+        "ทุกคนสามารถสัมผัสประสบการณ์ AI ได้อย่างง่ายดาย ปรับให้เหมาะกับสถานการณ์และวัตถุประสงค์ของผู้สูงอายุ เด็ก และผู้เรียนวัยทำงาน",
+      image:
+        "/8.png",
+      btnText: "ดูเพิ่มเติม",
+      link: "https://k-ai-station.vercel.app/",
+    },
+    {
+      id: "02",
+      mainTitle: "DSQ PLATFORM",
+      description:
+        "ตรวจจับ วัด ติดตาม และแสดงผลความปลอดภัยและคุณภาพของพื้นที่ด้วยข้อมูล เพื่อให้เห็นสถานะความปลอดภัยได้อย่างชัดเจน",
+      image:
+        "/9.png",
+      btnText: "ดูเพิ่มเติม",
+      link: "/DSQ",
+    },
+  ],
+};
+
+function useScrollReveal() {
+  const containerRef = useRef(null);
 
   useEffect(() => {
+    const root = containerRef.current;
+    if (!root) return;
+
+    const targets = root.querySelectorAll("[data-reveal]");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add(styles.kaqActive); 
-            observer.unobserve(entry.target); 
+            entry.target.classList.add("fsVisible");
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.05 }
+      { threshold: 0.15 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    setProgress(0);
-    const intervalTime = 50; 
-    const steps = duration / intervalTime;
-    let currentStep = 0;
+  return containerRef;
+}
 
-    const timer = setInterval(() => {
-      currentStep++;
-      setProgress((currentStep / steps) * 100);
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        handleNext();
-      }
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, [currentIndex]);
-
-  const handlePageSwitch = (index) => {
-    if (index === currentIndex || isChanging) return;
-    setIsChanging(true);
-    setTimeout(() => {
-      setCurrentIndex(index);
-      setIsChanging(false);
-    }, 250); 
-  };
-
-  const handlePrev = () => {
-    const prevIndex = currentIndex === 0 ? data.length - 1 : currentIndex - 1;
-    handlePageSwitch(prevIndex);
-  };
-
-  const handleNext = () => {
-    const nextIndex = currentIndex === data.length - 1 ? 0 : currentIndex + 1;
-    handlePageSwitch(nextIndex);
-  };
-
-  const current = data[currentIndex];
+export default function FeaturedSolutions() {
+  const { currentLang } = useLanguage();
+  const t = TEXT[currentLang] || TEXT.KR;
+  const items = CONTENT[currentLang] || CONTENT.KR;
+  const containerRef = useScrollReveal();
 
   return (
-    <section className={styles.kaqReportageSection} ref={sectionRef} style={{ padding: "200px 0" }}>
-      <div className={`${styles.kaqReportageContainer} ${styles.kaqScrollReveal}`}>
-        
-        {/* [LEFT AREA] */}
-        <div 
-          className={styles.kaqReportageLeftFrame}
-          style={{ borderRadius: '12px', overflow: 'hidden' }}
-        >
-          <div className={styles.kaqPolyImageContainer} style={{ borderRadius: '12px', overflow: 'hidden' }}>
-            <div 
-              style={{ 
-                display: "flex",
-                width: `${data.length * 100}%`,
-                transform: `translateX(-${currentIndex * (100 / data.length)}%)`,
-                height: "100%",
-                transition: "transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)",
-                willChange: "transform"
-              }}
-            >
-              {data.map((item, idx) => (
-                <div 
-                  key={idx}
-                  style={{ 
-                    backgroundImage: `url(${item.image})`,
-                    width: `${100 / data.length}%`,
-                    height: "100%",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat"
-                  }}
+    <section className="fsSection" ref={containerRef}>
+      <style>{`
+        .fsSection {
+          width: 100%;
+          background-color: #ffffff;
+          padding: 140px 0;
+          box-sizing: border-box;
+        }
+
+        .fsHeader {
+          text-align: center;
+          max-width: 720px;
+          margin: 0 auto 90px;
+          padding: 0 24px;
+        }
+
+        .fsBadge {
+          display: inline-block;
+          border: 1.5px solid #0052ff;
+          color: #0052ff;
+          font-size: 0.8rem;
+          font-weight: 700;
+          padding: 6px 18px;
+          border-radius: 9999px;
+          margin-bottom: 20px;
+        }
+
+        .fsHeading {
+          font-size: clamp(1.75rem, 3vw, 2.25rem);
+          font-weight: 800;
+          line-height: 1.3;
+          letter-spacing: -0.02em;
+          color: #111625;
+          margin: 0;
+          word-break: keep-all;
+        }
+
+        .fsList {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 110px;
+        }
+
+        .fsRow {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: center;
+        }
+
+        .fsRow:nth-child(even) .fsImageCol {
+          order: 2;
+        }
+
+        .fsRow:nth-child(even) .fsTextCol {
+          order: 1;
+        }
+
+        .fsImageBox {
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          border-radius: 20px;
+          overflow: hidden;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          box-shadow: 0 25px 50px -18px rgba(15, 23, 42, 0.18);
+        }
+
+        .fsTitle {
+          font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+          font-weight: 800;
+          color: #111625;
+          margin: 0 0 16px 0;
+          letter-spacing: -0.01em;
+          word-break: keep-all;
+        }
+
+        .fsDesc {
+          font-size: 0.98rem;
+          line-height: 1.7;
+          color: #4b5563;
+          margin: 0 0 28px 0;
+          word-break: keep-all;
+        }
+
+        .fsBtn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background-color: #111111;
+          color: #ffffff;
+          font-size: 0.9rem;
+          font-weight: 700;
+          line-height: 1;
+          text-decoration: none;
+          padding: 12px 24px;
+          border-radius: 999px;
+          transition: background-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .fsBtn:hover {
+          background-color: #0052ff;
+          transform: translateY(-2px);
+        }
+
+        .fsBtn svg {
+          display: block;
+          flex-shrink: 0;
+          transition: transform 0.25s ease;
+        }
+
+        .fsBtn:hover svg {
+          transform: translateX(4px);
+        }
+
+        /* 스크롤 리빌 애니메이션 */
+        [data-reveal] {
+          opacity: 0;
+          transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-reveal="up"] {
+          transform: translateY(36px);
+        }
+
+        [data-reveal="left"] {
+          transform: translateX(-48px);
+        }
+
+        [data-reveal="right"] {
+          transform: translateX(48px);
+        }
+
+        [data-reveal].fsVisible {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+
+        @media (max-width: 860px) {
+          .fsSection {
+            padding: 90px 0;
+          }
+
+          .fsHeader {
+            margin-bottom: 60px;
+          }
+
+          .fsList {
+            gap: 60px;
+          }
+
+          .fsRow {
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
+
+          .fsRow:nth-child(even) .fsImageCol,
+          .fsRow:nth-child(even) .fsTextCol {
+            order: initial;
+          }
+
+          /* 모바일에서는 좌우 이동 대신 위로 떠오르는 것으로 통일 */
+          [data-reveal="left"],
+          [data-reveal="right"] {
+            transform: translateY(36px);
+          }
+        }
+      `}</style>
+
+      <div className="fsHeader" data-reveal="up">
+        <span className="fsBadge">{t.badge}</span>
+        <h2 className="fsHeading">{t.heading}</h2>
+      </div>
+
+      <div className="fsList">
+        {items.map((item, idx) => {
+          const isEven = idx % 2 === 1;
+          return (
+            <div className="fsRow" key={item.id}>
+              <div className="fsImageCol" data-reveal={isEven ? "right" : "left"}>
+                <div
+                  className="fsImageBox"
+                  style={{ backgroundImage: `url(${item.image})` }}
                 />
-              ))}
-            </div>
-            <div className={styles.kaqPolyVisualShadow}></div>
-          </div>
-        </div>
-
-        {/* [RIGHT AREA] */}
-        <div className={`${styles.kaqReportageRightPanel} ${isChanging ? styles.kaqTextChanging : ""}`}>
-          
-          <div className={styles.kaqReportageHeader}>
-            <div className={styles.kaqBadgeRow}>
-              <h4 className={styles.kaqBadgeText}>{current.badgeText}</h4>
-            </div>
-            <h2 className={styles.kaqMainHeadingTitle}>{current.mainTitle}</h2>
-            <p className={styles.kaqSubHeadingHeading}>{current.subTitle}</p>
-          </div>
-
-          <div className={styles.kaqReportageBodyDesc}>
-            <p>{current.description}</p>
-          </div>
-
-          <div className={styles.kaqReportageMiniGrid}>
-            {current.features.map((feat, idx) => (
-              <div 
-                key={idx} 
-                className={styles.kaqMiniColumnItem}
-                style={{ transitionDelay: `${idx * 60}ms` }}
-              >
-                <div className={styles.kaqMiniIconCircle}>
-                  {feat.icon}
-                </div>
-                <h5 className={styles.kaqMiniColumnTitle} style={{ fontSize: "1.125rem", fontWeight: "850", color: "#0f172a", marginBottom: "8px", letterSpacing: "-0.01em" }}>
-                  {feat.title}
-                </h5>
-                <p className={styles.kaqMiniColumnDesc}>{feat.desc}</p>
               </div>
-            ))}
-          </div>
-
-          <div className={styles.kaqReportageControlBar} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            
-            {/* 1. 좌측: 타임 도트 애니메이션 그룹 (간격 넓힘: gap을 12px -> 20px로 수정) */}
-            <div className={styles.kaqTimeDotsContainer} style={{ margin: '0', display: 'flex', alignItems: 'center', gap: '20px' }}>
-              {data.map((_, idx) => (
-                <div 
-                  key={idx} 
-                  className={`${styles.kaqDotWrapper} ${currentIndex === idx ? styles.activeDot : ""}`}
-                  onClick={() => handlePageSwitch(idx)}
-                  style={{ 
-                    cursor: 'pointer', 
-                    position: 'relative', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center',
-                    width: '12px',
-                    height: '12px'
-                  }}
+              <div className="fsTextCol" data-reveal={isEven ? "left" : "right"}>
+                <h3 className="fsTitle">{item.mainTitle}</h3>
+                <p className="fsDesc">{item.description}</p>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fsBtn"
                 >
-                  {currentIndex === idx && (
-                    <svg className={styles.kaqCircularSvg} viewBox="0 0 32 32" style={{ 
-                      position: 'absolute', 
-                      width: '28px', 
-                      height: '28px',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      overflow: 'visible'
-                    }}>
-                      <circle 
-                        className={styles.kaqCircularProgressBar} 
-                        cx="16" cy="16" r="14" 
-                        strokeDasharray="88"
-                        strokeDashoffset={88 - (88 * progress) / 100}
-                      />
-                    </svg>
-                  )}
-                  <span className={styles.kaqCoreCenterDot} style={{ 
-                    display: 'block', 
-                    width: '6px', 
-                    height: '6px', 
-                    borderRadius: '50%', 
-                    backgroundColor: currentIndex === idx ? '#0052FF' : '#D1D5DB',
-                    position: 'relative',
-                    zIndex: 2
-                  }}></span>
-                </div>
-              ))}
-            </div>
-
-            {/* 2. 우측: 화살표 버튼 그룹 + 상세 보기 버튼 */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              {/* 화살표 버튼 그룹 */}
-              <div className={styles.kaqBtnArrowsGroup} style={{ display: 'flex', gap: '12px', margin: '0' }}>
-                <button 
-                  onClick={handlePrev} 
-                  aria-label="이전"
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    border: '1px solid #E5E7EB',
-                    backgroundColor: '#FFFFFF',
-                    color: '#111827',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    boxShadow: 'none',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    outline: 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#0052FF';
-                    e.currentTarget.style.color = '#FFFFFF';
-                    e.currentTarget.style.borderColor = '#0052FF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#FFFFFF';
-                    e.currentTarget.style.color = '#111827';
-                    e.currentTarget.style.borderColor = '#E5E7EB';
-                  }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                  </svg>
-                </button>
-
-                <button 
-                  onClick={handleNext} 
-                  aria-label="다음"
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    border: '1px solid #E5E7EB',
-                    backgroundColor: '#FFFFFF',
-                    color: '#111827',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    boxShadow: 'none',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    outline: 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#0052FF';
-                    e.currentTarget.style.color = '#FFFFFF';
-                    e.currentTarget.style.borderColor = '#0052FF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#FFFFFF';
-                    e.currentTarget.style.color = '#111827';
-                    e.currentTarget.style.borderColor = '#E5E7EB';
-                  }}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  {item.btnText}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
-                </button>
+                </a>
               </div>
-
-              {/* 제출/링크 버튼 */}
-              <a 
-                href={current.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className={styles.kaqReportageSubmitBtn}
-                style={{ 
-                  borderRadius: '7px', 
-                  clipPath: 'none', 
-                  WebkitClipPath: 'none',
-                  margin: '0' 
-                }}
-              >
-                {current.btnText}
-              </a>
             </div>
-
-          </div>
-
-        </div>
-
+          );
+        })}
       </div>
     </section>
   );

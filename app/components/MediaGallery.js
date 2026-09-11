@@ -1,211 +1,339 @@
 "use client";
 
-import { useState, useRef } from "react";
-import styles from "../page.module.css";
+import { useEffect, useRef } from "react";
+import { useLanguage } from "../context/LanguageContext";
 
-export default function MediaGallery() {
-  const [activeIndex, setActiveIndex] = useState(2);
-  const [pointerXStart, setPointerXStart] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const stageRef = useRef(null);
+const CONTENT = {
+  KR: {
+    badge: "Global Vision",
+    heading: ["한국형 AI 경험과 안전품질 기술을", "세계가 활용할 수 있는 기준으로 확장합니다."],
+    cards: [
+      { title: "다국어 AI 경험" },
+      { title: "국제 연구 협력" },
+      { title: "안전품질 표준화" },
+      { title: "글로벌 파트너십" },
+    ],
+    ctaText: ["KAQ와 함께 새로운 AI 경험과", "안전품질의 기준을 만들어보세요."],
+    ctaBtn: "문의하기",
+  },
+  EN: {
+    badge: "Global Vision",
+    heading: ["Expanding Korea's AI Experience and", "Safety Quality Technology into a Global Standard"],
+    cards: [
+      { title: "Multilingual AI Experience" },
+      { title: "International Research Collaboration" },
+      { title: "Safety Quality Standardization" },
+      { title: "Global Partnership" },
+    ],
+    ctaText: ["Build the next standard for AI experience", "and safety quality together with KAQ."],
+    ctaBtn: "Contact Us",
+  },
+  JP: {
+    badge: "Global Vision",
+    heading: ["韓国発のAI体験と安全品質技術を", "世界標準へと広げます。"],
+    cards: [
+      { title: "多言語AI体験" },
+      { title: "国際研究協力" },
+      { title: "安全品質の標準化" },
+      { title: "グローバルパートナーシップ" },
+    ],
+    ctaText: ["KAQとともに新しいAI体験と", "安全品質の基準を作りましょう。"],
+    ctaBtn: "お問い合わせ",
+  },
+  TH: {
+    badge: "Global Vision",
+    heading: ["ขยายประสบการณ์ AI และเทคโนโลยีคุณภาพความปลอดภัยจากเกาหลี", "สู่มาตรฐานที่ทั่วโลกใช้งานได้"],
+    cards: [
+      { title: "ประสบการณ์ AI หลายภาษา" },
+      { title: "ความร่วมมือวิจัยระดับนานาชาติ" },
+      { title: "มาตรฐานคุณภาพความปลอดภัย" },
+      { title: "พันธมิตรระดับโลก" },
+    ],
+    ctaText: ["สร้างมาตรฐานใหม่ของประสบการณ์ AI", "และคุณภาพความปลอดภัยไปด้วยกันกับ KAQ"],
+    ctaBtn: "ติดต่อเรา",
+  },
+};
 
-  const galleryItems = [
-    { id: 1, handle: "@reportage.korea", tag: "Construction Update", bg: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" },
-    { id: 2, handle: "@reportage.digital", tag: "AI Safety Demo", bg: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" },
-    { id: 3, handle: "@reportage.smartcity", tag: "KAQ Lab Introduction", bg: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" },
-    { id: 4, handle: "@reportage.innovation", tag: "Digital Twin Suite", bg: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" },
-    { id: 5, handle: "@reportage.vision", tag: "Platform Showreel", bg: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" }
-  ];
+const ICONS = [
+  <svg key="globe" viewBox="0 0 24 24" fill="none" stroke="#4936ED" strokeWidth="1.8">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18" />
+    <path d="M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z" />
+  </svg>,
+  <svg key="check" viewBox="0 0 24 24" fill="none" stroke="#2167FD" strokeWidth="1.8">
+    <rect x="3" y="4" width="18" height="16" rx="2" />
+    <polyline points="7 9 10.5 12.5 17 6" />
+  </svg>,
+  <svg key="shield" viewBox="0 0 24 24" fill="none" stroke="#00A1F1" strokeWidth="1.8">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="m9 12 2 2 4-4" />
+  </svg>,
+  <svg key="handshake" viewBox="0 0 24 24" fill="none" stroke="#00C4D6" strokeWidth="1.8">
+    <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+    <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+    <path d="m21 3 1 11h-2" />
+    <path d="M3 4h2l1 11h4.5" />
+  </svg>,
+];
 
-  const total = galleryItems.length;
+function useScrollReveal() {
+  const containerRef = useRef(null);
 
-  const handleCardClick = (idx) => {
-    if (Math.abs(dragOffset) > 10) return;
-    setActiveIndex(idx);
-  };
+  useEffect(() => {
+    const root = containerRef.current;
+    if (!root) return;
 
-  const handlePointerDown = (e) => {
-    setIsDragging(true);
-    setPointerXStart(e.clientX || e.touches?.[0].clientX);
-    setDragOffset(0);
-    if (stageRef.current) {
-      stageRef.current.style.cursor = "grabbing";
-    }
-  };
+    const targets = root.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("gvVisible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
 
-  const handlePointerMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.clientX || e.touches?.[0].clientX;
-    const diffX = currentX - pointerXStart;
-    setDragOffset(diffX);
-  };
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
-  const handlePointerUpOrLeave = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
+  return containerRef;
+}
 
-    if (stageRef.current) {
-      stageRef.current.style.cursor = "pointer";
-    }
-
-    const threshold = 50; 
-    if (dragOffset > threshold) {
-      setActiveIndex((prev) => (prev - 1 + total) % total);
-    } else if (dragOffset < -threshold) {
-      setActiveIndex((prev) => (prev + 1) % total);
-    }
-    setDragOffset(0);
-  };
+export default function MediaGallery({ onOpenContact }) {
+  const { currentLang } = useLanguage();
+  const t = CONTENT[currentLang] || CONTENT.KR;
+  const containerRef = useScrollReveal();
 
   return (
-    <section className={styles.wideGallerySection} style={{ position: "relative", overflow: "hidden", backgroundColor: "#FFFFFF", padding: "200px 0 100px 0" }}>
+    <div ref={containerRef}>
+      <style>{`
+        .gvSection {
+          width: 100%;
+          background: #F2F5FD;
+          padding: 120px 24px;
+          box-sizing: border-box;
+        }
 
-      {/* 💡 이전 페이지와 동일한 글꼴 크기, 행간, 정렬 스펙 적용 */}
-      <div className={styles.galleryHeader} style={{ position: "relative", zIndex: 10, textAlign: "center", marginBottom: "80px" }}>
-        <span style={{ 
-          fontSize: "12px", 
-          color: "#0052ff", 
-          fontWeight: "bold", 
-          letterSpacing: "3px", 
-          display: "block", 
-          marginBottom: "16px", 
-          textTransform: "uppercase" 
-        }}>
-          GALLERY SHOWCASE
-        </span>
-        <h1 style={{ 
-          fontSize: "48px", 
-          fontWeight: "900", 
-          color: "#111111", 
-          margin: "0 0 20px 0", 
-          letterSpacing: "-1.5px",
-          lineHeight: "1.25"
-        }}>
-          As You See
-        </h1>
-        <p style={{ 
-          fontSize: "16px", 
-          color: "#666666", 
-          lineHeight: "1.6",
-          margin: 0 
-        }}>
-          AI는 당신이 상상하는 것을 눈으로 보게 만듭니다. 
-          <br/>상상하는 것으로 체험해 보세요.
-        </p>
-      </div>
+        .gvHeader {
+          text-align: center;
+          max-width: 760px;
+          margin: 0 auto 56px;
+        }
 
-      <div 
-        className={styles.wideWheelStageContainer}
-        onMouseDown={handlePointerDown}
-        onMouseMove={handlePointerMove}
-        onMouseUp={handlePointerUpOrLeave}
-        onMouseLeave={handlePointerUpOrLeave}
-        onTouchStart={handlePointerDown}
-        onTouchMove={handlePointerMove}
-        onTouchEnd={handlePointerUpOrLeave}
-        ref={stageRef}
-        style={{ 
-          cursor: "pointer", 
-          userSelect: "none", 
-          position: "relative", 
-          zIndex: 10,
-          height: "620px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-          perspective: "1400px"
-        }} 
-      >
-        <div className={styles.wideArcTrack} style={{ position: "relative", width: "100%", height: "100%", transformStyle: "preserve-3d" }}>
-          {galleryItems.map((item, idx) => {
-            let offset = idx - activeIndex;
-            if (offset < -total / 2) offset += total;
-            if (offset > total / 2) offset -= total;
+        .gvBadge {
+          display: inline-block;
+          border: 1.5px solid #2f6fed;
+          color: #2f6fed;
+          font-size: 0.8rem;
+          font-weight: 700;
+          padding: 6px 18px;
+          border-radius: 9999px;
+          margin-bottom: 20px;
+          background: #ffffff;
+        }
 
-            const currentOffset = offset;
-            const absOffset = Math.abs(currentOffset);
+        .gvHeading {
+          font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+          font-weight: 800;
+          line-height: 1.45;
+          letter-spacing: -0.01em;
+          color: #111625;
+          margin: 0;
+          word-break: keep-all;
+        }
 
-            const translateX = currentOffset * 340; 
-            const translateY = Math.pow(absOffset, 2) * 16; 
-            const translateZ = -Math.pow(absOffset, 1.5) * 80;
+        .gvCards {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+        }
 
-            const rotateY = currentOffset * -16; 
-            const rotateZ = currentOffset * 1.5;
-            
-            const scale = 1 - (absOffset * 0.04);
-            const opacity = 1 - (absOffset * 0.2);
+        .gvCard {
+          background: #ffffff;
+          border-radius: 16px;
+          padding: 32px 24px;
+          box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
+        }
 
-            if (Math.abs(currentOffset) > 2.5) return null;
+        .gvIcon {
+          width: 30px;
+          height: 30px;
+          margin-bottom: 60px;
+        }
 
-            return (
-              <div
-                key={item.id}
-                className={`${styles.wideMobileFrameCard} ${idx === activeIndex ? styles.wideActiveCenterCard : ""}`}
-                style={{
-                  position: "absolute",
-                  left: "calc(50% - 160px)",
-                  top: "20px",
-                  width: "320px",
-                  height: "530px",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  backgroundColor: "#fff",
-                  transform: `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`,
-                  transformOrigin: "center center",
-                  zIndex: Math.round(100 - absOffset * 20),
-                  opacity: Math.max(0, opacity),
-                  transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease",
-                  boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)"
-                }}
-                onClick={() => handleCardClick(idx)}
-              >
-                {/* 상단 레이아웃 */}
-                <div className={styles.cardOverlayTop} style={{ position: "absolute", top: 0, left: 0, right: 0, padding: "24px", zIndex: 2, display: "flex", alignItems: "center", gap: "10px", background: "linear-gradient(to bottom, rgba(0,0,0,0.4), transparent)" }}>
-                  <span className={styles.cardUserHandle} style={{ color: "#ffffff", fontSize: "14px", fontWeight: "600" }}>{item.handle}</span>
-                </div>
+        .gvIcon svg {
+          width: 100%;
+          height: 100%;
+        }
 
-                {/* 이미지 영역 */}
-                <div 
-                  className={styles.cardVideoInnerThumb}
-                  style={{ 
-                    backgroundImage: `url(${item.bg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    width: "100%",
-                    height: "100%"
-                  }}
-                />
+        .gvCardTitle {
+          font-size: 1rem;
+          font-weight: 700;
+          color: #111625;
+          margin: 0;
+          word-break: keep-all;
+        }
 
-                {/* 하단 레이아웃 */}
-                <div className={styles.cardOverlayBottom} style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px", zIndex: 2, background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
-                  <p style={{ color: "#ffffff", margin: 0, fontSize: "16px", fontWeight: "700" }}>{item.tag}</p>
-                </div>
-              </div>
-            );
-          })}
+        .gvCta {
+          width: 100%;
+          min-height: 300px;
+          background-image: url("/10.png");
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          padding: 0 6%;
+        }
+
+        .gvCtaInner {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 24px;
+          flex-wrap: wrap;
+        }
+
+        .gvCtaText {
+          font-size: clamp(1.15rem, 2vw, 1.5rem);
+          font-weight: 800;
+          line-height: 1.45;
+          color: #ffffff;
+          margin: 0;
+          word-break: keep-all;
+        }
+
+        .gvCtaBtn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #2167FD;
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          color: #ffffff;
+          font-size: 0.95rem;
+          font-weight: 600;
+          line-height: 1;
+          padding: 12px 24px;
+          border-radius: 9999px;
+          cursor: pointer;
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          transition: background-color 0.25s ease, transform 0.25s ease;
+          white-space: nowrap;
+        }
+
+        .gvCtaBtn:hover {
+          background: #2167FD;
+          transform: translateY(-2px);
+        }
+
+        .gvCtaBtn svg {
+          display: block;
+          flex-shrink: 0;
+          transition: transform 0.25s ease;
+        }
+
+        .gvCtaBtn:hover svg {
+          transform: translateX(4px);
+        }
+
+        /* 스크롤 리빌 애니메이션 */
+        [data-reveal] {
+          opacity: 0;
+          transform: translateY(36px);
+          transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-reveal].gvVisible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @media (max-width: 860px) {
+          .gvSection {
+            padding: 80px 20px;
+          }
+
+          .gvCards {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .gvCta {
+            padding: 48px 6%;
+          }
+
+          .gvCtaInner {
+            justify-content: flex-start;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .gvCards {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      <section className="gvSection">
+        <div className="gvHeader" data-reveal>
+          <span className="gvBadge">{t.badge}</span>
+          <h2 className="gvHeading">
+            {t.heading[0]}
+            <br />
+            {t.heading[1]}
+          </h2>
         </div>
-      </div>
 
-      {/* 하단 도트 인디케이터 */}
-      <div className={styles.galleryDotIndicator} style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "40px" }}>
-        {galleryItems.map((_, idx) => (
-          <div
-            key={idx}
-            className={`${styles.indicatorDot} ${idx === activeIndex ? styles.dotActive : ""}`}
-            onClick={() => setActiveIndex(idx)}
-            style={{
-              width: idx === activeIndex ? "24px" : "8px",
-              height: "8px",
-              borderRadius: "4px",
-              backgroundColor: idx === activeIndex ? "#0052ff" : "#cbd5e1",
-              cursor: "pointer",
-              transition: "all 0.3s ease"
-            }}
-          ></div>
-        ))}
-      </div>
-    </section>
+        <div className="gvCards">
+          {t.cards.map((card, idx) => (
+            <div
+              className="gvCard"
+              key={idx}
+              data-reveal
+              style={{ transitionDelay: `${idx * 90}ms` }}
+            >
+              <div className="gvIcon">{ICONS[idx]}</div>
+              <p className="gvCardTitle">{card.title}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="gvCta">
+        <div className="gvCtaInner">
+          <p className="gvCtaText">
+            {t.ctaText[0]}
+            <br />
+            {t.ctaText[1]}
+          </p>
+          <button className="gvCtaBtn" onClick={onOpenContact} type="button">
+            {t.ctaBtn}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }
