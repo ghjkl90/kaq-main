@@ -16,7 +16,6 @@ const CONTENT = {
       ],
       bannerText: ["사람에게는 더 쉬운 AI를,", "공간에는 더 나은 품질을."],
     },
-    tabNames: { all: "전체", station: "K-AI-STATION", dsq: "DSQ" },
     station: {
       title: "K–AI Station",
       subtitle: [
@@ -46,7 +45,6 @@ const CONTENT = {
       },
       modeBadge: "MODE",
       modeHeading: ["서로 다른 사람에게", "서로 다른 AI 경험을"],
-      tryBtn: "체험하기",
       modes: [
         { id: "senior", title: "시니어 모드", desc: "어렵지 않아요. 정겨운 AI가 당신의 이야기를 기다립니다.", link: "https://kai-station.com/senior?from=%2Fhome", image: "/11.png" },
         { id: "doran", title: "도란도란 AI", desc: "몇 번의 선택만으로 AI와 편하게 대화를 시작해 보세요.", link: "https://doran-two.vercel.app/", image: "/12.png" },
@@ -79,11 +77,11 @@ const CONTENT = {
         badge: "HOW",
         heading: ["그래서 DSQ PLATFORM은", "현장의 데이터를", "하나의 흐름으로 연결합니다."],
         steps: [
-          { label: "SENSE", desc: "현장 정보 수집", icon: "sense" },
-          { label: "MEASURE", desc: "안전·품질 상태 측정", icon: "measure" },
-          { label: "ANALYZE", desc: "상태와 변화 분석", icon: "analyze" },
-          { label: "VISUALIZE", desc: "대시보드 시각화", icon: "visualize" },
-          { label: "IMPROVE", desc: "위험 확인과 개선 관리", icon: "improve", wide: true },
+          { label: "SENSE", desc: "현장 정보 수집" },
+          { label: "MEASURE", desc: "안전·품질 상태 측정" },
+          { label: "ANALYZE", desc: "상태와 변화 분석" },
+          { label: "VISUALIZE", desc: "대시보드 시각화" },
+          { label: "IMPROVE", desc: "위험 확인과 개선 관리", wide: true },
         ],
       },
       application: {
@@ -101,10 +99,8 @@ const CONTENT = {
       btn: "문의하기",
     },
   },
-
   EN: {
     hero: {
-      badge: "Products & Services",
       title: "Products & Services",
       subtitle: [
         "KAQ's technology starts with the relationship between people and AI,",
@@ -112,7 +108,6 @@ const CONTENT = {
       ],
       bannerText: ["Easier AI for people,", "Better quality for spaces."],
     },
-    tabNames: { all: "All", station: "K-AI-STATION", dsq: "DSQ" },
     station: {
       title: "K–AI Station",
       subtitle: [
@@ -120,7 +115,7 @@ const CONTENT = {
         "designed so anyone can experience AI directly, regardless of age, job, or interest.",
       ],
       banner: "/8.png",
-      exploreBtn: "View More",
+      exploreBtn: "바로가기",
       exploreLink: "https://k-ai-station.vercel.app/",
       why: {
         badge: "WHY",
@@ -142,7 +137,6 @@ const CONTENT = {
       },
       modeBadge: "MODE",
       modeHeading: ["Different AI experiences", "for different people"],
-      tryBtn: "Try Now",
       modes: [
         { id: "senior", title: "Senior Mode", desc: "Simple and friendly. A heartwarming AI companion is waiting for your story.", link: "https://kai-station.com/senior?from=%2Fhome", image: "/11.png" },
         { id: "doran", title: "Doran-Doran AI", desc: "Start a comfortable conversation with AI in just a few taps.", link: "https://doran-two.vercel.app/", image: "/12.png" },
@@ -160,7 +154,7 @@ const CONTENT = {
       title: "DSQ PLATFORM",
       subtitle: ["Turning scattered field safety and quality data", "into a digital environment you can measure, check, and manage."],
       banner: "/9.png",
-      exploreBtn: "View More",
+      exploreBtn: "바로가기",
       exploreLink: "http://openq.co.kr:8082/",
       why: {
         badge: "WHY",
@@ -175,11 +169,11 @@ const CONTENT = {
         badge: "HOW",
         heading: ["That's why DSQ PLATFORM", "connects field data", "into a single flow."],
         steps: [
-          { label: "SENSE", desc: "Collect field information", icon: "sense" },
-          { label: "MEASURE", desc: "Measure safety & quality status", icon: "measure" },
-          { label: "ANALYZE", desc: "Analyze status and change", icon: "analyze" },
-          { label: "VISUALIZE", desc: "Visualize on a dashboard", icon: "visualize" },
-          { label: "IMPROVE", desc: "Check risk and manage improvement", icon: "improve", wide: true },
+          { label: "SENSE", desc: "Collect field information" },
+          { label: "MEASURE", desc: "Measure safety & quality status" },
+          { label: "ANALYZE", desc: "Analyze status and change" },
+          { label: "VISUALIZE", desc: "Visualize on a dashboard" },
+          { label: "IMPROVE", desc: "Check risk and manage improvement", wide: true },
         ],
       },
       application: {
@@ -194,23 +188,20 @@ const CONTENT = {
     },
     finalCta: {
       text: ["Build the next standard for AI experience", "and safety quality together with KAQ."],
-      btn: "Contact Us",
+      btn: "문의하기",
     },
   },
-
   JP: {
     hero: {
-      badge: "Products & Services",
       title: "製品 & サービス",
       subtitle: ["KAQの技術は人とAIの関係から始まり、", "私たちが暮らす空間の安全と品質にまで広がります。"],
       bannerText: ["人にはより易しいAIを、", "空間にはより良い品質を。"],
     },
-    tabNames: { all: "すべて", station: "K-AI-STATION", dsq: "DSQ" },
     station: {
       title: "K–AI Station",
       subtitle: ["AIに慣れた人だけのサービスではなく、", "年齢・職業・関心に関係なく誰もが直接体験できるよう設計しています。"],
       banner: "/8.png",
-      exploreBtn: "詳細を見る",
+      exploreBtn: "바로가기",
       exploreLink: "https://k-ai-station.vercel.app/",
       why: {
         badge: "WHY",
@@ -232,7 +223,6 @@ const CONTENT = {
       },
       modeBadge: "MODE",
       modeHeading: ["異なる人には", "異なるAI体験を"],
-      tryBtn: "体験する",
       modes: [
         { id: "senior", title: "シニアモード", desc: "難しくありません。親しみやすいAIがあなたのお話を待っています。", link: "https://kai-station.com/senior?from=%2Fhome", image: "/11.png" },
         { id: "doran", title: "ドランドランAI", desc: "数回の選択だけでAIと気軽に会話を始められます。", link: "https://doran-two.vercel.app/", image: "/12.png" },
@@ -250,7 +240,7 @@ const CONTENT = {
       title: "DSQ PLATFORM",
       subtitle: ["現場に散在する安全・品質情報を", "測定・確認・管理できるデジタル環境へ転換します。"],
       banner: "/9.png",
-      exploreBtn: "詳細を見る",
+      exploreBtn: "바로가기",
       exploreLink: "http://openq.co.kr:8082/",
       why: {
         badge: "WHY",
@@ -265,11 +255,11 @@ const CONTENT = {
         badge: "HOW",
         heading: ["だからDSQ PLATFORMは", "現場のデータを", "一つの流れでつなぎます。"],
         steps: [
-          { label: "SENSE", desc: "現場情報の収集", icon: "sense" },
-          { label: "MEASURE", desc: "安全・品質状態の測定", icon: "measure" },
-          { label: "ANALYZE", desc: "状態と変化の分析", icon: "analyze" },
-          { label: "VISUALIZE", desc: "ダッシュボード可視化", icon: "visualize" },
-          { label: "IMPROVE", desc: "リスク確認と改善管理", icon: "improve", wide: true },
+          { label: "SENSE", desc: "現場情報の収集" },
+          { label: "MEASURE", desc: "安全・品質状態の測定" },
+          { label: "ANALYZE", desc: "状態と変化の分析" },
+          { label: "VISUALIZE", desc: "ダッシュボード可視化" },
+          { label: "IMPROVE", desc: "リスク確認と改善管理", wide: true },
         ],
       },
       application: {
@@ -283,24 +273,21 @@ const CONTENT = {
       },
     },
     finalCta: {
-      text: ["KAQとともに新しいAI体験と", "安全品質の基準を作りましょう。"],
-      btn: "お問い合わせ",
+      text: ["KAQとともに新しいAI体験と", "安全品質의 基準を作りましょう。"],
+      btn: "문의하기",
     },
   },
-
   TH: {
     hero: {
-      badge: "Products & Services",
       title: "ผลิตภัณฑ์และบริการ",
       subtitle: ["เทคโนโลยีของ KAQ เริ่มต้นจากความสัมพันธ์ระหว่างมนุษย์กับ AI", "และขยายไปสู่ความปลอดภัยและคุณภาพของพื้นที่ที่เราใช้ชีวิตอยู่"],
       bannerText: ["AI ที่ใช้งานง่ายขึ้นสำหรับผู้คน,", "คุณภาพที่ดีขึ้นสำหรับพื้นที่"],
     },
-    tabNames: { all: "ทั้งหมด", station: "K-AI-STATION", dsq: "DSQ" },
     station: {
       title: "K–AI Station",
       subtitle: ["ไม่ใช่บริการสำหรับผู้ที่คุ้นเคยกับ AI เท่านั้น", "ออกแบบมาให้ทุกคนสัมผัสประสบการณ์ AI ได้โดยตรง ไม่ว่าอายุ อาชีพ หรือความสนใจใด"],
       banner: "/8.png",
-      exploreBtn: "ดูรายละเอียด",
+      exploreBtn: "바로가기",
       exploreLink: "https://k-ai-station.vercel.app/",
       why: {
         badge: "WHY",
@@ -322,7 +309,6 @@ const CONTENT = {
       },
       modeBadge: "MODE",
       modeHeading: ["ประสบการณ์ AI ที่แตกต่าง", "สำหรับผู้คนที่แตกต่าง"],
-      tryBtn: "ทดลองใช้งาน",
       modes: [
         { id: "senior", title: "โหมดผู้สูงอายุ", desc: "ใช้งานง่ายและเป็นมิตร AI ผู้แสนอบอุ่นพร้อมรับฟังเรื่องราวของคุณเสมอ", link: "https://kai-station.com/senior?from=%2Fhome", image: "/11.png" },
         { id: "doran", title: "Doran-Doran AI", desc: "เริ่มบทสนทนากับ AI ได้ง่ายๆ เพียงไม่กี่ขั้นตอน", link: "https://doran-two.vercel.app/", image: "/12.png" },
@@ -340,7 +326,7 @@ const CONTENT = {
       title: "DSQ PLATFORM",
       subtitle: ["เปลี่ยนข้อมูลความปลอดภัยและคุณภาพที่กระจัดกระจายในพื้นที่", "ให้เป็นสภาพแวดล้อมดิจิทัลที่วัดผล ตรวจสอบ และจัดการได้"],
       banner: "/9.png",
-      exploreBtn: "ดูรายละเอียด",
+      exploreBtn: "바로가기",
       exploreLink: "http://openq.co.kr:8082/",
       why: {
         badge: "WHY",
@@ -355,11 +341,11 @@ const CONTENT = {
         badge: "HOW",
         heading: ["ดังนั้น DSQ PLATFORM", "จึงเชื่อมข้อมูลภาคสนาม", "เข้าเป็นกระบวนการเดียว"],
         steps: [
-          { label: "SENSE", desc: "เก็บข้อมูลภาคสนาม", icon: "sense" },
-          { label: "MEASURE", desc: "วัดสถานะความปลอดภัย/คุณภาพ", icon: "measure" },
-          { label: "ANALYZE", desc: "วิเคราะห์สถานะและการเปลี่ยนแปลง", icon: "analyze" },
-          { label: "VISUALIZE", desc: "แสดงผลบนแดชบอร์ด", icon: "visualize" },
-          { label: "IMPROVE", desc: "ตรวจสอบความเสี่ยงและจัดการปรับปรุง", icon: "improve", wide: true },
+          { label: "SENSE", desc: "เก็บข้อมูลภาคสนาม" },
+          { label: "MEASURE", desc: "วัดสถานะความปลอดภัย/คุณภาพ" },
+          { label: "ANALYZE", desc: "วิเคราะห์สถานะและการเปลี่ยนแปลง" },
+          { label: "VISUALIZE", desc: "แสดงผลบนแดชบอร์ด" },
+          { label: "IMPROVE", desc: "ตรวจสอบความเสี่ยงและจัดการปรับปรุง", wide: true },
         ],
       },
       application: {
@@ -374,53 +360,62 @@ const CONTENT = {
     },
     finalCta: {
       text: ["สร้างมาตรฐานใหม่ของประสบการณ์ AI", "และคุณภาพความปลอดภัยไปด้วยกันกับ KAQ"],
-      btn: "ติดต่อเรา",
+      btn: "문의하기",
     },
   },
 };
 
 /* ============================================================
-   HOW(DSQ) 단계 아이콘
+   DSQ HOW 44x44 공식 피그마 SVG 아이콘 리스트
    ============================================================ */
-const STEP_ICONS = {
+const DSQ_STEP_ICONS = {
+  // 1. SENSE
   sense: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
-      <circle cx="12" cy="12" r="3" />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+      <path
+        d="M11.2118 41.25H6.06421C5.13807 41.25 4.35417 40.9292 3.7125 40.2875C3.07083 39.6458 2.75 38.8619 2.75 37.9358V32.7883H5.5V37.9358C5.5 38.1005 5.55286 38.2357 5.65858 38.3414C5.76431 38.4471 5.89951 38.5 6.06421 38.5H11.2118V41.25ZM32.7883 41.25V38.5H37.9358C38.1005 38.5 38.2357 38.4471 38.3414 38.3414C38.4471 38.2357 38.5 38.1005 38.5 37.9358V32.7883H41.25V37.9358C41.25 38.8619 40.9292 39.6458 40.2875 40.2875C39.6458 40.9292 38.8619 41.25 37.9358 41.25H32.7883ZM22 33.2113C18.5332 33.2113 15.4041 32.206 12.6129 30.1955C9.82193 28.1846 7.75072 25.4528 6.39925 22C7.75072 18.5472 9.82193 15.8154 12.6129 13.8045C15.4041 11.794 18.5332 10.7887 22 10.7887C25.4668 10.7887 28.5959 11.794 31.3871 13.8045C34.1781 15.8154 36.2493 18.5472 37.6007 22C36.2493 25.4528 34.1781 28.1846 31.3871 30.1955C28.5959 32.206 25.4668 33.2113 22 33.2113ZM22 27.835C23.6194 27.835 24.9967 27.2673 26.1319 26.1319C27.2673 24.9967 27.835 23.6194 27.835 22C27.835 20.3806 27.2673 19.0033 26.1319 17.8681C24.9967 16.7327 23.6194 16.165 22 16.165C20.3806 16.165 19.0033 16.7327 17.8681 17.8681C16.7327 19.0033 16.165 20.3806 16.165 22C16.165 23.6194 16.7327 24.9967 17.8681 26.1319C19.0033 27.2673 20.3806 27.835 22 27.835ZM22 25.085C21.142 25.085 20.4134 24.7853 19.8142 24.1858C19.2147 23.5866 18.915 22.858 18.915 22C18.915 21.142 19.2147 20.4134 19.8142 19.8142C20.4134 19.2147 21.142 18.915 22 18.915C22.858 18.915 23.5866 19.2147 24.1858 19.8142C24.7853 20.4134 25.085 21.142 25.085 22C25.085 22.858 24.7853 23.5866 24.1858 24.1858C23.5866 24.7853 22.858 25.085 22 25.085ZM2.75 11.2118V6.06421C2.75 5.13807 3.07083 4.35417 3.7125 3.7125C4.35417 3.07083 5.13807 2.75 6.06421 2.75H11.2118V5.5H6.06421C5.89951 5.5 5.76431 5.55286 5.65858 5.65858C5.55286 5.76431 5.5 5.89951 5.5 6.06421V11.2118H2.75ZM38.5 11.2118V6.06421C38.5 5.89951 38.4471 5.76431 38.3414 5.65858C38.2357 5.55286 38.1005 5.5 37.9358 5.5H32.7883V2.75H37.9358C38.8619 2.75 39.6458 3.07083 40.2875 3.7125C40.9292 4.35417 41.25 5.13807 41.25 6.06421V11.2118H38.5Z"
+        fill="white"
+      />
     </svg>
   ),
+  // 2. MEASURE
   measure: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 11l3 3L22 4" />
-      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+      <path
+        d="M9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V24.006L31.7204 29.869L27.9126 26.0616L20.2621 33.6663L24.179 37.5832H9.73096ZM20.3432 23.3748H30.779V20.6248H20.3432V23.3748ZM20.3432 16.2528H30.779V13.5033H20.3432V16.2528ZM31.7204 39.4165L25.9523 33.6663L27.9126 31.7344L31.7204 35.5418L39.3356 27.9265L41.2675 29.8868L31.7204 39.4165ZM15.929 23.1562C16.2391 22.8461 16.3942 22.4606 16.3942 21.9998C16.3942 21.5391 16.2391 21.1536 15.929 20.8435C15.6186 20.5333 15.2331 20.3783 14.7726 20.3783C14.3118 20.3783 13.9264 20.5333 13.6162 20.8435C13.3058 21.1536 13.1506 21.5391 13.1506 21.9998C13.1506 22.4606 13.3058 22.8461 13.6162 23.1562C13.9264 23.4664 14.3118 23.6214 14.7726 23.6214C15.2331 23.6214 15.6186 23.4664 15.929 23.1562ZM15.929 16.0346C16.2391 15.7242 16.3942 15.3387 16.3942 14.8783C16.3942 14.4175 16.2391 14.032 15.929 13.7219C15.6186 13.4114 15.2331 13.2562 14.7726 13.2562C14.3118 13.2562 13.9264 13.4114 13.6162 13.7219C13.3058 14.032 13.1506 14.4175 13.1506 14.8783C13.1506 15.3387 13.3058 15.7242 13.6162 16.0346C13.9264 16.3448 14.3118 16.4998 14.7726 16.4998C15.2331 16.4998 15.6186 16.3448 15.929 16.0346Z"
+        fill="white"
+      />
     </svg>
   ),
+  // 3. ANALYZE
   analyze: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="18" y1="20" x2="18" y2="10" />
-      <line x1="12" y1="20" x2="12" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="14" />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+      <path
+        d="M13.5035 30.7082H16.253V18.7915H13.5035V30.7082ZM20.6251 30.7082H23.3751V13.2915H20.6251V30.7082ZM27.7471 30.7082H30.4967V24.2915H27.7471V30.7082ZM9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V34.269C37.5834 35.1951 37.2626 35.979 36.6209 36.6207C35.9792 37.2623 35.1953 37.5832 34.2692 37.5832H9.73096Z"
+        fill="white"
+      />
     </svg>
   ),
+  // 4. VISUALIZE
   visualize: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="7" height="7" rx="1" />
-      <rect x="14" y="3" width="7" height="7" rx="1" />
-      <rect x="3" y="14" width="7" height="7" rx="1" />
-      <rect x="14" y="14" width="7" height="7" rx="1" />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+      <path
+        d="M27.6764 35.75V24.0098H39.4166V35.75H27.6764ZM20.343 19.9902V8.25H39.4166V19.9902H20.343ZM4.58325 35.75V24.0098H23.6568V35.75H4.58325ZM4.58325 19.9902V8.25H16.3235V19.9902H4.58325Z"
+        fill="white"
+      />
     </svg>
   ),
+  // 5. IMPROVE (Wide)
   improve: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="7" y1="17" x2="17" y2="7" />
-      <polyline points="7 7 17 7 17 17" />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+      <path
+        d="M13.5667 28.681L19.1584 23.1067L22.8251 26.7734L29.7917 19.8351V23.3748H32.5417V15.1248H24.2917V17.8748H27.8315L22.8251 22.8812L19.1584 19.2145L11.6523 26.7665L13.5667 28.681ZM9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V34.269C37.5834 35.1951 37.2626 35.979 36.6209 36.6207C35.9792 37.2623 35.1953 37.5832 34.2692 37.5832H9.73096Z"
+        fill="white"
+      />
     </svg>
   ),
 };
 
-/* ============================================================
-   스크롤 리빌 훅 (다른 섹션들과 동일한 패턴)
-   ============================================================ */
 function useScrollReveal() {
   const containerRef = useRef(null);
 
@@ -449,34 +444,39 @@ function useScrollReveal() {
 }
 
 /* ============================================================
-   재사용 서브 컴포넌트
+   K-AI STATION WHY / HOW 공통 블록 컴포넌트
    ============================================================ */
-function SectionHeading({ badge, heading, align = "left" }) {
-  return (
-    <div className={`psHeadingBlock psAlign-${align}`} data-reveal="up">
-      <span className="psSectionLabel">{badge}</span>
-      <h2 className="psHeading">
-        {heading.map((line, idx) => (
-          <React.Fragment key={idx}>
-            {line}
-            {idx < heading.length - 1 && <br />}
-          </React.Fragment>
-        ))}
-      </h2>
-    </div>
-  );
-}
+function WhyHowSection({ data, type = "why" }) {
+  const isWhy = type === "why";
+  const blockData = isWhy ? data.why : data.how;
 
-function WhyBlock({ data }) {
   return (
-    <div className="psWhyGrid">
-      <SectionHeading badge={data.why.badge} heading={data.why.heading} />
-      <div className="psWhyCards">
-        {data.why.cards.map((card, idx) => (
-          <div className="psWhyCard" key={idx} data-reveal="right" style={{ transitionDelay: `${idx * 90}ms` }}>
-            <span className="psNumBadge psNumBadge--light">{String(idx + 1).padStart(2, "0")}</span>
-            <h4 className="psWhyCardTitle">{card.title}</h4>
-            <p className="psWhyCardDesc">{card.desc}</p>
+    <div className="psWhyGrid" data-reveal="up">
+      <div className="psWhyLeft">
+        <span className="psWhyBadge">{blockData.badge}</span>
+        <h2 className="psWhyHeading">
+          {blockData.heading.map((line, idx) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx < blockData.heading.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </h2>
+      </div>
+
+      <div className="psWhyRightCards">
+        {blockData.cards.map((card, idx) => (
+          <div
+            className={`psWhyCard ${!isWhy ? `psHowCardBg-${idx}` : ""}`}
+            key={idx}
+          >
+            <div className={`psNumBadge ${!isWhy ? "psNumBadge--white" : ""}`}>
+              {String(idx + 1).padStart(2, "0")}
+            </div>
+            <div className="psWhyCardText">
+              <h4 className="psWhyCardTitle">{card.title}</h4>
+              <p className="psWhyCardDesc">{card.desc}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -484,44 +484,43 @@ function WhyBlock({ data }) {
   );
 }
 
-function HowBlockStation({ data }) {
-  return (
-    <div className="psWhyGrid">
-      <SectionHeading badge={data.how.badge} heading={data.how.heading} />
-      <div className="psHowCards">
-        {data.how.cards.map((card, idx) => (
-          <div className={`psHowCard psHowCard-${idx}`} key={idx} data-reveal="right" style={{ transitionDelay: `${idx * 90}ms` }}>
-            <span className="psNumBadge psNumBadge--dark">{String(idx + 1).padStart(2, "0")}</span>
-            <h4 className="psHowCardTitle">{card.title}</h4>
-            <p className="psHowCardDesc">{card.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
+/* ============================================================
+   MODE 그리드 컴포넌트 (1276 x 762)
+   ============================================================ */
 function ModeGrid({ data }) {
   return (
-    <div className="psModeSection">
-      <SectionHeading badge={data.modeBadge} heading={data.modeHeading} />
+    <div className="psModeSection" data-reveal="up">
+      <div className="psModeHeader">
+        <span className="psModeBadge">{data.modeBadge}</span>
+        <h2 className="psModeHeading">
+          {data.modeHeading.map((line, idx) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx < data.modeHeading.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </h2>
+      </div>
+
       <div className="psModeGrid">
-        {data.modes.map((mode, idx) => (
+        {data.modes.map((mode) => (
           <a
             href={mode.link}
             target="_blank"
             rel="noopener noreferrer"
             className="psModeCard"
             key={mode.id}
-            data-reveal="up"
-            style={{ transitionDelay: `${(idx % 3) * 80}ms`, backgroundImage: `url(${mode.image})` }}
+            style={{ backgroundImage: `url(${mode.image})` }}
           >
-            <span className="psModeArrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
+            <span className="psModeArrowBtn">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path
+                  d="M7.98489 21.2266L6.7666 20.0083L18.2472 8.5166H7.80989V6.7666H21.2266V20.1833H19.4766V9.74598L7.98489 21.2266Z"
+                  fill="white"
+                />
               </svg>
             </span>
+
             <div className="psModeCardText">
               <h5 className="psModeCardTitle">{mode.title}</h5>
               <p className="psModeCardDesc">{mode.desc}</p>
@@ -533,44 +532,137 @@ function ModeGrid({ data }) {
   );
 }
 
-function DsqHowBlock({ data }) {
+/* ============================================================
+   DSQ WHY 전용 컴포넌트 (피그마 1276 x 526, 배경 #F2F5FD)
+   ============================================================ */
+function DsqWhyBlock({ data }) {
   return (
-    <div className="psWhyGrid">
-      <SectionHeading badge={data.how.badge} heading={data.how.heading} />
-      <div className="psDsqStepsGrid">
-        {data.how.steps.map((step, idx) => (
-          <div
-            className={`psStepCard ${step.wide ? "psStepCard--wide" : ""}`}
-            key={idx}
-            data-reveal="right"
-            style={{ transitionDelay: `${idx * 80}ms` }}
-          >
-            <span className="psStepIcon">{STEP_ICONS[step.icon]}</span>
-            <span className="psNumBadge psNumBadge--dark">{String(idx + 1).padStart(2, "0")}</span>
-            <h5 className="psStepLabel">{step.label}</h5>
-            <p className="psStepDesc">{step.desc}</p>
+    <div className="psDsqWhyGrid" data-reveal="up">
+      <div className="psDsqWhyLeft">
+        <span className="psDsqWhyBadge">{data.why.badge}</span>
+        <h2 className="psDsqWhyHeading">
+          {data.why.heading.map((line, idx) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx < data.why.heading.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </h2>
+      </div>
+
+      <div className="psDsqWhyRightCards">
+        {data.why.cards.map((card, idx) => (
+          <div className="psDsqWhyCard" key={idx}>
+            <div className="psDsqNumBadge">
+              {String(idx + 1).padStart(2, "0")}
+            </div>
+            <div className="psDsqWhyCardText">
+              <h4 className="psDsqWhyCardTitle">{card.title}</h4>
+              <p className="psDsqWhyCardDesc">{card.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
 }
+/* ============================================================
+   DSQ HOW 전용 컴포넌트 (피그마 1276 x 760 규격 일치)
+   ============================================================ */
+function DsqHowBlock({ data }) {
+  const steps = data.how.steps;
+  const topFour = steps.slice(0, 4);
+  const wideStep = steps[4];
 
-function ApplicationBlock({ data }) {
   return (
-    <div className="psModeSection">
-      <SectionHeading badge={data.application.badge} heading={data.application.heading} />
-      <div className="psPlacesGrid">
+    <div className="psDsqHowGrid" data-reveal="up">
+      {/* 좌측 텍스트 영역 (628 x 760) */}
+      <div className="psDsqHowLeft">
+        <span className="psDsqHowBadge">{data.how.badge}</span>
+        <h2 className="psDsqHowHeading">
+          {data.how.heading.map((line, idx) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx < data.how.heading.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </h2>
+      </div>
+
+      {/* 우측 카드 영역 (628 x 760) */}
+      <div className="psDsqHowRightCards">
+        {/* 상단 4개 2x2 카드 (각 308 x 240) */}
+        <div className="psDsqStepRow4">
+          {topFour.map((step, idx) => {
+            const iconKey = step.label.toLowerCase();
+            return (
+              <div className="psDsqStepBox" key={idx}>
+                <div className="psDsqStepIconTop">
+                  {DSQ_STEP_ICONS[iconKey]}
+                </div>
+                <div className="psDsqStepBoxBottom">
+                  <div className="psDsqNumBadge">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  <div className="psDsqStepBoxText">
+                    <h5 className="psDsqStepLabel">{step.label}</h5>
+                    <p className="psDsqStepDesc">{step.desc}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 하단 5번째 와이드 카드 (628 x 240, #2167FD) */}
+        {wideStep && (
+          <div className="psDsqWideBox">
+            <div className="psDsqStepIconTop">
+              {DSQ_STEP_ICONS.improve}
+            </div>
+            <div className="psDsqStepBoxBottom">
+              <div className="psDsqNumBadge">05</div>
+              <div className="psDsqStepBoxText">
+                <h5 className="psDsqStepLabel">{wideStep.label}</h5>
+                <p className="psDsqStepDesc">{wideStep.desc}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+/* ============================================================
+   DSQ APPLICATION 전용 컴포넌트 (1276 x 662 Hug)
+   ============================================================ */
+function DsqApplicationBlock({ data }) {
+  return (
+    <div className="psDsqAppSection" data-reveal="up">
+      {/* 상단 텍스트 헤더 (1276 x 142, gap: 12px) */}
+      <div className="psDsqAppHeader">
+        <span className="psDsqAppBadge">{data.application.badge}</span>
+        <h2 className="psDsqAppHeading">
+          {data.application.heading.map((line, idx) => (
+            <React.Fragment key={idx}>
+              {line}
+              {idx < data.application.heading.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </h2>
+      </div>
+
+      {/* 3개 카드 그리드 (1276 x 480, gap: 20px) */}
+      <div className="psDsqAppCards">
         {data.application.places.map((place, idx) => (
           <div
-            className="psPlaceCard"
+            className="psDsqAppCard"
             key={idx}
-            data-reveal="up"
-            style={{ transitionDelay: `${idx * 90}ms`, backgroundImage: `url(${place.image})` }}
+            style={{ backgroundImage: `url(${place.image})` }}
           >
-            <div className="psPlaceCardText">
-              <h5 className="psPlaceCardTitle">{place.title}</h5>
-              <p className="psPlaceCardDesc">{place.desc}</p>
+            <div className="psDsqAppCardText">
+              <h5 className="psDsqAppCardTitle">{place.title}</h5>
+              <p className="psDsqAppCardDesc">{place.desc}</p>
             </div>
           </div>
         ))}
@@ -580,16 +672,12 @@ function ApplicationBlock({ data }) {
 }
 
 /* ============================================================
-   메인 컴포넌트
+   메인 페이지 컴포넌트
    ============================================================ */
 export default function ProductsPage({ onOpenContact }) {
   const { currentLang } = useLanguage();
   const t = CONTENT[currentLang] || CONTENT.KR;
   const containerRef = useScrollReveal();
-
-  const topRef = useRef(null);
-  const stationRef = useRef(null);
-  const dsqRef = useRef(null);
 
   return (
     <div ref={containerRef}>
@@ -597,18 +685,20 @@ export default function ProductsPage({ onOpenContact }) {
         .psPage {
           width: 100%;
           background-color: #ffffff;
-          padding: 180px 24px 0;
+          padding-top: 80px;
           box-sizing: border-box;
-          overflow: hidden; /* 마지막 자식의 margin-bottom이 박스 밖으로 새어나가
-                                (margin collapse) 배경 없는 틈이 생기는 것을 방지 */
+          overflow-x: hidden;
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
         }
 
         .psInner {
-          max-width: 1200px;
+          width: 100%;
+          max-width: 1276px;
           margin: 0 auto;
+          box-sizing: border-box;
         }
 
-        /* --- 공통 리빌 --- */
+        /* --- 공통 스크롤 리빌 --- */
         [data-reveal] {
           opacity: 0;
           transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
@@ -618,49 +708,53 @@ export default function ProductsPage({ onOpenContact }) {
         [data-reveal="right"] { transform: translateX(36px); }
         [data-reveal].psVisible { opacity: 1; transform: translate(0, 0); }
 
-        .psHeadingBlock { margin-bottom: 28px; }
-        .psAlign-center { text-align: center; margin-left: auto; margin-right: auto; max-width: 720px; }
-
-        .psSectionLabel {
-          display: inline-block;
-          color: #0052ff;
-          font-size: 0.82rem;
-          font-weight: 800;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          margin-bottom: 14px;
+        /* ==========================================================
+           1. 히어로 영역
+           ========================================================== */
+        .psHeroHeader {
+          width: 100%;
+          padding: 120px 0 60px;
+          display: flex;
+          justify-content: center;
+          box-sizing: border-box;
         }
 
-        .psHeading {
-          font-size: clamp(1.4rem, 2.6vw, 2rem);
-          font-weight: 800;
-          line-height: 1.4;
-          letter-spacing: -0.02em;
+        .psHeroIntro {
+          width: 100%;
+          max-width: 1276px;
+          height: 170px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 20px;
+          box-sizing: border-box;
+        }
+
+        .psHeroTitle {
+          font-family: inherit;
+          font-size: 60px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
           color: #111625;
           margin: 0;
+          text-align: left;
           word-break: keep-all;
         }
 
-        /* --- 히어로 --- */
-        .psHero { padding-bottom: 0; }
-        .psHeroTitle {
-          font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-          font-weight: 900;
-          letter-spacing: -0.02em;
-          color: #111625;
-          margin: 0 0 20px 0;
-          word-break: keep-all;
-        }
         .psHeroSub {
-          font-size: 0.98rem;
-          line-height: 1.7;
+          font-family: inherit;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 1.5;
+          letter-spacing: 0;
           color: #555b66;
-          margin: 0 0 40px 0;
+          margin: 0;
+          text-align: left;
           word-break: keep-all;
         }
 
-        /* 화면 폭 전체로 퍼지는 배너: 최소/최대 높이를 clamp로 잡아
-           초광폭/초협폭 화면 모두에서 텍스트가 눌리거나 과하게 늘어나지 않게 함 */
         .psHeroBanner {
           width: 100vw;
           position: relative;
@@ -668,8 +762,7 @@ export default function ProductsPage({ onOpenContact }) {
           right: 50%;
           margin-left: -50vw;
           margin-right: -50vw;
-          height: clamp(320px, 62vh, 620px);
-          overflow: hidden;
+          height: 480px;
           background-image: url("/10.png");
           background-size: cover;
           background-position: center;
@@ -677,289 +770,462 @@ export default function ProductsPage({ onOpenContact }) {
           align-items: center;
           justify-content: center;
           box-sizing: border-box;
-          padding: 0 24px;
+          padding: 10px;
           text-align: center;
         }
+
         .psHeroBannerText {
-          font-size: clamp(1.4rem, 3.4vw, 2.6rem);
-          font-weight: 800;
-          line-height: 1.65;
+          font-family: inherit;
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
           color: #ffffff;
           margin: 0;
+          text-align: center;
           word-break: keep-all;
         }
 
-        /* --- 제품 상세 공통 --- */
-        .psDivider { border: none; border-top: 1px solid #edf0f4; margin: 96px 0 56px; }
-        .psSubDivider { border: none; border-top: 1px solid #edf0f4; margin: 80px 0; }
+        /* ==========================================================
+           2. 제품 상세 섹션 컨테이너
+           ========================================================== */
+        .psProductSection {
+          width: 100%;
+          padding: 120px 0;
+          display: flex;
+          flex-direction: column;
+          gap: 80px;
+          box-sizing: border-box;
+        }
 
         .psProductHead {
+          width: 100%;
+          max-width: 1276px;
+          height: 128px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          gap: 20px;
-          flex-wrap: wrap;
-          margin-bottom: 80px;
-        }
-        .psProductTitle {
-          font-size: clamp(1.4rem, 2.6vw, 2rem);
-          font-weight: 800;
-          line-height: 1.4;
-          letter-spacing: -0.02em;
-          color: #111625;
-          margin: 0 0 10px 0;
-        }
-        /* 영문 위주 타이틀(K–AI Station, DSQ PLATFORM)은 한글 폰트 대비
-           같은 font-size라도 작아 보여서 살짝 크고 굵게 보정 */
-        .psProductTitle--en {
-          font-size: clamp(1.6rem, 2.9vw, 2.2rem);
-          font-weight: 900;
-        }
-        .psProductSub {
-          font-size: 0.92rem;
-          line-height: 1.65;
-          color: #666666;
-          margin: 0;
-          max-width: 560px;
-          word-break: keep-all;
-        }
-        .psExploreBtn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: #111111;
-          color: #ffffff;
-          font-size: 0.85rem;
-          font-weight: 700;
-          line-height: 1;
-          padding: 11px 20px;
-          border-radius: 9999px;
-          text-decoration: none;
-          white-space: nowrap;
-          transition: background-color 0.25s ease, transform 0.25s ease;
-        }
-        .psExploreBtn:hover { background: #0052ff; transform: translateY(-2px); }
-        .psExploreBtn svg { display: block; flex-shrink: 0; }
-
-        .psProductBanner {
-          width: 100%;
-          height: clamp(200px, 32vw, 360px);
-          border-radius: 14px;
-          overflow: hidden;
-          margin-bottom: 80px;
-          box-shadow: 0 20px 45px -20px rgba(15, 23, 42, 0.25);
-        }
-        .psProductBanner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        /* --- WHY / HOW 2단 그리드 --- */
-        .psWhyGrid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 48px;
-          margin-bottom: 0;
-          align-items: start;
+          gap: 28px;
+          border-radius: 24px;
+          box-sizing: border-box;
         }
 
-        .psWhyCards, .psHowCards, .psDsqStepsGrid {
+        .psProductHeadText {
+          width: 1121px;
           display: flex;
           flex-direction: column;
-          gap: 14px;
+          gap: 12px;
         }
 
-        .psNumBadge {
+        .psProductTitle {
+          font-family: inherit;
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #111625;
+          margin: 0;
+        }
+
+        .psProductSub {
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0;
+          color: #666666;
+          margin: 0;
+          word-break: keep-all;
+        }
+
+        .psExploreBtn {
+          width: 127px;
+          height: 52px;
+          box-sizing: border-box;
+          padding-left: 20px;
+          padding-right: 16px;
+          padding-top: 0;
+          padding-bottom: 0;
+          border-radius: 99px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          font-size: 0.72rem;
-          font-weight: 800;
-          margin-bottom: 12px;
+          gap: 4px;
+          background: #111111;
+          color: #ffffff;
+          cursor: pointer;
+          text-decoration: none;
+          white-space: nowrap;
+          flex-shrink: 0;
+          transition: background-color 0.25s ease, transform 0.25s ease;
         }
-        .psNumBadge--light { background: #111a2e; color: #ffffff; }
-        .psNumBadge--dark { background: rgba(255,255,255,0.18); color: #ffffff; }
 
-        .psWhyCard {
-          background: #f3f6fc;
-          border-radius: 14px;
-          padding: 22px 24px;
+        .psExploreBtn:hover {
+          background: #0052ff;
+          transform: translateY(-2px);
         }
-        .psWhyCardTitle {
-          font-size: 1.02rem;
-          font-weight: 800;
+
+        .psExploreBtnText {
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          text-align: center;
+          display: inline-flex;
+          align-items: center;
+          transform: translateY(-0.5px);
+        }
+
+        .psExploreBtnArrow {
+          width: 24px;
+          height: 24px;
+          display: block;
+          flex-shrink: 0;
+          transition: transform 0.25s ease;
+        }
+
+        .psExploreBtn:hover .psExploreBtnArrow {
+          transform: translateX(3px);
+        }
+
+        .psProductBanner {
+          width: 100%;
+          max-width: 1276px;
+          height: 480px;
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: 0 20px 45px -20px rgba(15, 23, 42, 0.15);
+        }
+
+        .psProductBanner img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .psSubDivider {
+          width: 100%;
+          max-width: 1276px;
+          height: 1px;
+          border: none;
+          background-color: #E1E5EE;
+          margin: 0;
+          opacity: 1;
+        }
+
+        /* ==========================================================
+           3. K-AI STATION WHY / HOW
+           ========================================================== */
+        .psWhyGrid {
+          width: 100%;
+          max-width: 1276px;
+          height: 526px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          border-radius: 24px;
+          align-items: stretch;
+          box-sizing: border-box;
+        }
+
+        .psWhyLeft {
+          width: 100%;
+          max-width: 628px;
+          height: 526px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 16px;
+          box-sizing: border-box;
+        }
+
+        .psWhyBadge {
+          font-family: inherit;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #0052ff;
+          text-transform: uppercase;
+        }
+
+        .psWhyHeading {
+          font-family: inherit;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
           color: #111625;
-          margin: 0 0 6px 0;
+          margin: 0;
           word-break: keep-all;
         }
+
+        .psWhyRightCards {
+          width: 100%;
+          max-width: 628px;
+          height: 526px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          box-sizing: border-box;
+        }
+
+        .psWhyCard {
+          width: 100%;
+          max-width: 628px;
+          height: 162px;
+          background: #f8fafc;
+          border-radius: 20px;
+          padding: 28px;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          box-sizing: border-box;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .psHowCardBg-0 { background: #4936ED !important; color: #ffffff !important; }
+        .psHowCardBg-1 { background: #2167FD !important; color: #ffffff !important; }
+        .psHowCardBg-2 { background: #00A1F1 !important; color: #ffffff !important; }
+
+        .psHowCardBg-0 .psWhyCardTitle,
+        .psHowCardBg-1 .psWhyCardTitle,
+        .psHowCardBg-2 .psWhyCardTitle { color: #ffffff !important; }
+
+        .psHowCardBg-0 .psWhyCardDesc,
+        .psHowCardBg-1 .psWhyCardDesc,
+        .psHowCardBg-2 .psWhyCardDesc { color: rgba(255, 255, 255, 0.88) !important; }
+
+        .psNumBadge {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+          border-radius: 99px;
+          background: #111625;
+          color: #ffffff;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 2px;
+        }
+
+        /* ==========================================================
+   넘버 배지 색상: 카드 배경색과 일치
+   ========================================================== */
+
+/* K-AI Station HOW 01, 02, 03 배지 숫자 색상 */
+.psHowCardBg-0 .psNumBadge--white {
+  background-color: #ffffff !important;
+  color: #4936ED !important;
+}
+
+.psHowCardBg-1 .psNumBadge--white {
+  background-color: #ffffff !important;
+  color: #2167FD !important;
+}
+
+.psHowCardBg-2 .psNumBadge--white {
+  background-color: #ffffff !important;
+  color: #00A1F1 !important;
+}
+
+/* DSQ HOW 05 와이드 카드 배지 숫자 색상 */
+.psDsqWideBox .psDsqNumBadge {
+  background-color: #ffffff !important;
+  color: #2167FD !important;
+}
+
+/* DSQ HOW 상단 4개 어두운 카드(01~04) 배지 숫자 색상: #333C4E */
+.psDsqStepBox .psDsqNumBadge {
+  background-color: #ffffff !important;
+  color: #333C4E !important;
+}
+
+        .psNumBadge--white {
+          background: #ffffff !important;
+          color: #111625 !important;
+        }
+
+        .psWhyCardText {
+          width: 572px;
+          height: 62px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .psWhyCardTitle {
+          font-family: inherit;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #111625;
+          margin: 0;
+          text-align: left;
+          word-break: keep-all;
+        }
+
         .psWhyCardDesc {
-          font-size: 0.85rem;
-          line-height: 1.55;
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0;
           color: #6b7280;
           margin: 0;
           word-break: keep-all;
         }
 
-        .psHowCard {
-          border-radius: 14px;
-          padding: 22px 24px;
-          color: #ffffff;
-        }
-        .psHowCard-0 { background: #4936ED; }
-        .psHowCard-1 { background: #2167FD; }
-        .psHowCard-2 { background: #00A1F1; }
-        .psHowCard-0 .psNumBadge--dark { background: #ffffff; color: #4936ED; }
-        .psHowCard-1 .psNumBadge--dark { background: #ffffff; color: #2167FD; }
-        .psHowCard-2 .psNumBadge--dark { background: #ffffff; color: #00A1F1; }
-        .psHowCardTitle {
-          font-size: 1.02rem;
-          font-weight: 800;
-          margin: 0 0 6px 0;
-          word-break: keep-all;
-        }
-        .psHowCardDesc {
-          font-size: 0.85rem;
-          line-height: 1.55;
-          color: rgba(255,255,255,0.85);
-          margin: 0;
-          word-break: keep-all;
-        }
-
-        /* --- DSQ HOW 스텝 카드 (2x2 + wide) --- */
-        .psDsqStepsGrid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 14px;
-        }
-        .psStepCard {
-          position: relative;
-          background: #333C4E;
-          color: #ffffff;
-          border-radius: 14px;
-          padding: 24px;
-          min-height: 190px;
+        /* ==========================================================
+           4. MODE 그리드 (1276 x 762)
+           ========================================================== */
+        .psModeSection {
+          width: 100%;
+          max-width: 1276px;
+          height: 762px;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          gap: 40px;
+          border-radius: 24px;
+          box-sizing: border-box;
         }
-        .psStepCard--wide {
-          grid-column: 1 / -1;
-          background: #2167fd;
+
+        .psModeHeader {
+          width: 100%;
+          height: 142px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
         }
-        .psStepCard .psNumBadge--dark { background: #ffffff; color: #333C4E; }
-        .psStepCard--wide .psNumBadge--dark { background: #ffffff; color: #2167FD; }
-        .psStepIcon {
-          position: absolute;
-          top: 20px;
-          right: 20px;
-          width: 28px;
-          height: 28px;
-          opacity: 0.95;
+
+        .psModeBadge {
+          font-family: inherit;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #0052ff;
+          text-transform: uppercase;
         }
-        .psStepIcon svg { width: 100%; height: 100%; display: block; stroke-width: 1.7; }
-        .psStepLabel {
-          font-size: 1rem;
-          font-weight: 800;
-          margin: 0 0 4px 0;
-          letter-spacing: -0.01em;
-        }
-        .psStepDesc {
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.8);
+
+        .psModeHeading {
+          font-family: inherit;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #111625;
           margin: 0;
           word-break: keep-all;
         }
 
-        /* --- MODE 그리드 --- */
-        .psModeSection { margin-bottom: 80px; }
         .psModeGrid {
+          width: 100%;
+          height: 580px;
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, 412px);
+          justify-content: space-between;
           gap: 20px;
         }
+
         .psModeCard {
           position: relative;
-          display: block;
-          height: 220px;
-          border-radius: 16px;
+          width: 412px;
+          height: 280px;
+          border-radius: 20px;
           overflow: hidden;
           background-size: cover;
           background-position: center;
-          background-color: #111a2e;
           text-decoration: none;
-          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.35);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 24px;
+          box-sizing: border-box;
+          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2);
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
+
+        .psModeCard:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 40px -15px rgba(0, 82, 255, 0.25);
+        }
+
         .psModeCard::after {
           content: "";
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0) 100%);
+          background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%);
+          pointer-events: none;
         }
-        .psModeArrow {
-          position: absolute;
-          top: 14px;
-          right: 14px;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          background: rgba(255,255,255,0.18);
+
+        .psModeArrowBtn {
+          align-self: flex-end;
+          width: 44px;
+          height: 44px;
+          border-radius: 99px;
+          background-color: rgba(255, 255, 255, 0.2);
           backdrop-filter: blur(4px);
           -webkit-backdrop-filter: blur(4px);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #ffffff;
           z-index: 2;
+          transition: transform 0.2s ease, background-color 0.2s ease;
         }
+
+        .psModeCard:hover .psModeArrowBtn {
+          transform: scale(1.08);
+          background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .psModeArrowBtn svg {
+          width: 28px;
+          height: 28px;
+          display: block;
+        }
+
         .psModeCardText {
-          position: absolute;
-          left: 18px;
-          right: 18px;
-          bottom: 16px;
+          width: 100%;
+          min-height: 110px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          gap: 6px;
           z-index: 2;
         }
+
         .psModeCardTitle {
-          font-size: 1rem;
-          font-weight: 800;
+          font-family: inherit;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
           color: #ffffff;
-          margin: 0 0 4px 0;
-        }
-        .psModeCardDesc {
-          font-size: 0.78rem;
-          line-height: 1.45;
-          color: rgba(255,255,255,0.85);
           margin: 0;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
+          word-break: keep-all;
         }
 
-        /* --- APPLICATION 3카드 --- */
-        .psPlacesGrid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
+        .psModeCardDesc {
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0;
+          color: rgba(255, 255, 255, 0.88);
+          margin: 0;
+          word-break: keep-all;
         }
-        .psPlaceCard {
-          position: relative;
-          height: 400px;
-          border-radius: 14px;
-          overflow: hidden;
-          background-size: cover;
-          background-position: center;
-        }
-        .psPlaceCard::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
-        }
-        .psPlaceCardText { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 2; }
-        .psPlaceCardTitle { font-size: 0.98rem; font-weight: 800; color: #fff; margin: 0 0 4px 0; }
-        .psPlaceCardDesc { font-size: 0.76rem; color: rgba(255,255,255,0.85); margin: 0; word-break: keep-all; }
 
-        /* --- 중간 / 최종 CTA (진한 파랑 스월 배너) --- */
+        /* ==========================================================
+           5. 중간 CTA 배너 (1600 x 480)
+           ========================================================== */
         .psFullBleedCta {
           width: 100vw;
           position: relative;
@@ -968,165 +1234,731 @@ export default function ProductsPage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           height: 480px;
-          background-color: #002572;
           background-image: url("/10.png");
           background-size: cover;
           background-position: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 60px 162px;
+          box-sizing: border-box;
+          gap: 40px;
+          text-align: center;
+        }
+
+        .psFullBleedCtaInner {
+          width: 100%;
+          max-width: 1276px;
+          height: 184px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 16px;
-          text-align: center;
-          padding: 60px 162px;
+          gap: 20px;
           box-sizing: border-box;
-          margin-top: 80px;
         }
-        .psFullBleedCta .psBadge {
-          padding: 10px 24px;
-          margin-bottom: 0;
-          border-radius: 90px;
-          border: 1.5px solid rgba(255, 255, 255, 0.9);
+
+        .psFullBleedCtaBadge {
+          width: 236px;
+          height: 40px;
+          box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 0 12px;
+          border-radius: 99px;
+          border: 1px solid #ffffff;
           color: #ffffff;
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          text-align: center;
+          white-space: nowrap;
         }
+
         .psFullBleedCtaHeading {
-          font-size: clamp(1.4rem, 3.4vw, 2.6rem);
-          font-weight: 800;
-          line-height: 1.65;
+          font-family: inherit;
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
           color: #ffffff;
+          margin: 0;
+          text-align: center;
+          word-break: keep-all;
+        }
+
+        /* ==========================================================
+           6. DSQ WHY 전용 스타일 (피그마 1276 x 526, 배경 #F2F5FD)
+           ========================================================== */
+        .psDsqWhyGrid {
+          width: 100%;
+          max-width: 1276px;
+          height: 526px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          border-radius: 24px;
+          align-items: stretch;
+          box-sizing: border-box;
+        }
+
+        .psDsqWhyLeft {
+          width: 100%;
+          max-width: 628px;
+          height: 142px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 12px;
+          box-sizing: border-box;
+        }
+
+        .psDsqWhyBadge {
+          font-family: inherit;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #0052ff;
+          text-transform: uppercase;
+        }
+
+        .psDsqWhyHeading {
+          font-family: inherit;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #111625;
           margin: 0;
           word-break: keep-all;
         }
 
+        .psDsqWhyRightCards {
+          width: 100%;
+          max-width: 628px;
+          height: 526px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          box-sizing: border-box;
+        }
+
+        .psDsqWhyCard {
+          width: 100%;
+          max-width: 628px;
+          height: 162px;
+          background-color: #F2F5FD;
+          border-radius: 20px;
+          padding: 28px;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          box-sizing: border-box;
+        }
+
+        .psDsqNumBadge {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+          border-radius: 99px;
+          background-color: #333C4E;
+          color: #ffffff;
+          font-family: inherit;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 1.3;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 2px;
+        }
+
+        .psDsqWhyCardText {
+          width: 572px;
+          height: 62px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .psDsqWhyCardTitle {
+          font-family: inherit;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #111625;
+          margin: 0;
+          text-align: left;
+          word-break: keep-all;
+        }
+
+        .psDsqWhyCardDesc {
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #626772;
+          margin: 0;
+          word-break: keep-all;
+        }
+
+        /* ==========================================================
+   DSQ HOW 전용 스타일 (피그마 1276 x 760, 좌우 2열 완전 고정)
+   ========================================================== */
+.psDsqHowGrid {
+  width: 100% !important;
+  max-width: 1276px !important;
+  height: 760px !important;
+  display: grid !important;
+  grid-template-columns: 628px 628px !important; /* 좌측 628px + 우측 628px */
+  justify-content: space-between !important;
+  gap: 20px !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
+}
+
+/* 좌측 텍스트 프레임: 상단 정렬 및 폰트 수치 피그마 일치 */
+.psDsqHowLeft {
+  width: 628px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+}
+
+.psDsqHowBadge {
+  font-family: inherit !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: #0052ff !important;
+  text-transform: uppercase !important;
+}
+
+.psDsqHowHeading {
+  font-family: inherit !important;
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: #111625 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  word-break: keep-all !important;
+}
+
+/* 우측 카드 스택 영역 (628 x 760) */
+.psDsqHowRightCards {
+  width: 628px !important;
+  height: 760px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* 상단 2x2 카드 그리드 (2행 x 2열 = 4개) */
+.psDsqStepRow4 {
+  width: 628px !important;
+  height: 500px !important; /* 240px + 20px + 240px */
+  display: grid !important;
+  grid-template-columns: 308px 308px !important;
+  grid-template-rows: 240px 240px !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* 개별 308 x 240 카드 */
+.psDsqStepBox {
+  width: 308px !important;
+  height: 240px !important;
+  background-color: #333C4E !important;
+  border-radius: 20px !important;
+  padding: 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  box-sizing: border-box !important;
+}
+
+/* 우상단 아이콘 (44 x 44) */
+.psDsqStepIconTop {
+  align-self: flex-end !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.psDsqStepIconTop svg {
+  width: 44px !important;
+  height: 44px !important;
+  display: block !important;
+}
+
+/* 하단 내용 묶음 */
+.psDsqStepBoxBottom {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+
+.psDsqStepBoxText {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.psDsqStepLabel {
+  font-family: inherit !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.psDsqStepDesc {
+  font-family: inherit !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  margin: 0 !important;
+  text-align: left !important;
+  word-break: keep-all !important;
+}
+
+/* 하단 와이드 카드 (628 x 240, #2167FD) */
+.psDsqWideBox {
+  width: 628px !important;
+  height: 240px !important;
+  background-color: #2167FD !important;
+  border-radius: 20px !important;
+  padding: 28px 32px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  box-sizing: border-box !important;
+}
+
+/* 01~05 넘버 배지: 32 x 32 원형 */
+.psDsqNumBadge {
+  width: 32px !important;
+  height: 32px !important;
+  flex-shrink: 0 !important;
+  border-radius: 99px !important;
+  background-color: #ffffff !important;
+  color: #111625 !important;
+  font-family: inherit !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 반응형 처리 */
+@media (max-width: 1360px) {
+  .psDsqHowGrid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+  .psDsqHowLeft,
+  .psDsqHowRightCards {
+    width: 100% !important;
+    max-width: 628px !important;
+    margin: 0 auto !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .psDsqStepRow4 {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .psDsqStepBox,
+  .psDsqWideBox {
+    width: 100% !important;
+  }
+}
+
+        /* ==========================================================
+   DSQ APPLICATION 전용 스타일 (피그마 1276 x 662)
+   ========================================================== */
+.psDsqAppSection {
+  width: 100% !important;
+  max-width: 1276px !important;
+  height: 662px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  gap: 40px !important;
+  border-radius: 24px !important;
+  box-sizing: border-box !important;
+  margin: 0 auto !important;
+}
+
+/* 상단 텍스트 프레임 (1276 x 142, gap: 12px) */
+.psDsqAppHeader {
+  width: 100% !important;
+  max-width: 1276px !important;
+  height: 142px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+}
+
+.psDsqAppBadge {
+  font-family: inherit !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: #0052ff !important;
+  text-transform: uppercase !important;
+}
+
+.psDsqAppHeading {
+  font-family: inherit !important;
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: #111625 !important;
+  margin: 0 !important;
+  text-align: left !important;
+  word-break: keep-all !important;
+}
+
+/* 3열 카드 그리드: 1276 x 480, gap: 20px */
+.psDsqAppCards {
+  width: 100% !important;
+  max-width: 1276px !important;
+  height: 480px !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 412px) !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* 개별 카드: 412 x 480, border-radius: 20px */
+.psDsqAppCard {
+  position: relative !important;
+  width: 412px !important;
+  height: 480px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background-size: cover !important;
+  background-position: center !important;
+  padding: 28px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.psDsqAppCard:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 82, 255, 0.25) !important;
+}
+
+/* 카드 하단 가독성을 위한 그라데이션 오버레이 */
+.psDsqAppCard::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%) !important;
+  pointer-events: none !important;
+}
+
+/* 카드 내부 하단 텍스트 묶음 (412 x 120) */
+.psDsqAppCardText {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.psDsqAppCardTitle {
+  font-family: inherit !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  text-align: left !important;
+  word-break: keep-all !important;
+}
+
+.psDsqAppCardDesc {
+  font-family: inherit !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  margin: 0 !important;
+  text-align: left !important;
+  word-break: keep-all !important;
+}
+
+/* 반응형 처리 */
+@media (max-width: 1360px) {
+  .psDsqAppSection {
+    height: auto !important;
+  }
+  .psDsqAppCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    height: auto !important;
+  }
+  .psDsqAppCard {
+    width: 100% !important;
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .psDsqAppHeader {
+    height: auto !important;
+  }
+  .psDsqAppCards {
+    grid-template-columns: 1fr !important;
+  }
+  .psDsqAppCard {
+    height: 360px !important;
+  }
+}
+
+        /* ==========================================================
+           9. 최종 문의하기 CTA (이전 페이지와 100% 동일)
+           ========================================================== */
         .psFinalCta {
           width: 100%;
-          min-height: 300px;
+          min-height: 360px;
           background-image: url("/10.png");
           background-size: cover;
           background-position: center;
           display: flex;
           align-items: center;
+          justify-content: center;
           box-sizing: border-box;
-          padding: 48px 6%;
+          padding: 60px 162px;
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
         }
+
         .psFinalCtaInner {
           width: 100%;
-          max-width: 1200px;
+          max-width: 1276px;
+          height: 104px;
           margin: 0 auto;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          gap: 24px;
-          flex-wrap: wrap;
+          gap: 40px;
+          box-sizing: border-box;
         }
+
         .psFinalCtaText {
-          font-size: clamp(1.1rem, 2vw, 1.45rem);
-          font-weight: 800;
-          line-height: 1.45;
+          width: 514px;
+          font-family: inherit;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
           color: #ffffff;
           margin: 0;
           word-break: keep-all;
         }
+
         .psFinalCtaBtn {
+          width: 127px;
+          height: 52px;
+          box-sizing: border-box;
+          padding-left: 20px;
+          padding-right: 16px;
+          padding-top: 0;
+          padding-bottom: 0;
+          border-radius: 99px;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: #2167FD;
+          justify-content: center;
+          gap: 4px;
+          background: #0052ff;
           border: 1px solid rgba(255, 255, 255, 0.35);
           color: #ffffff;
-          font-size: 0.95rem;
-          font-weight: 600;
-          line-height: 1;
-          padding: 12px 24px;
-          border-radius: 9999px;
           cursor: pointer;
-          white-space: nowrap;
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
           transition: background-color 0.25s ease, transform 0.25s ease;
+          white-space: nowrap;
+          flex-shrink: 0;
         }
-        .psFinalCtaBtn:hover { transform: translateY(-2px); }
-        .psFinalCtaBtn svg { display: block; flex-shrink: 0; }
 
-        /* ============================================================
-           반응형 (데스크톱 소형 / 태블릿 / 모바일)
-           ============================================================ */
-        @media (max-width: 1024px) {
-          .psHeroBanner { height: clamp(280px, 50vh, 520px); }
-          .psHeroBannerText { font-size: clamp(1.3rem, 3.2vw, 2rem); }
-          .psFullBleedCta { height: auto; min-height: 400px; padding: 60px 48px; }
+        .psFinalCtaBtn:hover {
+          background: #0044d6;
+          transform: translateY(-2px);
+        }
+
+        .psFinalCtaBtnText {
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          text-align: center;
+          display: inline-flex;
+          align-items: center;
+          transform: translateY(-0.5px);
+        }
+
+        .psFinalCtaBtnArrow {
+          width: 24px;
+          height: 24px;
+          display: block;
+          flex-shrink: 0;
+          transition: transform 0.25s ease;
+        }
+
+        .psFinalCtaBtn:hover .psFinalCtaBtnArrow {
+          transform: translateX(3px);
+        }
+
+        /* ==========================================================
+           반응형 분기 대응
+           ========================================================== */
+        @media (max-width: 1360px) {
+          .psInner { padding: 0 24px; }
+          .psModeGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); height: auto; }
+          .psDsqAppCards { grid-template-columns: repeat(2, minmax(0, 1fr)); height: auto; }
+          .psModeCard, .psDsqAppCard { width: 100%; }
+          .psModeSection, .psDsqAppSection { height: auto; }
+          .psFullBleedCta { padding: 60px 24px; }
+          .psFinalCta { padding: 60px 5%; }
+          .psFinalCtaInner { height: auto; }
+          .psFinalCtaText { width: auto; }
         }
 
         @media (max-width: 960px) {
-          .psWhyGrid { grid-template-columns: 1fr; gap: 28px; }
-          .psModeGrid { grid-template-columns: repeat(2, 1fr); }
-          .psPlacesGrid { grid-template-columns: 1fr 1fr; }
+          .psWhyGrid, .psDsqWhyGrid { grid-template-columns: 1fr; height: auto; }
+          .psWhyLeft, .psWhyRightCards, .psDsqWhyLeft, .psDsqWhyRightCards { max-width: 100%; height: auto; }
+          .psDsqHowSection { height: auto; }
+          .psDsqHowCardsContainer { max-width: 100%; height: auto; }
+          .psDsqStepRow4 { grid-template-columns: 1fr; }
+          .psDsqStepBox, .psDsqWideBox { width: 100%; }
         }
 
-        @media (max-width: 640px) {
-          .psPage { padding: 110px 18px 0; }
-          .psHero { padding-bottom: 0; }
-          .psHeroTitle { margin-bottom: 14px; }
-          .psHeroSub { margin-bottom: 28px; }
-          .psProductHead { margin-bottom: 48px; }
-          .psProductBanner { margin-bottom: 48px; }
-          .psWhyGrid { margin-bottom: 0; }
-          .psSubDivider { margin: 48px 0; }
-          .psModeSection { margin-bottom: 48px; }
-          .psModeGrid { grid-template-columns: 1fr; }
-          .psPlacesGrid { grid-template-columns: 1fr; }
-          .psDsqStepsGrid { grid-template-columns: 1fr; }
-          .psStepCard--wide { flex-direction: column; align-items: flex-start; gap: 6px; }
-          .psFinalCtaInner { justify-content: flex-start; }
-          .psHeroBanner { height: clamp(240px, 42vh, 420px); padding: 0 20px; }
-          .psHeroBannerText { font-size: clamp(1.15rem, 5.2vw, 1.6rem); line-height: 1.55; }
-          .psFullBleedCta { height: auto; min-height: 320px; padding: 48px 24px; gap: 14px; margin-top: 48px; }
-          [data-reveal="right"] { transform: translateY(28px); }
-        }
+        @media (max-width: 768px) {
+          .psHeroTitle { font-size: 36px; }
+          .psHeroSub { font-size: 18px; }
+          .psHeroBannerText { font-size: 28px; }
+          .psProductTitle { font-size: 32px; }
+          .psWhyHeading, .psDsqWhyHeading, .psDsqHowHeading, .psDsqAppHeading { font-size: 28px; }
+          .psModeHeading, .psFullBleedCtaHeading { font-size: 28px; }
 
-        @media (max-width: 400px) {
-          .psHeroBanner { height: clamp(200px, 40vh, 340px); }
-          .psHeroBannerText { font-size: 1.05rem; }
+          .psProductHead { height: auto; flex-direction: column; align-items: flex-start; }
+          .psProductHeadText { width: 100%; }
+          .psProductBanner { height: 240px; }
+
+          .psWhyCard, .psDsqWhyCard { height: auto; padding: 20px; }
+          .psWhyCardText, .psDsqWhyCardText { width: 100%; height: auto; }
+
+          .psModeGrid, .psDsqAppCards { grid-template-columns: 1fr; }
+
+          .psFinalCta { padding: 48px 20px; min-height: auto; }
+          .psFinalCtaInner { flex-direction: column; align-items: flex-start; gap: 24px; height: auto; }
+          .psFinalCtaText { width: 100%; font-size: 28px; }
         }
       `}</style>
 
       <div className="psPage">
-        <div className="psInner">
-
-          {/* ================= HERO ================= */}
-          <div ref={topRef} className="psHero">
-            <div data-reveal="up">
-              <h1 className="psHeroTitle">{t.hero.title}</h1>
-              <p className="psHeroSub">
-                {t.hero.subtitle[0]}
-                <br />
-                {t.hero.subtitle[1]}
-              </p>
-            </div>
-
-            <div className="psHeroBanner" data-reveal="up">
-              <p className="psHeroBannerText">
-                {t.hero.bannerText[0]}
-                <br />
-                {t.hero.bannerText[1]}
-              </p>
-            </div>
+        {/* ================= 1. HERO ================= */}
+        <div className="psHeroHeader">
+          <div className="psHeroIntro" data-reveal="up">
+            <h1 className="psHeroTitle">{t.hero.title}</h1>
+            <p className="psHeroSub">
+              {t.hero.subtitle[0]}
+              <br />
+              {t.hero.subtitle[1]}
+            </p>
           </div>
+        </div>
 
-          {/* ================= K-AI STATION ================= */}
-          <div ref={stationRef} style={{ marginTop: "80px" }}>
+        {/* 1600 x 480 풀블리드 상단 배너 */}
+        <div className="psHeroBanner" data-reveal="up">
+          <p className="psHeroBannerText">
+            {t.hero.bannerText[0]}
+            <br />
+            {t.hero.bannerText[1]}
+          </p>
+        </div>
+
+        {/* ================= 2. K-AI STATION ================= */}
+        <div className="psInner">
+          <div className="psProductSection">
             <div className="psProductHead" data-reveal="up">
-              <div>
-                <h2 className="psProductTitle psProductTitle--en">{t.station.title}</h2>
+              <div className="psProductHeadText">
+                <h2 className="psProductTitle">{t.station.title}</h2>
                 <p className="psProductSub">
                   {t.station.subtitle[0]}
                   <br />
                   {t.station.subtitle[1]}
                 </p>
               </div>
-              <a href={t.station.exploreLink} target="_blank" rel="noopener noreferrer" className="psExploreBtn">
-                {t.station.exploreBtn}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
+
+              <a
+                href={t.station.exploreLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="psExploreBtn"
+              >
+                <span className="psExploreBtnText">{t.station.exploreBtn}</span>
+                <svg
+                  className="psExploreBtnArrow"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M16.6269 12.75H4.5V11.25H16.6269L10.9308 5.55383L12 4.5L19.5 12L12 19.5L10.9308 18.4461L16.6269 12.75Z"
+                    fill="white"
+                  />
                 </svg>
               </a>
             </div>
@@ -1135,71 +1967,112 @@ export default function ProductsPage({ onOpenContact }) {
               <img src={t.station.banner} alt={t.station.title} />
             </div>
 
-            <WhyBlock data={t.station} />
+            {/* K-AI WHY 블록 */}
+            <WhyHowSection data={t.station} type="why" />
+
             <hr className="psSubDivider" />
-            <HowBlockStation data={t.station} />
+
+            {/* K-AI HOW 블록 */}
+            <WhyHowSection data={t.station} type="how" />
+
             <hr className="psSubDivider" />
+
+            {/* K-AI MODE 그리드 (1276 x 762) */}
             <ModeGrid data={t.station} />
           </div>
+        </div>
 
-          {/* ================= 중간 CTA ================= */}
-          <div className="psFullBleedCta" data-reveal="up">
-            <span className="psBadge">{t.midCta.badge}</span>
+        {/* ================= 3. 중간 풀블리드 CTA ================= */}
+        <div className="psFullBleedCta" data-reveal="up">
+          <div className="psFullBleedCtaInner">
+            <span className="psFullBleedCtaBadge">{t.midCta.badge}</span>
             <p className="psFullBleedCtaHeading">
               {t.midCta.heading[0]}
               <br />
               {t.midCta.heading[1]}
             </p>
           </div>
+        </div>
 
-          {/* ================= DSQ PLATFORM ================= */}
-          <div ref={dsqRef} style={{ marginTop: "80px" }}>
+        {/* ================= 4. DSQ PLATFORM ================= */}
+        <div className="psInner">
+          <div className="psProductSection">
             <div className="psProductHead" data-reveal="up">
-              <div>
-                <h2 className="psProductTitle psProductTitle--en">{t.dsq.title}</h2>
+              <div className="psProductHeadText">
+                <h2 className="psProductTitle">{t.dsq.title}</h2>
                 <p className="psProductSub">
                   {t.dsq.subtitle[0]}
                   <br />
                   {t.dsq.subtitle[1]}
                 </p>
               </div>
-              <a href={t.dsq.exploreLink} target="_blank" rel="noopener noreferrer" className="psExploreBtn">
-                {t.dsq.exploreBtn}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
+
+              <a
+                href={t.dsq.exploreLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="psExploreBtn"
+              >
+                <span className="psExploreBtnText">{t.dsq.exploreBtn}</span>
+                <svg
+                  className="psExploreBtnArrow"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M16.6269 12.75H4.5V11.25H16.6269L10.9308 5.55383L12 4.5L19.5 12L12 19.5L10.9308 18.4461L16.6269 12.75Z"
+                    fill="white"
+                  />
                 </svg>
               </a>
             </div>
 
+            {/* DSQ 배너 이미지 (1276 x 480) */}
             <div className="psProductBanner" data-reveal="up">
               <img src={t.dsq.banner} alt={t.dsq.title} />
             </div>
 
-            <WhyBlock data={t.dsq} />
+            {/* 피그마 규격 DSQ WHY 블록 (#F2F5FD, 1276 x 526) */}
+            <DsqWhyBlock data={t.dsq} />
+
             <hr className="psSubDivider" />
+
+            {/* 피그마 규격 DSQ HOW 블록 (#333C4E / #2167FD, 1276 x 760) */}
             <DsqHowBlock data={t.dsq} />
+
             <hr className="psSubDivider" />
-            <ApplicationBlock data={t.dsq} />
+
+            {/* 피그마 규격 DSQ APPLICATION 블록 (1276 x 480) */}
+            <DsqApplicationBlock data={t.dsq} />
           </div>
-
         </div>
-      </div>
 
-      <div className="psFinalCta">
-        <div className="psFinalCtaInner">
-          <p className="psFinalCtaText">
-            {t.finalCta.text[0]}
-            <br />
-            {t.finalCta.text[1]}
-          </p>
-          <button className="psFinalCtaBtn" onClick={onOpenContact} type="button">
-            {t.finalCta.btn}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
+        {/* ================= 5. 최종 문의하기 CTA ================= */}
+        <div className="psFinalCta">
+          <div className="psFinalCtaInner">
+            <p className="psFinalCtaText">
+              {t.finalCta.text[0]}
+              <br />
+              {t.finalCta.text[1]}
+            </p>
+            <button className="psFinalCtaBtn" onClick={onOpenContact} type="button">
+              <span className="psFinalCtaBtnText">{t.finalCta.btn}</span>
+              <svg
+                className="psFinalCtaBtnArrow"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M16.6269 12.75H4.5V11.25H16.6269L10.9308 5.55383L12 4.5L19.5 12L12 19.5L10.9308 18.4461L16.6269 12.75Z"
+                  fill="white"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

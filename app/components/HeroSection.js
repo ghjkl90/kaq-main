@@ -75,46 +75,84 @@ export default function HeroSection({ onOpenContact }) {
           padding-right: 0 !important;
         }
 
+        /* Hero 중앙 전체 래퍼: 텍스트 묶음과 버튼 그룹 사이 gap 20px */
         .${styles.heroContent} {
-          padding-right: 0 !important;
+          max-width: none !important;
+          width: auto !important;
+          padding: 0 20px !important;
           margin: 0 auto !important;
           text-align: center !important;
           display: flex !important;
           flex-direction: column !important;
           align-items: center !important;
+          gap: 32px !important;
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif !important;
+        }
+
+        /* 피그마의 460 Hug × 202 Hug 영역 (텍스트 프레임) */
+        .heroTextFrame {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 16px; /* 아이브로우와 메인 카피 간 간격 */
+          white-space: nowrap; /* 원치 않는 줄바꿈 방지 */
         }
 
         .heroEyebrow {
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 2px;
-          color: rgb(255, 255, 255);
-          margin-bottom: 18px;
+          font-family: inherit;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #ffffff;
+          margin: 0;
           text-transform: uppercase;
         }
 
+        .${styles.mainCopy} {
+          font-family: inherit !important;
+          font-size: 60px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          text-align: center !important;
+          color: #ffffff !important;
+          margin: 0 !important;
+          white-space: nowrap !important; /* "공간을 더 안전하게." 한 줄 유지 */
+        }
+
+        /* 피그마의 336 Hug × 52 Hug 영역 (버튼 프레임) */
         .heroCtaGroup {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 14px;
-          margin-top: 32px;
+          width: 336px;
+          height: 52px;
+          gap: 16px;
+          margin: 0;
         }
 
         .heroCtaGhost,
         .heroCtaFilled {
-          padding: 12px 24px;
+          flex: 1;
+          height: 52px;
           border-radius: 999px;
+          font-family: inherit;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.2s ease;
           white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           background: rgba(12, 22, 36, 0.55);
           border: 1px solid rgba(255, 255, 255, 0.2);
           color: #fff;
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
+          padding: 0;
         }
 
         .heroCtaGhost:hover,
@@ -123,6 +161,7 @@ export default function HeroSection({ onOpenContact }) {
         }
 
         .scrollLabel {
+          font-family: inherit;
           font-size: 12px;
           letter-spacing: 1px;
           color: rgba(255, 255, 255, 0.7);
@@ -130,7 +169,6 @@ export default function HeroSection({ onOpenContact }) {
           text-align: center;
         }
 
-        /* 화살표 원형 배경/테두리 제거 + 크기 고정(찌그러짐 방지) */
         .${styles.circleArrowIcon} {
           background: none !important;
           border: none !important;
@@ -149,36 +187,33 @@ export default function HeroSection({ onOpenContact }) {
           display: block;
         }
 
+        /* 📱 모바일(768px 이하) 반응형 대응 */
         @media (max-width: 768px) {
-          /* 원본 CSS에 .heroOverlay { padding-left: 6%; } 가 768px 이하에서 재적용되므로 다시 override */
-          .${styles.heroOverlay} {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
+          .heroTextFrame {
+            white-space: normal;
           }
 
           .${styles.mainCopy} {
-            font-size: 28px !important;
-            line-height: 1.3 !important;
-            letter-spacing: -1px !important;
+            font-size: 32px !important;
+            white-space: normal !important;
           }
 
-          .${styles.mainCopy} span {
-            font-size: 20px !important;
-            line-height: 1.35 !important;
-            letter-spacing: -0.8px !important;
-            margin-top: 12px !important;
-            display: block;
-          }
-
-          .${styles.subCopy} {
-            font-size: 14px !important;
-            line-height: 1.5 !important;
-            margin-top: 18px !important;
+          .heroEyebrow {
+            font-size: 15px !important;
           }
 
           .heroCtaGroup {
-            flex-direction: column;
-            align-items: center;
+            width: 100% !important;
+            max-width: 320px;
+            height: auto;
+            flex-direction: row;
+            gap: 10px;
+          }
+
+          .heroCtaGhost,
+          .heroCtaFilled {
+            height: 46px;
+            font-size: 13px;
           }
         }
       `}</style>
@@ -191,13 +226,16 @@ export default function HeroSection({ onOpenContact }) {
       <div className={styles.heroOverlay}>
         <div className={`${styles.heroContent} ${isLoaded ? styles.animateUp : ""}`}>
 
-          <p className="heroEyebrow">{t.eyebrow}</p>
+          {/* 피그마 텍스트 오토레이아웃 프레임 */}
+          <div className="heroTextFrame">
+            <p className="heroEyebrow">{t.eyebrow}</p>
+            <h1 className={styles.mainCopy}>
+              {t.subLine1} <br />
+              {t.subLine2_prefix}
+            </h1>
+          </div>
 
-          <h1 className={styles.mainCopy}>
-            {t.subLine1} <br />
-            {t.subLine2_prefix}
-          </h1>
-
+          {/* 피그마 버튼 오토레이아웃 프레임 (336 x 52, gap: 16) */}
           <div className="heroCtaGroup">
             <button className="heroCtaGhost" type="button">
               {t.ctaGhost}

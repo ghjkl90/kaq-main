@@ -68,16 +68,21 @@ html, body {
   );
 }
 
-/* 텍스트 애니메이션 */
+/* 텍스트 애니메이션 및 컨테이너 규격 */
 .heroContent {
-  max-width: 850px;
+  max-width: 460px;
+  width: 100%;
   color: #ffffff;
   opacity: 0;
   transform: translateY(40px);
   transition:
     opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
     transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
 
 .heroContent.animateUp {
@@ -85,15 +90,16 @@ html, body {
   transform: translateY(0);
 }
 
-/* PC 웹: 원래 크기 그대로 유지 */
+/* PC 웹 타이틀 규격 */
 .mainCopy {
-  font-family: inherit !important;
-  font-size: 3.5rem;
+  font-family: inherit;
+  font-size: 60px;
   font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 20px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 0;
   word-break: keep-all;
-  letter-spacing: -0.5px;
   color: #ffffff;
 }
 
@@ -102,30 +108,26 @@ html, body {
 }
 
 .subCopy {
-  font-family: inherit !important;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #e2e8f0;
-  font-weight: 400;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: #ffffff;
   word-break: keep-all;
 }
 
-/* 📱 모바일(768px 이하)에서만 크기 축소 및 폰트 통일 */
+/* 📱 모바일(768px 이하) 대응 */
 @media (max-width: 768px) {
   .mainCopy {
-    font-size: 24px !important;
-    letter-spacing: -1.5px !important;
-    line-height: 1.35 !important;
-  }
-  .mainCopy span {
-    font-size: 18px !important;
-    display: block;
-    margin-top: 8px;
-    letter-spacing: -0.8px !important;
+    font-size: 32px !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
   }
   .subCopy {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
   }
 }
 
