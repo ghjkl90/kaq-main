@@ -344,29 +344,118 @@ export default function AboutPage() {
   return (
     <div
       ref={topRef}
-      style={{
-        backgroundColor: "#fff",
-        color: "#111",
-        padding: "140px 20px 120px 20px",
-        minHeight: "100vh",
-        overflowX: "hidden",
-      }}
+      className="aboutPage"
     >
       <style>{`
+        .aboutPage {
+          width: 100%;
+          background-color: #ffffff;
+          color: #111625;
+          padding: 140px 20px 120px 20px;
+          min-height: 100vh;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        .aboutInner {
+          max-width: 1276px;
+          margin: 0 auto;
+          box-sizing: border-box;
+        }
+
+        /* 탭 버튼 */
+        .aboutTabBtn {
+          border: none;
+          padding: 10px 24px;
+          border-radius: 99px;
+          font-family: inherit;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.25s ease;
+        }
+
+        .aboutTabBtn--active {
+          background-color: #0052ff;
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(0, 82, 255, 0.25);
+        }
+
+        .aboutTabBtn--inactive {
+          background-color: #f2f5fd;
+          color: #555b66;
+        }
+
+        .aboutTabBtn--inactive:hover {
+          background-color: #e5ebfa;
+          color: #111625;
+        }
+
+        /* 비전 그리드 */
         .vision-wrapper {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 70px;
           align-items: start;
         }
+
         .vision-img-container {
           position: relative;
           width: 100%;
           height: 520px;
           margin: 0;
           overflow: hidden;
-          border-radius: 12px;
+          border-radius: 24px;
+          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.15);
         }
+
+        /* ==========================================================
+           피그마 32 x 32 정밀 원형 화살표 버튼 (완전 중앙 정렬)
+           ========================================================== */
+        .jobArrowBtn {
+          width: 32px !important;
+          height: 32px !important;
+          min-width: 32px !important;
+          min-height: 32px !important;
+          max-width: 32px !important;
+          max-height: 32px !important;
+          border-radius: 50% !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          text-align: center !important;
+          border: 1px solid #E1E5EE !important;
+          background-color: #ffffff !important;
+          color: #111625 !important;
+          transition: all 0.25s ease !important;
+          flex-shrink: 0 !important;
+          box-sizing: border-box !important;
+        }
+
+        .jobRow:hover .jobArrowBtn {
+          background-color: #0052ff !important;
+          border-color: #0052ff !important;
+          color: #ffffff !important;
+          transform: translateX(2px);
+        }
+
+        .jobRow {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 28px 12px;
+          border-bottom: 1px solid #E1E5EE;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border-radius: 12px;
+          box-sizing: border-box;
+        }
+
+        .jobRow:hover {
+          background-color: #f8fafc;
+        }
+
         @media (max-width: 900px) {
           .vision-wrapper {
             grid-template-columns: 1fr !important;
@@ -378,18 +467,19 @@ export default function AboutPage() {
         }
       `}</style>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div className="aboutInner">
         {/* ================= [기업소개 섹션] ================= */}
         <div style={{ marginBottom: "0px" }}>
-          <div style={{ marginBottom: "40px" }}>
+          {/* 1. 상단 대표 배지 & 타이틀 */}
+          <div style={{ marginBottom: "32px" }}>
             <span
               style={{
-                fontSize: "13px",
+                fontSize: "20px",
                 color: "#0052ff",
-                fontWeight: "bold",
-                letterSpacing: "2px",
+                fontWeight: "700",
+                letterSpacing: "0",
                 display: "block",
-                marginBottom: "16px",
+                marginBottom: "12px",
                 textTransform: "uppercase",
               }}
             >
@@ -397,11 +487,11 @@ export default function AboutPage() {
             </span>
             <h1
               style={{
-                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-                fontWeight: "800",
-                lineHeight: "1.35",
-                letterSpacing: "-1.5px",
-                color: "#111",
+                fontSize: "clamp(2rem, 4vw, 40px)",
+                fontWeight: "700",
+                lineHeight: "1.3",
+                letterSpacing: "0",
+                color: "#111625",
                 margin: 0,
                 wordBreak: "keep-all",
               }}
@@ -410,7 +500,7 @@ export default function AboutPage() {
             </h1>
           </div>
 
-          {/* Tab Navigation */}
+          {/* 2. 서브 탭 메뉴 */}
           <div style={{ display: "flex", gap: "12px", marginBottom: "40px", flexWrap: "wrap" }}>
             {tabs.map((tab) => {
               const isActive = activeTab === tab.name;
@@ -418,18 +508,8 @@ export default function AboutPage() {
                 <button
                   key={tab.key}
                   onClick={() => handleTabClick(tab.name, tab.ref)}
-                  style={{
-                    backgroundColor: isActive ? "#0052ff" : "#f5f7fa",
-                    color: isActive ? "#fff" : "#333",
-                    border: "none",
-                    padding: "10px 22px",
-                    borderRadius: "24px",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
-                    boxShadow: isActive ? "0 4px 12px rgba(0,82,255,0.2)" : "none",
-                  }}
+                  className={`aboutTabBtn ${isActive ? "aboutTabBtn--active" : "aboutTabBtn--inactive"}`}
+                  type="button"
                 >
                   {tab.name}
                 </button>
@@ -437,18 +517,19 @@ export default function AboutPage() {
             })}
           </div>
 
+          {/* 3. 와이드 비주얼 배너 */}
           <div
             style={{
               width: "100%",
-              height: "clamp(240px, 40vh, 400px)",
+              height: "clamp(240px, 40vh, 440px)",
               backgroundColor: "#050b14",
-              borderRadius: "12px",
+              borderRadius: "24px",
               overflow: "hidden",
               position: "relative",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+              boxShadow: "0 20px 45px -20px rgba(15, 23, 42, 0.15)",
             }}
           >
             <img
@@ -458,7 +539,7 @@ export default function AboutPage() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                opacity: 0.45,
+                opacity: 0.5,
                 mixBlendMode: "luminosity",
               }}
             />
@@ -467,7 +548,7 @@ export default function AboutPage() {
 
         {/* ================= [핵심가치 섹션] ================= */}
         <div ref={visionRef} style={{ scrollMarginTop: "120px" }}>
-          <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "100px 0 60px 0" }} />
+          <hr style={{ border: "none", borderTop: "1px solid #E1E5EE", margin: "80px 0 60px 0" }} />
 
           <div className="vision-wrapper">
             <div
@@ -475,36 +556,37 @@ export default function AboutPage() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "50px",
+                gap: "40px",
                 opacity: leftVisible ? 1 : 0,
-                transform: leftVisible ? "translateX(0)" : "translateX(-50px)",
-                transition: "all 1s cubic-bezier(0.25, 1, 0.5, 1)",
+                transform: leftVisible ? "translateX(0)" : "translateX(-32px)",
+                transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
               <div style={{ padding: "0 4px" }}>
                 <h3
                   style={{
-                    fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                    fontWeight: "800",
+                    fontSize: "clamp(1.6rem, 3vw, 28px)",
+                    fontWeight: "700",
                     color: "#0052ff",
-                    margin: "0 0 24px 0",
-                    letterSpacing: "-1px",
+                    margin: "0 0 16px 0",
+                    lineHeight: "1.3",
+                    letterSpacing: "0",
                   }}
                 >
                   {t.visionSection.title}
                 </h3>
-                <p style={{ color: "#333", fontSize: "16px", fontWeight: "500", lineHeight: "1.85", margin: 0, wordBreak: "keep-all" }}>
+                <p style={{ color: "#111625", fontSize: "18px", fontWeight: "500", lineHeight: "1.6", margin: 0, wordBreak: "keep-all" }}>
                   {t.visionSection.subtitle}
                   <br />
-                  <span style={{ color: "#666", fontWeight: "400" }}>{t.visionSection.subText}</span>
+                  <span style={{ color: "#626772", fontWeight: "400" }}>{t.visionSection.subText}</span>
                 </p>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "20px", paddingLeft: "4px", borderTop: "1px solid #f0f0f0", paddingTop: "30px" }}>
-                <p style={{ color: "#111", fontSize: "18px", fontWeight: "700", lineHeight: "1.65", margin: 0, wordBreak: "keep-all" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "16px", paddingLeft: "4px", borderTop: "1px solid #E1E5EE", paddingTop: "28px" }}>
+                <p style={{ color: "#111625", fontSize: "18px", fontWeight: "700", lineHeight: "1.5", margin: 0, wordBreak: "keep-all" }}>
                   {t.visionSection.boldDesc}
                 </p>
-                <p style={{ color: "#666", fontSize: "15px", lineHeight: "1.8", margin: 0, wordBreak: "keep-all" }}>
+                <p style={{ color: "#555b66", fontSize: "16px", fontWeight: "400", lineHeight: "1.6", margin: 0, wordBreak: "keep-all" }}>
                   {t.visionSection.fullDesc}
                 </p>
               </div>
@@ -515,8 +597,8 @@ export default function AboutPage() {
               className="vision-img-container"
               style={{
                 opacity: rightVisible ? 1 : 0,
-                transform: rightVisible ? "translateX(0)" : "translateX(50px)",
-                transition: "all 1s cubic-bezier(0.25, 1, 0.5, 1)",
+                transform: rightVisible ? "translateX(0)" : "translateX(32px)",
+                transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
               <img
@@ -534,104 +616,74 @@ export default function AboutPage() {
           style={{
             position: "relative",
             opacity: careersVisible ? 1 : 0,
-            transform: careersVisible ? "translateY(0)" : "translateY(50px)",
-            transition: "all 1s cubic-bezier(0.25, 1, 0.5, 1)",
+            transform: careersVisible ? "translateY(0)" : "translateY(32px)",
+            transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
             scrollMarginTop: "120px",
           }}
         >
-          <hr style={{ border: "none", borderTop: "1px solid #eee", margin: "100px 0 60px 0" }} />
+          <hr style={{ border: "none", borderTop: "1px solid #E1E5EE", margin: "100px 0 60px 0" }} />
 
           <div style={{ position: "relative", zIndex: 1 }}>
             <h2
               style={{
-                fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                fontWeight: "800",
-                marginBottom: "16px",
-                letterSpacing: "-1px",
+                fontSize: "clamp(1.8rem, 3vw, 36px)",
+                fontWeight: "700",
+                marginBottom: "12px",
+                letterSpacing: "0",
                 color: "#0052ff",
               }}
             >
               {t.careersSection.title}
             </h2>
-            <p style={{ fontSize: "15px", color: "#555", lineHeight: "1.7", marginBottom: "30px", maxWidth: "800px", wordBreak: "keep-all" }}>
+            <p style={{ fontSize: "16px", fontWeight: "400", color: "#555b66", lineHeight: "1.6", marginBottom: "28px", maxWidth: "840px", wordBreak: "keep-all" }}>
               {t.careersSection.desc}
             </p>
 
-            <div style={{ fontSize: "14px", color: "#666", marginBottom: "24px", display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <span>{t.careersSection.total} <strong style={{ color: "#111" }}>{totalCount}</strong></span>
-              <span>{t.careersSection.newcomer} <strong style={{ color: "#111" }}>{newcomerCount}</strong></span>
-              <span>{t.careersSection.career} <strong style={{ color: "#111" }}>{careerCount}</strong></span>
-              <span>{t.careersSection.always} <strong style={{ color: "#111" }}>{alwaysCount}</strong></span>
+            <div style={{ fontSize: "14px", color: "#626772", marginBottom: "20px", display: "flex", gap: "16px", flexWrap: "wrap" }}>
+              <span>{t.careersSection.total} <strong style={{ color: "#111625" }}>{totalCount}</strong></span>
+              <span>{t.careersSection.newcomer} <strong style={{ color: "#111625" }}>{newcomerCount}</strong></span>
+              <span>{t.careersSection.career} <strong style={{ color: "#111625" }}>{careerCount}</strong></span>
+              <span>{t.careersSection.always} <strong style={{ color: "#111625" }}>{alwaysCount}</strong></span>
             </div>
 
-            <hr style={{ border: "none", borderTop: "2px solid #111", margin: "20px 0 0 0" }} />
+            <hr style={{ border: "none", borderTop: "2px solid #111625", margin: "20px 0 0 0" }} />
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {jobOpenings.map((job) => {
-                const isHovered = hoveredCardId === job.id;
-
-                return (
-                  <div
-                    key={job.id}
-                    onMouseEnter={() => setHoveredCardId(job.id)}
-                    onMouseLeave={() => setHoveredCardId(null)}
-                    onClick={() => handleOpenApply(job.title)}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      paddingTop: "32px",
-                      paddingBottom: "32px",
-                      paddingLeft: isHovered ? "12px" : "0px",
-                      paddingRight: isHovered ? "12px" : "0px",
-                      borderBottom: "1px solid #eee",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                      backgroundColor: isHovered ? "#fafafa" : "transparent",
-                    }}
-                  >
-                    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                      <span style={{ fontSize: "13px", color: "#888", fontWeight: "500" }}>
-                        {job.location} · {job.type}
-                      </span>
-                      <h3
-                        style={{
-                          fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
-                          fontWeight: "700",
-                          margin: "0",
-                          color: "#111",
-                          letterSpacing: "-0.5px",
-                          wordBreak: "keep-all",
-                        }}
-                      >
-                        {job.title}
-                      </h3>
-                    </div>
-
-                    <div
+              {jobOpenings.map((job) => (
+                <div
+                  key={job.id}
+                  className="jobRow"
+                  onMouseEnter={() => setHoveredCardId(job.id)}
+                  onMouseLeave={() => setHoveredCardId(null)}
+                  onClick={() => handleOpenApply(job.title)}
+                >
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <span style={{ fontSize: "13px", color: "#888", fontWeight: "500" }}>
+                      {job.location} · {job.type}
+                    </span>
+                    <h3
                       style={{
-                        width: "40px",
-                        height: "40px",
-                        borderRadius: "50%",
-                        border: "1px solid",
-                        borderColor: isHovered ? "#0052ff" : "#ddd",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: isHovered ? "#0052ff" : "#fff",
-                        color: isHovered ? "#fff" : "#111",
-                        transition: "all 0.3s ease",
-                        flexShrink: 0,
+                        fontSize: "20px",
+                        fontWeight: "700",
+                        margin: "0",
+                        color: "#111625",
+                        letterSpacing: "-0.3px",
+                        wordBreak: "keep-all",
                       }}
                     >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </div>
+                      {job.title}
+                    </h3>
                   </div>
-                );
-              })}
+
+                  {/* 32x32 정밀 원형 화살표 버튼 */}
+                  <div className="jobArrowBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -646,7 +698,9 @@ export default function AboutPage() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0,0,0,0.4)",
+            backgroundColor: "rgba(0,0,0,0.45)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -655,94 +709,96 @@ export default function AboutPage() {
         >
           <div
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "#ffffff",
               padding: "40px",
-              borderRadius: "8px",
+              borderRadius: "20px",
               width: "100%",
-              maxWidth: "500px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+              maxWidth: "520px",
+              boxShadow: "0 20px 45px -15px rgba(15, 23, 42, 0.2)",
               position: "relative",
-              color: "#111",
+              color: "#111625",
               margin: "0 16px",
+              boxSizing: "border-box",
             }}
           >
             <button
               onClick={() => setIsApplyOpen(false)}
               style={{
                 position: "absolute",
-                top: "20px",
-                right: "20px",
+                top: "24px",
+                right: "24px",
                 border: "none",
                 backgroundColor: "transparent",
-                fontSize: "24px",
+                fontSize: "26px",
                 cursor: "pointer",
                 color: "#888",
               }}
+              type="button"
             >
               &times;
             </button>
-            <h2 style={{ fontSize: "22px", fontWeight: "bold", marginBottom: "8px", color: "#0052ff" }}>
+            <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "8px", color: "#0052ff" }}>
               {t.modal.title}
             </h2>
-            <p style={{ fontSize: "14px", color: "#666", marginBottom: "24px" }}>
+            <p style={{ fontSize: "15px", color: "#626772", marginBottom: "24px" }}>
               {t.modal.jobLabel}: <strong>{selectedJob}</strong>
             </p>
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label style={{ fontSize: "14px", fontWeight: "bold" }}>{t.modal.nameLabel}</label>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.nameLabel}</label>
                 <input
                   type="text"
                   required
                   placeholder={t.modal.namePlaceholder}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "15px" }}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }}
                 />
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label style={{ fontSize: "14px", fontWeight: "bold" }}>{t.modal.birthLabel}</label>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.birthLabel}</label>
                 <input
                   type="date"
                   required
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
-                  style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "15px" }}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }}
                 />
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label style={{ fontSize: "14px", fontWeight: "bold" }}>{t.modal.nationalityLabel}</label>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.nationalityLabel}</label>
                 <input
                   type="text"
                   required
                   placeholder={t.modal.nationalityPlaceholder}
                   value={nationality}
                   onChange={(e) => setNationality(e.target.value)}
-                  style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "15px" }}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }}
                 />
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label style={{ fontSize: "14px", fontWeight: "bold" }}>{t.modal.linkLabel}</label>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.linkLabel}</label>
                 <input
                   type="url"
                   placeholder={t.modal.linkPlaceholder}
                   value={fileLink}
                   onChange={(e) => setFileLink(e.target.value)}
-                  style={{ padding: "10px", border: "1px solid #ccc", borderRadius: "4px", fontSize: "14px" }}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }}
                 />
               </div>
               <button
                 type="submit"
                 style={{
                   backgroundColor: "#0052ff",
-                  color: "#fff",
+                  color: "#ffffff",
                   border: "none",
-                  borderRadius: "4px",
+                  borderRadius: "99px",
                   padding: "14px",
                   fontSize: "16px",
-                  fontWeight: "bold",
+                  fontWeight: "700",
                   cursor: "pointer",
-                  marginTop: "10px",
-                  transition: "background-color 0.2s",
+                  marginTop: "8px",
+                  transition: "background-color 0.25s ease, transform 0.25s ease",
                 }}
               >
                 {t.modal.submitBtn}

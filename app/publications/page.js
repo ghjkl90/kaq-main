@@ -225,13 +225,11 @@ export default function PublicationsPage() {
   const t = CONTENT[currentLang] || CONTENT.KR;
 
   const [isMounted, setIsMounted] = useState(false);
-  const [activeTabKey, setActiveTabKey] = useState('research'); // 'research' | 'papers'
+  const [activeTabKey, setActiveTabKey] = useState('research');
 
-  // 애니메이션 가시성 상태 관리
   const [researchVisible, setResearchVisible] = useState([false, false, false]);
   const researchItemRefs = [useRef(null), useRef(null), useRef(null)];
 
-  // 각 섹션 이동을 위한 Ref 생성
   const topRef = useRef(null);
   const researchRef = useRef(null);
   const papersRef = useRef(null);
@@ -241,7 +239,6 @@ export default function PublicationsPage() {
     { key: 'papers', name: t.tabNames.papers, ref: papersRef },
   ];
 
-  // 탭 클릭 시 부드럽게 스크롤 이동하는 함수
   const handleTabClick = (tabKey, refObj) => {
     setActiveTabKey(tabKey);
     if (refObj && refObj.current) {
@@ -258,7 +255,6 @@ export default function PublicationsPage() {
     }
   };
 
-  // 스크롤 위치에 따라 상단 탭 파란색 활성화 상태 자동 변경 및 관찰자 설정
   useEffect(() => {
     setIsMounted(true);
     const handleScrollActiveTab = () => {
@@ -275,7 +271,6 @@ export default function PublicationsPage() {
 
     window.addEventListener('scroll', handleScrollActiveTab, { passive: true });
 
-    // 연구 프로젝트 아이템별 스크롤 애니메이션 관찰자
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -306,31 +301,110 @@ export default function PublicationsPage() {
   }, []);
 
   return (
-    <div ref={topRef} style={{ backgroundColor: '#fff', color: '#111', padding: '140px 20px 120px 20px' }}>
-      
+    <div ref={topRef} className="pubPage">
       <style>{`
+        .pubPage {
+          width: 100%;
+          background-color: #ffffff;
+          color: #111625;
+          padding: 140px 20px 120px 20px;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        }
+
+        .pubInner {
+          max-width: 1276px;
+          margin: 0 auto;
+          box-sizing: border-box;
+        }
+
+        /* ==========================================================
+           피그마 32 x 32 정밀 넘버 배지 (완전 중앙 정렬)
+           ========================================================== */
+        .pubNumBadge {
+          width: 32px !important;
+          height: 32px !important;
+          min-width: 32px !important;
+          min-height: 32px !important;
+          max-width: 32px !important;
+          max-height: 32px !important;
+          border-radius: 50% !important;
+          display: block !important;
+          line-height: 32px !important; /* 상하 기준선 완벽 고정 */
+          text-align: center !important;
+          background-color: #0052ff !important;
+          color: #ffffff !important;
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif !important;
+          font-size: 16px !important;
+          font-weight: 700 !important;
+          letter-spacing: 0 !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+          flex-shrink: 0 !important;
+          -webkit-font-smoothing: antialiased !important;
+        }
+
+        /* 탭 버튼 */
+        .pubTabBtn {
+          border: none;
+          padding: 10px 24px;
+          border-radius: 99px;
+          font-family: inherit;
+          font-size: 15px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.25s ease;
+        }
+
+        .pubTabBtn--active {
+          background-color: #0052ff;
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(0, 82, 255, 0.25);
+        }
+
+        .pubTabBtn--inactive {
+          background-color: #f2f5fd;
+          color: #555b66;
+        }
+
+        .pubTabBtn--inactive:hover {
+          background-color: #e5ebfa;
+          color: #111625;
+        }
+
+        /* 연구 프로젝트 그리드 */
         .research-item-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 70px;
+          gap: 60px;
           align-items: center;
         }
+
         .research-img-wrapper {
           position: relative;
           width: 100%;
           height: 380px;
           overflow: hidden;
-          border-radius: 12px;
+          border-radius: 20px;
           background-color: #f5f7fa;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.15);
         }
+
+        /* 성과/특허 행 그리드: 32px 배지 + 텍스트 영역 */
         .paper-row-grid {
           display: grid;
-          grid-template-columns: 80px 1fr;
-          gap: 30px;
+          grid-template-columns: 32px 1fr;
+          gap: 24px;
           padding: 32px 0;
-          border-bottom: 1px solid #eee;
-          align-items: baseline;
+          border-bottom: 1px solid #E1E5EE;
+          align-items: flex-start;
+          box-sizing: border-box;
+        }
+
+        .paper-row-grid:last-child {
+          border-bottom: none;
         }
 
         @media (max-width: 900px) {
@@ -346,24 +420,39 @@ export default function PublicationsPage() {
             height: 260px !important;
           }
           .paper-row-grid {
-            grid-template-columns: 40px 1fr !important;
+            grid-template-columns: 32px 1fr !important;
             gap: 16px !important;
             padding: 24px 0 !important;
           }
         }
       `}</style>
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div className="pubInner">
         
-        {/* ================= 소개 페이지 상단 UI 적용 헤더 영역 ================= */}
-        <div style={{ marginBottom: '0px' }}>
-          
-          {/* 1. 상단 대표 타이틀 영역 */}
-          <div style={{ marginBottom: '40px' }}>
-            <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '16px', textTransform: 'uppercase' }}>
+        {/* ================= 상단 헤더 영역 ================= */}
+        <div style={{ marginBottom: '60px' }}>
+          {/* 1. 상단 대표 배지 & 타이틀 */}
+          <div style={{ marginBottom: '32px' }}>
+            <span style={{ 
+              fontSize: '20px', 
+              color: '#0052ff', 
+              fontWeight: '700', 
+              letterSpacing: '0', 
+              display: 'block', 
+              marginBottom: '12px', 
+              textTransform: 'uppercase' 
+            }}>
               {t.heroBadge}
             </span>
-            <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: '800', lineHeight: '1.35', letterSpacing: '-1.5px', color: '#111', margin: 0, wordBreak: 'keep-all' }}>
+            <h1 style={{ 
+              fontSize: 'clamp(2rem, 4vw, 40px)', 
+              fontWeight: '700', 
+              lineHeight: '1.3', 
+              letterSpacing: '0', 
+              color: '#111625', 
+              margin: 0, 
+              wordBreak: 'keep-all' 
+            }}>
               {t.heroTitle.map((line, idx) => (
                 <React.Fragment key={idx}>
                   {line}
@@ -381,18 +470,8 @@ export default function PublicationsPage() {
                 <button
                   key={tab.key}
                   onClick={() => handleTabClick(tab.key, tab.ref)}
-                  style={{
-                    backgroundColor: isActive ? '#0052ff' : '#f5f7fa',
-                    color: isActive ? '#fff' : '#333',
-                    border: 'none',
-                    padding: '10px 22px',
-                    borderRadius: '24px',
-                    fontSize: '14px',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    boxShadow: isActive ? '0 4px 12px rgba(0,82,255,0.2)' : 'none'
-                  }}
+                  className={`pubTabBtn ${isActive ? 'pubTabBtn--active' : 'pubTabBtn--inactive'}`}
+                  type="button"
                 >
                   {tab.name}
                 </button>
@@ -403,15 +482,15 @@ export default function PublicationsPage() {
           {/* 3. 와이드 비주얼 배너 */}
           <div style={{
             width: '100%',
-            height: 'clamp(240px, 40vh, 400px)',
+            height: 'clamp(240px, 40vh, 440px)',
             backgroundColor: '#050b14',
-            borderRadius: '12px',
+            borderRadius: '24px',
             overflow: 'hidden',
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 20px 40px rgba(0,0,0,0.1)'
+            boxShadow: '0 20px 45px -20px rgba(15, 23, 42, 0.15)'
           }}>
             <img 
               src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" 
@@ -420,7 +499,7 @@ export default function PublicationsPage() {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: 0.5,
+                opacity: 0.55,
                 mixBlendMode: 'luminosity'
               }}
             />
@@ -429,7 +508,7 @@ export default function PublicationsPage() {
 
         {/* ================= [연구 프로젝트 섹션] ================= */}
         <div ref={researchRef} style={{ scrollMarginTop: '120px' }}>
-          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '100px 0 60px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px solid #E1E5EE', margin: '80px 0 60px 0' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             {t.researches.map((item, index) => {
@@ -442,8 +521,8 @@ export default function PublicationsPage() {
                   className="research-item-grid"
                   style={{ 
                     opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
-                    transition: 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)'
+                    transform: isVisible ? 'translateY(0)' : 'translateY(32px)',
+                    transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
                 >
                   {/* 텍스트 영역 */}
@@ -452,18 +531,18 @@ export default function PublicationsPage() {
                     style={{ 
                       display: 'flex', 
                       flexDirection: 'column', 
-                      gap: '16px', 
+                      gap: '12px', 
                       order: index % 2 === 1 ? 2 : 1 
                     }}
                   >
                     <div>
-                      <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '10px' }}>
+                      <span style={{ fontSize: '18px', color: '#0052ff', fontWeight: '700', display: 'block', marginBottom: '8px' }}>
                         [{item.titleEn}]
                       </span>
-                      <h3 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', color: '#111', margin: '0 0 14px 0', letterSpacing: '-1px', lineHeight: '1.3', wordBreak: 'keep-all' }}>
+                      <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 28px)', fontWeight: '700', color: '#111625', margin: '0 0 16px 0', lineHeight: '1.3', wordBreak: 'keep-all' }}>
                         {item.title}
                       </h3>
-                      <p style={{ color: '#555', fontSize: '15px', lineHeight: '1.8', margin: 0, wordBreak: 'keep-all' }}>
+                      <p style={{ color: '#555b66', fontSize: '18px', fontWeight: '400', lineHeight: '1.6', margin: 0, wordBreak: 'keep-all' }}>
                         {item.desc}
                       </p>
                     </div>
@@ -493,18 +572,18 @@ export default function PublicationsPage() {
 
         {/* ================= [지식재산 및 연구 성과 섹션] ================= */}
         <div ref={papersRef} style={{ scrollMarginTop: '120px' }}>
-          <hr style={{ border: 'none', borderTop: '1px solid #eee', margin: '100px 0 60px 0' }} />
+          <hr style={{ border: 'none', borderTop: '1px solid #E1E5EE', margin: '100px 0 60px 0' }} />
 
-          <div style={{ marginBottom: '30px' }}>
-            <span style={{ fontSize: '13px', color: '#0052ff', fontWeight: 'bold', letterSpacing: '2px', display: 'block', marginBottom: '12px', textTransform: 'uppercase' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <span style={{ fontSize: '20px', color: '#0052ff', fontWeight: '700', display: 'block', marginBottom: '10px', textTransform: 'uppercase' }}>
               {t.patentsBadge}
             </span>
-            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: '800', letterSpacing: '-1px', margin: 0, color: '#111' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 36px)', fontWeight: '700', margin: 0, color: '#111625' }}>
               {t.patentsTitle}
             </h2>
           </div>
 
-          <hr style={{ border: 'none', borderTop: '2px solid #111', margin: '20px 0 0 0' }} />
+          <hr style={{ border: 'none', borderTop: '2px solid #111625', margin: '20px 0 0 0' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {t.papers.map((paper, index) => (
@@ -512,33 +591,28 @@ export default function PublicationsPage() {
                 key={paper.id}
                 className="paper-row-grid"
               >
-                <span style={{ 
-                  fontSize: 'clamp(16px, 2.5vw, 20px)', 
-                  fontWeight: '800', 
-                  color: '#0052ff', 
-                  fontFamily: 'monospace' 
-                }}>
+                {/* 32x32 정밀 넘버 배지 적용 */}
+                <div className="pubNumBadge">
                   {String(index + 1).padStart(2, '0')}
-                </span>
+                </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <h3 style={{ 
-                    fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', 
+                    fontSize: '20px', 
                     fontWeight: '700', 
-                    color: '#111', 
+                    color: '#111625', 
                     margin: 0, 
                     lineHeight: '1.4', 
-                    letterSpacing: '-0.5px', 
                     wordBreak: 'keep-all' 
                   }}>
                     {paper.title}
                   </h3>
 
                   <p style={{ 
-                    fontSize: '14px', 
-                    color: '#666', 
+                    fontSize: '16px', 
+                    color: '#626772', 
                     margin: 0, 
-                    lineHeight: '1.6', 
+                    lineHeight: '1.5', 
                     wordBreak: 'keep-all', 
                     fontWeight: '400' 
                   }}>

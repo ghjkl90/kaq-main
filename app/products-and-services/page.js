@@ -207,7 +207,7 @@ const CONTENT = {
         badge: "WHY",
         heading: ["AIは身近になりましたが、", "誰にとっても簡単になったわけではありません。"],
         cards: [
-          { title: "始め方が分かりません。", desc: "AIを初めて使う人は何から質問すればいいか分かりません。" },
+          { title: "始め方が分かりません。", desc: "AI를 처음 사용하는 사람은 무엇부터 질문해야 할지 모릅니다." },
           { title: "活用レベルが異なります。", desc: "同じAIでも年齢・職業・目的によって必要な質問や説明方法が異なります。" },
           { title: "アプローチも変える必要があります。", desc: "文字サイズ、音声案内、言語など利用環境に応じたインターフェースが必要です。" },
         ],
@@ -227,7 +227,7 @@ const CONTENT = {
         { id: "senior", title: "シニアモード", desc: "難しくありません。親しみやすいAIがあなたのお話を待っています。", link: "https://kai-station.com/senior?from=%2Fhome", image: "/11.png" },
         { id: "doran", title: "ドランドランAI", desc: "数回の選択だけでAIと気軽に会話を始められます。", link: "https://doran-two.vercel.app/", image: "/12.png" },
         { id: "kids", title: "キッズモード", desc: "好奇心いっぱい！AIの友達と一緒に想像力を育みましょう。", link: "https://kai-station.com/kids?from=%2Fhome", image: "/13.png" },
-        { id: "lab", title: "実習モード", desc: "AIを活用した課題や実習を授業内で行えます。", link: "https://kai-station.com/?from=%2Fhome", image: "/14.png" },
+        { id: "lab", title: "실습 모드", desc: "AIを活用した課題や実習を授業内で行えます。", link: "https://kai-station.com/?from=%2Fhome", image: "/14.png" },
         { id: "safety", title: "安全品質モード", desc: "安全・品質分野に特化したAIプロンプトを体験できます。", link: "http://openq.co.kr:8082/", image: "/15.png" },
         { id: "ncs", title: "NCSモード", desc: "職務標準ガイドを直感的に探索できます。", link: "https://kai-station.com/categories/cmq3j1xfy003quvv6j86nh8lb?from=%2Fhome", image: "/16.png" },
       ],
@@ -246,7 +246,7 @@ const CONTENT = {
         badge: "WHY",
         heading: ["空間の安全は目に見えないとき", "管理が難しくなります。"],
         cards: [
-          { title: "情報が分散しています。", desc: "点検結果と現場データが異なる方式で管理されています。" },
+          { title: "情報が分散しています。", desc: "点検結果と現場데이터가 서로 다른 방식으로 관리됩니다." },
           { title: "現在の状態を一目で把握しづらいです。", desc: "問題が発生する前にリスクの変化を把握しにくいです。" },
           { title: "記録が改善につながりにくいです。", desc: "点検が一回限りの記録で終わることがあります。" },
         ],
@@ -258,8 +258,8 @@ const CONTENT = {
           { label: "SENSE", desc: "現場情報の収集" },
           { label: "MEASURE", desc: "安全・品質状態の測定" },
           { label: "ANALYZE", desc: "状態と変化の分析" },
-          { label: "VISUALIZE", desc: "ダッシュボード可視化" },
-          { label: "IMPROVE", desc: "リスク確認と改善管理", wide: true },
+          { label: "VISUALIZE", desc: "대시보드 시각화" },
+          { label: "IMPROVE", desc: "위험 확인과 개선 관리", wide: true },
         ],
       },
       application: {
@@ -360,58 +360,38 @@ const CONTENT = {
     },
     finalCta: {
       text: ["สร้างมาตรฐานใหม่ของประสบการณ์ AI", "และคุณภาพความปลอดภัยไปด้วยกันกับ KAQ"],
-      btn: "문의하기",
+      btn: "ติดต่อเรา",
     },
   },
 };
 
 /* ============================================================
-   DSQ HOW 44x44 공식 피그마 SVG 아이콘 리스트
+   마스크 버그가 없는 순수 Path 기반 DSQ HOW 44x44 SVG 아이콘
    ============================================================ */
 const DSQ_STEP_ICONS = {
-  // 1. SENSE
   sense: (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <path
-        d="M11.2118 41.25H6.06421C5.13807 41.25 4.35417 40.9292 3.7125 40.2875C3.07083 39.6458 2.75 38.8619 2.75 37.9358V32.7883H5.5V37.9358C5.5 38.1005 5.55286 38.2357 5.65858 38.3414C5.76431 38.4471 5.89951 38.5 6.06421 38.5H11.2118V41.25ZM32.7883 41.25V38.5H37.9358C38.1005 38.5 38.2357 38.4471 38.3414 38.3414C38.4471 38.2357 38.5 38.1005 38.5 37.9358V32.7883H41.25V37.9358C41.25 38.8619 40.9292 39.6458 40.2875 40.2875C39.6458 40.9292 38.8619 41.25 37.9358 41.25H32.7883ZM22 33.2113C18.5332 33.2113 15.4041 32.206 12.6129 30.1955C9.82193 28.1846 7.75072 25.4528 6.39925 22C7.75072 18.5472 9.82193 15.8154 12.6129 13.8045C15.4041 11.794 18.5332 10.7887 22 10.7887C25.4668 10.7887 28.5959 11.794 31.3871 13.8045C34.1781 15.8154 36.2493 18.5472 37.6007 22C36.2493 25.4528 34.1781 28.1846 31.3871 30.1955C28.5959 32.206 25.4668 33.2113 22 33.2113ZM22 27.835C23.6194 27.835 24.9967 27.2673 26.1319 26.1319C27.2673 24.9967 27.835 23.6194 27.835 22C27.835 20.3806 27.2673 19.0033 26.1319 17.8681C24.9967 16.7327 23.6194 16.165 22 16.165C20.3806 16.165 19.0033 16.7327 17.8681 17.8681C16.7327 19.0033 16.165 20.3806 16.165 22C16.165 23.6194 16.7327 24.9967 17.8681 26.1319C19.0033 27.2673 20.3806 27.835 22 27.835ZM22 25.085C21.142 25.085 20.4134 24.7853 19.8142 24.1858C19.2147 23.5866 18.915 22.858 18.915 22C18.915 21.142 19.2147 20.4134 19.8142 19.8142C20.4134 19.2147 21.142 18.915 22 18.915C22.858 18.915 23.5866 19.2147 24.1858 19.8142C24.7853 20.4134 25.085 21.142 25.085 22C25.085 22.858 24.7853 23.5866 24.1858 24.1858C23.5866 24.7853 22.858 25.085 22 25.085ZM2.75 11.2118V6.06421C2.75 5.13807 3.07083 4.35417 3.7125 3.7125C4.35417 3.07083 5.13807 2.75 6.06421 2.75H11.2118V5.5H6.06421C5.89951 5.5 5.76431 5.55286 5.65858 5.65858C5.55286 5.76431 5.5 5.89951 5.5 6.06421V11.2118H2.75ZM38.5 11.2118V6.06421C38.5 5.89951 38.4471 5.76431 38.3414 5.65858C38.2357 5.55286 38.1005 5.5 37.9358 5.5H32.7883V2.75H37.9358C38.8619 2.75 39.6458 3.07083 40.2875 3.7125C40.9292 4.35417 41.25 5.13807 41.25 6.06421V11.2118H38.5Z"
-        fill="white"
-      />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="white">
+      <path d="M11.2118 41.25H6.06421C5.13807 41.25 4.35417 40.9292 3.7125 40.2875C3.07083 39.6458 2.75 38.8619 2.75 37.9358V32.7883H5.5V37.9358C5.5 38.1005 5.55286 38.2357 5.65858 38.3414C5.76431 38.4471 5.89951 38.5 6.06421 38.5H11.2118V41.25ZM32.7883 41.25V38.5H37.9358C38.1005 38.5 38.2357 38.4471 38.3414 38.3414C38.4471 38.2357 38.5 38.1005 38.5 37.9358V32.7883H41.25V37.9358C41.25 38.8619 40.9292 39.6458 40.2875 40.2875C39.6458 40.9292 38.8619 41.25 37.9358 41.25H32.7883ZM22 33.2113C18.5332 33.2113 15.4041 32.206 12.6129 30.1955C9.82193 28.1846 7.75072 25.4528 6.39925 22C7.75072 18.5472 9.82193 15.8154 12.6129 13.8045C15.4041 11.794 18.5332 10.7887 22 10.7887C25.4668 10.7887 28.5959 11.794 31.3871 13.8045C34.1781 15.8154 36.2493 18.5472 37.6007 22C36.2493 25.4528 34.1781 28.1846 31.3871 30.1955C28.5959 32.206 25.4668 33.2113 22 33.2113ZM22 27.835C23.6194 27.835 24.9967 27.2673 26.1319 26.1319C27.2673 24.9967 27.835 23.6194 27.835 22C27.835 20.3806 27.2673 19.0033 26.1319 17.8681C24.9967 16.7327 23.6194 16.165 22 16.165C20.3806 16.165 19.0033 16.7327 17.8681 17.8681C16.7327 19.0033 16.165 20.3806 16.165 22C16.165 23.6194 16.7327 24.9967 17.8681 26.1319C19.0033 27.2673 20.3806 27.835 22 27.835ZM22 25.085C21.142 25.085 20.4134 24.7853 19.8142 24.1858C19.2147 23.5866 18.915 22.858 18.915 22C18.915 21.142 19.2147 20.4134 19.8142 19.8142C20.4134 19.2147 21.142 18.915 22 18.915C22.858 18.915 23.5866 19.2147 24.1858 19.8142C24.7853 20.4134 25.085 21.142 25.085 22C25.085 22.858 24.7853 23.5866 24.1858 24.1858C23.5866 24.7853 22.858 25.085 22 25.085ZM2.75 11.2118V6.06421C2.75 5.13807 3.07083 4.35417 3.7125 3.7125C4.35417 3.07083 5.13807 2.75 6.06421 2.75H11.2118V5.5H6.06421C5.89951 5.5 5.76431 5.55286 5.65858 5.65858C5.55286 5.76431 5.5 5.89951 5.5 6.06421V11.2118H2.75ZM38.5 11.2118V6.06421C38.5 5.89951 38.4471 5.76431 38.3414 5.65858C38.2357 5.55286 38.1005 5.5 37.9358 5.5H32.7883V2.75H37.9358C38.8619 2.75 39.6458 3.07083 40.2875 3.7125C40.9292 4.35417 41.25 5.13807 41.25 6.06421V11.2118H38.5Z" />
     </svg>
   ),
-  // 2. MEASURE
   measure: (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <path
-        d="M9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V24.006L31.7204 29.869L27.9126 26.0616L20.2621 33.6663L24.179 37.5832H9.73096ZM20.3432 23.3748H30.779V20.6248H20.3432V23.3748ZM20.3432 16.2528H30.779V13.5033H20.3432V16.2528ZM31.7204 39.4165L25.9523 33.6663L27.9126 31.7344L31.7204 35.5418L39.3356 27.9265L41.2675 29.8868L31.7204 39.4165ZM15.929 23.1562C16.2391 22.8461 16.3942 22.4606 16.3942 21.9998C16.3942 21.5391 16.2391 21.1536 15.929 20.8435C15.6186 20.5333 15.2331 20.3783 14.7726 20.3783C14.3118 20.3783 13.9264 20.5333 13.6162 20.8435C13.3058 21.1536 13.1506 21.5391 13.1506 21.9998C13.1506 22.4606 13.3058 22.8461 13.6162 23.1562C13.9264 23.4664 14.3118 23.6214 14.7726 23.6214C15.2331 23.6214 15.6186 23.4664 15.929 23.1562ZM15.929 16.0346C16.2391 15.7242 16.3942 15.3387 16.3942 14.8783C16.3942 14.4175 16.2391 14.032 15.929 13.7219C15.6186 13.4114 15.2331 13.2562 14.7726 13.2562C14.3118 13.2562 13.9264 13.4114 13.6162 13.7219C13.3058 14.032 13.1506 14.4175 13.1506 14.8783C13.1506 15.3387 13.3058 15.7242 13.6162 16.0346C13.9264 16.3448 14.3118 16.4998 14.7726 16.4998C15.2331 16.4998 15.6186 16.3448 15.929 16.0346Z"
-        fill="white"
-      />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="white">
+      <path d="M9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V24.006L31.7204 29.869L27.9126 26.0616L20.2621 33.6663L24.179 37.5832H9.73096ZM20.3432 23.3748H30.779V20.6248H20.3432V23.3748ZM20.3432 16.2528H30.779V13.5033H20.3432V16.2528ZM31.7204 39.4165L25.9523 33.6663L27.9126 31.7344L31.7204 35.5418L39.3356 27.9265L41.2675 29.8868L31.7204 39.4165ZM15.929 23.1562C16.2391 22.8461 16.3942 22.4606 16.3942 21.9998C16.3942 21.5391 16.2391 21.1536 15.929 20.8435C15.6186 20.5333 15.2331 20.3783 14.7726 20.3783C14.3118 20.3783 13.9264 20.5333 13.6162 20.8435C13.3058 21.1536 13.1506 21.5391 13.1506 21.9998C13.1506 22.4606 13.3058 22.8461 13.6162 23.1562C13.9264 23.4664 14.3118 23.6214 14.7726 23.6214C15.2331 23.6214 15.6186 23.4664 15.929 23.1562ZM15.929 16.0346C16.2391 15.7242 16.3942 15.3387 16.3942 14.8783C16.3942 14.4175 16.2391 14.032 15.929 13.7219C15.6186 13.4114 15.2331 13.2562 14.7726 13.2562C14.3118 13.2562 13.9264 13.4114 13.6162 13.7219C13.3058 14.032 13.1506 14.4175 13.1506 14.8783C13.1506 15.3387 13.3058 15.7242 13.6162 16.0346C13.9264 16.3448 14.3118 16.4998 14.7726 16.4998C15.2331 16.4998 15.6186 16.3448 15.929 16.0346Z" />
     </svg>
   ),
-  // 3. ANALYZE
   analyze: (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <path
-        d="M13.5035 30.7082H16.253V18.7915H13.5035V30.7082ZM20.6251 30.7082H23.3751V13.2915H20.6251V30.7082ZM27.7471 30.7082H30.4967V24.2915H27.7471V30.7082ZM9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V34.269C37.5834 35.1951 37.2626 35.979 36.6209 36.6207C35.9792 37.2623 35.1953 37.5832 34.2692 37.5832H9.73096Z"
-        fill="white"
-      />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="white">
+      <path d="M13.5035 30.7082H16.253V18.7915H13.5035V30.7082ZM20.6251 30.7082H23.3751V13.2915H20.6251V30.7082ZM27.7471 30.7082H30.4967V24.2915H27.7471V30.7082ZM9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V34.269C37.5834 35.1951 37.2626 35.979 36.6209 36.6207C35.9792 37.2623 35.1953 37.5832 34.2692 37.5832H9.73096Z" />
     </svg>
   ),
-  // 4. VISUALIZE
   visualize: (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <path
-        d="M27.6764 35.75V24.0098H39.4166V35.75H27.6764ZM20.343 19.9902V8.25H39.4166V19.9902H20.343ZM4.58325 35.75V24.0098H23.6568V35.75H4.58325ZM4.58325 19.9902V8.25H16.3235V19.9902H4.58325Z"
-        fill="white"
-      />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="white">
+      <path d="M27.6764 35.75V24.0098H39.4166V35.75H27.6764ZM20.343 19.9902V8.25H39.4166V19.9902H20.343ZM4.58325 35.75V24.0098H23.6568V35.75H4.58325ZM4.58325 19.9902V8.25H16.3235V19.9902H4.58325Z" />
     </svg>
   ),
-  // 5. IMPROVE (Wide)
   improve: (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-      <path
-        d="M13.5667 28.681L19.1584 23.1067L22.8251 26.7734L29.7917 19.8351V23.3748H32.5417V15.1248H24.2917V17.8748H27.8315L22.8251 22.8812L19.1584 19.2145L11.6523 26.7665L13.5667 28.681ZM9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V34.269C37.5834 35.1951 37.2626 35.979 36.6209 36.6207C35.9792 37.2623 35.1953 37.5832 34.2692 37.5832H9.73096Z"
-        fill="white"
-      />
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="white">
+      <path d="M13.5667 28.681L19.1584 23.1067L22.8251 26.7734L29.7917 19.8351V23.3748H32.5417V15.1248H24.2917V17.8748H27.8315L22.8251 22.8812L19.1584 19.2145L11.6523 26.7665L13.5667 28.681ZM9.73096 37.5832C8.80482 37.5832 8.02091 37.2623 7.37925 36.6207C6.73758 35.979 6.41675 35.1951 6.41675 34.269V9.73071C6.41675 8.80457 6.73758 8.02067 7.37925 7.379C8.02091 6.73734 8.80482 6.4165 9.73096 6.4165H34.2692C35.1953 6.4165 35.9792 6.73734 36.6209 7.379C37.2626 8.02067 37.5834 8.80457 37.5834 9.73071V34.269C37.5834 35.1951 37.2626 35.979 36.6209 36.6207C35.9792 37.2623 35.1953 37.5832 34.2692 37.5832H9.73096Z" />
     </svg>
   ),
 };
@@ -510,20 +490,50 @@ function ModeGrid({ data }) {
             rel="noopener noreferrer"
             className="psModeCard"
             key={mode.id}
-            style={{ backgroundImage: `url(${mode.image})` }}
+            style={{ 
+              backgroundImage: `url(${mode.image})`,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end"
+            }}
           >
-            <span className="psModeArrowBtn">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <path
-                  d="M7.98489 21.2266L6.7666 20.0083L18.2472 8.5166H7.80989V6.7666H21.2266V20.1833H19.4766V9.74598L7.98489 21.2266Z"
-                  fill="white"
-                />
-              </svg>
-            </span>
+            <div 
+              className="psModeCardBottomRow"
+              style={{
+                position: "relative",
+                zIndex: 2,
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end",
+                gap: "16px"
+              }}
+            >
+              <div className="psModeCardText" style={{ flex: 1 }}>
+                <h5 className="psModeCardTitle">{mode.title}</h5>
+                <p 
+                  className="psModeCardDesc"
+                  style={{
+                    fontWeight: 400,
+                    fontFamily: "'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif",
+                    fontSize: "18px",
+                    lineHeight: "1.5",
+                    color: "rgba(255, 255, 255, 0.88)",
+                    margin: 0
+                  }}
+                >
+                  {mode.desc}
+                </p>
+              </div>
 
-            <div className="psModeCardText">
-              <h5 className="psModeCardTitle">{mode.title}</h5>
-              <p className="psModeCardDesc">{mode.desc}</p>
+              <span className="psModeArrowBtn">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  <path
+                    d="M7.98489 21.2266L6.7666 20.0083L18.2472 8.5166H7.80989V6.7666H21.2266V20.1833H19.4766V9.74598L7.98489 21.2266Z"
+                    fill="white"
+                  />
+                </svg>
+              </span>
             </div>
           </a>
         ))}
@@ -533,7 +543,7 @@ function ModeGrid({ data }) {
 }
 
 /* ============================================================
-   DSQ WHY 전용 컴포넌트 (피그마 1276 x 526, 배경 #F2F5FD)
+   DSQ WHY 전용 컴포넌트 (피그마 1276 x 526)
    ============================================================ */
 function DsqWhyBlock({ data }) {
   return (
@@ -566,6 +576,7 @@ function DsqWhyBlock({ data }) {
     </div>
   );
 }
+
 /* ============================================================
    DSQ HOW 전용 컴포넌트 (피그마 1276 x 760 규격 일치)
    ============================================================ */
@@ -576,7 +587,6 @@ function DsqHowBlock({ data }) {
 
   return (
     <div className="psDsqHowGrid" data-reveal="up">
-      {/* 좌측 텍스트 영역 (628 x 760) */}
       <div className="psDsqHowLeft">
         <span className="psDsqHowBadge">{data.how.badge}</span>
         <h2 className="psDsqHowHeading">
@@ -589,9 +599,7 @@ function DsqHowBlock({ data }) {
         </h2>
       </div>
 
-      {/* 우측 카드 영역 (628 x 760) */}
       <div className="psDsqHowRightCards">
-        {/* 상단 4개 2x2 카드 (각 308 x 240) */}
         <div className="psDsqStepRow4">
           {topFour.map((step, idx) => {
             const iconKey = step.label.toLowerCase();
@@ -614,7 +622,6 @@ function DsqHowBlock({ data }) {
           })}
         </div>
 
-        {/* 하단 5번째 와이드 카드 (628 x 240, #2167FD) */}
         {wideStep && (
           <div className="psDsqWideBox">
             <div className="psDsqStepIconTop">
@@ -633,13 +640,13 @@ function DsqHowBlock({ data }) {
     </div>
   );
 }
+
 /* ============================================================
    DSQ APPLICATION 전용 컴포넌트 (1276 x 662 Hug)
    ============================================================ */
 function DsqApplicationBlock({ data }) {
   return (
     <div className="psDsqAppSection" data-reveal="up">
-      {/* 상단 텍스트 헤더 (1276 x 142, gap: 12px) */}
       <div className="psDsqAppHeader">
         <span className="psDsqAppBadge">{data.application.badge}</span>
         <h2 className="psDsqAppHeading">
@@ -652,7 +659,6 @@ function DsqApplicationBlock({ data }) {
         </h2>
       </div>
 
-      {/* 3개 카드 그리드 (1276 x 480, gap: 20px) */}
       <div className="psDsqAppCards">
         {data.application.places.map((place, idx) => (
           <div
@@ -749,7 +755,7 @@ export default function ProductsPage({ onOpenContact }) {
           font-weight: 500;
           line-height: 1.5;
           letter-spacing: 0;
-          color: #555b66;
+          color: #000000 !important;
           margin: 0;
           text-align: left;
           word-break: keep-all;
@@ -916,7 +922,7 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         /* ==========================================================
-           3. K-AI STATION WHY / HOW
+           3. K-AI STATION WHY / HOW (피그마 628 x 162 세로 정렬)
            ========================================================== */
         .psWhyGrid {
           width: 100%;
@@ -980,6 +986,8 @@ export default function ProductsPage({ onOpenContact }) {
           border-radius: 20px;
           padding: 28px;
           display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
           align-items: flex-start;
           gap: 12px;
           box-sizing: border-box;
@@ -998,53 +1006,69 @@ export default function ProductsPage({ onOpenContact }) {
         .psHowCardBg-1 .psWhyCardDesc,
         .psHowCardBg-2 .psWhyCardDesc { color: rgba(255, 255, 255, 0.88) !important; }
 
-        .psNumBadge {
-          width: 32px;
-          height: 32px;
-          flex-shrink: 0;
-          border-radius: 99px;
-          background: #111625;
-          color: #ffffff;
-          font-family: inherit;
-          font-size: 14px;
-          font-weight: 700;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 2px;
+        /* ==========================================================
+           피그마 32 x 32 정밀 넘버 배지 (완전 중앙 정렬 & 16px Bold 통일)
+           ========================================================== */
+        .psNumBadge,
+        .psDsqNumBadge {
+          width: 32px !important;
+          height: 32px !important;
+          border-radius: 50% !important;
+          
+          /* line-height를 박스 높이와 1:1로 주면 수직 중심이 정확히 잡힙니다 */
+          display: block !important;
+          line-height: 32px !important;
+          text-align: center !important;
+          
+          font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif !important;
+          font-size: 16px !important;
+          font-weight: 700 !important;
+          letter-spacing: 0 !important;
+          
+          padding: 0 !important;
+          margin: 0 !important;
+          box-sizing: border-box !important;
+          flex-shrink: 0 !important;
+          -webkit-font-smoothing: antialiased !important;
         }
 
-        /* ==========================================================
-   넘버 배지 색상: 카드 배경색과 일치
-   ========================================================== */
+        /* K-AI WHY 배지: 배경 #111625 / 글자 #ffffff */
+        .psWhyCard .psNumBadge {
+          background-color: #111625 !important;
+          color: #ffffff !important;
+        }
 
-/* K-AI Station HOW 01, 02, 03 배지 숫자 색상 */
-.psHowCardBg-0 .psNumBadge--white {
-  background-color: #ffffff !important;
-  color: #4936ED !important;
-}
+        /* K-AI HOW 배지: 배경 #ffffff / 글자 각 카드 테마색 */
+        .psHowCardBg-0 .psNumBadge--white {
+          background-color: #ffffff !important;
+          color: #4936ED !important;
+        }
+        .psHowCardBg-1 .psNumBadge--white {
+          background-color: #ffffff !important;
+          color: #2167FD !important;
+        }
+        .psHowCardBg-2 .psNumBadge--white {
+          background-color: #ffffff !important;
+          color: #00A1F1 !important;
+        }
 
-.psHowCardBg-1 .psNumBadge--white {
-  background-color: #ffffff !important;
-  color: #2167FD !important;
-}
+        /* DSQ WHY 배지: 배경 #333C4E / 글자 #ffffff */
+        .psDsqWhyCard .psDsqNumBadge {
+          background-color: #333C4E !important;
+          color: #ffffff !important;
+        }
 
-.psHowCardBg-2 .psNumBadge--white {
-  background-color: #ffffff !important;
-  color: #00A1F1 !important;
-}
+        /* DSQ HOW 01~04 상단 카드 배지: 배경 #ffffff / 글자 #333C4E */
+        .psDsqStepBox .psDsqNumBadge {
+          background-color: #ffffff !important;
+          color: #333C4E !important;
+        }
 
-/* DSQ HOW 05 와이드 카드 배지 숫자 색상 */
-.psDsqWideBox .psDsqNumBadge {
-  background-color: #ffffff !important;
-  color: #2167FD !important;
-}
-
-/* DSQ HOW 상단 4개 어두운 카드(01~04) 배지 숫자 색상: #333C4E */
-.psDsqStepBox .psDsqNumBadge {
-  background-color: #ffffff !important;
-  color: #333C4E !important;
-}
+        /* DSQ HOW 05 와이드 카드 배지: 배경 #ffffff / 글자 #2167FD */
+        .psDsqWideBox .psDsqNumBadge {
+          background-color: #ffffff !important;
+          color: #2167FD !important;
+        }
 
         .psNumBadge--white {
           background: #ffffff !important;
@@ -1056,6 +1080,8 @@ export default function ProductsPage({ onOpenContact }) {
           height: 62px;
           display: flex;
           flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
           gap: 4px;
         }
 
@@ -1145,7 +1171,7 @@ export default function ProductsPage({ onOpenContact }) {
           text-decoration: none;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: flex-end;
           padding: 24px;
           box-sizing: border-box;
           box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2);
@@ -1161,44 +1187,25 @@ export default function ProductsPage({ onOpenContact }) {
           content: "";
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%);
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
           pointer-events: none;
         }
 
-        .psModeArrowBtn {
-          align-self: flex-end;
-          width: 44px;
-          height: 44px;
-          border-radius: 99px;
-          background-color: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        .psModeCardBottomRow {
+          position: relative;
           z-index: 2;
-          transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .psModeCard:hover .psModeArrowBtn {
-          transform: scale(1.08);
-          background-color: rgba(255, 255, 255, 0.35);
-        }
-
-        .psModeArrowBtn svg {
-          width: 28px;
-          height: 28px;
-          display: block;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          gap: 16px;
         }
 
         .psModeCardText {
-          width: 100%;
-          min-height: 110px;
+          flex: 1;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
           gap: 6px;
-          z-index: 2;
         }
 
         .psModeCardTitle {
@@ -1213,14 +1220,40 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         .psModeCardDesc {
-          font-family: inherit;
-          font-size: 18px;
-          font-weight: 400;
-          line-height: 1.5;
-          letter-spacing: 0;
-          color: rgba(255, 255, 255, 0.88);
-          margin: 0;
-          word-break: keep-all;
+          font-family: inherit !important;
+          font-size: 18px !important;
+          font-weight: 400 !important;
+          line-height: 1.5 !important;
+          letter-spacing: 0 !important;
+          color: rgba(255, 255, 255, 0.88) !important;
+          margin: 0 !important;
+          word-break: keep-all !important;
+          -webkit-font-smoothing: antialiased !important;
+        }
+
+        .psModeArrowBtn {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
+          border-radius: 99px;
+          background-color: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .psModeCard:hover .psModeArrowBtn {
+          transform: scale(1.08);
+          background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .psModeArrowBtn svg {
+          width: 28px;
+          height: 28px;
+          display: block;
         }
 
         /* ==========================================================
@@ -1292,7 +1325,7 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         /* ==========================================================
-           6. DSQ WHY 전용 스타일 (피그마 1276 x 526, 배경 #F2F5FD)
+           6. DSQ WHY 전용 스타일 (피그마 1276 x 526, 세로 컬럼 일치)
            ========================================================== */
         .psDsqWhyGrid {
           width: 100%;
@@ -1356,26 +1389,11 @@ export default function ProductsPage({ onOpenContact }) {
           border-radius: 20px;
           padding: 28px;
           display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
           align-items: flex-start;
           gap: 12px;
           box-sizing: border-box;
-        }
-
-        .psDsqNumBadge {
-          width: 32px;
-          height: 32px;
-          flex-shrink: 0;
-          border-radius: 99px;
-          background-color: #333C4E;
-          color: #ffffff;
-          font-family: inherit;
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 1.3;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 2px;
         }
 
         .psDsqWhyCardText {
@@ -1383,7 +1401,9 @@ export default function ProductsPage({ onOpenContact }) {
           height: 62px;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 4px;
         }
 
         .psDsqWhyCardTitle {
@@ -1410,363 +1430,277 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         /* ==========================================================
-   DSQ HOW 전용 스타일 (피그마 1276 x 760, 좌우 2열 완전 고정)
-   ========================================================== */
-.psDsqHowGrid {
-  width: 100% !important;
-  max-width: 1276px !important;
-  height: 760px !important;
-  display: grid !important;
-  grid-template-columns: 628px 628px !important; /* 좌측 628px + 우측 628px */
-  justify-content: space-between !important;
-  gap: 20px !important;
-  box-sizing: border-box !important;
-  margin: 0 auto !important;
-}
+           7. DSQ HOW 전용 스타일 (피그마 1276 x 760, 카드 수치 정밀 고정)
+           ========================================================== */
+        .psDsqHowGrid {
+          width: 100% !important;
+          max-width: 1276px !important;
+          height: 760px !important;
+          display: grid !important;
+          grid-template-columns: 628px 628px !important;
+          justify-content: space-between !important;
+          gap: 20px !important;
+          box-sizing: border-box !important;
+          margin: 0 auto !important;
+        }
 
-/* 좌측 텍스트 프레임: 상단 정렬 및 폰트 수치 피그마 일치 */
-.psDsqHowLeft {
-  width: 628px !important;
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  gap: 12px !important;
-  box-sizing: border-box !important;
-}
+        .psDsqHowLeft {
+          width: 628px !important;
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
+          gap: 12px !important;
+          box-sizing: border-box !important;
+        }
 
-.psDsqHowBadge {
-  font-family: inherit !important;
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: #0052ff !important;
-  text-transform: uppercase !important;
-}
+        .psDsqHowBadge {
+          font-family: inherit !important;
+          font-size: 20px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          color: #0052ff !important;
+          text-transform: uppercase !important;
+        }
 
-.psDsqHowHeading {
-  font-family: inherit !important;
-  font-size: 40px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: #111625 !important;
-  margin: 0 !important;
-  text-align: left !important;
-  word-break: keep-all !important;
-}
+        .psDsqHowHeading {
+          font-family: inherit !important;
+          font-size: 40px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          color: #111625 !important;
+          margin: 0 !important;
+          text-align: left !important;
+          word-break: keep-all !important;
+        }
 
-/* 우측 카드 스택 영역 (628 x 760) */
-.psDsqHowRightCards {
-  width: 628px !important;
-  height: 760px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 20px !important;
-  box-sizing: border-box !important;
-}
+        .psDsqHowRightCards {
+          width: 628px !important;
+          height: 500px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 20px !important;
+          box-sizing: border-box !important;
+        }
 
-/* 상단 2x2 카드 그리드 (2행 x 2열 = 4개) */
-.psDsqStepRow4 {
-  width: 628px !important;
-  height: 500px !important; /* 240px + 20px + 240px */
-  display: grid !important;
-  grid-template-columns: 308px 308px !important;
-  grid-template-rows: 240px 240px !important;
-  justify-content: space-between !important;
-  gap: 20px !important;
-  box-sizing: border-box !important;
-}
+        .psDsqStepRow4 {
+          width: 628px !important;
+          display: grid !important;
+          grid-template-columns: 304px 304px !important;
+          gap: 20px !important;
+          box-sizing: border-box !important;
+        }
 
-/* 개별 308 x 240 카드 */
-.psDsqStepBox {
-  width: 308px !important;
-  height: 240px !important;
-  background-color: #333C4E !important;
-  border-radius: 20px !important;
-  padding: 28px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
-  box-sizing: border-box !important;
-}
+        .psDsqStepBox {
+          width: 100% !important;
+          height: 240px !important;
+          background-color: #333C4E !important;
+          border-radius: 20px !important;
+          padding: 28px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+          align-items: flex-start !important;
+          box-sizing: border-box !important;
+        }
 
-/* 우상단 아이콘 (44 x 44) */
-.psDsqStepIconTop {
-  align-self: flex-end !important;
-  width: 44px !important;
-  height: 44px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
+        .psDsqWideBox {
+          width: 628px !important;
+          height: 240px !important;
+          background-color: #2167FD !important;
+          border-radius: 20px !important;
+          padding: 28px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+          align-items: flex-start !important;
+          box-sizing: border-box !important;
+        }
 
-.psDsqStepIconTop svg {
-  width: 44px !important;
-  height: 44px !important;
-  display: block !important;
-}
+        .psDsqStepIconTop {
+          align-self: flex-end !important;
+          width: 44px !important;
+          height: 44px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          flex-shrink: 0 !important;
+        }
 
-/* 하단 내용 묶음 */
-.psDsqStepBoxBottom {
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 12px !important;
-}
+        .psDsqStepIconTop svg {
+          width: 44px !important;
+          height: 44px !important;
+          display: block !important;
+        }
 
-.psDsqStepBoxText {
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
-}
+        .psDsqStepBoxBottom {
+          width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 12px !important;
+        }
 
-.psDsqStepLabel {
-  font-family: inherit !important;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: #ffffff !important;
-  margin: 0 !important;
-  text-align: left !important;
-}
+        .psDsqStepBoxText {
+          width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 4px !important;
+        }
 
-.psDsqStepDesc {
-  font-family: inherit !important;
-  font-size: 18px !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0 !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-  margin: 0 !important;
-  text-align: left !important;
-  word-break: keep-all !important;
-}
+        .psDsqStepLabel {
+          font-family: inherit !important;
+          font-size: 24px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          color: #ffffff !important;
+          margin: 0 !important;
+          text-align: left !important;
+        }
 
-/* 하단 와이드 카드 (628 x 240, #2167FD) */
-.psDsqWideBox {
-  width: 628px !important;
-  height: 240px !important;
-  background-color: #2167FD !important;
-  border-radius: 20px !important;
-  padding: 28px 32px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
-  box-sizing: border-box !important;
-}
-
-/* 01~05 넘버 배지: 32 x 32 원형 */
-.psDsqNumBadge {
-  width: 32px !important;
-  height: 32px !important;
-  flex-shrink: 0 !important;
-  border-radius: 99px !important;
-  background-color: #ffffff !important;
-  color: #111625 !important;
-  font-family: inherit !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* 반응형 처리 */
-@media (max-width: 1360px) {
-  .psDsqHowGrid {
-    grid-template-columns: 1fr !important;
-    height: auto !important;
-  }
-  .psDsqHowLeft,
-  .psDsqHowRightCards {
-    width: 100% !important;
-    max-width: 628px !important;
-    margin: 0 auto !important;
-    height: auto !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .psDsqStepRow4 {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto !important;
-    width: 100% !important;
-    height: auto !important;
-  }
-  .psDsqStepBox,
-  .psDsqWideBox {
-    width: 100% !important;
-  }
-}
+        .psDsqStepDesc {
+          font-family: inherit !important;
+          font-size: 18px !important;
+          font-weight: 400 !important;
+          line-height: 1.5 !important;
+          letter-spacing: 0 !important;
+          color: rgba(255, 255, 255, 0.88) !important;
+          margin: 0 !important;
+          text-align: left !important;
+          word-break: keep-all !important;
+        }
 
         /* ==========================================================
-   DSQ APPLICATION 전용 스타일 (피그마 1276 x 662)
-   ========================================================== */
-.psDsqAppSection {
-  width: 100% !important;
-  max-width: 1276px !important;
-  height: 662px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  gap: 40px !important;
-  border-radius: 24px !important;
-  box-sizing: border-box !important;
-  margin: 0 auto !important;
-}
+           8. DSQ APPLICATION 전용 스타일 (피그마 1276 x 662)
+           ========================================================== */
+        .psDsqAppSection {
+          width: 100% !important;
+          max-width: 1276px !important;
+          height: 662px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+          gap: 40px !important;
+          border-radius: 24px !important;
+          box-sizing: border-box !important;
+          margin: 0 auto !important;
+        }
 
-/* 상단 텍스트 프레임 (1276 x 142, gap: 12px) */
-.psDsqAppHeader {
-  width: 100% !important;
-  max-width: 1276px !important;
-  height: 142px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-  gap: 12px !important;
-  box-sizing: border-box !important;
-}
+        .psDsqAppHeader {
+          width: 100% !important;
+          max-width: 1276px !important;
+          height: 142px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: flex-start !important;
+          align-items: flex-start !important;
+          gap: 12px !important;
+          box-sizing: border-box !important;
+        }
 
-.psDsqAppBadge {
-  font-family: inherit !important;
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: #0052ff !important;
-  text-transform: uppercase !important;
-}
+        .psDsqAppBadge {
+          font-family: inherit !important;
+          font-size: 20px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          color: #0052ff !important;
+          text-transform: uppercase !important;
+        }
 
-.psDsqAppHeading {
-  font-family: inherit !important;
-  font-size: 40px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: #111625 !important;
-  margin: 0 !important;
-  text-align: left !important;
-  word-break: keep-all !important;
-}
+        .psDsqAppHeading {
+          font-family: inherit !important;
+          font-size: 40px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          color: #111625 !important;
+          margin: 0 !important;
+          text-align: left !important;
+          word-break: keep-all !important;
+        }
 
-/* 3열 카드 그리드: 1276 x 480, gap: 20px */
-.psDsqAppCards {
-  width: 100% !important;
-  max-width: 1276px !important;
-  height: 480px !important;
-  display: grid !important;
-  grid-template-columns: repeat(3, 412px) !important;
-  justify-content: space-between !important;
-  gap: 20px !important;
-  box-sizing: border-box !important;
-}
+        .psDsqAppCards {
+          width: 100% !important;
+          max-width: 1276px !important;
+          height: 480px !important;
+          display: grid !important;
+          grid-template-columns: repeat(3, 412px) !important;
+          justify-content: space-between !important;
+          gap: 20px !important;
+          box-sizing: border-box !important;
+        }
 
-/* 개별 카드: 412 x 480, border-radius: 20px */
-.psDsqAppCard {
-  position: relative !important;
-  width: 412px !important;
-  height: 480px !important;
-  border-radius: 20px !important;
-  overflow: hidden !important;
-  background-size: cover !important;
-  background-position: center !important;
-  padding: 28px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-end !important;
-  align-items: flex-start !important;
-  box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2) !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
-}
+        .psDsqAppCard {
+          position: relative !important;
+          width: 412px !important;
+          height: 480px !important;
+          border-radius: 20px !important;
+          overflow: hidden !important;
+          background-size: cover !important;
+          background-position: center !important;
+          padding: 28px !important;
+          box-sizing: border-box !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: flex-end !important;
+          align-items: flex-start !important;
+          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2) !important;
+          transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+        }
 
-.psDsqAppCard:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 20px 40px -15px rgba(0, 82, 255, 0.25) !important;
-}
+        .psDsqAppCard:hover {
+          transform: translateY(-4px) !important;
+          box-shadow: 0 20px 40px -15px rgba(0, 82, 255, 0.25) !important;
+        }
 
-/* 카드 하단 가독성을 위한 그라데이션 오버레이 */
-.psDsqAppCard::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%) !important;
-  pointer-events: none !important;
-}
+        .psDsqAppCard::after {
+          content: "" !important;
+          position: absolute !important;
+          inset: 0 !important;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%) !important;
+          pointer-events: none !important;
+        }
 
-/* 카드 내부 하단 텍스트 묶음 (412 x 120) */
-.psDsqAppCardText {
-  position: relative !important;
-  z-index: 2 !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-}
+        .psDsqAppCardText {
+          position: relative !important;
+          z-index: 2 !important;
+          width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 8px !important;
+        }
 
-.psDsqAppCardTitle {
-  font-family: inherit !important;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-  color: #ffffff !important;
-  margin: 0 !important;
-  text-align: left !important;
-  word-break: keep-all !important;
-}
+        .psDsqAppCardTitle {
+          font-family: inherit !important;
+          font-size: 24px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          letter-spacing: 0 !important;
+          color: #ffffff !important;
+          margin: 0 !important;
+          text-align: left !important;
+          word-break: keep-all !important;
+        }
 
-.psDsqAppCardDesc {
-  font-family: inherit !important;
-  font-size: 18px !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0 !important;
-  color: rgba(255, 255, 255, 0.88) !important;
-  margin: 0 !important;
-  text-align: left !important;
-  word-break: keep-all !important;
-}
-
-/* 반응형 처리 */
-@media (max-width: 1360px) {
-  .psDsqAppSection {
-    height: auto !important;
-  }
-  .psDsqAppCards {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    height: auto !important;
-  }
-  .psDsqAppCard {
-    width: 100% !important;
-    height: 400px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .psDsqAppHeader {
-    height: auto !important;
-  }
-  .psDsqAppCards {
-    grid-template-columns: 1fr !important;
-  }
-  .psDsqAppCard {
-    height: 360px !important;
-  }
-}
+        .psDsqAppCardDesc {
+          font-family: inherit !important;
+          font-size: 18px !important;
+          font-weight: 400 !important;
+          line-height: 1.5 !important;
+          letter-spacing: 0 !important;
+          color: rgba(255, 255, 255, 0.88) !important;
+          margin: 0 !important;
+          text-align: left !important;
+          word-break: keep-all !important;
+        }
 
         /* ==========================================================
-           9. 최종 문의하기 CTA (이전 페이지와 100% 동일)
+           9. 최종 문의하기 CTA
            ========================================================== */
         .psFinalCta {
           width: 100%;
@@ -1911,7 +1845,10 @@ export default function ProductsPage({ onOpenContact }) {
         <div className="psHeroHeader">
           <div className="psHeroIntro" data-reveal="up">
             <h1 className="psHeroTitle">{t.hero.title}</h1>
-            <p className="psHeroSub">
+            <p 
+              className="psHeroSub"
+              style={{ color: "#000000" }}
+            >
               {t.hero.subtitle[0]}
               <br />
               {t.hero.subtitle[1]}
@@ -1977,7 +1914,7 @@ export default function ProductsPage({ onOpenContact }) {
 
             <hr className="psSubDivider" />
 
-            {/* K-AI MODE 그리드 (1276 x 762) */}
+            {/* K-AI MODE 그리드 */}
             <ModeGrid data={t.station} />
           </div>
         </div>
@@ -2029,22 +1966,21 @@ export default function ProductsPage({ onOpenContact }) {
               </a>
             </div>
 
-            {/* DSQ 배너 이미지 (1276 x 480) */}
             <div className="psProductBanner" data-reveal="up">
               <img src={t.dsq.banner} alt={t.dsq.title} />
             </div>
 
-            {/* 피그마 규격 DSQ WHY 블록 (#F2F5FD, 1276 x 526) */}
+            {/* DSQ WHY 블록 */}
             <DsqWhyBlock data={t.dsq} />
 
             <hr className="psSubDivider" />
 
-            {/* 피그마 규격 DSQ HOW 블록 (#333C4E / #2167FD, 1276 x 760) */}
+            {/* DSQ HOW 블록 */}
             <DsqHowBlock data={t.dsq} />
 
             <hr className="psSubDivider" />
 
-            {/* 피그마 규격 DSQ APPLICATION 블록 (1276 x 480) */}
+            {/* DSQ APPLICATION 블록 */}
             <DsqApplicationBlock data={t.dsq} />
           </div>
         </div>
