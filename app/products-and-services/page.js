@@ -1,7 +1,16 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
+
+/* AboutPage와 동일한 화살표 아이콘 — CTA 버튼에서 공용으로 사용 */
+const ArrowIcon = ({ size = 28, color = "#000000" }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 
 /* ============================================================
    4개 언어 콘텐츠 사전 (KR / EN / JP / TH)
@@ -9,10 +18,10 @@ import { useLanguage } from "../context/LanguageContext";
 const CONTENT = {
   KR: {
     hero: {
-      title: "제품 및 서비스",
+      badge: "제품 및 서비스",
       subtitle: [
-        "KAQ의 기술은 사람과 AI의 관계에서 시작해",
-        "우리가 생활하는 공간의 안전과 품질까지 확장됩니다.",
+        "사람과 AI의 관계에서 시작해",
+        "공간의 안전과 품질까지 확장됩니다.",
       ],
       bannerText: ["사람에게는 더 쉬운 AI를,", "공간에는 더 나은 품질을."],
     },
@@ -98,13 +107,28 @@ const CONTENT = {
       text: ["KAQ와 함께 새로운 AI 경험과", "안전품질의 기준을 만들어보세요."],
       btn: "문의하기",
     },
+    modal: {
+      title: "Application",
+      jobLabel: "지원 직군",
+      nameLabel: "성명 *",
+      namePlaceholder: "홍길동",
+      birthLabel: "생년월일 *",
+      nationalityLabel: "국적 *",
+      nationalityPlaceholder: "대한민국",
+      linkLabel: "이력서 / 포트폴리오 링크 주소",
+      linkPlaceholder: "구글 드라이브, 노션 등 공유 링크 주소를 넣어주세요.",
+      submitBtn: "지원서 제출하기",
+      successMsg: "지원서가 성공적으로 제출되었습니다!",
+      errMsg: "제출 중 오류가 발생했습니다.",
+      alertFillAll: "모든 필수 항목을 입력해주세요.",
+    },
   },
   EN: {
     hero: {
-      title: "Products & Services",
+      badge: "Products & Services",
       subtitle: [
-        "KAQ's technology starts with the relationship between people and AI,",
-        "and extends to the safety and quality of the spaces we live in.",
+        "Starting from the relationship between people and AI,",
+        "and extending to the safety and quality of our spaces.",
       ],
       bannerText: ["Easier AI for people,", "Better quality for spaces."],
     },
@@ -188,13 +212,31 @@ const CONTENT = {
     },
     finalCta: {
       text: ["Build the next standard for AI experience", "and safety quality together with KAQ."],
-      btn: "문의하기",
+      btn: "Contact Us",
+    },
+    modal: {
+      title: "Application",
+      jobLabel: "Applied Position",
+      nameLabel: "Full Name *",
+      namePlaceholder: "John Doe",
+      birthLabel: "Date of Birth *",
+      nationalityLabel: "Nationality *",
+      nationalityPlaceholder: "Republic of Korea",
+      linkLabel: "Resume / Portfolio Link",
+      linkPlaceholder: "Please enter a shareable link (Google Drive, Notion, etc.)",
+      submitBtn: "Submit Application",
+      successMsg: "Your application has been submitted successfully!",
+      errMsg: "An error occurred while submitting.",
+      alertFillAll: "Please fill in all required fields.",
     },
   },
   JP: {
     hero: {
-      title: "製品 & サービス",
-      subtitle: ["KAQの技術は人とAIの関係から始まり、", "私たちが暮らす空間の安全と品質にまで広がります。"],
+      badge: "製品 & サービス",
+      subtitle: [
+        "人とAIの関係から始まり、",
+        "空間の安全と品質にまで広がります。",
+      ],
       bannerText: ["人にはより易しいAIを、", "空間にはより良い品質を。"],
     },
     station: {
@@ -273,14 +315,32 @@ const CONTENT = {
       },
     },
     finalCta: {
-      text: ["KAQとともに新しいAI体験と", "安全品質의 基準を作りましょう。"],
-      btn: "문의하기",
+      text: ["KAQとともに新しいAI体験と", "安全品質の基準を作りましょう。"],
+      btn: "お問い合わせ",
+    },
+    modal: {
+      title: "Application",
+      jobLabel: "応募職種",
+      nameLabel: "氏名 *",
+      namePlaceholder: "山田 太郎",
+      birthLabel: "生年月日 *",
+      nationalityLabel: "国籍 *",
+      nationalityPlaceholder: "日本 / 韓国",
+      linkLabel: "履歴書 / ポートフォリオ リンク",
+      linkPlaceholder: "Google Drive, Notion などの共有リンクを入力してください。",
+      submitBtn: "応募書類を提出する",
+      successMsg: "応募書類が正常に送信されました！",
+      errMsg: "送信中にエラーが発生しました。",
+      alertFillAll: "すべての必須項目を入力してください。",
     },
   },
   TH: {
     hero: {
-      title: "ผลิตภัณฑ์และบริการ",
-      subtitle: ["เทคโนโลยีของ KAQ เริ่มต้นจากความสัมพันธ์ระหว่างมนุษย์กับ AI", "และขยายไปสู่ความปลอดภัยและคุณภาพของพื้นที่ที่เราใช้ชีวิตอยู่"],
+      badge: "ผลิตภัณฑ์และบริการ",
+      subtitle: [
+        "เริ่มต้นจากความสัมพันธ์ระหว่างมนุษย์กับ AI",
+        "และขยายไปสู่ความปลอดภัยและคุณภาพของพื้นที่",
+      ],
       bannerText: ["AI ที่ใช้งานง่ายขึ้นสำหรับผู้คน,", "คุณภาพที่ดีขึ้นสำหรับพื้นที่"],
     },
     station: {
@@ -361,6 +421,21 @@ const CONTENT = {
     finalCta: {
       text: ["สร้างมาตรฐานใหม่ของประสบการณ์ AI", "และคุณภาพความปลอดภัยไปด้วยกันกับ KAQ"],
       btn: "ติดต่อเรา",
+    },
+    modal: {
+      title: "Application",
+      jobLabel: "ตำแหน่งที่สมัคร",
+      nameLabel: "ชื่อ-นามสกุล *",
+      namePlaceholder: "สมชาย ใจดี",
+      birthLabel: "วันเดือนปีเกิด *",
+      nationalityLabel: "สัญชาติ *",
+      nationalityPlaceholder: "ไทย / เกาหลี",
+      linkLabel: "ลิงก์เรซูเม่ / พอร์ตโฟลิโอ",
+      linkPlaceholder: "กรุณาใส่ลิงก์ที่แชร์ได้ (Google Drive, Notion ฯลฯ)",
+      submitBtn: "ส่งใบสมัคร",
+      successMsg: "ส่งใบสมัครเรียบร้อยแล้ว!",
+      errMsg: "เกิดข้อผิดพลาดขณะส่งใบสมัคร",
+      alertFillAll: "กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน",
     },
   },
 };
@@ -685,13 +760,53 @@ export default function ProductsPage({ onOpenContact }) {
   const t = CONTENT[currentLang] || CONTENT.KR;
   const containerRef = useScrollReveal();
 
+  const [isApplyOpen, setIsApplyOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState("");
+  const [name, setName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [fileLink, setFileLink] = useState("");
+
+  const handleOpenApply = (jobTitle) => {
+    setSelectedJob(jobTitle);
+    setIsApplyOpen(true);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !birthDate || !nationality) {
+      alert(t.modal.alertFillAll);
+      return;
+    }
+    const templateParams = {
+      job_title: selectedJob,
+      user_name: name,
+      user_birth: birthDate,
+      user_nationality: nationality,
+      file_url: fileLink || "N/A",
+    };
+    emailjs
+      .send("service_jz546gh", "template_mn5mvrd", templateParams, "vyRLXyXzHI1yh7Z0m")
+      .then(() => {
+        alert(t.modal.successMsg);
+        setIsApplyOpen(false);
+        setName("");
+        setBirthDate("");
+        setNationality("");
+        setFileLink("");
+      })
+      .catch((err) => {
+        alert(t.modal.errMsg);
+        console.error(err);
+      });
+  };
+
   return (
     <div ref={containerRef}>
       <style>{`
         .psPage {
           width: 100%;
           background-color: #ffffff;
-          padding-top: 80px;
           box-sizing: border-box;
           overflow-x: hidden;
           font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
@@ -715,11 +830,11 @@ export default function ProductsPage({ onOpenContact }) {
         [data-reveal].psVisible { opacity: 1; transform: translate(0, 0); }
 
         /* ==========================================================
-           1. 히어로 영역
+           1. 히어로 영역 (애니메이션 제거)
            ========================================================== */
         .psHeroHeader {
           width: 100%;
-          padding: 120px 0 60px;
+          padding: 140px 0 60px;
           display: flex;
           justify-content: center;
           box-sizing: border-box;
@@ -728,13 +843,23 @@ export default function ProductsPage({ onOpenContact }) {
         .psHeroIntro {
           width: 100%;
           max-width: 1276px;
-          height: 170px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           justify-content: center;
-          gap: 20px;
           box-sizing: border-box;
+        }
+
+        .psHeroBadge {
+          display: block;
+          font-family: inherit;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0;
+          color: #2167FD;
+          text-align: center;
+          margin: 0 0 24px 0;
         }
 
         .psHeroTitle {
@@ -743,19 +868,7 @@ export default function ProductsPage({ onOpenContact }) {
           font-weight: 700;
           line-height: 1.3;
           letter-spacing: 0;
-          color: #111625;
-          margin: 0;
-          text-align: left;
-          word-break: keep-all;
-        }
-
-        .psHeroSub {
-          font-family: inherit;
-          font-size: 24px;
-          font-weight: 500;
-          line-height: 1.5;
-          letter-spacing: 0;
-          color: #000000 !important;
+          color: #000000;
           margin: 0;
           text-align: left;
           word-break: keep-all;
@@ -778,9 +891,21 @@ export default function ProductsPage({ onOpenContact }) {
           box-sizing: border-box;
           padding: 10px;
           text-align: center;
+          overflow: hidden;
+        }
+        .psHeroBanner::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: #2167FD;
+          mix-blend-mode: multiply;
+          opacity: 0.2;
+          pointer-events: none;
         }
 
         .psHeroBannerText {
+          position: relative;
+          z-index: 1;
           font-family: inherit;
           font-size: 48px;
           font-weight: 700;
@@ -810,8 +935,9 @@ export default function ProductsPage({ onOpenContact }) {
           height: 128px;
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-end;
           gap: 28px;
+          background: #ffffff;
           border-radius: 24px;
           box-sizing: border-box;
         }
@@ -1700,10 +1826,15 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         /* ==========================================================
-           9. 최종 문의하기 CTA
+           9. 최종 문의하기 CTA (이전 페이지와 100% 동일한 세로 360px 규격)
            ========================================================== */
         .psFinalCta {
-          width: 100%;
+          width: 100vw;
+          position: relative;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
           min-height: 360px;
           background-image: url("/10.png");
           background-size: cover;
@@ -1713,7 +1844,6 @@ export default function ProductsPage({ onOpenContact }) {
           justify-content: center;
           box-sizing: border-box;
           padding: 60px 162px;
-          font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
         }
 
         .psFinalCtaInner {
@@ -1803,7 +1933,7 @@ export default function ProductsPage({ onOpenContact }) {
           .psModeCard, .psDsqAppCard { width: 100%; }
           .psModeSection, .psDsqAppSection { height: auto; }
           .psFullBleedCta { padding: 60px 24px; }
-          .psFinalCta { padding: 60px 5%; }
+          .psFinalCta { padding: 60px 5%; min-height: auto; }
           .psFinalCtaInner { height: auto; }
           .psFinalCtaText { width: auto; }
         }
@@ -1841,23 +1971,20 @@ export default function ProductsPage({ onOpenContact }) {
       `}</style>
 
       <div className="psPage">
-        {/* ================= 1. HERO ================= */}
+        {/* ================= 1. HERO (애니메이션 제거) ================= */}
         <div className="psHeroHeader">
-          <div className="psHeroIntro" data-reveal="up">
-            <h1 className="psHeroTitle">{t.hero.title}</h1>
-            <p 
-              className="psHeroSub"
-              style={{ color: "#000000" }}
-            >
+          <div className="psHeroIntro">
+            <span className="psHeroBadge">{t.hero.badge}</span>
+            <h1 className="psHeroTitle">
               {t.hero.subtitle[0]}
               <br />
               {t.hero.subtitle[1]}
-            </p>
+            </h1>
           </div>
         </div>
 
-        {/* 1600 x 480 풀블리드 상단 배너 */}
-        <div className="psHeroBanner" data-reveal="up">
+        {/* 1600 x 480 풀블리드 상단 배너 (애니메이션 제거) */}
+        <div className="psHeroBanner">
           <p className="psHeroBannerText">
             {t.hero.bannerText[0]}
             <br />
@@ -1985,15 +2112,15 @@ export default function ProductsPage({ onOpenContact }) {
           </div>
         </div>
 
-        {/* ================= 5. 최종 문의하기 CTA ================= */}
-        <div className="psFinalCta">
+        {/* ================= 5. 최종 문의하기 CTA (세로 360px 고정) ================= */}
+        <div className="fullBleed psFinalCta">
           <div className="psFinalCtaInner">
             <p className="psFinalCtaText">
               {t.finalCta.text[0]}
               <br />
               {t.finalCta.text[1]}
             </p>
-            <button className="psFinalCtaBtn" onClick={onOpenContact} type="button">
+            <button className="psFinalCtaBtn" onClick={onOpenContact || (() => handleOpenApply(""))} type="button">
               <span className="psFinalCtaBtnText">{t.finalCta.btn}</span>
               <svg
                 className="psFinalCtaBtnArrow"
@@ -2011,6 +2138,70 @@ export default function ProductsPage({ onOpenContact }) {
           </div>
         </div>
       </div>
+
+      {/* 지원/문의하기 모달 */}
+      {isApplyOpen && (
+        <div
+          style={{
+            position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+            backgroundColor: "rgba(0,0,0,0.45)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)",
+            display: "flex", justifyContent: "center", alignItems: "center", zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#ffffff", padding: "40px", borderRadius: "20px", width: "100%", maxWidth: "520px",
+              boxShadow: "0 20px 45px -15px rgba(15, 23, 42, 0.2)", position: "relative", color: "#111625",
+              margin: "0 16px", boxSizing: "border-box",
+              fontFamily: "'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif",
+            }}
+          >
+            <button
+              onClick={() => setIsApplyOpen(false)}
+              style={{ position: "absolute", top: "24px", right: "24px", border: "none", backgroundColor: "transparent", fontSize: "26px", cursor: "pointer", color: "#888" }}
+              type="button"
+            >
+              &times;
+            </button>
+            <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "8px", color: "#2167FD" }}>{t.modal.title}</h2>
+            <p style={{ fontSize: "15px", color: "#626772", marginBottom: "24px" }}>
+              {t.modal.jobLabel}: <strong>{selectedJob}</strong>
+            </p>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.nameLabel}</label>
+                <input type="text" required placeholder={t.modal.namePlaceholder} value={name} onChange={(e) => setName(e.target.value)}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }} />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.birthLabel}</label>
+                <input type="date" required value={birthDate} onChange={(e) => setBirthDate(e.target.value)}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }} />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.nationalityLabel}</label>
+                <input type="text" required placeholder={t.modal.nationalityPlaceholder} value={nationality} onChange={(e) => setNationality(e.target.value)}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }} />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <label style={{ fontSize: "14px", fontWeight: "700" }}>{t.modal.linkLabel}</label>
+                <input type="url" placeholder={t.modal.linkPlaceholder} value={fileLink} onChange={(e) => setFileLink(e.target.value)}
+                  style={{ padding: "12px", border: "1px solid #E1E5EE", borderRadius: "10px", fontSize: "15px", outline: "none" }} />
+              </div>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "#2167FD", color: "#ffffff", border: "none", borderRadius: "99px", padding: "14px",
+                  fontSize: "16px", fontWeight: "700", cursor: "pointer", marginTop: "8px",
+                  transition: "background-color 0.25s ease, transform 0.25s ease",
+                }}
+              >
+                {t.modal.submitBtn}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
