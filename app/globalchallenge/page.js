@@ -520,7 +520,7 @@ const translations = {
           num: "01", label: "UNDERSTAND", color: "#4936ED",
           title: "เข้าใจความต้องการหน้างาน",
           subtitle: "ODA Recipient Country",
-          desc: "วิเคราะห์สภาพแวดล้อมการศึกษาและความต้องการจริงในพื้นที่ก่อน เพื่อแบ่งปันผลลัพธ์โครงการและกรณีศึกษาที่ดีผ่าน AI",
+          desc: "วิเคราะห์สภาพแวดล้อมการศึกษาและความต้องการจริงในพื้นที่ก่อน เพื่อแบ่งปันผลลัพธ์โครงการและกรณีศึกษาที่ดีผาน AI",
           tags: ["ODA Project Contents", "Case-based Learning", "AI-based Learning Platform", "Field Needs Analysis"],
           image: IMG.odaUnderstand,
         },
@@ -1022,7 +1022,17 @@ export default function GlobalChallengePage({ onOpenContact }) {
             padding: 0;
             background: none;
           }
-          .gcAiStationCard { min-height: 0; padding: 24px; }
+          .gcAiStationCard {
+            min-height: 0;
+            padding: 20px;
+            flex-direction: row;
+            align-items: center;
+            gap: 16px;
+          }
+          .gcAiStationCard > svg { flex-shrink: 0; width: 32px; height: 32px; }
+          .gcAiStationCard > div { flex: 1 1 0; min-width: 0; }
+          .gcAiStationCardTitle { font-size: 18px; }
+          .gcAiStationCardDesc { font-size: 14px; }
         }
 
         @media (max-width: 768px) {
