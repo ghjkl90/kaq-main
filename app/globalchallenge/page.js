@@ -5,11 +5,16 @@ import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
 
 const IMG = {
-  whyGlobalBg: "/why-global-bg.jpg",
+  whyGlobalBg: "/10.png",
   cardNcs: "/card-ncs.jpg",
   cardDsq: "/card-dsq.jpg",
   cardKai: "/card-kai.jpg",
   cardLead: "/card-lead.jpg",
+  odaUnderstand: "/oda-understand.png",
+  odaCustomize: "/oda-customize.png",
+  odaConnect: "/oda-connect.png",
+  aiStationScreenshot: "/ai-station-screenshot.png",
+  aiStationBg: "/ai-station-bg.png",
 };
 
 const ArrowIcon = ({ size = 24, color = "#ffffff" }) => (
@@ -31,16 +36,51 @@ const AccountIcon = () => (
 
 const GridIcon = () => (
   <svg 
-    width="40" 
-    height="36" 
+    width="44" 
+    height="44" 
     viewBox="0 0 36 29" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg"
-    style={{ display: 'block', margin: '0 5px' }}
+    style={{ display: 'block' }}
   >
     <path d="M12.8333 24.8206V15.4247H22.9167V24.8206H12.8333ZM12.8333 12.8159V3.57866H22.9167V12.8159H12.8333ZM0 12.8159V0L10.0833 2.8875V12.8159H0ZM0 28.1348V15.4247H10.0833V25.4586L0 28.1348ZM35.75 28.1348L25.6667 25.4586V15.4247H35.75V28.1348ZM25.6667 12.8159V2.91592L35.75 0.21175V12.8159H25.6667Z" fill="white"/>
   </svg>
 );
+
+const KioskIcon = () => (
+  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_132_335" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="44" height="44">
+      <rect width="44" height="44" fill="#D9D9D9"/>
+    </mask>
+    <g mask="url(#mask0_132_335)">
+      <path d="M11.5642 42.1668C10.6381 42.1668 9.85417 41.846 9.2125 41.2043C8.57083 40.5627 8.25 39.7788 8.25 38.8526V5.1477C8.25 4.22157 8.57083 3.43766 9.2125 2.796C9.85417 2.15433 10.6381 1.8335 11.5642 1.8335H32.4358C33.3619 1.8335 34.1458 2.15433 34.7875 2.796C35.4292 3.43766 35.75 4.22157 35.75 5.1477V38.8526C35.75 39.7788 35.4292 40.5627 34.7875 41.2043C34.1458 41.846 33.3619 42.1668 32.4358 42.1668H11.5642ZM11 33.9168H33V5.1477C33 5.00654 32.9412 4.87729 32.8235 4.75995C32.7062 4.64231 32.577 4.5835 32.4358 4.5835H11.5642C11.423 4.5835 11.2938 4.64231 11.1765 4.75995C11.0588 4.87729 11 5.00654 11 5.1477V33.9168Z" fill="white"/>
+    </g>
+  </svg>
+);
+
+const OnlineIcon = () => (
+  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_132_340" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="44" height="44">
+      <rect width="44" height="44" fill="#D9D9D9"/>
+    </mask>
+    <g mask="url(#mask0_132_340)">
+      <path d="M10.1875 9.99805C8.58463 11.601 7.35087 13.4231 6.48633 15.4639C5.62217 17.505 5.18945 19.6836 5.18945 22C5.18945 24.3164 5.62217 26.495 6.48633 28.5361C7.35087 30.5769 8.58463 32.399 10.1875 34.002L8.44043 35.75C6.62499 33.9083 5.22247 31.828 4.2334 29.5088C3.24432 27.1896 2.75 24.6865 2.75 22C2.75 19.3135 3.24432 16.8104 4.2334 14.4912C5.22247 12.172 6.62499 10.0917 8.44043 8.25L10.1875 9.99805ZM35.9395 8.25C37.7419 10.0917 39.1412 12.1721 40.1367 14.4912C41.1323 16.8104 41.6299 19.3135 41.6299 22C41.6299 24.6865 41.1323 27.1896 40.1367 29.5088C39.1412 31.8279 37.7419 33.9083 35.9395 35.75L34.1924 34.002C35.7954 32.399 37.0299 30.577 37.8945 28.5361C38.7586 26.495 39.1904 24.3163 39.1904 22C39.1904 19.6837 38.7586 17.505 37.8945 15.4639C37.0299 13.423 35.7954 11.601 34.1924 9.99805L35.9395 8.25ZM14.3271 14.1377C13.3174 15.1608 12.5254 16.3346 11.9521 17.6592C11.3789 18.9842 11.0928 20.4312 11.0928 22C11.0928 23.5688 11.3789 25.0158 11.9521 26.3408C12.5254 27.6654 13.3174 28.8392 14.3271 29.8623L12.6113 31.5781C11.355 30.2822 10.3807 28.8339 9.68945 27.2324C8.99812 25.6308 8.65234 23.8864 8.65234 22C8.65234 20.1136 8.99812 18.3692 9.68945 16.7676C10.3807 15.1661 11.355 13.7178 12.6113 12.4219L14.3271 14.1377ZM31.7686 12.4219C33.0251 13.7177 33.9992 15.1662 34.6904 16.7676C35.3818 18.3692 35.7275 20.1136 35.7275 22C35.7275 23.8864 35.3818 25.6308 34.6904 27.2324C33.9992 28.8338 33.0251 30.2823 31.7686 31.5781L30.0527 29.8623C31.0626 28.8391 31.8544 27.6655 32.4277 26.3408C33.0011 25.0158 33.2881 23.5689 33.2881 22C33.2881 20.4311 33.0011 18.9842 32.4277 17.6592C31.8544 16.3345 31.0626 15.1609 30.0527 14.1377L31.7686 12.4219ZM22 16.5C25.0376 16.5 27.5 18.9624 27.5 22C27.5 25.0376 25.0376 27.5 22 27.5C18.9624 27.5 16.5 25.0376 16.5 22C16.5 18.9624 18.9624 16.5 22 16.5Z" fill="white"/>
+    </g>
+  </svg>
+);
+
+const StacksIcon = () => (
+  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_132_345" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="44" height="44">
+      <rect width="44" height="44" fill="#D9D9D9"/>
+    </mask>
+    <g mask="url(#mask0_132_345)">
+      <path d="M21.9997 25.1026L2.76758 14.8433L21.9997 4.5835L41.2497 14.8433L21.9997 25.1026ZM21.9997 32.2595L3.82174 22.5786L6.70191 20.9987L21.9997 29.1291L37.3149 20.9987L40.1955 22.5786L21.9997 32.2595ZM21.9997 39.4168L3.82174 29.7355L6.70191 28.156L21.9997 36.286L37.3149 28.156L40.1955 29.7355L21.9997 39.4168Z" fill="white"/>
+    </g>
+  </svg>
+);
+
+const AI_STATION_ICONS = { kiosk: KioskIcon, online: OnlineIcon, stacks: StacksIcon };
 
 const translations = {
   KR: {
@@ -86,16 +126,55 @@ const translations = {
   </>
 )
     },
+    oda: {
+      badge: "GLOBAL CHALLENGE THROUGH ODA",
+      title: ["현지의 필요를 이해하고,", "적합한 AI 경험으로 연결합니다."],
+      desc: "KAQ는 ODA 협력 과정에서 수원국의 현장 요구를 분석하고, 한국의 우수사례와 AI 학습 콘텐츠를 현지에 맞게 재구성해 K-AI Station을 통한 지속 가능한 지식 공유 모델을 만들어갑니다.",
+      steps: [
+        {
+          num: "01", label: "UNDERSTAND", color: "#4936ED",
+          title: "현장의 필요를 이해합니다.",
+          subtitle: "ODA Recipient Country",
+          desc: "프로젝트 결과와 우수사례를 AI 기반으로 공유하기 위해 현장의 교육 환경과 실제 요구를 먼저 분석합니다.",
+          tags: ["ODA Project Contents", "Case-based Learning", "AI-based Learning Platform", "Field Needs Analysis"],
+          image: IMG.odaUnderstand,
+        },
+        {
+          num: "02", label: "CUSTOMIZE", color: "#2167FD",
+          title: "필요한 경험으로 재구성합니다.",
+          subtitle: "ODA Donor Country · South Korea",
+          desc: "현장 요구에 적합한 우수사례(Best Practice)를 선정하고 AI 기반 교육과 직무학습에 활용할 수 있도록 맞춤화합니다.",
+          tags: ["Project Requirements", "Best Practice Cases", "AI-based NCS Training", "Field Needs Adaptation"],
+          image: IMG.odaCustomize,
+        },
+        {
+          num: "03", label: "CONNECT", color: "#00A1F1",
+          title: "K-AI Station으로 연결합니다.",
+          subtitle: "KAQ AI Partnership",
+          desc: "맞춤화된 콘텐츠와 우수사례를 K-AI Station의 키오스크와 온라인 서비스를 통해 연결합니다.",
+          tags: ["Kiosk & Online", "AI-based BP Test Modules", "10,000 NCS Cases"],
+          image: IMG.odaConnect,
+        },
+      ],
+    },
+    aiStation: {
+      badge: "AI STATION FOR PARTNERSHIP",
+      title: ["오프라인과 온라인을 연결하는", "AI 학습 경험"],
+      cards: [
+        { icon: "kiosk", title: "KIOSK", desc: "현장에서 누구나 접근할 수 있는 AI Station", color: "rgba(73, 54, 237, 0.5)" },
+        { icon: "online", title: "ONLINE", desc: "장소에 관계없이 이어지는 AI 기반 학습 서비스", color: "rgba(0, 182, 214, 0.5)" },
+        { icon: "stacks", title: "10,000+ NCS Cases", desc: "직무 기반 사례를 AI 학습과 테스트 콘텐츠로 확장", color: "rgba(33, 103, 253, 0.5)" },
+      ],
+    },
     sectionTitle: [
-      "연구를 넘어,",
-      "세계가 참고하는 기준을 만드는 것이",
-      "KAQ가 가장 잘하는 일입니다.",
+      "한국에서 축적한 경험을",
+      "새로운 환경에 맞게 확장합니다."
     ],
     narratives: [
-      { img: IMG.cardNcs, eng: "As you understand", kor: "NCS 접근방식, 업을 표준으로" },
-      { img: IMG.cardDsq, eng: "As you see", kor: "DSQ Dashboard, 공간안전을 데이터로" },
-      { img: IMG.cardKai, eng: "As you feel", kor: "K-AI Station, 한국형 AI 프롬프트의 시작" },
-      { img: IMG.cardLead, eng: "As you lead the world", kor: "Global Challenge, 한국형 AI, 세계를 향해" },
+      { img: IMG.cardNcs, eng: "As you understand", kor: <>NCS 접근방식,<br/> 업을 표준으로</> },
+      { img: IMG.cardDsq, eng: "As you see", kor: <>DSQ Dashboard,<br/> 공간안전을 데이터로</> },
+      { img: IMG.cardKai, eng: "As you feel", kor: <>K-AI Station,<br/> 한국형 AI 프롬프트의 시작</> },
+      { img: IMG.cardLead, eng: "As you lead the world", kor: <>Global Challenge,<br/> 한국형 AI, 세계를 향해</> },
     ],
     statsTitle: (
       <>
@@ -113,11 +192,12 @@ const translations = {
     cta: {
       title: (
         <>
-          KAQ와 함께 새로운 AI 경험과
+          현지의 필요에 맞는
           <br />
-          안전품질의 기준을 만들어보세요.
+          새로운 AI 경험을 함께 만듭니다.
         </>
       ),
+      subtitle: <>ODA 프로젝트, AI 교육, K-AI Station 도입과<br /> 글로벌 연구 · 사업 협력을 함께합니다.</>,
       button: "문의하기",
     },
     modal: {
@@ -177,6 +257,46 @@ const translations = {
         </>
       ),
     },
+    oda: {
+      badge: "GLOBAL CHALLENGE THROUGH ODA",
+      title: ["Understanding local needs,", "connecting them to the right AI experience."],
+      desc: "Through ODA cooperation, KAQ analyzes the on-the-ground needs of partner countries and reshapes Korea's best practices and AI learning content to fit local contexts — building a sustainable knowledge-sharing model through K-AI Station.",
+      steps: [
+        {
+          num: "01", label: "UNDERSTAND", color: "#4936ED",
+          title: "Understanding needs on the ground.",
+          subtitle: "ODA Recipient Country",
+          desc: "We first analyze the local educational environment and real needs in order to share project outcomes and best practices through AI.",
+          tags: ["ODA Project Contents", "Case-based Learning", "AI-based Learning Platform", "Field Needs Analysis"],
+          image: IMG.odaUnderstand,
+        },
+        {
+          num: "02", label: "CUSTOMIZE", color: "#2167FD",
+          title: "Reshaping it into the right experience.",
+          subtitle: "ODA Donor Country · South Korea",
+          desc: "We select best practices suited to field needs and customize them for AI-based education and job training.",
+          tags: ["Project Requirements", "Best Practice Cases", "AI-based NCS Training", "Field Needs Adaptation"],
+          image: IMG.odaCustomize,
+        },
+        {
+          num: "03", label: "CONNECT", color: "#00A1F1",
+          title: "Connecting through K-AI Station.",
+          subtitle: "KAQ AI Partnership",
+          desc: "Customized content and best practices are connected through K-AI Station's kiosk and online services.",
+          tags: ["Kiosk & Online", "AI-based BP Test Modules", "10,000 NCS Cases"],
+          image: IMG.odaConnect,
+        },
+      ],
+    },
+    aiStation: {
+      badge: "AI STATION FOR PARTNERSHIP",
+      title: ["An AI learning experience that connects", "offline and online"],
+      cards: [
+        { icon: "kiosk", title: "KIOSK", desc: "An AI Station anyone can access on-site", color: "rgba(73, 54, 237, 0.5)" },
+        { icon: "online", title: "ONLINE", desc: "AI-based learning that continues anywhere", color: "rgba(0, 182, 214, 0.5)" },
+        { icon: "stacks", title: "10,000+ NCS Cases", desc: "Job-based cases expanded into AI learning and test content", color: "rgba(33, 103, 253, 0.5)" },
+      ],
+    },
     sectionTitle: [
       "Setting benchmarks referenced by the world",
       "is what KAQ does best.",
@@ -203,11 +323,12 @@ const translations = {
     cta: {
       title: (
         <>
-          Build a new standard for AI experience
+          Building new AI experiences
           <br />
-          and safety quality together with KAQ.
+          tailored to local needs, together.
         </>
       ),
+      subtitle: "We work together on ODA projects, AI education, K-AI Station deployment, and global research & business partnerships.",
       button: "Contact Us",
     },
     modal: {
@@ -263,6 +384,46 @@ const translations = {
       ],
       wideText: "KAQのグローバル展開は製品輸出ではなく、人と空間に合わせた技術のローカライズから始まります。",
     },
+    oda: {
+      badge: "GLOBAL CHALLENGE THROUGH ODA",
+      title: ["現地のニーズを理解し、", "最適なAI体験へとつなげます。"],
+      desc: "KAQはODA協力の過程で受入国の現場ニーズを分析し、韓国の優良事例とAI学習コンテンツを現地に合わせて再構成し、K-AI Stationを通じた持続可能な知識共有モデルを作っていきます。",
+      steps: [
+        {
+          num: "01", label: "UNDERSTAND", color: "#4936ED",
+          title: "現場のニーズを理解します。",
+          subtitle: "ODA Recipient Country",
+          desc: "プロジェクトの成果と優良事例をAIベースで共有するため、現場の教育環境と実際のニーズをまず分析します。",
+          tags: ["ODA Project Contents", "Case-based Learning", "AI-based Learning Platform", "Field Needs Analysis"],
+          image: IMG.odaUnderstand,
+        },
+        {
+          num: "02", label: "CUSTOMIZE", color: "#2167FD",
+          title: "必要な体験に再構成します。",
+          subtitle: "ODA Donor Country · South Korea",
+          desc: "現場ニーズに合った優良事例(Best Practice)を選定し、AIベースの教育や職務学習に活用できるようカスタマイズします。",
+          tags: ["Project Requirements", "Best Practice Cases", "AI-based NCS Training", "Field Needs Adaptation"],
+          image: IMG.odaCustomize,
+        },
+        {
+          num: "03", label: "CONNECT", color: "#00A1F1",
+          title: "K-AI Stationへとつなげます。",
+          subtitle: "KAQ AI Partnership",
+          desc: "カスタマイズされたコンテンツと優良事例を、K-AI Stationのキオスクとオンラインサービスを通じてつなげます。",
+          tags: ["Kiosk & Online", "AI-based BP Test Modules", "10,000 NCS Cases"],
+          image: IMG.odaConnect,
+        },
+      ],
+    },
+    aiStation: {
+      badge: "AI STATION FOR PARTNERSHIP",
+      title: ["オフラインとオンラインをつなぐ", "AI学習体験"],
+      cards: [
+        { icon: "kiosk", title: "KIOSK", desc: "現場で誰でもアクセスできるAI Station", color: "rgba(73, 54, 237, 0.5)" },
+        { icon: "online", title: "ONLINE", desc: "場所を問わず続くAIベースの学習サービス", color: "rgba(0, 182, 214, 0.5)" },
+        { icon: "stacks", title: "10,000+ NCS Cases", desc: "職務ベースの事例をAI学習・テストコンテンツへ拡張", color: "rgba(33, 103, 253, 0.5)" },
+      ],
+    },
     sectionTitle: [
       "研究を超えて、世界が参考にする基準を創ることが",
       "KAQの最も得意とすることです。",
@@ -289,11 +450,12 @@ const translations = {
     cta: {
       title: (
         <>
-          KAQと共に新しいAI体験と
+          現地のニーズに合わせた
           <br />
-          安全品質の基準を作りましょう。
+          新しいAI体験を共に作ります。
         </>
       ),
+      subtitle: "ODAプロジェクト、AI教育、K-AI Stationの導入からグローバル研究・事業協力まで共にします。",
       button: "お問い合わせ",
     },
     modal: {
@@ -349,6 +511,46 @@ const translations = {
       ],
       wideText: "การขยายตัวสู่ระดับโลกของ KAQ ไม่ได้เริ่มจากการส่งออกผลิตภัณฑ์ แต่เริ่มจากการปรับเทคโนโลยีให้เข้ากับผู้คนและพื้นที่ในท้องถิ่น",
     },
+    oda: {
+      badge: "GLOBAL CHALLENGE THROUGH ODA",
+      title: ["เข้าใจความต้องการในพื้นที่", "และเชื่อมโยงสู่ประสบการณ์ AI ที่เหมาะสม"],
+      desc: "KAQ วิเคราะห์ความต้องการหน้างานของประเทศผู้รับผ่านกระบวนการความร่วมมือ ODA และปรับกรณีศึกษาที่ดีที่สุดของเกาหลีรวมถึงเนื้อหาการเรียนรู้ AI ให้เหมาะกับพื้นที่ เพื่อสร้างโมเดลแบ่งปันความรู้ที่ยั่งยืนผ่าน K-AI Station",
+      steps: [
+        {
+          num: "01", label: "UNDERSTAND", color: "#4936ED",
+          title: "เข้าใจความต้องการหน้างาน",
+          subtitle: "ODA Recipient Country",
+          desc: "วิเคราะห์สภาพแวดล้อมการศึกษาและความต้องการจริงในพื้นที่ก่อน เพื่อแบ่งปันผลลัพธ์โครงการและกรณีศึกษาที่ดีผ่าน AI",
+          tags: ["ODA Project Contents", "Case-based Learning", "AI-based Learning Platform", "Field Needs Analysis"],
+          image: IMG.odaUnderstand,
+        },
+        {
+          num: "02", label: "CUSTOMIZE", color: "#2167FD",
+          title: "ปรับเป็นประสบการณ์ที่เหมาะสม",
+          subtitle: "ODA Donor Country · South Korea",
+          desc: "คัดเลือกกรณีศึกษาที่ดีที่สุดให้เหมาะกับความต้องการหน้างาน และปรับแต่งเพื่อใช้ในการศึกษาและฝึกอบรมด้วย AI",
+          tags: ["Project Requirements", "Best Practice Cases", "AI-based NCS Training", "Field Needs Adaptation"],
+          image: IMG.odaCustomize,
+        },
+        {
+          num: "03", label: "CONNECT", color: "#00A1F1",
+          title: "เชื่อมโยงผ่าน K-AI Station",
+          subtitle: "KAQ AI Partnership",
+          desc: "เชื่อมโยงเนื้อหาที่ปรับแต่งแล้วและกรณีศึกษาที่ดีผ่านคีออสก์และบริการออนไลน์ของ K-AI Station",
+          tags: ["Kiosk & Online", "AI-based BP Test Modules", "10,000 NCS Cases"],
+          image: IMG.odaConnect,
+        },
+      ],
+    },
+    aiStation: {
+      badge: "AI STATION FOR PARTNERSHIP",
+      title: ["ประสบการณ์การเรียนรู้ AI ที่เชื่อมโยง", "ออฟไลน์และออนไลน์"],
+      cards: [
+        { icon: "kiosk", title: "KIOSK", desc: "AI Station ที่ทุกคนเข้าถึงได้หน้างาน", color: "rgba(73, 54, 237, 0.5)" },
+        { icon: "online", title: "ONLINE", desc: "บริการเรียนรู้ด้วย AI ที่ต่อเนื่องไม่ว่าอยู่ที่ไหน", color: "rgba(0, 182, 214, 0.5)" },
+        { icon: "stacks", title: "10,000+ NCS Cases", desc: "ขยายกรณีศึกษาตามสายงานสู่เนื้อหาการเรียนรู้และทดสอบด้วย AI", color: "rgba(33, 103, 253, 0.5)" },
+      ],
+    },
     sectionTitle: [
       "การสร้างมาตรฐานอ้างอิงระดับโลก",
       "คือสิ่งที่ KAQ เชี่ยวชาญที่สุด",
@@ -375,11 +577,12 @@ const translations = {
     cta: {
       title: (
         <>
-          มาร่วมสร้างมาตรฐานใหม่ของประสบการณ์ AI
+          ร่วมสร้างประสบการณ์ AI ใหม่
           <br />
-          และคุณภาพความปลอดภัยไปกับ KAQ
+          ที่ตอบโจทย์ความต้องการในพื้นที่
         </>
       ),
+      subtitle: "เราร่วมมือกันในโครงการ ODA การศึกษาด้าน AI การนำ K-AI Station ไปใช้ และความร่วมมือด้านวิจัย · ธุรกิจระดับโลก",
       button: "ติดต่อเรา",
     },
     modal: {
@@ -409,10 +612,14 @@ export default function GlobalChallengePage({ onOpenContact }) {
   const [whyVisible, setWhyVisible] = useState(false);
   const [narrativesVisible, setNarrativesVisible] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
+  const [odaVisible, setOdaVisible] = useState(false);
+  const [aiStationVisible, setAiStationVisible] = useState(false);
 
   const whyRef = useRef(null);
   const narrativesRef = useRef(null);
   const statsRef = useRef(null);
+  const odaRef = useRef(null);
+  const aiStationRef = useRef(null);
 
   /* AboutPage / ProductsPage / ResearchPage와 완전히 동일한 지원·문의 모달 */
   const [isApplyOpen, setIsApplyOpen] = useState(false);
@@ -467,15 +674,25 @@ export default function GlobalChallengePage({ onOpenContact }) {
     const statsObserver = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) setStatsVisible(true);
     }, observerOptions);
+    const odaObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setOdaVisible(true);
+    }, observerOptions);
+    const aiStationObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setAiStationVisible(true);
+    }, observerOptions);
 
     if (whyRef.current) whyObserver.observe(whyRef.current);
     if (narrativesRef.current) narrativesObserver.observe(narrativesRef.current);
     if (statsRef.current) statsObserver.observe(statsRef.current);
+    if (odaRef.current) odaObserver.observe(odaRef.current);
+    if (aiStationRef.current) aiStationObserver.observe(aiStationRef.current);
 
     return () => {
       if (whyRef.current) whyObserver.unobserve(whyRef.current);
       if (narrativesRef.current) narrativesObserver.unobserve(narrativesRef.current);
       if (statsRef.current) statsObserver.unobserve(statsRef.current);
+      if (odaRef.current) odaObserver.unobserve(odaRef.current);
+      if (aiStationRef.current) aiStationObserver.unobserve(aiStationRef.current);
     };
   }, []);
 
@@ -544,6 +761,65 @@ export default function GlobalChallengePage({ onOpenContact }) {
         /* 섹션 타이틀 (서사 카드 위) */
         .gcSectionTitle { font-weight: 700; font-size: clamp(1.8rem, 4vw, 48px); line-height: 130%; text-align: center; color: #000000; margin: 0; word-break: keep-all; }
 
+        /* ============ GLOBAL CHALLENGE THROUGH ODA (3단계 서사) ============ */
+        .gcOdaSection {
+          background: #F2F5FD; padding: 120px 20px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 60px;
+          opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .gcOdaSection.is-visible { opacity: 1; transform: translateY(0); }
+        .gcOdaHeader { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 592px; text-align: center; }
+        .gcOdaBadge { display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; height: 40px; border-radius: 99px; border: 1px solid #2167FD; font-weight: 700; font-size: 18px; line-height: 130%; color: #2167FD; white-space: nowrap; }
+        .gcOdaTitle { font-weight: 700; font-size: clamp(1.8rem, 4vw, 48px); line-height: 130%; color: #000000; margin: 0; word-break: keep-all; }
+        .gcOdaDesc { font-weight: 400; font-size: 20px; line-height: 150%; color: #000000; margin: 0; word-break: keep-all; max-width: 600px; }
+        .gcOdaSteps { width: 100%; max-width: 1276px; display: flex; flex-direction: column; gap: 20px; }
+        .gcOdaRow { display: flex; align-items: stretch; gap: 20px; min-height: 400px; }
+        .gcOdaRowImg { flex: 1 1 0; border-radius: 20px; overflow: hidden; background: #D9D9D9; min-height: 400px; }
+        .gcOdaRowImg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .gcOdaRowCard { flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 0 40px; box-sizing: border-box; }
+        .gcOdaStepHead { display: flex; flex-direction: column; gap: 8px; }
+        .gcOdaStepTop { display: flex; align-items: center; gap: 8px; }
+        .gcOdaStepNum { width: 36px; height: 36px; border-radius: 99px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: #ffffff; flex-shrink: 0; }
+        .gcOdaStepLabel { font-weight: 700; font-size: 20px; line-height: 130%; }
+        .gcOdaStepTitle { font-weight: 700; font-size: 40px; line-height: 130%; color: #000000; margin: 0; word-break: keep-all; }
+        .gcOdaStepSubtitle { font-weight: 700; font-size: 18px; line-height: 150%; color: #000000; margin: 0; }
+        .gcOdaStepDesc { font-weight: 400; font-size: 18px; line-height: 150%; color: #000000; margin: 0; word-break: keep-all; }
+        .gcOdaTags { display: grid; grid-template-columns: repeat(2, max-content); gap: 8px; }
+        .gcOdaTag { display: inline-flex; align-items: center; justify-content: center; padding: 0 8px; height: 28px; background: #E1E5EE; border-radius: 99px; font-weight: 400; font-size: 14px; color: #626772; white-space: nowrap; }
+
+        /* ============ AI STATION FOR PARTNERSHIP (폰 목업 쇼케이스) ============ */
+        .gcAiStationSection {
+          background: #ffffff; padding: 120px 20px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 60px;
+          opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .gcAiStationSection.is-visible { opacity: 1; transform: translateY(0); }
+        .gcAiStationHeader { display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 562px; text-align: center; }
+        .gcAiStationBadge { display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; height: 40px; border-radius: 99px; border: 1px solid #2167FD; font-weight: 700; font-size: 18px; color: #2167FD; white-space: nowrap; }
+        .gcAiStationTitle { font-weight: 700; font-size: clamp(1.8rem, 4vw, 48px); line-height: 130%; color: #000000; margin: 0; word-break: keep-all; }
+        .gcAiStationShowcase {
+          position: relative; width: 100%; max-width: 1276px; aspect-ratio: 1276 / 920; border-radius: 24px; overflow: hidden;
+          background-image: url(${IMG.aiStationBg});
+          background-size: cover; background-position: center;
+        }
+        .gcAiStationPhone {
+          position: absolute; top: calc(7.83% + 30px); left: 50%; transform: translateX(-50%);
+          height: 97.8%; width: auto; aspect-ratio: 680 / 900; border-radius: 40px;
+          background: linear-gradient(180deg, #ffffff 0%, #D8E1F1 100%); padding: 16px; box-sizing: border-box;
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+        }
+        .gcAiStationPhoneBezel { width: 100%; height: 100%; background: #000000; border-radius: 28px; padding: 24px; box-sizing: border-box; overflow: hidden; }
+        .gcAiStationPhoneScreen { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; border-radius: 12px; }
+        .gcAiStationCards {
+          position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: flex-end; gap: 20px; padding: 32px; box-sizing: border-box;
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 60%, rgba(0, 0, 0, 0.78) 100%);
+        }
+        .gcAiStationCard {
+          flex: 1 1 0; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 8px;
+          padding: 28px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-sizing: border-box;
+        }
+        .gcAiStationCardTitle { font-weight: 700; font-size: 24px; line-height: 130%; color: #ffffff; margin: 0; }
+        .gcAiStationCardDesc { font-weight: 400; font-size: 18px; line-height: 150%; color: #ffffff; margin: 0; word-break: keep-all; }
+
         .description {
           white-space: pre-line; /* 문자열 안의 줄바꿈(\n)을 실제 화면에 반영해 줍니다 */
         }
@@ -594,7 +870,8 @@ export default function GlobalChallengePage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           min-height: 360px;
-          background-image: url("/10.png");
+          background-color: #002572;
+          background-image: url(${IMG.whyGlobalBg});
           background-size: cover;
           background-position: center;
           display: flex;
@@ -605,9 +882,10 @@ export default function GlobalChallengePage({ onOpenContact }) {
         }
 
         .psFinalCtaInner {
+          position: relative;
+          z-index: 1;
           width: 100%;
           max-width: 1276px;
-          height: 104px;
           margin: 0 auto;
           display: flex;
           justify-content: space-between;
@@ -616,14 +894,33 @@ export default function GlobalChallengePage({ onOpenContact }) {
           box-sizing: border-box;
         }
 
+        .psFinalCtaTextGroup {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          flex: 1 1 0;
+        }
+
         .psFinalCtaText {
-          width: 514px;
+          max-width: 620px;
           font-family: inherit;
           font-size: 40px;
           font-weight: 700;
           line-height: 1.3;
           letter-spacing: 0;
           color: #ffffff;
+          margin: 0;
+          word-break: keep-all;
+        }
+
+        .psFinalCtaSubtitle {
+          max-width: 780px;
+          font-family: inherit;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0;
+          color: rgba(255, 255, 255, 0.85);
           margin: 0;
           word-break: keep-all;
         }
@@ -690,12 +987,23 @@ export default function GlobalChallengePage({ onOpenContact }) {
           .gcPage { padding-top: 100px; }
           .gcWhyCardsRow, .gcNarrativeGrid, .gcStatsGrid { grid-template-columns: 1fr !important; }
           .kaqCtaInner { flex-direction: column; align-items: flex-start; }
+
+          .gcOdaRow { flex-direction: column; }
+          .gcOdaRowImg { min-height: 240px; }
+          .gcOdaRowCard { padding: 0; }
+          .gcOdaStepTitle { font-size: 28px; }
+
+          .gcAiStationShowcase { aspect-ratio: auto; min-height: 520px; padding: 24px 0; }
+          .gcAiStationPhone { top: calc(7.83% + 16px); height: 90%; }
+          .gcAiStationCards { flex-direction: column; align-items: stretch; }
         }
 
         @media (max-width: 768px) {
           .psFinalCta { padding: 48px 20px; min-height: auto; }
           .psFinalCtaInner { flex-direction: column; align-items: flex-start; gap: 24px; height: auto; }
           .psFinalCtaText { width: 100%; font-size: 28px; }
+
+          .gcOdaTags { grid-template-columns: repeat(2, max-content); }
         }
       `}</style>
 
@@ -769,30 +1077,95 @@ export default function GlobalChallengePage({ onOpenContact }) {
         </div>
       </div>
 
-      {/* ================= 통계 ================= */}
-      <div className="gcStatsSection">
-        <div ref={statsRef} className={`gcStatsInner ${statsVisible ? "is-visible" : ""}`}>
-          <h2 className="gcSectionTitle">{t.statsTitle}</h2>
-          <div className="gcStatsGrid">
-            {t.stats.map((stat, idx) => (
-              <div className="gcStatCard" key={idx}>
-                <p className="gcStatValue" style={{ color: stat.color }}>{stat.value}</p>
-                <div>
-                  <div className="gcStatLabel">{stat.label}</div>
-                  <p className="gcStatDesc">{stat.desc}</p>
+      {/* ================= GLOBAL CHALLENGE THROUGH ODA (3단계 서사) ================= */}
+      <div ref={odaRef} className={`gcOdaSection ${odaVisible ? "is-visible" : ""}`}>
+        <div className="gcOdaHeader">
+          <span className="gcOdaBadge">{t.oda.badge}</span>
+          <h2 className="gcOdaTitle">
+            {t.oda.title.map((line, idx) => (
+              <React.Fragment key={idx}>
+                {line}
+                {idx < t.oda.title.length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </h2>
+          <p className="gcOdaDesc">{t.oda.desc}</p>
+        </div>
+
+        <div className="gcOdaSteps">
+          {t.oda.steps.map((step, idx) => (
+            <div className="gcOdaRow" key={idx}>
+              <div className="gcOdaRowImg">
+                <img src={step.image} alt={step.title} />
+              </div>
+              <div className="gcOdaRowCard">
+                <div className="gcOdaStepHead">
+                  <div className="gcOdaStepTop">
+                    <span className="gcOdaStepNum" style={{ background: step.color }}>{step.num}</span>
+                    <span className="gcOdaStepLabel" style={{ color: step.color }}>{step.label}</span>
+                  </div>
+                  <h3 className="gcOdaStepTitle">{step.title}</h3>
+                  <p className="gcOdaStepSubtitle">{step.subtitle}</p>
+                </div>
+                <p className="gcOdaStepDesc">{step.desc}</p>
+                <div className="gcOdaTags">
+                  {step.tags.map((tag, tIdx) => (
+                    <span className="gcOdaTag" key={tIdx}>{tag}</span>
+                  ))}
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ================= AI STATION FOR PARTNERSHIP (폰 목업 쇼케이스) ================= */}
+      <div ref={aiStationRef} className={`gcAiStationSection ${aiStationVisible ? "is-visible" : ""}`}>
+        <div className="gcAiStationHeader">
+          <span className="gcAiStationBadge">{t.aiStation.badge}</span>
+          <h2 className="gcAiStationTitle">
+            {t.aiStation.title.map((line, idx) => (
+              <React.Fragment key={idx}>
+                {line}
+                {idx < t.aiStation.title.length - 1 && <br />}
+              </React.Fragment>
             ))}
+          </h2>
+        </div>
+
+        <div className="gcAiStationShowcase">
+          <div className="gcAiStationPhone">
+            <div className="gcAiStationPhoneBezel">
+              <img className="gcAiStationPhoneScreen" src={IMG.aiStationScreenshot} alt="K-AI Station" />
+            </div>
+          </div>
+
+          <div className="gcAiStationCards">
+            {t.aiStation.cards.map((card, idx) => {
+              const Icon = AI_STATION_ICONS[card.icon];
+              return (
+                <div className="gcAiStationCard" key={idx} style={{ background: card.color }}>
+                  <Icon />
+                  <div>
+                    <h3 className="gcAiStationCardTitle">{card.title}</h3>
+                    <p className="gcAiStationCardDesc">{card.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
-      {/* ================= 최종 문의하기 CTA (이전 페이지와 100% 동일) ================= */}
+      {/* ================= 최종 문의하기 CTA (ODA 파트너십 전용 문구) ================= */}
       <div className="fullBleed psFinalCta">
         <div className="psFinalCtaInner">
-          <p className="psFinalCtaText">
-            {t.cta.title}
-          </p>
+          <div className="psFinalCtaTextGroup">
+            <p className="psFinalCtaText">
+              {t.cta.title}
+            </p>
+            <p className="psFinalCtaSubtitle">{t.cta.subtitle}</p>
+          </div>
           <button className="psFinalCtaBtn" onClick={onOpenContact || (() => handleOpenApply(""))} type="button">
             <span className="psFinalCtaBtnText">{t.cta.button}</span>
             <svg
