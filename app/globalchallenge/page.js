@@ -680,6 +680,10 @@ export default function GlobalChallengePage({ onOpenContact }) {
           transform: translateX(3px);
         }
 
+        @media (max-width: 480px) {
+          .psFinalCta { padding: 40px 20px; }
+        }
+
         @media (max-width: 900px) {
           .gcPage { padding-top: 100px; }
           .gcWhyCardsRow, .gcNarrativeGrid, .gcStatsGrid { grid-template-columns: 1fr !important; }

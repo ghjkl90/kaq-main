@@ -1921,6 +1921,10 @@ export default function ProductsPage({ onOpenContact }) {
           transform: translateX(3px);
         }
 
+        @media (max-width: 480px) {
+          .psFinalCta { padding: 40px 20px; }
+        }
+
         /* ==========================================================
            반응형 분기 대응
            ========================================================== */
