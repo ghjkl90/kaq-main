@@ -834,7 +834,7 @@ export default function ProductsPage({ onOpenContact }) {
            ========================================================== */
         .psHeroHeader {
           width: 100%;
-          padding: 140px 0 60px;
+          padding: 140px 20px 60px;
           display: flex;
           justify-content: center;
           box-sizing: border-box;
@@ -1948,7 +1948,7 @@ export default function ProductsPage({ onOpenContact }) {
 
         @media (max-width: 768px) {
           .psHeroHeader { padding-top: 100px; }
-          .psHeroTitle { font-size: 36px; }
+          .psHeroTitle { font-size: 32px; }
           .psHeroSub { font-size: 18px; }
           .psHeroBannerText { font-size: 28px; }
           .psProductTitle { font-size: 32px; }
