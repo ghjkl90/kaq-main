@@ -1946,6 +1946,7 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         @media (max-width: 768px) {
+          .psHeroHeader { padding-top: 100px; }
           .psHeroTitle { font-size: 36px; }
           .psHeroSub { font-size: 18px; }
           .psHeroBannerText { font-size: 28px; }
