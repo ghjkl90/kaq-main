@@ -593,7 +593,7 @@ export default function GlobalChallengePage({ onOpenContact }) {
           right: 50%;
           margin-left: -50vw;
           margin-right: -50vw;
-          height: 360px;
+          min-height: 360px;
           background-image: url("/10.png");
           background-size: cover;
           background-position: center;
@@ -680,35 +680,22 @@ export default function GlobalChallengePage({ onOpenContact }) {
           transform: translateX(3px);
         }
 
-        @media (max-width: 480px) {
-          .psFinalCta { padding: 40px 20px; }
+        @media (max-width: 1360px) {
+          .psFinalCta { padding: 60px 5%; min-height: auto; }
+          .psFinalCtaInner { height: auto; }
+          .psFinalCtaText { width: auto; }
         }
 
         @media (max-width: 900px) {
           .gcPage { padding-top: 100px; }
           .gcWhyCardsRow, .gcNarrativeGrid, .gcStatsGrid { grid-template-columns: 1fr !important; }
           .kaqCtaInner { flex-direction: column; align-items: flex-start; }
-
-          /* 최종 문의하기 CTA: 고정 height/width가 좁은 화면에서 잘리는 문제 방지
-             (font-size는 그대로 두고 컨테이너만 유동적으로 전환) */
-          .psFinalCta {
-            height: auto;
-            padding: 48px 24px;
-          }
-          .psFinalCtaInner {
-            height: auto;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 24px;
-          }
-          .psFinalCtaText {
-            width: 100%;
-            max-width: 514px;
-          }
         }
 
-        @media (max-width: 480px) {
-          .psFinalCta { padding: 40px 20px; }
+        @media (max-width: 768px) {
+          .psFinalCta { padding: 48px 20px; min-height: auto; }
+          .psFinalCtaInner { flex-direction: column; align-items: flex-start; gap: 24px; height: auto; }
+          .psFinalCtaText { width: 100%; font-size: 28px; }
         }
       `}</style>
 
