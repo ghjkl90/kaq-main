@@ -859,7 +859,7 @@ export default function ProductsPage({ onOpenContact }) {
           letter-spacing: 0;
           color: #2167FD;
           text-align: center;
-          margin: 0 0 32px 0;
+          margin: 0 0 20px 0;
         }
 
         .psHeroTitle {
@@ -1927,9 +1927,9 @@ export default function ProductsPage({ onOpenContact }) {
         @media (max-width: 1360px) {
           .psInner { padding: 0 24px; }
           .psModeGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); height: auto; }
-          .psDsqAppCards { grid-template-columns: repeat(2, minmax(0, 1fr)); height: auto; }
-          .psModeCard, .psDsqAppCard { width: 100%; }
-          .psModeSection, .psDsqAppSection { height: auto; }
+          .psDsqAppCards { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; height: auto !important; }
+          .psModeCard, .psDsqAppCard { width: 100% !important; }
+          .psModeSection, .psDsqAppSection { height: auto !important; }
           .psFullBleedCta { padding: 60px 24px; }
           .psFinalCta { padding: 60px 5%; min-height: auto; }
           .psFinalCtaInner { height: auto; }
@@ -1939,10 +1939,11 @@ export default function ProductsPage({ onOpenContact }) {
         @media (max-width: 960px) {
           .psWhyGrid, .psDsqWhyGrid { grid-template-columns: 1fr; height: auto; }
           .psWhyLeft, .psWhyRightCards, .psDsqWhyLeft, .psDsqWhyRightCards { max-width: 100%; height: auto; }
-          .psDsqHowSection { height: auto; }
-          .psDsqHowCardsContainer { max-width: 100%; height: auto; }
-          .psDsqStepRow4 { grid-template-columns: 1fr; }
-          .psDsqStepBox, .psDsqWideBox { width: 100%; }
+          .psDsqHowGrid { grid-template-columns: 1fr !important; height: auto !important; }
+          .psDsqHowLeft { width: 100% !important; }
+          .psDsqHowRightCards { width: 100% !important; height: auto !important; }
+          .psDsqStepRow4 { grid-template-columns: 1fr !important; width: 100% !important; }
+          .psDsqStepBox, .psDsqWideBox { width: 100% !important; }
         }
 
         @media (max-width: 768px) {
@@ -1951,7 +1952,8 @@ export default function ProductsPage({ onOpenContact }) {
           .psHeroSub { font-size: 18px; }
           .psHeroBannerText { font-size: 28px; }
           .psProductTitle { font-size: 32px; }
-          .psWhyHeading, .psDsqWhyHeading, .psDsqHowHeading, .psDsqAppHeading { font-size: 28px; }
+          .psWhyHeading, .psDsqWhyHeading { font-size: 28px; }
+          .psDsqHowHeading, .psDsqAppHeading { font-size: 28px !important; }
           .psModeHeading, .psFullBleedCtaHeading { font-size: 28px; }
 
           .psProductHead { height: auto; flex-direction: column; align-items: flex-start; }
@@ -1961,7 +1963,9 @@ export default function ProductsPage({ onOpenContact }) {
           .psWhyCard, .psDsqWhyCard { height: auto; padding: 20px; }
           .psWhyCardText, .psDsqWhyCardText { width: 100%; height: auto; }
 
-          .psModeGrid, .psDsqAppCards { grid-template-columns: 1fr; }
+          .psModeGrid { grid-template-columns: 1fr; }
+          .psDsqAppCards { grid-template-columns: 1fr !important; height: auto !important; }
+          .psDsqAppCard { height: auto !important; min-height: 320px; }
 
           .psFinalCta { padding: 48px 20px; min-height: auto; }
           .psFinalCtaInner { flex-direction: column; align-items: flex-start; gap: 24px; height: auto; }
