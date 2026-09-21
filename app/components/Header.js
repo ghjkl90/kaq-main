@@ -166,15 +166,17 @@ export default function Header() {
           gap: 16px;
         }
 
-        /* 언어 선택 그룹: 102 x 28, gap: 4px */
+        /* 언어 선택 그룹: 내용(언어명 길이)에 맞게 자동 확장, height 28px */
         .kaqLangContainer {
-          width: 102px;
+          width: auto;
+          min-width: 102px;
           height: 28px;
           display: flex;
           align-items: center;
           gap: 4px;
           position: relative;
           color: #ffffff;
+          flex-shrink: 0;
         }
 
         .${styles.headerScrolled} .kaqLangContainer {
@@ -214,6 +216,7 @@ export default function Header() {
           margin: 0;
           text-align: left !important;
           flex: 1;
+          white-space: nowrap;
         }
 
         .kaqLangSelect option {

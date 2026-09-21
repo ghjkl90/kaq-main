@@ -859,7 +859,7 @@ export default function ProductsPage({ onOpenContact }) {
           letter-spacing: 0;
           color: #2167FD;
           text-align: center;
-          margin: 0 0 24px 0;
+          margin: 0 0 32px 0;
         }
 
         .psHeroTitle {
@@ -1919,10 +1919,6 @@ export default function ProductsPage({ onOpenContact }) {
 
         .psFinalCtaBtn:hover .psFinalCtaBtnArrow {
           transform: translateX(3px);
-        }
-
-        @media (max-width: 480px) {
-          .psFinalCta { padding: 40px 20px; }
         }
 
         /* ==========================================================
