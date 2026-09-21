@@ -36,6 +36,14 @@ const CONTENT = {
     ctaGhost: "ดูโซลูชันของเรา",
     ctaFilled: "ติดต่อความร่วมมือ",
     scrollLabel: "Scroll Down"
+  },
+  AR: {
+    eyebrow: "AI EXPERIENCE · DIGITAL SAFETY QUALITY",
+    subLine1: "تقريب الذكاء الاصطناعي إليك،",
+    subLine2_prefix: "جعل المساحات أكثر أماناً.",
+    ctaGhost: "استكشف الحلول",
+    ctaFilled: "استفسار الشراكة",
+    scrollLabel: "Scroll Down"
   }
 };
 

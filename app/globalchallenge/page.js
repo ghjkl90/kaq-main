@@ -601,6 +601,137 @@ const translations = {
       alertFillAll: "กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน",
     },
   },
+  AR: {
+    hero: {
+      badge: "التحدي العالمي",
+      title: (
+        <>
+          تقنية انطلقت من كوريا،
+          <br />
+          لتصبح بمعيار أوسع وأشمل.
+        </>
+      ),
+    },
+    why: {
+      badge: "WHY GLOBAL",
+      title: (
+        <>
+          التكنولوجيا الجيدة
+          <br />
+          لا تقتصر على بيئة واحدة.
+        </>
+      ),
+      desc: "يختلف مستخدمو الذكاء الاصطناعي والمساحات التي تحتاج إلى إدارة الأمان باختلاف المناطق. لا تكتفي KAQ بنسخ خدمة واحدة، بل نبحث في بنيات تقنية يمكن تعديلها والتحقق من صحتها لتناسب مختلف المستخدمين والبيئات.",
+      cards: [
+        {
+          icon: "account",
+          title: "تجربة ذكاء اصطناعي مختلفة لكل شخص",
+          desc: "تختلف تجربة الذكاء الاصطناعي المطلوبة باختلاف اللغة، العمر، المهنة، والثقافة.",
+          button: { label: "K-AI Station", link: "https://k-ai-station.vercel.app/" },
+        },
+        {
+          icon: "grid",
+          title: "معايير جودة أمان مختلفة لكل مساحة",
+          desc: "تتغير معايير جودة الأمان التي يجب إدارتها وفقاً لنوع المنشأة، بيئة التشغيل، والمنطقة.",
+          button: { label: "DSQ PLATFORM", link: "http://openq.co.kr:8082/" },
+        },
+      ],
+      wideText: (
+        <>
+          التوسع العالمي لـ KAQ لا يبدأ بتصدير المنتجات، بل يبدأ بتوطين التكنولوجيا لتناسب الناس والمساحات.
+        </>
+      ),
+    },
+    oda: {
+      badge: "GLOBAL CHALLENGE THROUGH ODA",
+      title: ["فهم الاحتياجات المحلية،", "وربطها بتجربة الذكاء الاصطناعي المناسبة."],
+      desc: "من خلال تعاون المساعدة الإنمائية الرسمية (ODA)، تقوم KAQ بتحليل الاحتياجات الميدانية للدول الشريكة وإعادة صياغة أفضل الممارسات الكورية ومحتوى التعلم بالذكاء الاصطناعي ليناسب السياقات المحلية، مما يبني نموذجاً مستداماً لمشاركة المعرفة من خلال K-AI Station.",
+      steps: [
+        {
+          num: "01", label: "UNDERSTAND", color: "#4936ED",
+          title: "فهم الاحتياجات على أرض الواقع.",
+          subtitle: "ODA Recipient Country",
+          desc: "نقوم أولاً بتحليل البيئة التعليمية المحلية والاحتياجات الحقيقية من أجل مشاركة نتائج المشروع وأفضل الممارسات من خلال الذكاء الاصطناعي.",
+          tags: ["ODA Project Contents", "Case-based Learning", "AI-based Learning Platform", "Field Needs Analysis"],
+          image: IMG.odaUnderstand,
+        },
+        {
+          num: "02", label: "CUSTOMIZE", color: "#2167FD",
+          title: "إعادة الصياغة لتناسب التجربة المطلوبة.",
+          subtitle: "ODA Donor Country · South Korea",
+          desc: "نختار أفضل الممارسات التي تلبي احتياجات الميدان ونقوم بتخصيصها لتعليم الذكاء الاصطناعي والتدريب المهني.",
+          tags: ["Project Requirements", "Best Practice Cases", "AI-based NCS Training", "Field Needs Adaptation"],
+          image: IMG.odaCustomize,
+        },
+        {
+          num: "03", label: "CONNECT", color: "#00A1F1",
+          title: "الربط من خلال K-AI Station.",
+          subtitle: "KAQ AI Partnership",
+          desc: "يتم ربط المحتوى المخصص وأفضل الممارسات عبر الأكیوسك (Kiosk) والخدمات عبر الإنترنت التابعة لـ K-AI Station.",
+          tags: ["Kiosk & Online", "AI-based BP Test Modules", "10,000 NCS Cases"],
+          image: IMG.odaConnect,
+        },
+      ],
+    },
+    aiStation: {
+      badge: "AI STATION FOR PARTNERSHIP",
+      title: ["تجربة تعلم بالذكاء الاصطناعي تربط", "بين الأنظمة غير المتصلة والمتصلة بالإنترنت"],
+      cards: [
+        { icon: "kiosk", title: "KIOSK", desc: "محطة ذكاء اصطناعي يمكن لأي شخص الوصول إليها في الموقع", color: "rgba(73, 54, 237, 0.5)" },
+        { icon: "online", title: "ONLINE", desc: "خدمة تعلم مدعومة بالذكاء الاصطناعي تستمر في أي مكان", color: "rgba(0, 182, 214, 0.5)" },
+        { icon: "stacks", title: "10,000+ NCS Cases", desc: "حالات قائمة على الوظائف تم توسيعها لتصبح محتوى تعلم واختبار بالذكاء الاصطناعي", color: "rgba(33, 103, 253, 0.5)" },
+      ],
+    },
+    sectionTitle: [
+      "وضع المعايير التي يقتدي بها العالم",
+      "هو ما تجيده KAQ حقاً.",
+    ],
+    narratives: [
+      { img: IMG.cardNcs, eng: "As you understand", kor: "نهج NCS، توحيد معايير الصناعة" },
+      { img: IMG.cardDsq, eng: "As you see", kor: "لوحة تحكم DSQ، تحويل أمان المساحات إلى بيانات" },
+      { img: IMG.cardKai, eng: "As you feel", kor: "K-AI Station، انطلاقة موجهات الذكاء الاصطناعي الكورية" },
+      { img: IMG.cardLead, eng: "As you lead the world", kor: "التحدي العالمي، الذكاء الاصطناعي الكوري نحو العالم" },
+    ],
+    statsTitle: (
+      <>
+        موثوقية KAQ العالمية،
+        <br />
+        مثبتة بالأرقام.
+      </>
+    ),
+    stats: [
+      { value: "120+", color: "#4936ED", label: "OVERALL BALANCE", desc: "بناء شبكة شركاء عالمية عبر 120 دولة" },
+      { value: "450K+", color: "#2167FD", label: "DETECTION POWER", desc: "التحقق من أكثر من 450,000 شهادة عالمية" },
+      { value: "99.8%", color: "#00A1F1", label: "ANALYSIS RELIABILITY", desc: "موثوقية موجهات الذكاء الاصطناعي المستندة إلى الحقائق" },
+      { value: "Top 1", color: "#00B6D6", label: "DX INNOVATION", desc: "القفز كشركة رائدة في الابتكار الرقمي من حاضنات المختبرات" },
+    ],
+    cta: {
+      title: (
+        <>
+          بناء تجارب ذكاء اصطناعي جديدة
+          <br />
+          مصممة خصيصاً لتناسب الاحتياجات المحلية معاً.
+        </>
+      ),
+      subtitle: "نعمل معاً في مشاريع المساعدة الإنمائية (ODA)، تعليم الذكاء الاصطناعي، نشر K-AI Station، والشراكات البحثية والتجارية العالمية.",
+      button: "اتصل بنا",
+    },
+    modal: {
+      title: "Application",
+      jobLabel: "المنصب المتقدم إليه",
+      nameLabel: "الاسم الكامل *",
+      namePlaceholder: "محمد أحمد",
+      birthLabel: "تاريخ الميلاد *",
+      nationalityLabel: "الجنسية *",
+      nationalityPlaceholder: "كوريا الجنوبية / أخرى",
+      linkLabel: "رابط السيرة الذاتية / المحفظة",
+      linkPlaceholder: "يرجى إدخال رابط قابل للمشاركة (Google Drive, Notion, وغيرها)",
+      submitBtn: "إرسال الطلب",
+      successMsg: "تم إرسال طلبك بنجاح!",
+      errMsg: "حدث خطأ أثناء الإرسال.",
+      alertFillAll: "يرجى ملء جميع الحقول المطلوبة.",
+    },
+  },
 };
 
 const WHY_ICONS = { account: AccountIcon, grid: GridIcon };

@@ -15,7 +15,7 @@ export function LanguageProvider({ children }) {
   useEffect(() => {
     try {
       const savedLang = localStorage.getItem('kaq_lang');
-      if (savedLang && ['KR', 'EN', 'JP', 'TH'].includes(savedLang)) {
+      if (savedLang && ['KR', 'EN', 'JP', 'TH', 'AR'].includes(savedLang)) {
         setCurrentLang(savedLang);
       }
     } catch (e) {
@@ -25,7 +25,7 @@ export function LanguageProvider({ children }) {
   }, []);
 
   const changeLanguage = (lang) => {
-    if (!['KR', 'EN', 'JP', 'TH'].includes(lang)) return;
+    if (!['KR', 'EN', 'JP', 'TH', 'AR'].includes(lang)) return;
     setCurrentLang(lang);
     try {
       localStorage.setItem('kaq_lang', lang);

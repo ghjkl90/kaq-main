@@ -62,6 +62,21 @@ const CONTENT = {
     tel: "Tel : +82-31-250-4233",
     email: "E-Mail : kaq8560@gmail.com",
     copyright: "Copyright © KAQ. All rights reserved."
+  },
+  AR: {
+    privacy: "سياسة الخصوصية",
+    terms: "شروط الاستخدام",
+    companyLabel: "اسم الشركة",
+    companyValue: "شركة KAQ المحدودة",
+    addressLabel: "العنوان",
+    addressValue: "غرفة 27403، 2066 سيبو-رو، جانغان-غو، سووون-سي، جيونغي-دو، كوريا الجنوبية",
+    ceoLabel: "الرئيس التنفيذي",
+    ceoValue: "شين وان سون",
+    bizNumLabel: "رقم السجل التجاري",
+    bizNumValue: "470-81-03049",
+    tel: "Tel : +82-31-250-4233",
+    email: "E-Mail : kaq8560@gmail.com",
+    copyright: "Copyright © KAQ. All rights reserved."
   }
 };
 

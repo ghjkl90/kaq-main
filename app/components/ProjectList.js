@@ -20,6 +20,10 @@ const TEXT = {
     badge: "Featured Solution",
     heading: "สองการเปลี่ยนแปลงที่ KAQ สร้างขึ้น",
   },
+  AR: {
+    badge: "Featured Solution",
+    heading: "تغييران يقودهما KAQ",
+  },
 };
 
 const CONTENT = {
@@ -100,6 +104,26 @@ const CONTENT = {
         "ตรวจจับ วัด ติดตาม และแสดงผลความปลอดภัยและคุณภาพของพื้นที่ด้วยข้อมูล เพื่อให้เห็นสถานะความปลอดภัยได้อย่างชัดเจน",
       image: "/9.png",
       btnText: "ดูเพิ่มเติม",
+      link: "/DSQ",
+    },
+  ],
+  AR: [
+    {
+      id: "01",
+      mainTitle: "K–AI Station",
+      description:
+        "يتيح للجميع تجربة الذكاء الاصطناعي بكل سهولة — مع محادثات مخصصة لكبار السن، الأطفال، المتعلمين، ولكافة المواقف والأغراض.",
+      image: "/8.png",
+      btnText: "عرض المزيد",
+      link: "https://k-ai-station.vercel.app/",
+    },
+    {
+      id: "02",
+      mainTitle: "DSQ PLATFORM",
+      description:
+        "استشعار، قياس، تتبع، وعرض أمان وجودة المساحات من خلال البيانات — لتتمكن من رؤية حالة الأمان بوضوح تام.",
+      image: "/9.png",
+      btnText: "عرض المزيد",
       link: "/DSQ",
     },
   ],

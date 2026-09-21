@@ -31,6 +31,12 @@ const languages = {
     publications: "ผลงานตีพิมพ์",
     globalChallenge: "ความท้าทายระดับโลก",
   },
+  AR: {
+    about: "من نحن",
+    products: "المنتجات والخدمات",
+    publications: "المنشورات",
+    globalChallenge: "التحدي العالمي",
+  },
 };
 
 export default function Header() {
@@ -343,6 +349,7 @@ export default function Header() {
             <option value="KR">한국어</option>
             <option value="EN">English</option>
             <option value="JP">日本語</option>
+            <option value="AR">العربية</option>
             <option value="TH">ภาษาไทย</option>
           </select>
 

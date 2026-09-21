@@ -547,6 +547,131 @@ const translations = {
       alertFillAll: "กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน",
     },
   },
+  AR: {
+    hero: {
+      badge: "المشاريع البحثية",
+      title: (
+        <>
+          ندرس المشكلات الواقعية،
+          <br />
+          ونتحقق منها باستخدام التكنولوجيا.
+        </>
+      ),
+    },
+    intro: {
+      title: (
+        <>
+          ننظر إلى المشكلة التي يجب حلها
+          <br />
+          قبل النظر إلى التكنولوجيا.
+        </>
+      ),
+      items: [
+        { icon: "problem", label: "PROBLEM", desc: "نبدأ من مشكلات الواقع." },
+        { icon: "evidence", label: "EVIDENCE", desc: "نقيس ون تتحقق." },
+        { icon: "application", label: "APPLICATION", desc: "نربطها بالتطبيق الفعلي." },
+      ],
+    },
+    research: {
+      title: (
+        <>
+          ثلاثة مسارات بحثية
+          <br />
+          تتجه نحو هدف واحد.
+        </>
+      ),
+      rows: [
+        {
+          badge: "AI PROMPT INTELLIGENCE",
+          title: "موجهات ذكاء اصطناعي مخصصة للعملاء",
+          desc: "نقدم موجهات ذكاء اصطناعي تلبي احتياجات العملاء الفريدة. نبحث في إطارات تطبيقات الذكاء الاصطناعي الخاصة عبر النماذج التأسيسية والمملوكة والفردية.",
+          image: IMG.cardPrompt,
+          button: { label: "K-AI Station", link: "https://k-ai-station.vercel.app/" },
+        },
+        {
+          badge: "SAFETY CLOCK",
+          title: "لوحة تحكم جودة أمان المساحات",
+          desc: "ابتكرت البشرية الساعات عندما أصبح الوقت أساسياً. ومع ذلك، على الرغم من الأهمية الحرجة لأمان المساحات اليوم، إلا أننا افتقرنا لوجود ساعة أمان عالمية. نعمل على توحيد معايير لوحات تحكم أمان المساحات.",
+          image: IMG.cardSafety,
+          button: { label: "DSQ PLATFORM", link: "http://openq.co.kr:8082/" },
+        },
+        {
+          badge: "DIGITAL TWIN",
+          title: "تطوير وبناء التوأم الرقمي",
+          desc: "يزدهر الذكاء الاصطناعي بفضل تجميع البيانات المدعومة بالمستشعرات. نبتكر منهجية MTCI: القياس (M)، التتبع (T)، الاتصال (C)، والتكامل (I) لبناء ثقة يمكن التحقق منها للمستقبل.",
+          image: IMG.cardTwin,
+          button: null,
+        },
+      ],
+    },
+    stats: {
+      title: (
+        <>
+          من جمع البيانات
+          <br />
+          إلى توظيفها في صنع القرار.
+        </>
+      ),
+      steps: [
+        { num: "1", label: "Observe", desc: "اكتشاف المشكلات في الأفراد والمساحات" },
+        { num: "2", label: "Measure", desc: "تحويلها إلى معلومات قابلة للقياس" },
+        { num: "3", label: "Analyze", desc: "تحليل الأنماط والمعاني" },
+        { num: "4", label: "Validate", desc: "الاختبار والتحقق الميداني" },
+        { num: "5", label: "Apply", desc: "التطبيق على المنتجات والبيئات الحقيقية" },
+      ],
+    },
+    patents: {
+      title: (
+        <>
+          نراكم نتائج الأبحاث
+          <br />
+          لتصبح أصولاً تكنولوجية.
+        </>
+      ),
+      items: [
+        {
+          no: "KR 2025-0196159",
+          title: "نظام وطريقة لتوفير تعلم ذكاء اصطناعي مخصص من خلال تعديل صعوبة الموجهات",
+          descEn: "System and method of providing customized artificial intelligence learning",
+        },
+        {
+          no: "KR 2025-0153697",
+          title: "نظام وطريقة لتصور لوحة تحكم مقاييس الجودة المتكاملة",
+          descEn: "System and method for visualizing integrated quality measures dashboard",
+        },
+        {
+          no: "KR 2025-0157432",
+          title: "جهاز وطريقة لدعم ترتيب المستشعرات استناداً إلى التوأم الرقمي لإدارة جودة المساحات",
+          descEn: "Apparatus and method of supporting sensor arrangement based on digital twin",
+        },
+      ],
+    },
+    cta: {
+      title: (
+        <>
+          اصنع معنا معياراً جديداً لتجربة الذكاء الاصطناعي
+          <br />
+          وجودة الأمان جنباً إلى جنب مع KAQ.
+        </>
+      ),
+      button: "اتصل بنا",
+    },
+    modal: {
+      title: "Application",
+      jobLabel: "المنصب المتقدم إليه",
+      nameLabel: "الاسم الكامل *",
+      namePlaceholder: "محمد أحمد",
+      birthLabel: "تاريخ الميلاد *",
+      nationalityLabel: "الجنسية *",
+      nationalityPlaceholder: "كوريا الجنوبية",
+      linkLabel: "رابط السيرة الذاتية / المحفظة",
+      linkPlaceholder: "يرجى إدخال رابط قابل للمشاركة (Google Drive, Notion، إلخ)",
+      submitBtn: "إرسال الطلب",
+      successMsg: "تم إرسال طلبك بنجاح!",
+      errMsg: "حدث خطأ أثناء الإرسال.",
+      alertFillAll: "يرجى ملء جميع الحقول المطلوبة.",
+    },
+  },
 };
 
 const INTRO_ICONS = {

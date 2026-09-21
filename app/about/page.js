@@ -17,7 +17,6 @@ const ArrowIcon = ({ size = 28, color = "#000000" }) => (
     <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
 const translations = {
   KR: {
     tabs: { intro: "기업소개", vision: "핵심가치", careers: "인재채용" },
@@ -71,8 +70,8 @@ const translations = {
       ],
     },
     careersSection: {
-      eyebrow: "CAREERS",
-      heading: (
+       eyebrow: "CAREERS",
+       heading: (
         <>
           함께 새로운 기준을
           <br />
@@ -163,8 +162,8 @@ const translations = {
       ],
     },
     careersSection: {
-      eyebrow: "CAREERS",
-      heading: (
+       eyebrow: "CAREERS",
+       heading: (
         <>
           We're looking for people
           <br />
@@ -255,8 +254,8 @@ const translations = {
       ],
     },
     careersSection: {
-      eyebrow: "CAREERS",
-      heading: (
+       eyebrow: "CAREERS",
+       heading: (
         <>
           共に新しい基準を
           <br />
@@ -347,8 +346,8 @@ const translations = {
       ],
     },
     careersSection: {
-      eyebrow: "CAREERS",
-      heading: (
+       eyebrow: "CAREERS",
+       heading: (
         <>
           เรารอคนที่จะมาสร้าง
           <br />
@@ -385,6 +384,98 @@ const translations = {
       successMsg: "ส่งใบสมัครเรียบร้อยแล้ว!",
       errMsg: "เกิดข้อผิดพลาดขณะส่งใบสมัคร",
       alertFillAll: "กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน",
+    },
+  },
+  AR: {
+    tabs: { intro: "من نحن", vision: "القيم الأساسية", careers: "الوظائف" },
+    hero: {
+      badge: "ABOUT KAQ",
+      title: (
+        <>
+          ذكاء اصطناعي من أجل البشر،
+          <br />
+          وتقنية جودة من أجل المساحات.
+        </>
+      ),
+    },
+    visionBanner: {
+      badge: "OUR VISION",
+      title: "Peace and Quality with AI",
+      desc: (
+        <>
+          أن تجعل تقنيات الذكاء الاصطناعي والجودة حياة الناس أكثر أماناً وراحة.
+          <br />
+          تلك هي الوجهة التي تعتمدها KAQ في التعامل مع التكنولوجيا.
+        </>
+      ),
+    },
+    research: {
+      title: (
+        <>
+          انطلاقاً من البحث العلمي،
+          <br />
+          ووصولاً إلى إحداث التغيير للبشر والمساحات.
+        </>
+      ),
+      cards: [
+        { title: "المساحة", desc: <>بيانات تتيح قياس وإدارة<br />حالات الأمان والجودة.</>, img: IMG.cardSpace },
+        { title: "البشر", desc: <>تصميم تجارب تتيح لأي شخص فهم<br />واستخدام الذكاء الاصطناعي.</>, img: IMG.cardPeople },
+        { title: "التكنولوجيا", desc: <>ربط نتائج الأبحاث ببراءات الاختراع والمنصات<br />والخدمات الفعلية.</>, img: IMG.cardTech },
+      ],
+    },
+    techSection: {
+      title: (
+        <>
+          لنجعل التكنولوجيا أكثر سهولة،
+          <br />
+          والجودة أكثر وضوحاً.
+        </>
+      ),
+      cards: [
+        { badge: "Accessibility", title: <>يجب أن تكون التكنولوجيا متاحة<br />ليستخدَمها الجميع.</>, desc: <>نصمم تجارب ذكاء اصطناعي يمكن استخدامها<br />بغض النظر عن الفئة العمرية أو الخبرة.</> },
+        { badge: "Evidence", title: <>يجب أن تكون الجودة قابلة للتحقق<br />وليس مجرد شعور.</>, desc: <>نفهم الأمان والجودة<br />استناداً إلى البيانات والقياسات.</> },
+        { badge: "Standardization", title: <>التكنولوجيا الجيدة هي التي يمكن<br />تكرارها وتوسيع نطاقها.</>, desc: <>نطور نتائج الأبحاث لتصبح هياكل<br />وخدمات قابلة للتوحيد القياسي.</> },
+      ],
+    },
+    careersSection: {
+       eyebrow: "CAREERS",
+       heading: (
+        <>
+          ننتظر الأشخاص الذين سيصنعون
+          <br />
+          معياراً جديداً معنا.
+        </>
+      ),
+      jobs: [
+        { id: 1, main: "مبرمج أنظمة متكاملة (Full-Stack Developer)", sub: "", type: "خبرة 3-5 سنوات فأكثر", location: "Seoul, Korea (Hybrid)" },
+        { id: 2, main: "مهندس وباحث ذكاء اصطناعي (AI Research & Engineer)", sub: "", type: "حديث التخرج / ذو خبرة", location: "Seoul, Korea (Hybrid)" },
+        { id: 3, main: "مجموعة التوظيف العامة", sub: "(General Application)", type: "متاح طوال العام", location: "Seoul, Korea" },
+      ],
+    },
+    cta: {
+      title: (
+        <>
+          اصنع معنا معياراً جديداً لتجربة الذكاء الاصطناعي
+          <br />
+          وجودة الأمان جنباً إلى جنب مع KAQ.
+        </>
+      ),
+      button: "اتصل بنا",
+    },
+    modal: {
+      title: "Application",
+      jobLabel: "المنصب المتقدم إليه",
+      nameLabel: "الاسم الكامل *",
+      namePlaceholder: "محمد أحمد",
+      birthLabel: "تاريخ الميلاد *",
+      nationalityLabel: "الجنسية *",
+      nationalityPlaceholder: "كوريا الجنوبية",
+      linkLabel: "رابط السيرة الذاتية / المحفظة",
+      linkPlaceholder: "يرجى إدخال رابط قابل للمشاركة (Google Drive, Notion، إلخ)",
+      submitBtn: "إرسال الطلب",
+      successMsg: "تم إرسال طلبك بنجاح!",
+      errMsg: "حدث خطأ أثناء الإرسال.",
+      alertFillAll: "يرجى ملء جميع الحقول المطلوبة.",
     },
   },
 };
