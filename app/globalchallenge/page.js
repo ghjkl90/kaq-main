@@ -993,9 +993,36 @@ export default function GlobalChallengePage({ onOpenContact }) {
           .gcOdaRowCard { padding: 0; }
           .gcOdaStepTitle { font-size: 28px; }
 
-          .gcAiStationShowcase { aspect-ratio: auto; min-height: 520px; padding: 24px 0; }
-          .gcAiStationPhone { top: calc(7.83% + 16px); height: 90%; }
-          .gcAiStationCards { flex-direction: column; align-items: stretch; }
+          .gcAiStationShowcase {
+            aspect-ratio: auto;
+            height: auto;
+            min-height: 0;
+            padding: 32px 20px;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+          }
+          .gcAiStationPhone {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: 72%;
+            max-width: 300px;
+            height: auto;
+          }
+          .gcAiStationCards {
+            position: static;
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            padding: 0;
+            background: none;
+          }
+          .gcAiStationCard { min-height: 0; padding: 24px; }
         }
 
         @media (max-width: 768px) {
