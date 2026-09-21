@@ -235,8 +235,13 @@ export default function Header() {
 
           .${styles.headerNav} {
             width: 100% !important;
-            height: 0 !important;
             gap: 0 !important;
+          }
+
+          /* mobileNavActive가 아닐 때만 접어둠 — page_module.css의
+             .headerNav.mobileNavActive { height: auto } 가 정상적으로 펼쳐지도록 함 */
+          .${styles.headerNav}:not(.${styles.mobileNavActive}) {
+            height: 0 !important;
           }
         }
       `}</style>

@@ -903,6 +903,27 @@ export default function PublicationsPage({ onOpenContact }) {
           .rpqPatentsGrid { grid-template-columns: 1fr; }
           .kaqCtaInner { flex-direction: column; align-items: flex-start; }
           .kaqFooterTop { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+          /* 최종 문의하기 CTA: 고정 height/width가 좁은 화면에서 잘리는 문제 방지
+             (font-size는 그대로 두고 컨테이너만 유동적으로 전환) */
+          .psFinalCta {
+            height: auto;
+            padding: 48px 24px;
+          }
+          .psFinalCtaInner {
+            height: auto;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+          }
+          .psFinalCtaText {
+            width: 100%;
+            max-width: 514px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .psFinalCta { padding: 40px 20px; }
         }
       `}</style>
 
