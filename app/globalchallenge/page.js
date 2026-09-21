@@ -12,7 +12,6 @@ const IMG = {
   cardLead: "/card-lead.jpg",
 };
 
-
 const ArrowIcon = ({ size = 24, color = "#ffffff" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -29,8 +28,16 @@ const AccountIcon = () => (
     </g>
   </svg>
 );
+
 const GridIcon = () => (
-  <svg width="44" height="36" viewBox="0 0 36 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg 
+    width="40" 
+    height="36" 
+    viewBox="0 0 36 29" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ display: 'block', margin: '0 5px' }}
+  >
     <path d="M12.8333 24.8206V15.4247H22.9167V24.8206H12.8333ZM12.8333 12.8159V3.57866H22.9167V12.8159H12.8333ZM0 12.8159V0L10.0833 2.8875V12.8159H0ZM0 28.1348V15.4247H10.0833V25.4586L0 28.1348ZM35.75 28.1348L25.6667 25.4586V15.4247H35.75V28.1348ZM25.6667 12.8159V2.91592L35.75 0.21175V12.8159H25.6667Z" fill="white"/>
   </svg>
 );
@@ -56,7 +63,7 @@ const translations = {
           한 환경에만 머물지 않습니다.
         </>
       ),
-      desc: ["AI를 사용하는 사람도, 안전을 관리해야 하는 공간도 지역마다 다릅니다.", "KAQ는 하나의 서비스를 그대로 복제하는 것이 아니라", "\n사용자와 환경에 맞게 조정하고 검증할 수 있는 기술 구조를 연구합니다."],
+      desc: ["AI를 사용하는 사람도, 안전을 관리해야 하는 공간도 지역마다 다릅니다.", " KAQ는 하나의 서비스를 그대로 복제하는 것이 아니라", "\n사용자와 환경에 맞게 조정하고 검증할 수 있는 기술 구조를 연구합니다."],
       cards: [
         {
           icon: "account",
@@ -71,7 +78,13 @@ const translations = {
           button: { label: "DSQ PLATFORM", link: "http://openq.co.kr:8082/" },
         },
       ],
-      wideText: "KAQ의 글로벌 확장은 제품 수출이 아니라 사람과 공간에 맞는 기술의 현지화에서 시작합니다.",
+      wideText: (
+  <>
+    KAQ의 글로벌 확장은 제품 수출이 아니라
+    <br />
+    사람과 공간에 맞는 기술의 현지화에서 시작합니다.
+  </>
+)
     },
     sectionTitle: [
       "연구를 넘어,",
@@ -158,7 +171,11 @@ const translations = {
           button: { label: "DSQ PLATFORM", link: "http://openq.co.kr:8082/" },
         },
       ],
-      wideText: "KAQ's global expansion doesn't start with exporting products — it starts with localizing technology to fit people and spaces.",
+      wideText: (
+        <>
+          KAQ's global expansion doesn't start with exporting products — it starts with localizing technology to fit people and spaces.
+        </>
+      ),
     },
     sectionTitle: [
       "Setting benchmarks referenced by the world",
@@ -637,7 +654,6 @@ export default function GlobalChallengePage({ onOpenContact }) {
 
         .psFinalCtaBtn:hover {
           background: #0044d6;
-          transform: translateY(-2px);
         }
 
         .psFinalCtaBtnText {

@@ -9,7 +9,7 @@ const IMG = {
   cardSpace: "/card-space.jpg",
   cardPeople: "/card-people.jpg",
   cardTech: "/card-tech.jpg",
-  techBg: "/tech-bg.jpg",
+  techBg: "/tech-bg.png",
 };
 
 const ArrowIcon = ({ size = 28, color = "#000000" }) => (
@@ -581,8 +581,6 @@ export default function AboutPage({ onOpenContact }) {
         }
         .kaqTechSection.is-visible { opacity: 1; transform: translateY(0); }
         .kaqTechBgImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-        .kaqTechBgOverlayBlue { position: absolute; inset: 0; background: #0052FF; mix-blend-mode: overlay; z-index: 1; pointer-events: none; }
-        .kaqTechBgOverlayNavy { position: absolute; inset: 0; background: #003198; mix-blend-mode: multiply; opacity: 0.3; z-index: 2; pointer-events: none; }
         .kaqTechInner { position: relative; z-index: 3; max-width: 1276px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 60px; }
         .kaqSectionTitleWhite { font-weight: 700; font-size: clamp(1.8rem, 4vw, 48px); line-height: 130%; text-align: center; color: #ffffff; margin: 0; word-break: keep-all; }
         .kaqTechGrid { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -703,7 +701,6 @@ export default function AboutPage({ onOpenContact }) {
 
         .psFinalCtaBtn:hover {
           background: #0044d6;
-          transform: translateY(-2px);
         }
 
         .psFinalCtaBtnText {

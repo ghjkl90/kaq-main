@@ -46,6 +46,13 @@ export default function HeroSection({ onOpenContact }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector(`.${styles.heroVideoSection}`).nextElementSibling;
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -75,6 +82,10 @@ export default function HeroSection({ onOpenContact }) {
           padding-right: 0 !important;
         }
 
+        html {
+          scroll-behavior: smooth;
+        }
+
         /* Hero 중앙 전체 래퍼: 텍스트 묶음과 버튼 그룹 사이 gap 20px */
         .${styles.heroContent} {
           max-width: none !important;
@@ -95,8 +106,8 @@ export default function HeroSection({ onOpenContact }) {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 16px; /* 아이브로우와 메인 카피 간 간격 */
-          white-space: nowrap; /* 원치 않는 줄바꿈 방지 */
+          gap: 16px;
+          white-space: nowrap;
         }
 
         .heroEyebrow {
@@ -134,26 +145,28 @@ export default function HeroSection({ onOpenContact }) {
         }
 
         .heroCtaGhost,
-        .heroCtaFilled {
-          flex: 1;
-          height: 52px;
-          border-radius: 999px;
-          font-family: inherit;
-          font-size: 14px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          white-space: nowrap;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(12, 22, 36, 0.55);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: #fff;
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          padding: 0;
-        }
+.heroCtaFilled {
+  width: 160px !important;
+  min-width: 160px;
+  height: 52px !important;    
+  border-radius: 99px !important; 
+  border-width: 1px !important;
+  font-family: inherit;
+  font-size: 15px;            
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 22, 36, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0 24px !important;   /* 좌우 패딩 24px 적용 */
+}
 
         .heroCtaGhost:hover,
         .heroCtaFilled:hover {
@@ -187,7 +200,6 @@ export default function HeroSection({ onOpenContact }) {
           display: block;
         }
 
-        /* 📱 모바일(768px 이하) 반응형 대응 */
         @media (max-width: 768px) {
           .heroTextFrame {
             white-space: normal;
@@ -237,9 +249,9 @@ export default function HeroSection({ onOpenContact }) {
 
           {/* 피그마 버튼 오토레이아웃 프레임 (336 x 52, gap: 16) */}
           <div className="heroCtaGroup">
-            <button className="heroCtaGhost" type="button">
-              {t.ctaGhost}
-            </button>
+            <button className="heroCtaGhost" onClick={scrollToNextSection} type="button">
+  {t.ctaGhost}
+</button>
             <button className="heroCtaFilled" onClick={onOpenContact} type="button">
               {t.ctaFilled}
             </button>

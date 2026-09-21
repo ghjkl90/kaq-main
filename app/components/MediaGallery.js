@@ -214,7 +214,6 @@ export default function MediaGallery({ onOpenContact }) {
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-start;
-          box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.08);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
@@ -321,7 +320,6 @@ export default function MediaGallery({ onOpenContact }) {
 
         .gvCtaBtn:hover {
           background: #0044d6;
-          transform: translateY(-2px);
         }
 
         /* 버튼 텍스트: 18px Bold, 130% 줄간격 및 수직 중앙축 일치 */

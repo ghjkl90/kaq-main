@@ -5,8 +5,8 @@ import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
 
 const IMG = {
-  darkBg1: "/dark-bg-1.jpg",
-  darkBg2: "/dark-bg-2.jpg",
+  darkBg1: "/dark-bg-1.png",
+  darkBg2: "/dark-bg-2.png",
   cardPrompt: "/card-prompt.jpg",
   cardSafety: "/card-safety.jpg",
   cardTwin: "/card-twin.jpg",
@@ -695,8 +695,6 @@ export default function PublicationsPage({ onOpenContact }) {
         }
         .rpqIntroSection.is-visible { opacity: 1; transform: translateY(0); }
         .rpqIntroBgImg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-        .rpqOverlayBlue { position: absolute; inset: 0; background: #0052FF; mix-blend-mode: overlay; z-index: 1; pointer-events: none; }
-        .rpqOverlayNavy { position: absolute; inset: 0; background: #003198; mix-blend-mode: multiply; opacity: 0.3; z-index: 2; pointer-events: none; }
         .rpqIntroInner { position: relative; z-index: 3; max-width: 1276px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 60px; }
         .rpqSectionTitleWhite { font-weight: 700; font-size: clamp(1.8rem, 4vw, 48px); line-height: 130%; text-align: center; color: #ffffff; margin: 0; word-break: keep-all; }
         .rpqSectionTitleBlack { font-weight: 700; font-size: clamp(1.8rem, 4vw, 48px); line-height: 130%; text-align: center; color: #000000; margin: 0; word-break: keep-all; }
@@ -870,7 +868,6 @@ export default function PublicationsPage({ onOpenContact }) {
 
         .psFinalCtaBtn:hover {
           background: #0044d6;
-          transform: translateY(-2px);
         }
 
         .psFinalCtaBtnText {

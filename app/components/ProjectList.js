@@ -252,7 +252,7 @@ export default function FeaturedSolutions() {
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 40px;
+        gap: 40px !important;
       }
 
       .fsTextFrame {

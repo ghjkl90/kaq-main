@@ -112,13 +112,12 @@ export default function Header() {
   return (
     <header className={headerClassNames}>
       <style>{`
-        /* 헤더 전체: 화면 100% 풀스크린 핏 */
         .${styles.mainHeader} {
           position: fixed !important;
           top: 0 !important;
           left: 0 !important;
           width: 100% !important;
-          max-width: none !important; /* 1600px 제한 해제 */
+          max-width: none !important;
           height: 80px !important;
           transform: none !important;
           padding: 0 40px !important;
@@ -127,10 +126,11 @@ export default function Header() {
           align-items: center !important;
           box-sizing: border-box !important;
           z-index: 9999 !important;
+          border-bottom: none !important; /* 하단 선 삭제 */
+          box-shadow: none !important;    /* 그림자 삭제 */
           font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif !important;
         }
 
-        /* 좌측 로고 (81 x 28) */
         .kaqHeaderLogoSvg {
           display: flex;
           align-items: center;
@@ -150,7 +150,7 @@ export default function Header() {
 
         .${styles.navLink} {
           font-family: inherit !important;
-          font-size: 16px !important;
+          font-size: 18px !important;
           font-weight: 700 !important;
           line-height: 1.3 !important;
           letter-spacing: 0 !important;
@@ -204,7 +204,7 @@ export default function Header() {
           border: none;
           color: inherit;
           font-family: inherit;
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 700;
           line-height: 1.3;
           letter-spacing: 0;
@@ -212,7 +212,7 @@ export default function Header() {
           outline: none;
           padding: 0;
           margin: 0;
-          text-align: center;
+          text-align: left !important;
           flex: 1;
         }
 

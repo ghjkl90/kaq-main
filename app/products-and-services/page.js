@@ -925,17 +925,16 @@ export default function ProductsPage({ onOpenContact }) {
           padding: 120px 0;
           display: flex;
           flex-direction: column;
-          gap: 80px;
+          gap: 40px !important; /* 기존 80px에서 40px로 수정하여 이미지와의 간격 맞추기 */
           box-sizing: border-box;
         }
 
         .psProductHead {
           width: 100%;
           max-width: 1276px;
-          height: 128px;
           display: flex;
           justify-content: space-between;
-          align-items: flex-end;
+          align-items: flex-end !important; /* 핵심: 버튼과 텍스트가 아래쪽(bottom)으로 나란히 정렬되도록 함 */
           gap: 28px;
           background: #ffffff;
           border-radius: 24px;
@@ -1896,7 +1895,6 @@ export default function ProductsPage({ onOpenContact }) {
 
         .psFinalCtaBtn:hover {
           background: #0044d6;
-          transform: translateY(-2px);
         }
 
         .psFinalCtaBtnText {
