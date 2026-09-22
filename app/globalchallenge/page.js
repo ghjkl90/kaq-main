@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
+import { useContact } from "../context/ContactContext";
 
 const IMG = {
   whyGlobalBg: "/BG_08.png",
@@ -736,8 +737,9 @@ const translations = {
 
 const WHY_ICONS = { account: AccountIcon, grid: GridIcon };
 
-export default function GlobalChallengePage({ onOpenContact }) {
+export default function GlobalChallengePage() {
   const { currentLang } = useLanguage();
+  const { openContact } = useContact();
   const t = translations[currentLang] || translations.KR;
 
   const [whyVisible, setWhyVisible] = useState(false);
@@ -1387,7 +1389,7 @@ export default function GlobalChallengePage({ onOpenContact }) {
             </p>
             <p className="psFinalCtaSubtitle">{t.cta.subtitle}</p>
           </div>
-          <button className="psFinalCtaBtn" onClick={onOpenContact || (() => handleOpenApply(""))} type="button">
+          <button className="psFinalCtaBtn" onClick={openContact} type="button">
             <span className="psFinalCtaBtnText">{t.cta.button}</span>
             <svg
               className="psFinalCtaBtnArrow"

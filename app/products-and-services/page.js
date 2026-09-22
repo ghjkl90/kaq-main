@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
+import { useContact } from "../context/ContactContext";
 
 /* AboutPage와 동일한 화살표 아이콘 — CTA 버튼에서 공용으로 사용 */
 const ArrowIcon = ({ size = 28, color = "#000000" }) => (
@@ -859,8 +860,9 @@ function DsqApplicationBlock({ data }) {
 /* ============================================================
    메인 페이지 컴포넌트
    ============================================================ */
-export default function ProductsPage({ onOpenContact }) {
+export default function ProductsPage() {
   const { currentLang } = useLanguage();
+  const { openContact } = useContact();
   const t = CONTENT[currentLang] || CONTENT.KR;
   const containerRef = useScrollReveal();
 
@@ -2217,7 +2219,7 @@ export default function ProductsPage({ onOpenContact }) {
               <br />
               {t.finalCta.text[1]}
             </p>
-            <button className="psFinalCtaBtn" onClick={onOpenContact || (() => handleOpenApply(""))} type="button">
+            <button className="psFinalCtaBtn" onClick={openContact} type="button">
               <span className="psFinalCtaBtnText">{t.finalCta.btn}</span>
               <svg
                 className="psFinalCtaBtnArrow"

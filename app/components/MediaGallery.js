@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { useContact } from "../context/ContactContext";
 
 const CONTENT = {
   KR: {
@@ -127,8 +128,9 @@ function useScrollReveal() {
   return containerRef;
 }
 
-export default function MediaGallery({ onOpenContact }) {
+export default function MediaGallery() {
   const { currentLang } = useLanguage();
+  const { openContact } = useContact();
   const t = CONTENT[currentLang] || CONTENT.KR;
   const containerRef = useScrollReveal();
 
@@ -227,10 +229,6 @@ export default function MediaGallery({ onOpenContact }) {
           justify-content: space-between;
           align-items: flex-start;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .gvCard:hover {
-          transform: translateY(-4px);
         }
 
         /* 아이콘 바운딩 박스: 48 x 48 */
@@ -484,7 +482,7 @@ export default function MediaGallery({ onOpenContact }) {
             <br />
             {t.ctaText[1]}
           </p>
-          <button className="gvCtaBtn" onClick={onOpenContact} type="button">
+          <button className="gvCtaBtn" onClick={openContact} type="button">
             <span className="gvCtaBtnText">{t.ctaBtn}</span>
             <svg
               className="gvCtaBtnArrow"

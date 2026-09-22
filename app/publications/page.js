@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
+import { useContact } from "../context/ContactContext";
 
 const IMG = {
   darkBg1: "/dark-bg-1.png",
@@ -680,8 +681,9 @@ const INTRO_ICONS = {
   application: ApplicationIcon,
 };
 
-export default function PublicationsPage({ onOpenContact }) {
+export default function PublicationsPage() {
   const { currentLang } = useLanguage();
+  const { openContact } = useContact();
   const t = translations[currentLang] || translations.KR;
 
   const [introVisible, setIntroVisible] = useState(false);
@@ -1167,8 +1169,8 @@ export default function PublicationsPage({ onOpenContact }) {
           <p className="psFinalCtaText">
             {t.cta.title}
           </p>
-          <button className="psFinalCtaBtn" onClick={onOpenContact || (() => handleOpenApply(""))} type="button">
-            <span className="psFinalCtaBtnText">{t.cta.button}</span>
+          <button className="psFinalCtaBtn" onClick={openContact} type="button">
+           <span className="psFinalCtaBtnText">{t.cta.button}</span>
             <svg
               className="psFinalCtaBtnArrow"
               width="24"
