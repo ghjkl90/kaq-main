@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
 
 const IMG = {
-  whyGlobalBg: "/10.png",
+  whyGlobalBg: "/BG_08.png",
   cardNcs: "/card-ncs.jpg",
   cardDsq: "/card-dsq.jpg",
   cardKai: "/card-kai.jpg",
@@ -14,7 +14,7 @@ const IMG = {
   odaCustomize: "/oda-customize.png",
   odaConnect: "/oda-connect.png",
   aiStationScreenshot: "/ai-station-screenshot.png",
-  aiStationBg: "/ai-station-bg.png",
+  aiStationBg: "/BG_07.png",
 };
 
 const ArrowIcon = ({ size = 24, color = "#ffffff" }) => (
@@ -161,9 +161,9 @@ const translations = {
       badge: "AI STATION FOR PARTNERSHIP",
       title: ["오프라인과 온라인을 연결하는", "AI 학습 경험"],
       cards: [
-        { icon: "kiosk", title: "KIOSK", desc: "현장에서 누구나 접근할 수 있는 AI Station", color: "rgba(73, 54, 237, 0.5)" },
-        { icon: "online", title: "ONLINE", desc: "장소에 관계없이 이어지는 AI 기반 학습 서비스", color: "rgba(0, 182, 214, 0.5)" },
-        { icon: "stacks", title: "10,000+ NCS Cases", desc: "직무 기반 사례를 AI 학습과 테스트 콘텐츠로 확장", color: "rgba(33, 103, 253, 0.5)" },
+        { icon: "kiosk", title: "KIOSK", desc: <>현장에서 누구나 접근할 수 있는<br /> AI Station</>, color: "rgba(73, 54, 237, 0.5)" },
+        { icon: "online", title: "ONLINE", desc: <>장소에 관계없이 이어지는<br/>AI 기반 학습 서비스</>, color: "rgba(0, 182, 214, 0.5)" },
+        { icon: "stacks", title: "10,000+ NCS Cases", desc: <>직무 기반 사례를 <br/>AI 학습과 테스트 콘텐츠로 확장</>, color: "rgba(33, 103, 253, 0.5)" },
       ],
     },
     sectionTitle: [
@@ -881,7 +881,6 @@ export default function GlobalChallengePage({ onOpenContact }) {
           background: rgba(0,0,0,0.5); border-radius: 99px; border: none; color: #ffffff; font-weight: 700; font-size: 18px;
           text-decoration: none; cursor: pointer; transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .gcWhyCardBtn:hover { background: rgba(33,103,253,0.7); transform: translateY(-2px); }
         .gcWhyWideCard {
           width: 100%; display: flex; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box;
           background: rgba(0,68,255,0.5); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;
@@ -914,8 +913,25 @@ export default function GlobalChallengePage({ onOpenContact }) {
         .gcOdaStepTitle { font-weight: 700; font-size: 40px; line-height: 130%; color: #000000; margin: 0; word-break: keep-all; }
         .gcOdaStepSubtitle { font-weight: 700; font-size: 18px; line-height: 150%; color: #000000; margin: 0; }
         .gcOdaStepDesc { font-weight: 400; font-size: 18px; line-height: 150%; color: #000000; margin: 0; word-break: keep-all; }
-        .gcOdaTags { display: grid; grid-template-columns: repeat(2, max-content); gap: 8px; }
-        .gcOdaTag { display: inline-flex; align-items: center; justify-content: center; padding: 0 8px; height: 28px; background: #E1E5EE; border-radius: 99px; font-weight: 400; font-size: 14px; color: #626772; white-space: nowrap; }
+        .gcOdaTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gcOdaTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  height: 28px;
+  background: #E1E5EE;
+  border-radius: 99px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #626772;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
 
         /* ============ AI STATION FOR PARTNERSHIP (폰 목업 쇼케이스) ============ */
         .gcAiStationSection {
@@ -944,13 +960,50 @@ export default function GlobalChallengePage({ onOpenContact }) {
           background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 60%, rgba(0, 0, 0, 0.78) 100%);
         }
         .gcAiStationCard {
-          flex: 1 1 0; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 8px;
-          padding: 28px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3);
-          backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-sizing: border-box;
-        }
-        .gcAiStationCardTitle { font-weight: 700; font-size: 24px; line-height: 130%; color: #ffffff; margin: 0; }
-        .gcAiStationCardDesc { font-weight: 400; font-size: 18px; line-height: 150%; color: #ffffff; margin: 0; word-break: keep-all; }
+  flex: 1 1 0;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-sizing: border-box;
+}
+        .gcAiStationCardText {
+  width: 100%;
+  min-height: 93px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
+.gcAiStationCardTitle {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 130%;
+  color: #ffffff;
+  margin: 0;
+}
+
+.gcAiStationCardDesc {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #ffffff;
+  margin: 0;
+  word-break: keep-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 54px;
+}
+        
         .description {
           white-space: pre-line; /* 문자열 안의 줄바꿈(\n)을 실제 화면에 반영해 줍니다 */
         }
@@ -1314,7 +1367,7 @@ export default function GlobalChallengePage({ onOpenContact }) {
               return (
                 <div className="gcAiStationCard" key={idx} style={{ background: card.color }}>
                   <Icon />
-                  <div>
+                  <div className="gcAiStationCardText">
                     <h3 className="gcAiStationCardTitle">{card.title}</h3>
                     <p className="gcAiStationCardDesc">{card.desc}</p>
                   </div>

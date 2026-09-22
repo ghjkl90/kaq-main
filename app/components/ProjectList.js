@@ -261,7 +261,6 @@ export default function FeaturedSolutions() {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.07);
       }
 
       .fsTextCard {
@@ -353,7 +352,6 @@ export default function FeaturedSolutions() {
 
       .fsBtn:hover {
         background-color: #0052ff;
-        transform: translateY(-2px);
       }
 
       .fsBtn:hover .fsBtnArrow {

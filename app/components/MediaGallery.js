@@ -231,7 +231,6 @@ export default function MediaGallery({ onOpenContact }) {
 
         .gvCard:hover {
           transform: translateY(-4px);
-          box-shadow: 0 15px 35px -10px rgba(0, 82, 255, 0.12);
         }
 
         /* 아이콘 바운딩 박스: 48 x 48 */
@@ -268,7 +267,7 @@ export default function MediaGallery({ onOpenContact }) {
         .gvCta {
           width: 100%;
           min-height: 360px;
-          background-image: url("/10.png");
+          background-image: url("/BG_08.png");
           background-size: cover;
           background-position: center;
           display: flex;

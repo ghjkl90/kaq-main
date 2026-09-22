@@ -802,6 +802,14 @@ export default function PublicationsPage({ onOpenContact }) {
           box-sizing: border-box;
         }
 
+        .rpqOverlayBlue,
+.rpqOverlayNavy {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
         /* HERO */
         .rpqHeroBadge { display: block; font-weight: 700; font-size: 24px; line-height: 130%; color: #2167FD; margin-bottom: 20px; }
         .rpqHeroTitle { font-weight: 700; font-size: clamp(2rem, 5vw, 60px); line-height: 130%; color: #000000; margin: 0; max-width: 620px; word-break: keep-all; }
@@ -854,7 +862,7 @@ export default function PublicationsPage({ onOpenContact }) {
           color: #ffffff; font-weight: 700; font-size: 18px; text-decoration: none; cursor: pointer;
           transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .rpqRowBtn:hover { background: #2167FD; transform: translateY(-2px); }
+        .rpqRowBtn:hover { background: #2167FD; }
 
         /* Observe → Apply 다크 통계 배너 */
         .rpqStatsSection {
@@ -907,7 +915,7 @@ export default function PublicationsPage({ onOpenContact }) {
           font-family: inherit; font-weight: 700; font-size: 18px;
           cursor: pointer; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .kaqCtaBtn:hover { background: #1a54d1; transform: translateY(-2px); }
+        .kaqCtaBtn:hover { background: #1a54d1;}
 
         .kaqFooter { background: #000000; padding: 60px 20px 80px; box-sizing: border-box; }
         .kaqFooterInner { max-width: 1276px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
@@ -933,7 +941,7 @@ export default function PublicationsPage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           min-height: 360px;
-          background-image: url("/10.png");
+          background-image: url("/BG_08.png");
           background-size: cover;
           background-position: center;
           display: flex;

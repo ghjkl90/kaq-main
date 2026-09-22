@@ -160,7 +160,7 @@ export default function HeroSection({ onOpenContact }) {
   border-radius: 99px !important; 
   border-width: 1px !important;
   font-family: inherit;
-  font-size: 15px;            
+  font-size: 18px;            
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;

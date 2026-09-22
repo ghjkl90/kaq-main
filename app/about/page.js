@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import { useLanguage } from "../context/LanguageContext";
 
 const IMG = {
-  visionBanner: "/vision-banner.jpg",
+  visionBanner: "/vision-banner.png",
   cardSpace: "/card-space.jpg",
   cardPeople: "/card-people.jpg",
   cardTech: "/card-tech.jpg",
@@ -713,7 +713,7 @@ export default function AboutPage({ onOpenContact }) {
           padding: 28px 24px 28px 28px; background: #F2F5FD; border-radius: 20px; cursor: pointer;
           transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .kaqJobCard:hover { background-color: #E5EBFA; transform: translateY(-2px); }
+        .kaqJobCard:hover { background-color: #E5EBFA;}
         .kaqJobMeta { font-weight: 400; font-size: 16px; line-height: 150%; color: #626772; margin: 0 0 8px 0; }
         .kaqJobTitleRow { display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap; }
         .kaqJobMain { font-weight: 500; font-size: 24px; line-height: 130%; color: #000000; }
@@ -732,7 +732,7 @@ export default function AboutPage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           min-height: 360px;
-          background-image: url("/10.png");
+          background-image: url("/BG_08.png");
           background-size: cover;
           background-position: center;
           display: flex;

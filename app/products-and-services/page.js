@@ -986,7 +986,7 @@ export default function ProductsPage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           height: 480px;
-          background-image: url("/10.png");
+          background-image: url("/BG_05.png");
           background-size: cover;
           background-position: center;
           display: flex;
@@ -1029,8 +1029,12 @@ export default function ProductsPage({ onOpenContact }) {
           padding: 120px 0;
           display: flex;
           flex-direction: column;
-          gap: 40px !important; /* 기존 80px에서 40px로 수정하여 이미지와의 간격 맞추기 */
+          gap: 80px !important; 
           box-sizing: border-box;
+        }
+
+        .psProductSection > .psProductBanner {
+          margin-top: -40px;
         }
 
         .psProductHead {
@@ -1038,7 +1042,7 @@ export default function ProductsPage({ onOpenContact }) {
           max-width: 1276px;
           display: flex;
           justify-content: space-between;
-          align-items: flex-end !important; /* 핵심: 버튼과 텍스트가 아래쪽(bottom)으로 나란히 정렬되도록 함 */
+          align-items: flex-end !important; 
           gap: 28px;
           background: #ffffff;
           border-radius: 24px;
@@ -1097,7 +1101,6 @@ export default function ProductsPage({ onOpenContact }) {
 
         .psExploreBtn:hover {
           background: #0052ff;
-          transform: translateY(-2px);
         }
 
         .psExploreBtnText {
@@ -1130,7 +1133,6 @@ export default function ProductsPage({ onOpenContact }) {
           height: 480px;
           border-radius: 24px;
           overflow: hidden;
-          box-shadow: 0 20px 45px -20px rgba(15, 23, 42, 0.15);
         }
 
         .psProductBanner img {
@@ -1220,7 +1222,6 @@ export default function ProductsPage({ onOpenContact }) {
           align-items: flex-start;
           gap: 12px;
           box-sizing: border-box;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
         }
 
         .psHowCardBg-0 { background: #4936ED !important; color: #ffffff !important; }
@@ -1261,13 +1262,11 @@ export default function ProductsPage({ onOpenContact }) {
           -webkit-font-smoothing: antialiased !important;
         }
 
-        /* K-AI WHY 배지: 배경 #111625 / 글자 #ffffff */
         .psWhyCard .psNumBadge {
-          background-color: #111625 !important;
+          background-color: #333C4E !important;
           color: #ffffff !important;
         }
 
-        /* K-AI HOW 배지: 배경 #ffffff / 글자 각 카드 테마색 */
         .psHowCardBg-0 .psNumBadge--white {
           background-color: #ffffff !important;
           color: #4936ED !important;
@@ -1403,13 +1402,11 @@ export default function ProductsPage({ onOpenContact }) {
           justify-content: flex-end;
           padding: 24px;
           box-sizing: border-box;
-          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .psModeCard:hover {
           transform: translateY(-4px);
-          box-shadow: 0 20px 40px -15px rgba(0, 82, 255, 0.25);
         }
 
         .psModeCard::after {
@@ -1496,7 +1493,7 @@ export default function ProductsPage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           height: 480px;
-          background-image: url("/10.png");
+          background-image: url("/BG_06.png");
           background-size: cover;
           background-position: center;
           display: flex;
@@ -1865,27 +1862,20 @@ export default function ProductsPage({ onOpenContact }) {
         }
 
         .psDsqAppCard {
-          position: relative !important;
-          width: 412px !important;
-          height: 480px !important;
-          border-radius: 20px !important;
-          overflow: hidden !important;
-          background-size: cover !important;
-          background-position: center !important;
-          padding: 28px !important;
-          box-sizing: border-box !important;
-          display: flex !important;
-          flex-direction: column !important;
-          justify-content: flex-end !important;
-          align-items: flex-start !important;
-          box-shadow: 0 16px 34px -18px rgba(15, 23, 42, 0.2) !important;
-          transition: transform 0.25s ease, box-shadow 0.25s ease !important;
-        }
-
-        .psDsqAppCard:hover {
-          transform: translateY(-4px) !important;
-          box-shadow: 0 20px 40px -15px rgba(0, 82, 255, 0.25) !important;
-        }
+  position: relative !important;
+  width: 412px !important;
+  height: 480px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background-size: cover !important;
+  background-position: center !important;
+  padding: 28px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+}
 
         .psDsqAppCard::after {
           content: "" !important;
@@ -1939,7 +1929,7 @@ export default function ProductsPage({ onOpenContact }) {
           margin-left: -50vw;
           margin-right: -50vw;
           min-height: 360px;
-          background-image: url("/10.png");
+          background-image: url("/BG_08.png");
           background-size: cover;
           background-position: center;
           display: flex;
