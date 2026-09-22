@@ -116,7 +116,7 @@ export default function Header() {
     .join(" ");
 
   return (
-    <header className={headerClassNames}>
+    <header className={headerClassNames} dir={currentLang === "AR" ? "rtl" : "ltr"}>
       <style>{`
         .${styles.mainHeader} {
           position: fixed !important;
@@ -220,7 +220,7 @@ export default function Header() {
           outline: none;
           padding: 0;
           margin: 0;
-          text-align: left !important;
+          text-align: start !important;
           flex: 1;
           white-space: nowrap;
         }
