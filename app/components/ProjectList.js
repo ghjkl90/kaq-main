@@ -405,9 +405,19 @@ export default function FeaturedSolutions() {
         }
 
         .fsTextCard {
-          min-height: 360px;
-        }
-
+        width: 628px;
+        height: 400px;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        padding: 40px;
+        border-radius: 24px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 40px;
+      }
         .fsTextFrame {
           width: 100%;
         }
@@ -450,20 +460,17 @@ export default function FeaturedSolutions() {
           <h2 className="fsHeading">{t.heading}</h2>
         </div>
 
-        {/* 솔루션 리스트 프레임: 세로 gap 80 */}
         <div className="fsList">
           {items.map((item, idx) => {
             const isEven = idx % 2 === 1;
             return (
               <div className="fsRow" key={item.id}>
-                {/* 628 x 400 이미지 */}
                 <div
                   className="fsImageBox"
                   data-reveal={isEven ? "right" : "left"}
                   style={{ backgroundImage: `url(${item.image})` }}
                 />
 
-                {/* 628 x 400 텍스트 카드 */}
                 <div className="fsTextCard" data-reveal={isEven ? "left" : "right"}>
                   <div className="fsTextFrame">
                     <h3 className="fsTitle">{item.mainTitle}</h3>
