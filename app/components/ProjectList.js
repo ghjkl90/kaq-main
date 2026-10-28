@@ -329,17 +329,17 @@ export default function FeaturedSolutions() {
 
       /* 텍스트: 18px Bold 및 수직 중심 정렬 */
       .fsBtnText {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.3; /* 130% */
-  letter-spacing: 0;
-  text-align: center;
-  color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
+        font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.3; /* 130% */
+        letter-spacing: 0;
+        text-align: center;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       /* 화살표 아이콘: 24 x 24 고정 및 부드러운 이동 */
       .fsBtnArrow {
@@ -382,7 +382,6 @@ export default function FeaturedSolutions() {
         transform: translate(0, 0);
       }
 
-      /* 반응형: 화면 폭이 1360px 미만으로 줄어들 때 */
       @media (max-width: 1360px) {
         .fsSection {
           padding: 100px 5%;
@@ -450,7 +449,7 @@ export default function FeaturedSolutions() {
         [data-reveal="right"] {
           transform: translateY(32px);
         }
-      }
+      } {}
     `}</style>
 
       <div className="fsContainer">
@@ -478,19 +477,19 @@ export default function FeaturedSolutions() {
                   </div>
 
                   <a
-  href={item.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fsBtn"
->
-  <span className="fsBtnText">{item.btnText}</span>
-  <svg
-    className="fsBtnArrow"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fsBtn"
+              >
+                <span className="fsBtnText">{item.btnText}</span>
+                <svg
+                  className="fsBtnArrow"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
     {/* 구글 머티리얼 심볼 공식 arrow_forward 벡터 패스 */}
     <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
   </svg>
