@@ -53,6 +53,12 @@ export const metadata: Metadata = {
     type: "website",
   },
 
+  verification: {
+    other: {
+      "naver-site-verification": "naver47c94ed1b944fb4f2f80c19940a147f6",
+    },
+  },
+
   // 검색 로봇 수집 허용 명시
   robots: {
     index: true,
